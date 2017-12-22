@@ -1,0 +1,11 @@
+.BattleField {
+    background: lightcoral;
+    height: 100%;
+    width: 100%
+}
+
+.SavedField {
+    background: lightgoldenrodyellow;
+    height: 100%;
+    width: 100%
+}

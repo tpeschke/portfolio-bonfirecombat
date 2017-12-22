@@ -3,12 +3,18 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const dotenv = require('dotenv').config();
 const massive = require('massive');
+const session = require('express-session')
 
 const sqlCtrl = require('./controller/sqlController')
 
 const app = new express()
 app.use(bodyParser.json())
 app.use(cors())
+app.use(session({
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: true
+}))
 
 ///////////////////////////////////
 ////TESTING TOPLEVEL MIDDLEWARE////
@@ -29,8 +35,9 @@ app.use((req, res, next) =>{
 })
 
 
-app.get('/api/fighters', sqlCtrl.getAll);
+app.get('/api/fighters', sqlCtrl.getAllCombats);
 app.post('/api/fighters', sqlCtrl.saveCombat);
+app.get('/api/combat/:id', sqlCtrl.getAllCombatants)
 
 
 const port = process.env.PORT

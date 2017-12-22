@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './reset.css'
 import './App.css';
 
-import axios from 'axios'
+import NavBar from './NavBar'
+import routes from './routes'
 
 class App extends Component {
   constructor() {
@@ -13,21 +14,14 @@ class App extends Component {
     }
   }
 
-  getAll = () => {
-    axios.get('/api/fighters').then( (req, res) => {
-
-        var combat = JSON.stringify(req.data[0])
-        
-        this.setState( { fighters: combat } )
-    })
-  }
-
   render() {
 
     return (
       <div>
-        <button onClick={this.getAll}>present</button>
-        {this.state.fighters}
+        <NavBar />
+
+        {routes}
+
       </div>
     );
   }
