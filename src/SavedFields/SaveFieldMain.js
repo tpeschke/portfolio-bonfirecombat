@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
 import axios from 'axios'
+import { connect } from 'react-redux'
 
-import BattleFieldMain from '../BattleField/BattleFieldMain'
-
+import { GETCOMBATFIGHTERS } from '../ducks/reducer'
 
 class SaveFieldMain extends Component {
     constructor() {
@@ -19,10 +19,10 @@ class SaveFieldMain extends Component {
 
             this.setState({ combats: req.data })
 
-            console.log(req.data)
-
         })
     }
+
+
 
 
     render() {
@@ -42,7 +42,7 @@ class SaveFieldMain extends Component {
 
                             <p>{d.deadnum}</p>
 
-                            <button>To War</button>
+                            <button onClick={_ => console.log(d.id)}>To War</button>
 
                         </div>
         })}
@@ -61,4 +61,12 @@ class SaveFieldMain extends Component {
     }
 }
 
-export default SaveFieldMain
+function mapStateToProps ( state ) {
+    return {}
+}
+
+let actionBuilders = {
+    GETCOMBATFIGHTERS
+}
+
+export default connect ( mapStateToProps, actionBuilders ) ( SaveFieldMain )
