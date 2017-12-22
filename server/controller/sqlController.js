@@ -3,7 +3,6 @@ module.exports = {
     getAll: (req, res) => {
 
         const db = req.app.get('db')
-        const { name } = req.body
 
         db.getAll().then( result => res.status(200).send(result) )
 

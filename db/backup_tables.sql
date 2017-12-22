@@ -1,8 +1,23 @@
-create table users (
+create table usersAuth (
     id SERIAL PRIMARY KEY,
-    userName VARCHAR(40),
-    userHash VARCHAR(40)
+    auth0 TEXT
     );
+
+
+--     insert into usersauth (auth0)
+-- values ('adsgfhaoibjmoi5wrhgiuaosfngiuasdhg;ioarhdgv;ou')
+    
+
+    create table combat (
+    id SERIAL PRIMARY KEY,
+    nameCombat VARCHAR(40),
+    idUser Int,
+        FOREIGN Key (idUser) REFERENCES usersAuth(id)
+    )
+
+-- insert into combat (namecombat, iduser)
+-- values ('Battle of Minas Truth', 1)
+    
 
 create table combatants (
     id SERIAL PRIMARY KEY,
@@ -10,24 +25,23 @@ create table combatants (
     colorCode VarChar(10),
     speed Int,
     actionCount INT,
-    top BIT,
+    topcheck BIT,
     acting bit,
-    dead bit
+    dead bit,
+    idCombat Int,
+        FOREIGN Key (idCombat) REFERENCES combat(id)
     )
+
+--     insert into combatants (namefighter, colorcode, speed, actioncount, topcheck, acting, dead, idcombat)
+-- values 
+--     ('Ragnar','#FF0000', 5, 17, '0', '0', '0',1),
+--     ('Sir William','#FFFF00',7, 10,'0', '0', '0',1)
 
 create table statuses (
     id SERIAL PRIMARY KEY,
     namestatus VARCHAR(40),
-    timestatus Int
+    timestatus Int,
+    idCombat Int,
+        FOREIGN Key (idCombat) REFERENCES combat(id)
     )
 
-create table combat (
-    id SERIAL PRIMARY KEY,
-    nameCombat VARCHAR(40),
-    idUser Int,
-    idCombatant int,
-    idStatus int,
-        FOREIGN Key (idUser) REFERENCES users(id),
-        FOREIGN KEY (idCombatant) REFERENCES combatants(id),
-        FOREIGN KEY (idstatus) REFERENCES statuses(id)
-    )

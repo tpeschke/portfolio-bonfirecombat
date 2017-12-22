@@ -15,8 +15,9 @@ class App extends Component {
 
   getAll = () => {
     axios.get('/api/fighters').then( (req, res) => {
-        console.log(req.data)
+
         var combat = JSON.stringify(req.data[0])
+        
         this.setState( { fighters: combat } )
     })
   }

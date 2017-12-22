@@ -1,1 +1,1 @@
-select * from combats
+select * from combatants
