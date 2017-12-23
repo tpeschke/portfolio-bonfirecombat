@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 import axios from 'axios'
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { GETCOMBATFIGHTERS } from '../ducks/reducer'
 
@@ -18,12 +19,8 @@ class SaveFieldMain extends Component {
         axios.get('/api/fighters').then((req, res) => {
 
             this.setState({ combats: req.data })
-
         })
     }
-
-
-
 
     render() {
 
@@ -42,7 +39,7 @@ class SaveFieldMain extends Component {
 
                             <p>{d.deadnum}</p>
 
-                            <button onClick={_ => console.log(d.id)}>To War</button>
+                            <Link to='/BattleField'><button onClick={_ => this.props.GETCOMBATFIGHTERS(d.id)}>To War</button></Link>
 
                         </div>
         })}
