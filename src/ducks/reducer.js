@@ -1,14 +1,16 @@
 import axios from 'axios'
 
+import sort from '../components/sort'
+
 const initialState = {
-    count: 0,
+    count: 1,
     combatId: 0,
     fighterTotal: []
 }
 //TYPES
 
 const GET_COMBAT_FIGHTERS = 'GET_COMBAT_FIGHTERS' 
-const GET_ALL_COMBATANTS = 'GET_ALL_COMBATANTS'
+const LOAD_COMBATANTS = 'LOAD_COMBATANTS'
 
 //ACTION BUILDERS
 
@@ -19,9 +21,9 @@ export function GETCOMBATFIGHTERS(id) {
     }
 }
 
-export function GETALLCOMBATANTS(id) {
+export function LOADCOMBATANTS(id) {
     return {
-        type: GET_ALL_COMBATANTS,
+        type: LOAD_COMBATANTS,
         payload: axios.get(`/api/combat/${id}`).then()
     }
 }
@@ -35,9 +37,11 @@ export default function reducer( state = initialState, action) {
         case GET_COMBAT_FIGHTERS:   
             return Object.assign({}, state, { combatId: action.payload })
 
-        case GET_ALL_COMBATANTS:
-            Object.assign({}, state, { fighterTotal: action.payload } )
-            return console.log(state.fighterTotal)
+        case LOAD_COMBATANTS + '_FULFILLED':
+            var fighters = sort(action.payload.data , state.count);
+            console.log(fighters)
+            return Object.assign({}, state, { fighterTotal: fighters } )
+
 
         default: return state
     }

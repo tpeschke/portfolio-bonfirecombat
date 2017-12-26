@@ -37,7 +37,7 @@ app.use((req, res, next) =>{
 
 app.get('/api/fighters', sqlCtrl.getAllCombats);
 app.post('/api/fighters', sqlCtrl.saveCombat);
-app.get('/api/combat/:id', sqlCtrl.getAllCombatants);
+app.get('/api/combat/:id', sqlCtrl.loadCombatants);
 
 
 const port = process.env.PORT

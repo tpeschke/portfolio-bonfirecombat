@@ -17,7 +17,6 @@ class SaveFieldMain extends Component {
 
     componentDidMount() {
         axios.get('/api/fighters').then((req, res) => {
-
             this.setState({ combats: req.data })
         })
     }

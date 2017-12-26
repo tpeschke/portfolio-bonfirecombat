@@ -10,18 +10,20 @@ module.exports = {
 
     saveCombat: (req, res) => {
 
-        const db = req.app.get('db')
+        // const db = req.app.get('db')
 
-        db.saveCombat().then( result => res.status(200).send(resent) )
+        // db.saveCombat().then( result => res.status(200).send(resent) )
     },
 
-    getAllCombatants: (req, res) => {
+    loadCombatants: (req, res) => {
 
         const db = req.app.get('db')
 
         var { id } = req.params
 
-        db.getCombatants( id ).then( result => res.status(200).send(result) )
+        db.getCombatants( id ).then( result => 
+            res.status(200).send(result) 
+        )
 
     }
 }

@@ -3,11 +3,11 @@ export default function sort (fightArr, count) {
     fightArr = fightArr.sort((a, b) => a.action - b.action);
 
     fightArr.forEach(val => {
-        if (val.action > count) {
-            val.acting = false
+        if (val.actioncount > count) {
+            val.acting = '0'
         } else {
-            val.acting = true
-            val.top = false
+            val.acting = '1'
+            val.top = '0'
         }
     })
 
@@ -17,9 +17,9 @@ export default function sort (fightArr, count) {
 
 
     fightArr.forEach(val => {
-        if (val.acting === true && val.dead === false) {
+        if (val.acting === '1' && val.dead === '0') {
             acting.push(val)
-        } else if (val.acting === false && val.dead === false) {
+        } else if (val.acting === '0' && val.dead === '0') {
             onDeck.push(val)
         } else (
             grave.push(val)
@@ -32,6 +32,6 @@ export default function sort (fightArr, count) {
         grave: grave
     }
 
-    console.log( fighters )
+    return fighters
 
 }
