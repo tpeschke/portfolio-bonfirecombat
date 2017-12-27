@@ -1,22 +1,22 @@
 import React, { Component } from 'react'
 
-export default class Acting extends Component {
+export default class OnDeck extends Component {
     constructor(props) {
         super(props) 
 
         this.state = {
-            acting: props.acting
+            onDeck: props.onDeck
         }
     }
 
     render() {
 
-        var { acting } = this.state
+        var { onDeck } = this.state
 
-        if ( acting ) {
-            var actingList = acting.map((d,i) => {
+        if ( onDeck ) {
+            var deckList = onDeck.map((d,i) => {
 
-                return <div key={i + 'acting'}>
+                return <div key={i + 'onDeck'}>
 
                         <p>{d.namefighter}</p>
 
@@ -30,8 +30,8 @@ export default class Acting extends Component {
 
         return (
             <div>
-                <h1>this is acting</h1>
-                {actingList}
+                <h1>this is on deck</h1>
+                {deckList}
             </div>
         )
     }

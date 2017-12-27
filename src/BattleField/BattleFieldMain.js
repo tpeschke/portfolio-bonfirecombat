@@ -2,34 +2,51 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import sort from '../components/sort'
 import { LOADCOMBATANTS } from '../ducks/reducer'
+
+import Counter from './Count';
+import OnDeck from './OnDeck';
+import Acting from './Acting';
+import { setTimeout } from 'timers';
 
 
 class BattleFieldMain extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            onDeck: props.fighterTotal.onDeck,
+            acting: props.fighterTotal.acting
+        }
+    }
 
     componentDidMount() {
        this.props.LOADCOMBATANTS(this.props.combatId)
+       setTimeout( console.log(this.state.onDeck), 5000)
     }
 
     render() {
 
         return (
             <div className="BattleField">
-            <p>BattleField</p>
             {this.props.combatId}
 
-            {/* <button onClick={_=> this.getCombat(this.props.combatId)}>test </button> */}
+            <Counter/>
+
+            <OnDeck
+                 onDeck={this.state.onDeck}/>
+
+            <Acting
+                acting={this.state.acting}/>
             </div>
         )
     }
 }
 
 function mapStateToProps ( state ) {
-    var { count, combatId, fighterTotal } = state
+    var { combatId, fighterTotal } = state
 
     return {
-        count,
         combatId,
         fighterTotal
     }

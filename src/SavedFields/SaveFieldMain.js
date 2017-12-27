@@ -30,7 +30,7 @@ class SaveFieldMain extends Component {
 
                 return  <div key={d.namecombat + i}>
 
-                            <p>{d.namecombat}</p>
+                            <h1>{d.namecombat}</h1>
 
                             <p>{d.countnum}</p>
 

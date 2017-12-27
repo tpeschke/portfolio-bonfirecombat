@@ -18,9 +18,9 @@ export default function sort (fightArr, count) {
 
     fightArr.forEach(val => {
         if (val.acting === '1' && val.dead === '0') {
-            acting.push(val)
-        } else if (val.acting === '0' && val.dead === '0') {
             onDeck.push(val)
+        } else if (val.acting === '0' && val.dead === '0') {
+            acting.push(val)
         } else (
             grave.push(val)
         )
