@@ -8,9 +8,9 @@ class NavBar extends Component {
     render() {
 
         return (
-            <div>
-                <Link to='/BattleField'>Battle Field</Link>
-                <Link to='/SavedFields'>Saved Fields</Link>
+            <div className="navBar">
+                <Link to='/BattleField'><h1>Battle Field</h1></Link>
+                <Link to='/SavedFields'><h1>Saved Fields</h1></Link>
             </div>
         )
     }

@@ -1,6 +1,7 @@
 export default function sort (fightArr, count) {
 
-    fightArr = fightArr.sort((a, b) => a.action - b.action);
+    fightArr = fightArr.total.sort((a, b) => a.action - b.action);
+
 
     fightArr.forEach(val => {
         if (val.actioncount > count) {
@@ -27,6 +28,7 @@ export default function sort (fightArr, count) {
     })
 
     var fighters = {
+        total: fightArr,
         acting: acting,
         onDeck: onDeck,
         grave: grave

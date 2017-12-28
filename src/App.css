@@ -1,15 +1,23 @@
 .BattleField {
     background: lightcoral;
     height: 100%;
-    width: 100%
+    width: 100%;
+    padding: 15px;
 }
 
 .SavedField {
     background: lightgoldenrodyellow;
     height: 100%;
-    width: 100%
+    width: 100%;
+    padding: 15px;
+}
+
+.navBar {
+    background: lightblue;
+    padding: 15px
 }
 
 h1 {
     font-weight: 800;
+    margin: 15px 0;
 }

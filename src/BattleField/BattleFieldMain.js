@@ -7,23 +7,25 @@ import { LOADCOMBATANTS } from '../ducks/reducer'
 import Counter from './Count';
 import OnDeck from './OnDeck';
 import Acting from './Acting';
-import { setTimeout } from 'timers';
-
 
 class BattleFieldMain extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            onDeck: props.fighterTotal.onDeck,
-            acting: props.fighterTotal.acting
+            onDeck: props.fighterList.onDeck,
+            acting: props.fighterList.acting
         }
     }
 
     componentDidMount() {
        this.props.LOADCOMBATANTS(this.props.combatId)
-       setTimeout( console.log(this.state.onDeck), 5000)
     }
+
+    // componentWillReceiveProps(nextProps) {
+    //     this.setState( { onDeck: nextProps.fighterList.OnDeck,
+    //                         acting: nextProps.fighterList.acting } )
+    // }
 
     render() {
 
@@ -44,11 +46,11 @@ class BattleFieldMain extends Component {
 }
 
 function mapStateToProps ( state ) {
-    var { combatId, fighterTotal } = state
+    var { combatId, fighterList } = state
 
     return {
         combatId,
-        fighterTotal
+        fighterList
     }
 }
 

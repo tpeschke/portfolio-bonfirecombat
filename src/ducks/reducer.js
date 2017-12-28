@@ -5,7 +5,8 @@ import sort from '../components/sort'
 const initialState = {
     count: 1,
     combatId: 0,
-    fighterTotal: {
+    fighterList: {
+        total: [],
         acting: [],
         onDeck: [],
         grave: []
@@ -15,6 +16,7 @@ const initialState = {
 
 const GET_COMBAT_FIGHTERS = 'GET_COMBAT_FIGHTERS' 
 const LOAD_COMBATANTS = 'LOAD_COMBATANTS'
+const INCREASE_COUNT = 'INCREASE_COUNT' 
 
 //ACTION BUILDERS
 
@@ -42,8 +44,14 @@ export default function reducer( state = initialState, action) {
             return Object.assign({}, state, { combatId: action.payload })
 
         case LOAD_COMBATANTS + '_FULFILLED':
-            var fighters = sort(action.payload.data , state.count);
-            return Object.assign({}, state, { fighterTotal: fighters } )
+            state.fighterList.total = action.payload.data
+            var fighters = sort( state.fighterList , state.count );
+            return Object.assign({}, state, { fighterList : fighters } )
+
+        case INCREASE_COUNT:
+            var newCount = state.count + 1
+            var fighter = sort( state.fighterList , newCount)
+            return Object.assign({}, state, { count : newCount, fighterList: fighter })
 
 
         default: return state

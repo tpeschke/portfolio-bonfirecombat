@@ -11,7 +11,7 @@ export default class OnDeck extends Component {
 
     render() {
 
-        var { onDeck } = this.state
+        var { onDeck } = this.props
 
         if ( onDeck ) {
             var deckList = onDeck.map((d,i) => {
