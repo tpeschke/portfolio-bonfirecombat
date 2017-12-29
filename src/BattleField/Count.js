@@ -12,7 +12,7 @@ class Counter extends Component {
             <div>
             <h1>This is the counter</h1>
             {this.props.count}
-            <button onClick={this.props.INCREASECOUNT} >+</button>
+            <button onClick={this.props.INCREASECOUNT}>+</button>
             </div>
         )
     }

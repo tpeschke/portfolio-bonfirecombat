@@ -5,12 +5,7 @@ import sort from '../components/sort'
 const initialState = {
     count: 1,
     combatId: 0,
-    fighterList: {
-        total: [],
-        acting: [],
-        onDeck: [],
-        grave: []
-    }
+    fighterList: [] 
 }
 //TYPES
 
@@ -44,7 +39,7 @@ export default function reducer( state = initialState, action) {
             return Object.assign({}, state, { combatId: action.payload })
 
         case LOAD_COMBATANTS + '_FULFILLED':
-            state.fighterList.total = action.payload.data
+            state.fighterList = action.payload.data
             var fighters = sort( state.fighterList , state.count );
             return Object.assign({}, state, { fighterList : fighters } )
 

@@ -2,21 +2,26 @@ import React, { Component } from 'react'
 
 export default class OnDeck extends Component {
     constructor(props) {
-        super(props) 
+        super(props)
 
         this.state = {
-            onDeck: props.onDeck
+            list: props.list
         }
     }
-
     render() {
 
-        var { onDeck } = this.props
+        var { list } = this.state
 
-        if ( onDeck ) {
-            var deckList = onDeck.map((d,i) => {
+        console.log(list)
 
-                return <div key={i + 'onDeck'}>
+        if ( list ) {
+            console.log('hit')
+    
+            var deckList = list.map((d,i) => {
+
+                if (d.acting === '0') {
+
+                return <div key={d.namefighter + i + 'onDeck'}>
 
                         <p>{d.namefighter}</p>
 
@@ -25,6 +30,7 @@ export default class OnDeck extends Component {
                         <p>{d.actioncount}</p>
 
                         </div>
+                }
             })
         }
 
