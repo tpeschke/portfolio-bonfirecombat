@@ -25,39 +25,54 @@ class SaveFieldMain extends Component {
 
         var { combats } = this.state
 
-        if (combats)    {
+        if (combats) {
             var combatList = combats.map((d, i) => {
 
-                return  <div key={d.namecombat + i}>
+                return <div
+                    className={i%2===0?"savedCombat":"savedCombat odd"}
+                    key={d.namecombat + i}>
+                    
+                    <Link to='/BattleField'>
+                    <button className="savedItemName" 
+                        onClick={_ => this.props.GETCOMBATFIGHTERS(d.id, d.namecombat, d.countnum)}>
+                        {d.namecombat} 
+                    </button>
+                    </Link>
 
-                            <h1>{d.namecombat}</h1>
+                    <p className="savedItem">{d.countnum}</p>
 
-                            <p>{d.countnum}</p>
+                    <p className="savedItem">{d.fighternum}</p>
 
-                            <p>{d.fighternum}</p>
+                    <p className="savedItem">{d.deadnum}</p>
 
-                            <p>{d.deadnum}</p>
-
-                            <Link to='/BattleField'><button onClick={_ => this.props.GETCOMBATFIGHTERS(d.id)}>To War</button></Link>
-
-                        </div>
-        })}
+                </div>
+            })
+        }
 
         return (
             <div className="SavedField">
+                <h1>Saved Fields</h1>
 
-                <p>Saved Fields</p>
+                <div className="savedMenu">
+                    <button>New Field</button>
+                </div>
 
-                <button>New Field</button>
+                <div className="savedListHeader">
+                    <p className="savedItemName">Combat Name</p>
+                    <p className="savedItem">Count</p>
+                    <p className="savedItem">Fighters</p>
+                    <p className="savedItem">Dead</p>
+                </div>
 
-                {combatList}
-
+                <div className="savedList">
+                    {combatList}
+                </div>
             </div>
         )
     }
 }
 
-function mapStateToProps ( state ) {
+function mapStateToProps(state) {
     return {}
 }
 
@@ -65,4 +80,4 @@ let actionBuilders = {
     GETCOMBATFIGHTERS
 }
 
-export default connect ( mapStateToProps, actionBuilders ) ( SaveFieldMain )
+export default connect(mapStateToProps, actionBuilders)(SaveFieldMain)

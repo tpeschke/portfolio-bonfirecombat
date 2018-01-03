@@ -17,8 +17,9 @@ create table usersAuth (
     )
 
 -- insert into combat (namecombat, iduser, countNum)
--- values ('Battle of Minas Truth', 1, 0),
--- ('Pellinor Fields', 1, 10)
+-- values ('Battle of Minas Tirith', 1, 0),
+-- ('Pellinor Fields', 1, 10),
+-- (Siege of Troy, 1, 3)
     
 
 create table combatants (
@@ -40,6 +41,7 @@ create table combatants (
 --      ('Sir William','#FFFF00',7, 10,'0', '0', '0',1)
 --      ('Robert','#FF00FF', 15, 10, '0', '0', '0', 2),
 --      ('Urlich VonLichstein','#FFFFFF',10, 1,'0', '0', '0', 2)
+--      ('Harris', '#000000', 3, 5, '0', '0', '1', 1)
 
 create table statuses (
     id SERIAL PRIMARY KEY,

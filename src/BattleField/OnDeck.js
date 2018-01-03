@@ -5,38 +5,48 @@ export default class OnDeck extends Component {
         super(props)
 
         this.state = {
-            list: props.list
+            list: [],
+            count: props.count
         }
     }
+
+    componentWillReceiveProps(next) {
+        this.setState({ list: next.list })
+    }
+
     render() {
 
-        var { list } = this.state
+        if (this.state.list) {
 
-        console.log(list)
+            var deckList = this.state.list.map((d, i) => {
 
-        if ( list ) {
-            console.log('hit')
-    
-            var deckList = list.map((d,i) => {
+                if (d.acting === '0' && d.dead === '0') {
 
-                if (d.acting === '0') {
+                    return <div className={i % 2 === 0 ? 'List' : "List odd"}
+                        key={d.namefighter + i + 'onDeck'}>
 
-                return <div key={d.namefighter + i + 'onDeck'}>
+                        <p className="ListItem Name">{d.namefighter}</p>
 
-                        <p>{d.namefighter}</p>
+                        <p className="ListItem">{d.speed}</p>
 
-                        <p>{d.speed}</p>
+                        <p className="ListItem">{d.actioncount}</p>
 
-                        <p>{d.actioncount}</p>
+                        <button className="ListItem">x</button>
 
-                        </div>
+                    </div>
                 }
             })
         }
 
         return (
-            <div>
-                <h1>this is on deck</h1>
+            <div className="Main">
+                <p>On Deck</p>
+                <div className="Header">
+                    <p className="ListItem Name">Name</p>
+                    <p className="ListItem">Speed</p>
+                    <p className="ListItem">Action</p>
+                    <p className="ListItem">Kill</p>
+                </div>
                 {deckList}
             </div>
         )

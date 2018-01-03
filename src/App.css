@@ -1,9 +1,148 @@
-.BattleField {
+body {
+    background: black;
+}
+
+.appContent {
+    width: 900px;
+    margin: 100px auto;
+}
+/* ================================= */
+
+.navBar {
+    background: lightblue;
+    padding: 0 0 0 25px;
+    display: flex;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+.navItem {
+    min-width: 100px;
+    margin: 0 5px 0 0;
+    height: 35px;
+    padding-top: 10px;
+    text-align: center;
+    color: black;
+}
+
+.navItemCurrent {
+    background: rgb(197, 0, 0);
+    min-width: 100px;
+    height: 35px;
+    margin: 0 5px 5px 0;
+    padding-top: 10px;
+    text-align: center;
+    color: white;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+/* ================================= */
+
+.BattleMain {
     background: lightcoral;
     height: 100%;
     width: 100%;
-    padding: 15px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
 }
+
+.BattleHeader {
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.BattleBody {
+    display: flex;
+    justify-content: space-between;
+    margin: 35px 15px;
+    min-height: 150px;
+}
+
+.BattleField {
+    background: lightgoldenrodyellow;
+    width: 550px;
+    border-radius: 25px;
+}
+
+.BattleSidebar {
+    background: lightgreen;
+    width: 275px;
+    border-radius: 25px;
+}
+
+/* ================================= */
+
+.counterMain {
+    display: flex;
+    justify-content: space-around;
+}
+
+.counterSide {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 275px;
+}
+
+.counterMiddle {
+    height: 75px;
+    width: 200px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ================================= */
+
+.Main {
+    margin: 15px 25px;
+}
+
+.Header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-weight: 800;
+    height: 35px;
+}
+
+.List {
+    display: flex;
+    align-items: center;
+    height: 30px;
+}
+
+.ListItem {
+    min-width: 60px;
+    text-align: center;
+}
+
+.Name {
+    min-width: 200px;
+    text-align: left;
+}
+
+/* ================================= */
+
+.HeaderGrave {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ListGrave {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ListItemGrave {
+    min-width: 50px;
+}
+
+/* ================================= */
 
 .SavedField {
     background: lightgoldenrodyellow;
@@ -12,12 +151,47 @@
     padding: 15px;
 }
 
-.navBar {
-    background: lightblue;
-    padding: 15px
+.savedMenu { 
+    margin: 15px 0;
 }
+
+.savedListHeader {
+    display: flex;
+    justify-content: flex-start;
+    font-weight: 800;
+    background: grey;
+}
+
+.savedItem {
+    min-width: 125px;
+    text-align: center;
+    margin: 10px 20px;
+}
+
+.savedItemName {
+    min-width: 320px;
+    margin: 10px 25px;
+    text-align: left;
+    border: none;
+}
+
+.savedCombat {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.odd {
+    background: rgba(211, 211, 211, 0.25)
+}
+
+/* ================================= */
 
 h1 {
     font-weight: 800;
     margin: 15px 0;
+}
+
+h2 {
+    font-weight: 800;
+    margin: 15px 25px;
 }
