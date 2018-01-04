@@ -11,8 +11,6 @@ export default function sort(fightArr, count) {
         }
     })
 
-    var fighters = fightArr
-
-    return fighters
+    return fightArr
 
 }

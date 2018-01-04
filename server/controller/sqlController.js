@@ -8,11 +8,16 @@ module.exports = {
 
     },
 
-    saveCombat: (req, res) => {
+    addNewFighter: (req, res) => {
 
-        // const db = req.app.get('db')
+        var { colorcode, name, speed, actioncount, combatId } = req.body
 
-        // db.saveCombat().then( result => res.status(200).send(resent) )
+        const db = req.app.get('db')
+
+        db.addCombatant(name, colorcode, speed, actioncount, combatId)
+
+        db.getCombatants( combatId ).then( result => res.status(200).send(result) )
+        
     },
 
     loadCombatants: (req, res) => {
@@ -21,9 +26,8 @@ module.exports = {
 
         var { id } = req.params
 
-        db.getCombatants( id ).then( result => 
-            res.status(200).send(result) 
-        )
+        db.getCombatants( id ).then( result => res.status(200).send(result) )
 
     }
+
 }

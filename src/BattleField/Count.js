@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
 
-import { INCREASECOUNT } from '../ducks/counterRed/counterReducer'
+import { INCREASECOUNT } from '../ducks/CompReducers/counterReducer'
 
 class Counter extends Component {
 

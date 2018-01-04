@@ -21,14 +21,18 @@ export default class Graveyard extends Component {
 
                 if (d.dead === '1') {
 
-                    return <div className={i%2===0?'ListGrave':"ListGrave odd"}
+                    return <div className="ListGrave"
                         key={d.namefighter + i + 'acting'}>
 
-                        <p className="ListItemGrave">{d.namefighter}</p>
+                        <p className="ListItemGrave GraveName">{d.namefighter}</p>
 
-                        <button className="ListItemGrave">\o/</button>
+                        <button className="ListItemGrave"
+                            onClick={_ => this.props.kill(d.id)}
+                        >\o/</button>
 
-                        <button className="ListItemGrave">X</button>
+                        <button className="ListItemGrave"
+                            onClick={_ => this.props.remove(d.id)}
+                        >X</button>
 
                     </div>
                 }
@@ -36,10 +40,10 @@ export default class Graveyard extends Component {
         }
 
         return (
-            <div className="Main">
-                <h1>the Dead</h1>
+            <div className="BattleSidebar">
+                <h2>the Dead</h2>
                 <div className="HeaderGrave">
-                    <h1 className="ListItemGrave">Name</h1>
+                    <h1 className="ListItemGrave GraveName">Name</h1>
                     <h1 className="ListItemGrave">Resurrect</h1>
                     <h1 className="ListItemGrave">Remove</h1>
                 </div>

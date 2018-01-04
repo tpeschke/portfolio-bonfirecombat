@@ -7,8 +7,8 @@ import SavedField from './SavedFields/SaveFieldMain'
 export default (
 
     <Switch>
-        <Route exact path= '/BattleField' component={ BattleField } />
-        <Route path= '/SavedFields' component={ SavedField } />
+        <Route exact path= '/SavedFields' component={ SavedField } />
+        <Route path= '/BattleField' component={ BattleField } />
     </Switch>
 
 )

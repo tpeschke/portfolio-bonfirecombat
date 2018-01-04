@@ -36,7 +36,7 @@ app.use((req, res, next) =>{
 
 
 app.get('/api/fighters', sqlCtrl.getAllCombats);
-app.post('/api/fighters', sqlCtrl.saveCombat);
+app.post('/api/fighter', sqlCtrl.addNewFighter);
 app.get('/api/combat/:id', sqlCtrl.loadCombatants);
 
 

@@ -22,16 +22,23 @@ export default class OnDeck extends Component {
 
                 if (d.acting === '0' && d.dead === '0') {
 
-                    return <div className={i % 2 === 0 ? 'List' : "List odd"}
+                    let color = { background: d.colorcode }
+
+                    return <div className="List"
                         key={d.namefighter + i + 'onDeck'}>
+                        <div className="color" style={color}></div>
 
                         <p className="ListItem Name">{d.namefighter}</p>
 
-                        <p className="ListItem">{d.speed}</p>
+                        <button className="ListItem"
+                            onClick={_=>this.props.advance(d.id)}
+                            >{d.speed}</button>
 
                         <p className="ListItem">{d.actioncount}</p>
 
-                        <button className="ListItem">x</button>
+                        <button className="ListItem"
+                            onClick={_=>this.props.kill(d.id)}
+                            >x</button>
 
                     </div>
                 }
@@ -42,7 +49,7 @@ export default class OnDeck extends Component {
             <div className="Main">
                 <p>On Deck</p>
                 <div className="Header">
-                    <p className="ListItem Name">Name</p>
+                    <p className="ListItem Name NameHeader">Name</p>
                     <p className="ListItem">Speed</p>
                     <p className="ListItem">Action</p>
                     <p className="ListItem">Kill</p>

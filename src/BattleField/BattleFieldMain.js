@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import { LOADCOMBATANTS } from '../ducks/reducer'
+import { LOADCOMBATANTS, KILLCOMBATANT, REMOVEFIGHTER, ADVANCESPEED } from '../ducks/reducer'
 
 import Counter from './Count';
-import OnDeck from './OnDeck';
-import Acting from './Acting';
-import Graveyard from './Graveyard';
-import AddNew from './AddNew';
+import OnDeck from './MainFieldComp/OnDeck';
+import Acting from './MainFieldComp/Acting';
+import Graveyard from './MainFieldComp/Graveyard';
+import CombatWorkspace from './CombatWorkspace/CombatWorkspaceMain'
 
 class BattleFieldMain extends Component {
 
@@ -31,19 +31,25 @@ class BattleFieldMain extends Component {
                     <h2>the Quick</h2>
                         <OnDeck
                             list={this.props.fighterList}
-                            count={this.props.count} />
+                            count={this.props.count}
+                            kill={this.props.KILLCOMBATANT}
+                            advance={this.props.ADVANCESPEED} />
 
                         <Acting
                             list={this.props.fighterList}
-                            count={this.props.count} />
+                            count={this.props.count}
+                            kill={this.props.KILLCOMBATANT}
+                            advance={this.props.ADVANCESPEED} />
                     </div>
 
-                    <div className="BattleSidebar">
-                        <AddNew />
+                    <div className="BattleSidebarOuter">
+                        <CombatWorkspace />
                         
                         <Graveyard
                             list={this.props.fighterList}
-                            count={this.props.count} />
+                            count={this.props.count}
+                            kill={this.props.KILLCOMBATANT}
+                            remove={this.props.REMOVEFIGHTER} />
                     </div>
                 </div>
             </div>
@@ -62,4 +68,11 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { LOADCOMBATANTS })(BattleFieldMain)
+let actionBuilder = {
+    LOADCOMBATANTS,
+    KILLCOMBATANT,
+    REMOVEFIGHTER,
+    ADVANCESPEED
+}
+
+export default connect(mapStateToProps, actionBuilder )(BattleFieldMain)

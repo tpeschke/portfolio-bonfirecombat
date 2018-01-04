@@ -67,10 +67,21 @@ body {
     border-radius: 25px;
 }
 
+.BattleSidebarOuter {
+    display: flex;
+    flex-direction: column;
+}
+
 .BattleSidebar {
     background: lightgreen;
     width: 275px;
     border-radius: 25px;
+    min-height: 150px;
+    margin-top: 15px;
+}
+
+.Workspace {
+    margin-top: 0;
 }
 
 /* ================================= */
@@ -78,6 +89,8 @@ body {
 .counterMain {
     display: flex;
     justify-content: space-around;
+    max-width: 750px;
+    margin: 0 auto;
 }
 
 .counterSide {
@@ -126,20 +139,44 @@ body {
     text-align: left;
 }
 
+.NameHeader {
+    margin-left: 25px;
+}
+
+.color {
+    height: 15px;
+    width: 15px;
+    border-radius: 25px;
+    margin: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+}
+
 /* ================================= */
 
 .HeaderGrave {
     display: flex;
     justify-content: space-between;
+    max-width: 225px;
+    margin: 0 auto;
 }
 
 .ListGrave {
     display: flex;
     justify-content: space-between;
+    max-width: 225px;
+    margin: 0 auto;
 }
 
 .ListItemGrave {
-    min-width: 50px;
+    min-width: 70px;
+    text-align: center;
+}
+
+.GraveName {
+    min-width: 75px;
+    text-align: left
 }
 
 /* ================================= */
