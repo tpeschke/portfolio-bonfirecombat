@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import { LOADCOMBATANTS, KILLCOMBATANT, REMOVEFIGHTER, ADVANCESPEED } from '../ducks/reducer'
+import { LOADCOMBATANTS, KILLCOMBATANT, REMOVEFIGHTER, ADVANCESPEED, INPUTACTION, OPENMODAL, OPENTOP } from '../ducks/reducer'
 
 import Counter from './Count';
 import OnDeck from './MainFieldComp/OnDeck';
@@ -22,6 +22,7 @@ class BattleFieldMain extends Component {
             <div className="BattleMain">
                     <div className="BattleHeader">
                         <h1>{this.props.combatName}</h1>
+                        <button className="BattleSaveButton">Save Field</button>
                     </div>
 
                     <Counter />
@@ -33,13 +34,19 @@ class BattleFieldMain extends Component {
                             list={this.props.fighterList}
                             count={this.props.count}
                             kill={this.props.KILLCOMBATANT}
-                            advance={this.props.ADVANCESPEED} />
+                            advance={this.props.ADVANCESPEED}
+                            action={this.props.INPUTACTION}
+                            modal={this.props.OPENMODAL}
+                            top={this.props.OPENTOP}  />
 
                         <Acting
                             list={this.props.fighterList}
                             count={this.props.count}
                             kill={this.props.KILLCOMBATANT}
-                            advance={this.props.ADVANCESPEED} />
+                            advance={this.props.ADVANCESPEED}
+                            action={this.props.INPUTACTION}
+                            modal={this.props.OPENMODAL}
+                            top={this.props.OPENTOP}  />
                     </div>
 
                     <div className="BattleSidebarOuter">
@@ -72,7 +79,10 @@ let actionBuilder = {
     LOADCOMBATANTS,
     KILLCOMBATANT,
     REMOVEFIGHTER,
-    ADVANCESPEED
+    ADVANCESPEED,
+    INPUTACTION,
+    OPENMODAL,
+    OPENTOP
 }
 
 export default connect(mapStateToProps, actionBuilder )(BattleFieldMain)

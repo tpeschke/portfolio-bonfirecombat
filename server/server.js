@@ -36,8 +36,12 @@ app.use((req, res, next) =>{
 
 
 app.get('/api/fighters', sqlCtrl.getAllCombats);
-app.post('/api/fighter', sqlCtrl.addNewFighter);
+// app.post('/api/fighter', sqlCtrl.addNewFighter);
 app.get('/api/combat/:id', sqlCtrl.loadCombatants);
+
+app.get('/api/battle', sqlCtrl.newField);
+app.delete('/api/battle/:id', sqlCtrl.deleteField);
+app.patch('/api/battle', sqlCtrl.saveField)
 
 
 const port = process.env.PORT

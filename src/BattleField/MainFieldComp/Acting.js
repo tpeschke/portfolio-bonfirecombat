@@ -1,18 +1,44 @@
 import React, { Component } from 'react'
 
+import ActEditFighter from './ActingOnDeckComponents/ActEditFighter'
+import ActToP from './ActingOnDeckComponents/ActThresholdOfPain'
+
 export default class Acting extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
             list: [],
-            count: props.count
+            count: props.count,
+            hold: '',
+
+            holdcolor: '',
+            holdname: '',
+            holdspeed: 0,
+            holdid: 0
         }
     }
 
     componentWillReceiveProps(next) {
         this.setState({ list: next.list })
 
+    }
+
+    modifyFighter = (d) => {
+        this.setState({
+            holdcolor: d.colorcode,
+            holdname: d.namefighter,
+            holdspeed: d.speed,
+            holdid: d.id
+        })
+
+        this.props.modal()
+    }
+
+    handleTop = (id) => {
+        this.setState( { holdid: id} )
+        
+        this.props.top()
     }
 
     render() {
@@ -25,20 +51,29 @@ export default class Acting extends Component {
                     let color = { background: d.colorcode }
 
                     return <div className="List"
-                        key={d.namefighter + i + 'acting'}>
+                        key={d.id}>
                         <div className="color" style={color}></div>
 
                         <p className="ListItem Name">{d.namefighter}</p>
 
                         <button className="ListItem"
-                            onClick={_=>this.props.advance(d.id)}
-                            >{d.speed}</button>
+                            onClick={_ => this.props.advance(d.id)}
+                        >{d.speed}</button>
 
-                        <p className="ListItem">{d.actioncount}</p>
+                        <input className="ListItem" placeholder={d.actioncount}
+                            onBlur={e => this.props.action(d.id, e.target.value)} />
 
                         <button className="ListItem"
-                            onClick={_=>this.props.kill(d.id)}
-                            >x</button>
+                            onClick={_ => this.handleTop(d.id)}
+                        >(ง'̀-'́)ง</button>
+
+                        <button className="ListItem"
+                            onClick={_ => this.props.kill(d.id)}
+                        >x</button>
+
+                        <button className="ListItem"
+                            onClick={_ => this.modifyFighter(d)}
+                        >---</button>
 
                     </div>
                 }
@@ -52,9 +87,20 @@ export default class Acting extends Component {
                     <p className="ListItem Name NameHeader">Name</p>
                     <p className="ListItem">Speed</p>
                     <p className="ListItem">Action</p>
+                    <p className="ListItem">ToP</p>
                     <p className="ListItem">Kill</p>
+                    <p className="ListItem">Edit</p>
                 </div>
                 {actingList}
+
+                <ActEditFighter
+                    color={this.state.holdcolor}
+                    name={this.state.holdname}
+                    speed={this.state.holdspeed}
+                    id={this.state.holdid} />
+
+                <ActToP 
+                    id={this.state.holdid}/>
             </div>
         )
     }

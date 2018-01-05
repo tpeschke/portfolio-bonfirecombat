@@ -28,7 +28,7 @@ export default class Graveyard extends Component {
 
                         <button className="ListItemGrave"
                             onClick={_ => this.props.kill(d.id)}
-                        >\o/</button>
+                        >\(•◡•)/</button>
 
                         <button className="ListItemGrave"
                             onClick={_ => this.props.remove(d.id)}
