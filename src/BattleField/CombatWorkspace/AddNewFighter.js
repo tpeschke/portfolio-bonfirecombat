@@ -7,7 +7,7 @@ import Modal from 'react-responsive-modal/lib/css';
 
 import { SketchPicker } from 'react-color';
 
-import { ADDNEWCOMBATANT } from '../../ducks/reducer'
+import { ADDNEWCOMBATANT } from '../../ducks/CompReducers/CombatantsReducer'
 
 class AddNewFighter extends Component {
     constructor() {
@@ -85,9 +85,10 @@ class AddNewFighter extends Component {
                     className="workshopButton"
                     onClick={this.onOpenModal}>Add New Combatant</button>
 
-                <Modal open={open} onClose={this.onCloseModal} little>
+                <Modal open={open} onClose={this.onCloseModal} little
+                    classNames={{ modal: 'modalBaseToP'}}>>
                 <div className="outModalNew">
-                        <div className="modalBanner">
+                        <div className="modalBannerNew">
                         </div >
                         <div className="inModalNew">
 
@@ -99,16 +100,16 @@ class AddNewFighter extends Component {
                             <div className="modalRight">
 
                                 <h1 id="newCombat">Add New Combatant</h1>
-                                <input placeholder="Name" id="modalNewInput"
+                                <input placeholder="Name" id="modalEditInput"
                                     onChange={e => this.handleName(e.target.value)} />
 
-                                <input placeholder="Speed"id="modalNewInput"
+                                <input placeholder="Speed"id="modalEditInput"
                                     onChange={e => this.handleSpeed(e.target.value)} />
 
-                                <input placeholder="Initiative" id="modalNewInput"
+                                <input placeholder="Initiative" id="modalEditInput"
                                     onChange={e => this.handleAction(e.target.value)} />
  
-                                 <button id="modalNewButton"
+                                 <button id="modalEditButton"
                                      onClick={_ => this.handleSubmit(color, name, speed, action, combatId)}>SUBMIT</button>
                             </div>
                         </div>

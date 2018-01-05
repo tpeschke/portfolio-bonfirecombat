@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import 'react-responsive-modal/lib/react-responsive-modal.css';
 import Modal from 'react-responsive-modal/lib/css';
 
-import { OPENTOP2, HANDLETOP } from '../../../ducks/reducer'
+import { OPENTOP2 } from '../../../ducks/reducer'
+import {HANDLETOP} from '../../../ducks/CompReducers/CombatantsReducer'
 
 class ActToP extends Component {
     constructor() {

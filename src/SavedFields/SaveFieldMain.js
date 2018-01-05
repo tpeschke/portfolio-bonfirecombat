@@ -4,7 +4,8 @@ import axios from 'axios'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { GETCOMBATFIGHTERS, NEWFIELD } from '../ducks/reducer'
+import { NEWFIELD } from '../ducks/reducer'
+import { GETCOMBATFIGHTERS } from '../ducks/CompReducers/CombatantsReducer'
 
 class SaveFieldMain extends Component {
     constructor() {

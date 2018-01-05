@@ -7,7 +7,8 @@ import Modal from 'react-responsive-modal/lib/css';
 
 import { SketchPicker } from 'react-color';
 
-import { OPENMODAL2, EDITFIGHTER } from '../../../ducks/reducer'
+import { OPENMODAL2 } from '../../../ducks/reducer'
+import {EDITFIGHTER} from '../../../ducks/CompReducers/CombatantsReducer'
 
 class ActEditFighter extends Component {
     constructor() {
@@ -68,9 +69,10 @@ class ActEditFighter extends Component {
         return (
             <div>
 
-                <Modal open={editopen2} onClose={this.props.OPENMODAL2} little>
+                <Modal open={editopen2} onClose={this.props.OPENMODAL2} little
+                classNames={{ modal: 'modalBaseToP' }}>
                     <div className="outModalNew">
-                        <div className="modalBanner">
+                        <div className="modalBannerEdit">
                         </div >
                         <div className="inModalNew">
 
@@ -82,17 +84,20 @@ class ActEditFighter extends Component {
                             <div className="modalRight">
 
                                 <h1 id="newCombat">Edit Combatant</h1>
-                                <p>Name</p>
-                                <input placeholder={name} id="modalNewInput"
-                                    onChange={e => this.handleName(e.target.value)} />
 
-                                <p>Speed</p>
-                                <input placeholder={speed} id="modalNewInput"
-                                    onChange={e => this.handleSpeed(e.target.value)} />
+                                <div className="modalEditInputs">
+                                    <p>Name</p>
+                                    <input placeholder={name} id="modalEditInput"
+                                        onChange={e => this.handleName(e.target.value)} />
 
-                                <button id="modalNewButton"
-                                 onClick={_ => this.handleSubmit()}
-                                >SUBMIT</button>
+                                    <p>Speed</p>
+                                    <input placeholder={speed} id="modalEditInput"
+                                        onChange={e => this.handleSpeed(e.target.value)} />
+
+                                    <button id="modalEditButton"
+                                        onClick={_ => this.handleSubmit()}
+                                    >SUBMIT</button>
+                                </div>
                             </div>
                         </div>
                     </div>

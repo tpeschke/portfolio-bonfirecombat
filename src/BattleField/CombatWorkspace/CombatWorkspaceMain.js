@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 
 import AddNewFighter from './AddNewFighter'
 
+import { connect } from 'react-redux'
+
+import { CLEARFIELD } from '../../ducks/reducer'
+
 class Workspace extends Component {
 
     render() {
@@ -12,7 +16,10 @@ class Workspace extends Component {
 
                 <div className="WorkspaceBody">
                 <AddNewFighter />
-                <button className="workshopButton">Clear Field</button>
+
+                <button className="workshopButton"
+                    onClick={this.props.CLEARFIELD}
+                    >Clear Field</button>
                 </div>
             </div>
         )
@@ -20,4 +27,6 @@ class Workspace extends Component {
 
 }
 
-export default Workspace
+function mapStateToProps(state) {}
+
+export default connect(mapStateToProps, {CLEARFIELD})(Workspace)

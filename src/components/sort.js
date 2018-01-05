@@ -7,7 +7,7 @@ export default function sort(fightArr, count) {
             val.acting = '1'
         } else {
             val.acting = '0'
-            val.top = '0'
+            val.topcheck = '0'
         }
     })
 

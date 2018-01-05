@@ -16,14 +16,20 @@ const initialState = {
 
 const GET_COMBAT_FIGHTERS = 'GET_COMBAT_FIGHTERS'
 const LOAD_COMBATANTS = 'LOAD_COMBATANTS'
+
 const INCREASE_COUNT = 'INCREASE_COUNT'
+const DECREASE_COUNT = "DECREASE_COUNT"
+const RESET_COUNT = 'RESET_COUNT'
+
 const ADD_NEW_COMBATANT = 'ADD_NEW_COMBATANT'
 const KILL_COMBATANT = 'KILL_COMBATANT'
+
 const REMOVE_FIGHTER = 'REMOVE_FIGHTER'
 const ADVANCE_SPEED = "ADVANCE_SPEED"
 
 const NEW_FIELD = "NEW_FIELD"
 const SAVE_FIELD = "SAVE_FIELD"
+const CLEAR_FIELD = "CLEAR_FIELD"
 
 const INPUT_ACTION = "INPUT_ACTION"
 
@@ -36,50 +42,6 @@ const EDIT_FIGHTER = "EDIT_FIGHTER"
 const HANDLE_TOP = "HANDLE_TOP"
 
 //ACTION BUILDERS
-
-export function GETCOMBATFIGHTERS(id, name, count) {
-    return {
-        type: GET_COMBAT_FIGHTERS,
-        payload: id,
-        name: name,
-        count: count
-    }
-}
-
-export function LOADCOMBATANTS(id) {
-    return {
-        type: LOAD_COMBATANTS,
-        payload: axios.get(`/api/combat/${id}`).then()
-    }
-}
-
-export function ADDNEWCOMBATANT(fighter) {
-    return {
-        type: ADD_NEW_COMBATANT,
-        payload: fighter
-    }
-}
-
-export function KILLCOMBATANT(id) {
-    return {
-        type: KILL_COMBATANT,
-        payload: id
-    }
-}
-
-export function REMOVEFIGHTER(id) {
-    return {
-        type: REMOVE_FIGHTER,
-        payload: id
-    }
-}
-
-export function ADVANCESPEED(id) {
-    return {
-        type: ADVANCE_SPEED,
-        payload: id
-    }
-}
 
 export function NEWFIELD() {
     return {
@@ -95,13 +57,12 @@ export function SAVEFIELD() {
     }
 }
 
-export function INPUTACTION(id, input) {
+export function CLEARFIELD() {
     return {
-        type: INPUT_ACTION,
-        payload: input,
-        id: id
+        type: CLEAR_FIELD,
     }
 }
+
 
 export function OPENMODAL() {
     return {
@@ -115,13 +76,6 @@ export function OPENMODAL2() {
     }
 }
 
-export function EDITFIGHTER(fighter) {
-    return {
-        type: EDIT_FIGHTER,
-        payload: fighter
-    }
-}
-
 export function OPENTOP() {
     return {
         type: OPEN_TOP
@@ -131,13 +85,6 @@ export function OPENTOP() {
 export function OPENTOP2() {
     return {
         type: OPEN_TOP2
-    }
-}
-
-export function HANDLETOP(fighter) {
-    return {
-        type: HANDLE_TOP,
-        payload: fighter
     }
 }
 
@@ -159,6 +106,18 @@ export default function reducer(state = initialState, action) {
             var newCount = +state.count + 1
             var fighter = sort(state.fighterList, newCount)
             return Object.assign({}, state, { count: newCount, fighterList: fighter })
+
+        case DECREASE_COUNT:
+            var decCount = +state.count
+            if (decCount > 1) {
+                decCount-=1
+            }
+            var lowFighter = sort(state.fighterList, decCount)
+            return Object.assign( {}, state, { count: decCount, lowFighter})
+
+        case RESET_COUNT:
+            var resetFighter = sort(state.fighterList, 1)
+            return Object.assign ( {}, state, { count: 1, fighterList: resetFighter })
 
         case ADD_NEW_COMBATANT:
             var newfighters = sort(state.fighterList.concat(action.payload), state.count)
@@ -261,13 +220,16 @@ export default function reducer(state = initialState, action) {
             var topfighter = sort(state.fighterList.map(val => {
                 if (val.id === action.payload.id) {
                     val.actioncount = val.actioncount + action.payload.failedBy
-                    val.top = '1'
+                    val.topcheck = '1'
                     return val
                 } else {
                     return val
                 }
             }), state.count)
             return Object.assign({}, state, { fighterList: topfighter })
+
+        case CLEAR_FIELD:
+            return Object.assign( {}, state, { fighterList: [] })
 
         default: return state
     }

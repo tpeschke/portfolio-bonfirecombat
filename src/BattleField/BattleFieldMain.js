@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import { LOADCOMBATANTS, KILLCOMBATANT, REMOVEFIGHTER, ADVANCESPEED, INPUTACTION, OPENMODAL, OPENTOP, OPENMODAL2, OPENTOP2 } from '../ducks/reducer'
+import { OPENMODAL, OPENTOP, OPENMODAL2, OPENTOP2 } from '../ducks/reducer'
+import {LOADCOMBATANTS, KILLCOMBATANT, REMOVEFIGHTER, ADVANCESPEED, INPUTACTION} from '../ducks/CompReducers/CombatantsReducer'
 
 import Counter from './Count';
 import OnDeck from './MainFieldComp/OnDeck';

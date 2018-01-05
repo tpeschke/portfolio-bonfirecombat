@@ -2,9 +2,30 @@ import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
 
-import { INCREASECOUNT } from '../ducks/CompReducers/counterReducer'
+import { INCREASECOUNT, DECREASECOUNT, RESETCOUNT } from '../ducks/CompReducers/counterReducer'
 
 class Counter extends Component {
+    constructor() {
+        super()
+
+        this.state = {
+            timeId: 0
+        }
+    }
+
+    stopTime = () => {
+        clearInterval(this.state.timeId);
+    }
+
+    autoTimer1 = () => {
+        clearInterval(this.state.timeId) 
+        this.setState( { timeId: setInterval(this.props.INCREASECOUNT, 1000) } )
+    }
+
+    autoTimer2 = () => {
+        clearInterval(this.state.timeId)
+        this.setState( { timeId: setInterval(this.props.INCREASECOUNT, 500) } )
+    }
 
     render() {
 
@@ -13,11 +34,11 @@ class Counter extends Component {
 
                 <div className="counterSide">
                     <button className="counterButton"
-                        onClick={this.props.INCREASECOUNT}>0</button>
+                        onClick={this.props.RESETCOUNT}>0</button>
                     <button className="counterButton"
-                        onClick={this.props.INCREASECOUNT}>X</button>
+                        onClick={this.stopTime}>X</button>
                     <button className="counterButton"
-                        onClick={this.props.INCREASECOUNT}>-</button>
+                        onClick={this.props.DECREASECOUNT}>-</button>
                 </div>
 
                 <div className="counterMiddle">
@@ -30,9 +51,9 @@ class Counter extends Component {
                     <button className="counterButton"
                         onClick={this.props.INCREASECOUNT}>+</button>
                     <button className="counterButton"
-                        onClick={this.props.INCREASECOUNT}>></button>
+                        onClick={this.autoTimer1}>></button>
                     <button className="counterButton"
-                        onClick={this.props.INCREASECOUNT}>>></button>
+                        onClick={this.autoTimer2}>>></button>
                 </div>
 
 
@@ -51,7 +72,9 @@ function mapStateToProps(state) {
 }
 
 let actionBuilder = {
-    INCREASECOUNT
+    INCREASECOUNT,
+    DECREASECOUNT,
+    RESETCOUNT
 }
 
 export default connect(mapStateToProps, actionBuilder)(Counter)

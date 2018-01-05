@@ -5,6 +5,30 @@ body {
     background: black;
 }
 
+.header {
+    display: flex;
+    justify-content:space-around; 
+    margin: 35px auto -65px auto;
+    width: 900px;
+}
+
+.logo {
+    background-image: url('./img/logo.jpg');
+    height: 145px;
+    width: 425px;
+    background-repeat: no-repeat;
+    margin-left: 20px;
+    margin-top: -10px;
+}
+
+.headpic {
+    background-image: url('./img/header.jpg');
+    height: 145px;
+    width: 443px;
+    background-repeat: no-repeat;
+    margin-right: 20px;
+}
+
 .appContent {
     width: 900px;
     margin: 100px auto;
@@ -198,6 +222,10 @@ body {
     border-color: black;
 }
 
+.top {
+    background: radial-gradient(rgb(151, 23, 21) 5%, rgb(151, 23, 21) 10% ,transparent  60%)
+}
+
 /* ================================= */
 
 .HeaderGrave {
@@ -226,6 +254,10 @@ body {
     max-width: 70px;
     text-align: left;
     line-height: auto;
+}
+
+.gravelist {
+    line-height: 19px;
 }
 
 /* ================================= */
@@ -349,6 +381,75 @@ button:hover {
     margin: 0
 }
 
+/* ==================================== */
+
+.modalBannerEdit {
+    background-image: url('./img/edit.jpg');
+    height: 200px;
+    width: 499px;
+    background-repeat: no-repeat;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px
+}
+
+.modalBannerNew {
+    background-image: url('./img/AddNew.jpg');
+    height: 200px;
+    width: 499px;
+    background-repeat: no-repeat;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px
+}
+
+.outModalNew {
+    display: flex;
+    flex-direction: column;
+    background-color:rgba(218, 197, 182, 1);
+    margin: -37px;
+    width: 499px;
+    height: auto;
+    position: relative;
+    border-radius: 25px
+}
+
+.inModalNew {
+    display: flex;
+    justify-content: space-around
+}
+
+.modalLeft {
+    margin: 15px;
+}
+
+.modalRight {
+    min-width: 220px;
+    max-width: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modalEditInputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+
+#modalEditInput {
+    max-width: 100px;
+    background: rgba(255, 255, 255, 0.50);
+    border-radius: 5px;
+    font-weight: 800;
+    font-size: 15px;
+    color: rgba(33, 53, 80, 1);
+    text-shadow: 0 0;
+    text-align: center;
+    margin: 5px 0 35px 0;
+}
+
+
 /* =================================== */
 h1 {
     font-weight: 800;
@@ -368,6 +469,29 @@ h3 {
     font-family: 'MedievalSharp';
     color: rgb(151, 23, 21);
     font-size: 20px;
+}
+
+h4 {
+    font-weight: 800;
+    font-size: 25px;
+    margin: 15px 0;
+    color: white;
+    font-family: 'MedievalSharp';
+    position: relative;
+    left: 123px;
+    top: 90px;
+    text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000; 
+}
+
+#newCombat {
+    color: rgba(33, 53, 80, 1);
+    margin-top: 40px;
+    text-align: center;
+    font-size: 25px;
 }
 
 .countNum {

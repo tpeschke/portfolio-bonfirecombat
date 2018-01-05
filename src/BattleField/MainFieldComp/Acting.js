@@ -50,7 +50,8 @@ export default class Acting extends Component {
 
                     let color = { background: d.colorcode }
 
-                    return <div className="List"
+                    return <div 
+                        className={d.topcheck === '1' ? 'List top' : 'List'}
                         key={d.id}>
                         <div className="color" style={color}></div>
 

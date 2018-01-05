@@ -17,14 +17,21 @@ class App extends Component {
   render() {
 
     return (
+      <div>
+        <div className="header">
+          <div className="logo">
+            <h4>Combat Counter</h4>
+          </div>
+          <div className="headpic"></div>
+        </div>
+        <div className="appContent">
+          <NavBar />
 
-      <div className="appContent">
-        <NavBar />
+          <div className="border"></div>
+          <div className="border"></div>
 
-        <div className="border"></div>
-        <div className="border"></div>
-
-        {routes}
+          {routes}
+        </div>
       </div>
     );
   }
