@@ -31,12 +31,10 @@ class ActToP extends Component {
             failedBy: +e * 3
         }
 
-        
-
         this.props.HANDLETOP(topFighter)
 
         if (this.props.topopen2) {
-        this.props.OPENTOP2()
+            this.props.OPENTOP2()
         }
 
         this.forceUpdate()
@@ -50,15 +48,16 @@ class ActToP extends Component {
         return (
             <div>
 
-                <Modal open={topopen2} onClose={this.props.OPENTOP2} little>
-                    <div className="outModalNew">
-                        
-                            <div className="modalRight">
-                                <p>Enter How Much They Failed By</p>
-                                <input id="modalNewInput"
-                                    onBlur={e => this.handleChange(e.target.value)} />
-                            </div>
+                <Modal open={topopen2} onClose={this.props.OPENTOP2} little
+                classNames={{ modal: 'modalBaseToP'}}>
+                <div className="modalToPOuter">
+                    
+                        <div className="modalToPInner">
+                            <h2 id="modalHeader">Enter How Much They Failed By</h2>
+                            <input id="modalToPInput"
+                                onBlur={e => this.handleChange(e.target.value)} />
                         </div>
+                    </div>
                 </Modal>
             </div>
         )

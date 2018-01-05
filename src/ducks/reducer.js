@@ -201,11 +201,14 @@ export default function reducer(state = initialState, action) {
 
         case SAVE_FIELD + "_FULFILLED":
             console.log('Finished :D')
+            break
 
         case INPUT_ACTION:
             var updatedAction = sort(state.fighterList.map(val => {
                 if (val.id === action.id) {
-                    val.actioncount = action.payload
+                    if(action.payload){
+                        val.actioncount = action.payload
+                    }
                     return val
                 } else {
                     return val

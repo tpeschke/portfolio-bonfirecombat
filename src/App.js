@@ -21,6 +21,9 @@ class App extends Component {
       <div className="appContent">
         <NavBar />
 
+        <div className="border"></div>
+        <div className="border"></div>
+
         {routes}
       </div>
     );

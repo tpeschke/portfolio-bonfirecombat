@@ -35,7 +35,7 @@ class SaveFieldMain extends Component {
             var combatList = combats.map((d, i) => {
 
                 return <div
-                    className={i % 2 === 0 ? "savedCombat" : "savedCombat odd"}
+                    className="savedCombat"
                     key={d.namecombat + i}>
 
                     <Link to='/BattleField'>
@@ -50,15 +50,15 @@ class SaveFieldMain extends Component {
                     <p className="savedItem">{d.fighternum}</p>
                     <p className="savedItem">{d.deadnum}</p>
                     <button className="savedItem"
-                        onClick={_=>this.deleteFieldTotal(d.id)}
-                        >X</button>
+                        onClick={_ => this.deleteFieldTotal(d.id)}
+                    >X</button>
                 </div>
             })
         }
 
         return (
             <div className="SavedField">
-                <h1>Saved Fields</h1>
+                <h1 className="fontHeader">Saved Fields</h1>
 
                 <div className="savedMenu">
                     <Link to='/BattleField'>
@@ -66,17 +66,19 @@ class SaveFieldMain extends Component {
                     </Link>
                 </div>
 
-                <div className="savedListHeader">
-                    <p className="savedItemName">Combat Name</p>
-                    <p className="savedItem"></p>
-                    <p className="savedItem">Count</p>
-                    <p className="savedItem">Fighters</p>
-                    <p className="savedItem">Dead</p>
-                    <p className="savedItem">Delete</p>
-                </div>
-
                 <div className="savedList">
+                    <div className="savedListHeader">
+                        <p className="savedItemName listHeader">Combat Name</p>
+                        <p className="savedItem listHeader"></p>
+                        <p className="savedItem listHeader">Count</p>
+                        <p className="savedItem listHeader">Fighters</p>
+                        <p className="savedItem listHeader">Dead</p>
+                        <p className="savedItem listHeader">Delete</p>
+                    </div>
+                    <div className="border"></div>
+
                     {combatList}
+                    <div className="border savedborder"></div>
                 </div>
             </div>
         )

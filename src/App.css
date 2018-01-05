@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Spectral+SC:400,800');
+@import url('https://fonts.googleapis.com/css?family=MedievalSharp');
+
 body {
     background: black;
 }
@@ -5,34 +8,59 @@ body {
 .appContent {
     width: 900px;
     margin: 100px auto;
+    background-image: url('./img/Wood1.jpg');
+    border-radius: 25px;
+    padding-bottom: 25px;
 }
+
+.border {
+    border-bottom-style: solid;
+    border-color: black;
+    border-width: 1px;
+    max-width: 90%;
+    margin: 5px auto;
+}
+
+.sectionborder {
+    max-width: 25%;
+    margin: 5px 0;
+}
+
+.graveborder {
+    margin-top: 0
+}
+
+.countborder {
+    min-width: 50%;
+    max-width: 50%
+}
+
 /* ================================= */
 
 .navBar {
-    background: lightblue;
-    padding: 0 0 0 25px;
+    padding: 0 0 0 50px;
     display: flex;
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
 }
 
 .navItem {
-    min-width: 100px;
+    min-width: 150px;
     margin: 0 5px 0 0;
     height: 35px;
     padding-top: 10px;
     text-align: center;
-    color: black;
+    color: rgb(151, 23, 21);
+    font-weight: 800;
 }
 
 .navItemCurrent {
     background: rgb(197, 0, 0);
-    min-width: 100px;
+    min-width: 150px;
     height: 35px;
     margin: 0 5px 5px 0;
     padding-top: 10px;
     text-align: center;
-    color: white;
+    color: rgb(214, 214, 214);
+    font-weight: 800;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
 }
@@ -40,11 +68,8 @@ body {
 /* ================================= */
 
 .BattleMain {
-    background: lightcoral;
     height: 100%;
-    width: 100%;
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px;
+    width: 900px;
 }
 
 .BattleHeader {
@@ -62,7 +87,7 @@ body {
 }
 
 .BattleField {
-    background: lightgoldenrodyellow;
+    background:  rgba(218, 197, 182, .75);
     width: 550px;
     border-radius: 25px;
 }
@@ -73,18 +98,30 @@ body {
 }
 
 .BattleSidebar {
-    background: lightgreen;
-    width: 275px;
+    background:  rgba(218, 197, 182, .75);
+    width: 300px;
     border-radius: 25px;
     min-height: 150px;
     margin-top: 15px;
 }
 
-.Workspace {
+#Workspace {
     margin-top: 0;
 }
 
+.WorkspaceBody {
+    margin: 0 20px;
+}
+
+.workshopButton {
+    margin-top: 5px
+}
+
 /* ================================= */
+
+.counterOuter {
+    margin-top: 25px;
+}
 
 .counterMain {
     display: flex;
@@ -101,7 +138,7 @@ body {
 }
 
 .counterMiddle {
-    height: 75px;
+    height: 95px;
     width: 200px;
     display: flex;
     justify-content: space-around;
@@ -109,10 +146,18 @@ body {
     align-items: center;
 }
 
+.counterButton {
+    font-weight: 800;
+    font-family: 'MedievalSharp';
+    color: rgb(151, 23, 21);
+    font-size: 30px;
+}
+
 /* ================================= */
 
 .Main {
     margin: 15px 25px;
+    padding: 0 0 15px 0;
 }
 
 .Header {
@@ -170,33 +215,43 @@ body {
 }
 
 .ListItemGrave {
-    min-width: 70px;
+    min-width: 55px;
     text-align: center;
+    font-size: 13px;
+    margin: 10px 0 10px 0;
 }
 
 .GraveName {
-    min-width: 75px;
-    text-align: left
+    min-width: 70px;
+    max-width: 70px;
+    text-align: left;
+    line-height: auto;
 }
 
 /* ================================= */
 
 .SavedField {
-    background: lightgoldenrodyellow;
     height: 100%;
     width: 100%;
     padding: 15px;
 }
 
 .savedMenu { 
-    margin: 15px 0;
+    margin: 15px 0 15px 20px;
+}
+
+.savedList {
+    background: rgba(218, 197, 182, .75);
+    border-radius: 25px;
+    padding: 5px 0 25px 0;
 }
 
 .savedListHeader {
     display: flex;
     justify-content: flex-start;
     font-weight: 800;
-    background: grey;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
 }
 
 .savedItem {
@@ -217,15 +272,83 @@ body {
     justify-content: flex-start;
 }
 
-.odd {
-    background: rgba(211, 211, 211, 0.25)
-}
-
 /* ================================= */
 
 input {
     max-width: 60px;
+    background: transparent;
+    border-style: none;
+    font-weight: 800;
+    font-family: 'MedievalSharp';
 }
+
+::placeholder {
+    color: black;
+    font-weight: 800;
+    font-family: 'MedievalSharp';
+}
+
+input:hover {
+    color: white;
+    text-shadow: 1px 1px 1px black;
+}
+
+button {
+    border-style: none;
+    background-color: transparent;
+    font-weight: 800;
+    font-family: 'MedievalSharp';
+}
+
+button:hover {
+    color: white;
+    text-shadow: 1px 1px 1px black;
+}
+
+/* =================================== */
+
+.modalBaseToP {
+    border-radius: 60px;
+}
+
+.modalToPOuter {
+    position: relative;
+    background-image: url("./img/ToP.png");
+    margin: -20px;
+    width: 444px;
+    height: 460px;
+    border-radius: 60px
+}
+
+.modalToPInner {
+    position: absolute;
+    left: 122px;
+    top: 130px;
+    background: rgba(218, 197, 182, .75);
+    width: 200px;
+    height: 200px;
+    border-radius: 15px;
+    text-align: center;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#modalToPInput {
+    margin-top: 15px;
+    max-width: 100px;
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 5px;
+    font-weight: 800;
+    font-size: 15px;
+    color: rgb(151, 23, 21);
+    text-shadow: 0 0;
+    text-align: center;
+    margin: 0
+}
+
 /* =================================== */
 h1 {
     font-weight: 800;
@@ -234,5 +357,33 @@ h1 {
 
 h2 {
     font-weight: 800;
-    margin: 15px 25px;
+    margin: 25px 25px 10px 25px;
+    font-family: 'Spectral SC', serif;
+    color: rgb(151, 23, 21);
+    font-size: 20px;
+}
+
+h3 {
+    font-weight: 800;
+    font-family: 'MedievalSharp';
+    color: rgb(151, 23, 21);
+    font-size: 20px;
+}
+
+.countNum {
+    font-size: 45px
+}
+
+.fontHeader {
+    color: rgb(151, 23, 21);
+    font-size: 25px;
+}
+
+.listHeader {
+    font-family: 'Spectral SC', serif;
+    color: rgb(151, 23, 21);
+}
+
+#modalHeader {
+    margin: 0
 }

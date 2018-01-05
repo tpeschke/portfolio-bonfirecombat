@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import { LOADCOMBATANTS, KILLCOMBATANT, REMOVEFIGHTER, ADVANCESPEED, INPUTACTION, OPENMODAL, OPENTOP } from '../ducks/reducer'
+import { LOADCOMBATANTS, KILLCOMBATANT, REMOVEFIGHTER, ADVANCESPEED, INPUTACTION, OPENMODAL, OPENTOP, OPENMODAL2, OPENTOP2 } from '../ducks/reducer'
 
 import Counter from './Count';
 import OnDeck from './MainFieldComp/OnDeck';
@@ -18,45 +18,50 @@ class BattleFieldMain extends Component {
 
     render() {
 
+        var { fighterList, count, KILLCOMBATANT, ADVANCESPEED, INPUTACTION, OPENMODAL, OPENMODAL2, OPENTOP, OPENTOP2, REMOVEFIGHTER } = this.props
+
         return (
             <div className="BattleMain">
-                    <div className="BattleHeader">
-                        <h1>{this.props.combatName}</h1>
-                        <button className="BattleSaveButton">Save Field</button>
-                    </div>
-
+                <div className="BattleHeader">
+                    <h1 className="fontHeader">{this.props.combatName}</h1>
+                    <button className="BattleSaveButton">Save Field</button>
+                </div>
+                <div className="counterOuter">
                     <Counter />
+                </div>
 
-                <div className="BattleBody">
-                    <div className="BattleField">
-                    <h2>the Quick</h2>
-                        <OnDeck
-                            list={this.props.fighterList}
-                            count={this.props.count}
-                            kill={this.props.KILLCOMBATANT}
-                            advance={this.props.ADVANCESPEED}
-                            action={this.props.INPUTACTION}
-                            modal={this.props.OPENMODAL}
-                            top={this.props.OPENTOP}  />
+                <div className="BattleBodyWork">
+                    <div className="BattleBody">
+                        <div className="BattleField">
+                            <h2>the Quick</h2>
+                            <OnDeck
+                                list={fighterList}
+                                count={count}
+                                kill={KILLCOMBATANT}
+                                advance={ADVANCESPEED}
+                                action={INPUTACTION}
+                                modal={OPENMODAL}
+                                top={OPENTOP} />
 
-                        <Acting
-                            list={this.props.fighterList}
-                            count={this.props.count}
-                            kill={this.props.KILLCOMBATANT}
-                            advance={this.props.ADVANCESPEED}
-                            action={this.props.INPUTACTION}
-                            modal={this.props.OPENMODAL}
-                            top={this.props.OPENTOP}  />
-                    </div>
+                            <Acting
+                                list={fighterList}
+                                count={count}
+                                kill={KILLCOMBATANT}
+                                advance={ADVANCESPEED}
+                                action={INPUTACTION}
+                                modal2={OPENMODAL2}
+                                top2={OPENTOP2} />
+                        </div>
 
-                    <div className="BattleSidebarOuter">
-                        <CombatWorkspace />
-                        
-                        <Graveyard
-                            list={this.props.fighterList}
-                            count={this.props.count}
-                            kill={this.props.KILLCOMBATANT}
-                            remove={this.props.REMOVEFIGHTER} />
+                        <div className="BattleSidebarOuter">
+                            <CombatWorkspace />
+
+                            <Graveyard
+                                list={fighterList}
+                                count={count}
+                                kill={KILLCOMBATANT}
+                                remove={REMOVEFIGHTER} />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -82,7 +87,9 @@ let actionBuilder = {
     ADVANCESPEED,
     INPUTACTION,
     OPENMODAL,
-    OPENTOP
+    OPENTOP,
+    OPENMODAL2,
+    OPENTOP2
 }
 
-export default connect(mapStateToProps, actionBuilder )(BattleFieldMain)
+export default connect(mapStateToProps, actionBuilder)(BattleFieldMain)

@@ -70,7 +70,7 @@ export default class OnDeck extends Component {
 
                         <button className="ListItem"
                             onClick={_ => this.props.kill(d.id)}
-                        >x</button>
+                        >X</button>
 
                         <button className="ListItem"
                             onClick={_ => this.modifyFighter(d)}
@@ -84,14 +84,16 @@ export default class OnDeck extends Component {
         return (
             <div className="Main">
                 <p>On Deck</p>
+                <div className="border sectionborder"></div>
                 <div className="Header">
-                    <p className="ListItem Name NameHeader">Name</p>
-                    <p className="ListItem">Speed</p>
-                    <p className="ListItem">Action</p>
-                    <p className="ListItem">ToP</p>
-                    <p className="ListItem">Kill</p>
-                    <p className="ListItem">Edit</p>
+                    <p className="ListItem Name NameHeader listHeader">Name</p>
+                    <p className="ListItem listHeader">Speed</p>
+                    <p className="ListItem listHeader">Action</p>
+                    <p className="ListItem listHeader">ToP</p>
+                    <p className="ListItem listHeader">Kill</p>
+                    <p className="ListItem listHeader">Edit</p>
                 </div>
+                <div className="border"></div>
                 {deckList}
 
                 <DeckEditFighter

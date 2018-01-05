@@ -12,20 +12,27 @@ class Counter extends Component {
             <div className="counterMain">
 
                 <div className="counterSide">
-                    <button onClick={this.props.INCREASECOUNT}>0</button>
-                    <button onClick={this.props.INCREASECOUNT}>X</button>
-                    <button onClick={this.props.INCREASECOUNT}>-</button>
+                    <button className="counterButton"
+                        onClick={this.props.INCREASECOUNT}>0</button>
+                    <button className="counterButton"
+                        onClick={this.props.INCREASECOUNT}>X</button>
+                    <button className="counterButton"
+                        onClick={this.props.INCREASECOUNT}>-</button>
                 </div>
 
                 <div className="counterMiddle">
-                    <h1>the Count</h1>
-                    {this.props.count}
+                    <h3>the Count</h3>
+                    <div className="border countborder"></div>
+                    <h3 className="countNum">{this.props.count}</h3>
                 </div>
 
                 <div className="counterSide">
-                    <button onClick={this.props.INCREASECOUNT}>+</button>
-                    <button onClick={this.props.INCREASECOUNT}>></button>
-                    <button onClick={this.props.INCREASECOUNT}>>></button>
+                    <button className="counterButton"
+                        onClick={this.props.INCREASECOUNT}>+</button>
+                    <button className="counterButton"
+                        onClick={this.props.INCREASECOUNT}>></button>
+                    <button className="counterButton"
+                        onClick={this.props.INCREASECOUNT}>>></button>
                 </div>
 
 

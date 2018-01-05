@@ -48,12 +48,13 @@ class DeckToP extends Component {
         return (
             <div>
 
-                <Modal open={topopen} onClose={this.props.OPENTOP} little>
-                    <div className="outModalNew">
+                <Modal open={topopen} onClose={this.props.OPENTOP} little
+                    classNames={{ modal: 'modalBaseToP'}}>
+                    <div className="modalToPOuter">
                         
-                            <div className="modalRight">
-                                {/* <p>Enter How Much They Failed By</p> */}
-                                <input id="modalNewInput"
+                            <div className="modalToPInner">
+                                <h2 id="modalHeader">Enter How Much They Failed By</h2>
+                                <input id="modalToPInput"
                                     onBlur={e => this.handleChange(e.target.value)} />
                             </div>
                         </div>

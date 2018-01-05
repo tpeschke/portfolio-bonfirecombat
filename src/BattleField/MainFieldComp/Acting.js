@@ -32,13 +32,13 @@ export default class Acting extends Component {
             holdid: d.id
         })
 
-        this.props.modal()
+        this.props.modal2()
     }
 
     handleTop = (id) => {
         this.setState( { holdid: id} )
         
-        this.props.top()
+        this.props.top2()
     }
 
     render() {
@@ -69,7 +69,7 @@ export default class Acting extends Component {
 
                         <button className="ListItem"
                             onClick={_ => this.props.kill(d.id)}
-                        >x</button>
+                        >X</button>
 
                         <button className="ListItem"
                             onClick={_ => this.modifyFighter(d)}
@@ -83,15 +83,18 @@ export default class Acting extends Component {
         return (
             <div className="Main">
                 <p>Acting</p>
+                <div className="border sectionborder"></div>
                 <div className="Header">
-                    <p className="ListItem Name NameHeader">Name</p>
-                    <p className="ListItem">Speed</p>
-                    <p className="ListItem">Action</p>
-                    <p className="ListItem">ToP</p>
-                    <p className="ListItem">Kill</p>
-                    <p className="ListItem">Edit</p>
+                    <p className="ListItem Name NameHeader listHeader">Name</p>
+                    <p className="ListItem listHeader">Speed</p>
+                    <p className="ListItem listHeader">Action</p>
+                    <p className="ListItem listHeader">ToP</p>
+                    <p className="ListItem listHeader">Kill</p>
+                    <p className="ListItem listHeader">Edit</p>
                 </div>
+                <div className="border"></div>
                 {actingList}
+                <div className="border"></div>
 
                 <ActEditFighter
                     color={this.state.holdcolor}
