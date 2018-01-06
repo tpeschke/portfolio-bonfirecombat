@@ -43,6 +43,7 @@ const EDIT_FIGHTER = "EDIT_FIGHTER"
 const HANDLE_TOP = "HANDLE_TOP"
 
 const GET_ALL_STATUSES = "GET_ALL_STATUSES"
+const DELETE_STATUSES = "DELETE_STATUSES"
 
 //ACTION BUILDERS
 
@@ -236,6 +237,14 @@ export default function reducer(state = initialState, action) {
 
         case CLEAR_FIELD:
             return Object.assign( {}, state, { fighterList: [] })
+
+        case DELETE_STATUSES:
+            var modifiedStatus = state.statusList.forEach((val, i) => {
+                if (val.id === action.payload) {
+                   state.statusList.splice(i,1)
+                }
+            })
+            return Object.assign( {}, state, { statusList: modifiedStatus})
 
         default: return state
     }

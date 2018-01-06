@@ -449,6 +449,35 @@ button:hover {
     margin: 5px 0 35px 0;
 }
 
+/* =================================== */
+
+.StatusOver {
+    display: flex;
+    justify-content:center;
+}
+
+.StatusList {
+    position: fixed;
+    bottom: 0;
+    width: 900px;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.StatusItemBox {
+    background: white;
+    width: auto;
+    height: 75px;
+    margin-right: 25px;
+    padding: 0 25px;
+    text-align: center;
+    background: rgba(218, 197, 182, .75);
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+    min-width: 120px;
+}
 
 /* =================================== */
 h1 {
@@ -485,6 +514,19 @@ h4 {
         1px -1px 0 #000,
         -1px 1px 0 #000,
         1px 1px 0 #000; 
+}
+
+h5 {
+    font-weight: 800;
+    font-size: 15px;
+    color: rgb(103, 21, 151);
+    margin-top: 10px;
+}
+
+h6 {
+    font-size: 25px;
+    font-family: 'MedievalSharp';
+    margin-top: 5px;
 }
 
 #newCombat {

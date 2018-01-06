@@ -4,6 +4,8 @@ import './App.css';
 
 import NavBar from './NavBar'
 import routes from './routes'
+import Statusest from './BattleField/MainFieldComp/Statuses'
+import Statuses from './BattleField/MainFieldComp/Statuses';
 
 class App extends Component {
   constructor() {
@@ -31,6 +33,9 @@ class App extends Component {
           <div className="border"></div>
 
           {routes}
+        </div>
+        <div className="StatusOver">
+        <Statuses />
         </div>
       </div>
     );

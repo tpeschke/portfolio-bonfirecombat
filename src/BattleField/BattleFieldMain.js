@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { OPENMODAL, OPENTOP, OPENMODAL2, OPENTOP2 } from '../ducks/reducer'
-import {LOADCOMBATANTS, KILLCOMBATANT, REMOVEFIGHTER, ADVANCESPEED, INPUTACTION} from '../ducks/CompReducers/CombatantsReducer'
+import { LOADCOMBATANTS, KILLCOMBATANT, REMOVEFIGHTER, ADVANCESPEED, INPUTACTION} from '../ducks/CompReducers/CombatantsReducer'
 import { GETALLSTATUSES } from '../ducks/CompReducers/StatusReducer'
 
 import Counter from './Count';
