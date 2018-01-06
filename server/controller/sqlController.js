@@ -30,6 +30,15 @@ module.exports = {
 
     },
 
+    getAllStatuses: (req, res) => {
+
+        const db = req.app.get('db')
+
+        var { id } = req.params
+
+        db.getAllStatuses( id ).then( result => res.status(200).send(result) )
+    },
+
     newField: (req, res) => {
 
         const db = req.app.get('db')

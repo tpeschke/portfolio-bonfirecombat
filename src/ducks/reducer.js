@@ -7,6 +7,7 @@ const initialState = {
     combatId: 0,
     combatName: 'New Battle',
     fighterList: [],
+    statusList: [],
     editopen: false,
     editopen2: false,
     topopen: false,
@@ -40,6 +41,8 @@ const OPEN_TOP2 = "OPEN_TOP2"
 
 const EDIT_FIGHTER = "EDIT_FIGHTER"
 const HANDLE_TOP = "HANDLE_TOP"
+
+const GET_ALL_STATUSES = "GET_ALL_STATUSES"
 
 //ACTION BUILDERS
 
@@ -101,6 +104,9 @@ export default function reducer(state = initialState, action) {
             state.fighterList = action.payload.data
             var fighters = sort(state.fighterList, state.count);
             return Object.assign({}, state, { fighterList: fighters })
+
+        case GET_ALL_STATUSES + '_FULFILLED':
+            return Object.assign ( {}, state, {statusList: action.payload.data})
 
         case INCREASE_COUNT:
             var newCount = +state.count + 1

@@ -51,3 +51,8 @@ create table statuses (
         FOREIGN Key (idCombat) REFERENCES combat(id)
     )
 
+--     insert into statuses (namestatus, timestatus, idcombat)
+-- values 
+--      ('Darkness', 16, 1),
+--      ('Fire', 12, 1)
+--      ('Darkness', 25, 2)

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { OPENMODAL, OPENTOP, OPENMODAL2, OPENTOP2 } from '../ducks/reducer'
 import {LOADCOMBATANTS, KILLCOMBATANT, REMOVEFIGHTER, ADVANCESPEED, INPUTACTION} from '../ducks/CompReducers/CombatantsReducer'
+import { GETALLSTATUSES } from '../ducks/CompReducers/StatusReducer'
 
 import Counter from './Count';
 import OnDeck from './MainFieldComp/OnDeck';
@@ -15,6 +16,7 @@ class BattleFieldMain extends Component {
 
     componentDidMount() {
         this.props.LOADCOMBATANTS(this.props.combatId)
+        , this.props.GETALLSTATUSES(this.props.combatId)
     }
 
     render() {
@@ -90,7 +92,8 @@ let actionBuilder = {
     OPENMODAL,
     OPENTOP,
     OPENMODAL2,
-    OPENTOP2
+    OPENTOP2,
+    GETALLSTATUSES
 }
 
 export default connect(mapStateToProps, actionBuilder)(BattleFieldMain)

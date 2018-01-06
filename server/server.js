@@ -38,6 +38,7 @@ app.use((req, res, next) =>{
 app.get('/api/fighters', sqlCtrl.getAllCombats);
 // app.post('/api/fighter', sqlCtrl.addNewFighter);
 app.get('/api/combat/:id', sqlCtrl.loadCombatants);
+app.get('/api/status/:id', sqlCtrl.getAllStatuses)
 
 app.get('/api/battle', sqlCtrl.newField);
 app.delete('/api/battle/:id', sqlCtrl.deleteField);
