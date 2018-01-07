@@ -29,6 +29,7 @@ class BattleFieldMain extends Component {
                     <h1 className="fontHeader">{this.props.combatName}</h1>
                     <button className="BattleSaveButton">Save Field</button>
                 </div>
+                
                 <div className="counterOuter">
                     <Counter />
                 </div>

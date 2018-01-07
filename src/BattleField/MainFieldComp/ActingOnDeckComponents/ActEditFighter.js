@@ -49,7 +49,7 @@ class ActEditFighter extends Component {
             id: this.state.id,
             namefighter: this.state.name,
             colorcode: this.state.color,
-            speed: this.state.speed
+            speed: +this.state.speed
         }
 
         this.props.EDITFIGHTER(editedFighter)
@@ -84,6 +84,8 @@ class ActEditFighter extends Component {
                             <div className="modalRight">
 
                                 <h1 id="newCombat">Edit Combatant</h1>
+
+                                <div className="border modalBorder"></div>
 
                                 <div className="modalEditInputs">
                                     <p>Name</p>

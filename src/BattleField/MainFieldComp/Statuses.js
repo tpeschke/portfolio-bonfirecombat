@@ -10,7 +10,7 @@ class Statuses extends Component {
 
         if (this.props.statusList) {
             var statuses = this.props.statusList.map((d, i) => {
-
+                
                 if (d.timestatus - this.props.count > 0) {
                     return <button key={d.id}
                         className="StatusItemBox"

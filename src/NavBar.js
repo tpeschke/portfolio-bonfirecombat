@@ -7,7 +7,7 @@ class NavBar extends Component {
         super()
 
         this.state = {
-            activeLink: 'BattleField'
+            activeLink: 'SavedFields'
         }
     }
 

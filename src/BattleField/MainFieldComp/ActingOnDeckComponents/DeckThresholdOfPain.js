@@ -55,6 +55,7 @@ class DeckToP extends Component {
                         
                             <div className="modalToPInner">
                                 <h2 id="modalHeader">Enter How Much They Failed By</h2>
+                                <div className="border modalBorder"></div>
                                 <input id="modalToPInput"
                                     onBlur={e => this.handleChange(e.target.value)} />
                             </div>

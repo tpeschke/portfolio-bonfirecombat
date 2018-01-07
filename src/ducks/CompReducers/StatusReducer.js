@@ -2,6 +2,7 @@ import axios from 'axios'
 
 const GET_ALL_STATUSES = 'GET_ALL_STATUSES'
 const DELETE_STATUSES = "DELETE_STATUSES"
+const ADD_NEW_STATUS = "ADD_NEW_STATUS"
 
 // ==========================================
 
@@ -16,5 +17,12 @@ export function DELETESTATUSES(id) {
     return {
         type: DELETE_STATUSES,
         payload: id
+    }
+}
+
+export function ADDNEWSTATUS(status) {
+    return {
+        type: ADD_NEW_STATUS,
+        payload: status
     }
 }

@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 import sort from '../components/sort'
+import { ADDNEWSTATUS } from './CompReducers/StatusReducer';
 
 const initialState = {
     count: 1,
@@ -44,6 +45,7 @@ const HANDLE_TOP = "HANDLE_TOP"
 
 const GET_ALL_STATUSES = "GET_ALL_STATUSES"
 const DELETE_STATUSES = "DELETE_STATUSES"
+const ADD_NEW_STATUS = "ADD_NEW_STATUS"
 
 //ACTION BUILDERS
 
@@ -107,7 +109,7 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { fighterList: fighters })
 
         case GET_ALL_STATUSES + '_FULFILLED':
-            return Object.assign ( {}, state, {statusList: action.payload.data})
+            return Object.assign({}, state, { statusList: action.payload.data })
 
         case INCREASE_COUNT:
             var newCount = +state.count + 1
@@ -117,14 +119,14 @@ export default function reducer(state = initialState, action) {
         case DECREASE_COUNT:
             var decCount = +state.count
             if (decCount > 1) {
-                decCount-=1
+                decCount -= 1
             }
             var lowFighter = sort(state.fighterList, decCount)
-            return Object.assign( {}, state, { count: decCount, lowFighter})
+            return Object.assign({}, state, { count: decCount, lowFighter })
 
         case RESET_COUNT:
             var resetFighter = sort(state.fighterList, 1)
-            return Object.assign ( {}, state, { count: 1, fighterList: resetFighter })
+            return Object.assign({}, state, { count: 1, fighterList: resetFighter })
 
         case ADD_NEW_COMBATANT:
             var newfighters = sort(state.fighterList.concat(action.payload), state.count)
@@ -172,7 +174,7 @@ export default function reducer(state = initialState, action) {
         case INPUT_ACTION:
             var updatedAction = sort(state.fighterList.map(val => {
                 if (val.id === action.id) {
-                    if(action.payload){
+                    if (action.payload) {
                         val.actioncount = action.payload
                     }
                     return val
@@ -236,15 +238,20 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { fighterList: topfighter })
 
         case CLEAR_FIELD:
-            return Object.assign( {}, state, { fighterList: [] })
+            return Object.assign({}, state, { fighterList: [] })
 
         case DELETE_STATUSES:
-            var modifiedStatus = state.statusList.forEach((val, i) => {
-                if (val.id === action.payload) {
-                   state.statusList.splice(i,1)
+            var modifiedStatus = []
+            for (var i = 0; i < state.statusList.length; i++) {
+                if (state.statusList[i].id != action.payload) {
+                    modifiedStatus.push(state.statusList[i])
                 }
-            })
-            return Object.assign( {}, state, { statusList: modifiedStatus})
+            }
+        return Object.assign( {}, state, { statusList: modifiedStatus})
+
+        case ADD_NEW_STATUS:
+            var newStatus = state.statusList.concat(action.payload)
+            return Object.assign( {}, state, { statusList: newStatus})
 
         default: return state
     }

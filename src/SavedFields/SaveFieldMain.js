@@ -7,12 +7,16 @@ import { Link } from 'react-router-dom';
 import { NEWFIELD } from '../ducks/reducer'
 import { GETCOMBATFIGHTERS } from '../ducks/CompReducers/CombatantsReducer'
 
+import DeleteDoubleCheck from './deleteDoubleCheck'
+
 class SaveFieldMain extends Component {
     constructor() {
         super()
 
         this.state = {
             combats: '',
+            holder: 0,
+            open: false
         }
     }
 
@@ -22,10 +26,22 @@ class SaveFieldMain extends Component {
         })
     }
 
+    deleteFieldCheck = (id) => {
+        this.setState({ holder: id})
+        this.setState({ open: true})
+    }
+
+    defDelete = () => {
+        this.setState({ open: false})
+    } 
+
     deleteFieldTotal = (id) => {
         axios.delete(`/api/battle/${id}`).then(req => {
             this.setState({ combats: req.data })
         })
+
+        this.defDelete()
+
     }
 
     render() {
@@ -51,7 +67,7 @@ class SaveFieldMain extends Component {
                     <p className="savedItem">{d.fighternum}</p>
                     <p className="savedItem">{d.deadnum}</p>
                     <button className="savedItem"
-                        onClick={_ => this.deleteFieldTotal(d.id)}
+                        onClick={_ => this.deleteFieldCheck(d.id)}
                     >X</button>
                 </div>
             })
@@ -81,6 +97,12 @@ class SaveFieldMain extends Component {
                     {combatList}
                     <div className="border savedborder"></div>
                 </div>
+
+                <DeleteDoubleCheck 
+                    id={this.state.holder}
+                    open={this.state.open}
+                    close={this.defDelete}
+                    delete={this.deleteFieldTotal}/>
             </div>
         )
     }

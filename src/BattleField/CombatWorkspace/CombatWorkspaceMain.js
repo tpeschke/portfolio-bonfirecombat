@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import AddNewFighter from './AddNewFighter'
+import NewStatus from './AddNewStatus'
 
 import { connect } from 'react-redux'
 
@@ -16,6 +17,8 @@ class Workspace extends Component {
 
                 <div className="WorkspaceBody">
                 <AddNewFighter />
+
+                <NewStatus />
 
                 <button className="workshopButton"
                     onClick={this.props.CLEARFIELD}
