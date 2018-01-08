@@ -29,7 +29,7 @@ class NavBar extends Component {
                 
                 </Link>
 
-                <Link to='/SavedFields'
+                <Link to='/'
                 style={{ textDecoration: 'none' }}>
                 
                 <div

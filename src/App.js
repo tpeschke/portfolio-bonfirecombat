@@ -33,6 +33,7 @@ class App extends Component {
           <div className="border"></div>
 
           {routes}
+          
         </div>
         <div className="StatusOver">
         <Statuses />

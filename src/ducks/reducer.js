@@ -263,7 +263,9 @@ export default function reducer(state = initialState, action) {
             return Object.assign( {}, state, { statusList: newStatus})
 
         case CHANGE_BATTLE_NAME:
+            if (action.payload) {
             return Object.assign( {}, state, { combatName: action.payload })
+            }
 
         default: return state
     }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 
-import axios from 'axios'
 import 'react-responsive-modal/lib/react-responsive-modal.css';
 import Modal from 'react-responsive-modal/lib/css';
 

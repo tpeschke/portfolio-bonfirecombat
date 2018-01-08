@@ -650,6 +650,7 @@ h6 {
     color: rgb(151, 23, 21);
     font-size: 20px;
     min-width: 100%;
+    text-align: center;
 }
 
 #BattleNameInput::placeholder {
@@ -659,4 +660,8 @@ h6 {
     color: rgb(151, 23, 21);
     font-size: 20px;
     text-align: center;
+}
+
+#BattleNameInput:hover{
+    text-shadow: 0 0 transparent
 }
