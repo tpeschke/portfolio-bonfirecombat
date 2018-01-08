@@ -47,6 +47,8 @@ const GET_ALL_STATUSES = "GET_ALL_STATUSES"
 const DELETE_STATUSES = "DELETE_STATUSES"
 const ADD_NEW_STATUS = "ADD_NEW_STATUS"
 
+const CHANGE_BATTLE_NAME = "CHANGE_BATTLE_NAME"
+
 //ACTION BUILDERS
 
 export function NEWFIELD() {
@@ -91,6 +93,13 @@ export function OPENTOP() {
 export function OPENTOP2() {
     return {
         type: OPEN_TOP2
+    }
+}
+
+export function CHANGEBATTLENAME(newName) {
+    return {
+        type: CHANGE_BATTLE_NAME,
+        payload: newName
     }
 }
 
@@ -252,6 +261,9 @@ export default function reducer(state = initialState, action) {
         case ADD_NEW_STATUS:
             var newStatus = state.statusList.concat(action.payload)
             return Object.assign( {}, state, { statusList: newStatus})
+
+        case CHANGE_BATTLE_NAME:
+            return Object.assign( {}, state, { combatName: action.payload })
 
         default: return state
     }

@@ -100,7 +100,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: center
 }
 
 .BattleBody {
@@ -641,4 +641,22 @@ h6 {
 
 #modalHeader {
     margin: 0
+}
+
+#BattleNameInput {
+    font-weight: 800;
+    margin: 25px 25px 10px 25px;
+    font-family: 'Spectral SC', serif;
+    color: rgb(151, 23, 21);
+    font-size: 20px;
+    min-width: 100%;
+}
+
+#BattleNameInput::placeholder {
+    font-weight: 800;
+    margin: 25px 25px 10px 25px;
+    font-family: 'Spectral SC', serif;
+    color: rgb(151, 23, 21);
+    font-size: 20px;
+    text-align: center;
 }

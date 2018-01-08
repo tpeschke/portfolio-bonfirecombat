@@ -10,7 +10,8 @@ import Counter from './Count';
 import OnDeck from './MainFieldComp/OnDeck';
 import Acting from './MainFieldComp/Acting';
 import Graveyard from './MainFieldComp/Graveyard';
-import CombatWorkspace from './CombatWorkspace/CombatWorkspaceMain'
+import CombatWorkspace from './CombatWorkspace/CombatWorkspaceMain';
+import BattleName from './MainFieldComp/BattleName'
 
 class BattleFieldMain extends Component {
 
@@ -25,11 +26,9 @@ class BattleFieldMain extends Component {
 
         return (
             <div className="BattleMain">
-                <div className="BattleHeader">
-                    <h1 className="fontHeader">{this.props.combatName}</h1>
-                    <button className="BattleSaveButton">Save Field</button>
-                </div>
-                
+                <BattleName 
+                    combat={this.props.combatName}/>
+
                 <div className="counterOuter">
                     <Counter />
                 </div>
