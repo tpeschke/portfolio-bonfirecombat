@@ -89,6 +89,9 @@ body {
     border-bottom-right-radius: 25px;
 }
 
+.navLock {
+    color: rgb(214, 214, 214);
+}
 /* ================================= */
 
 .BattleMain {

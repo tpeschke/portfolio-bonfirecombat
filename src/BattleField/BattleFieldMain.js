@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import { OPENMODAL, OPENTOP, OPENMODAL2, OPENTOP2 } from '../ducks/reducer'
+import { OPENMODAL, OPENTOP, OPENMODAL2, OPENTOP2, PAGELOCATION } from '../ducks/reducer'
 import { LOADCOMBATANTS, KILLCOMBATANT, REMOVEFIGHTER, ADVANCESPEED, INPUTACTION} from '../ducks/CompReducers/CombatantsReducer'
 import { GETALLSTATUSES } from '../ducks/CompReducers/StatusReducer'
 
@@ -16,8 +16,9 @@ import BattleName from './MainFieldComp/BattleName'
 class BattleFieldMain extends Component {
 
     componentDidMount() {
-        this.props.LOADCOMBATANTS(this.props.combatId)
-        , this.props.GETALLSTATUSES(this.props.combatId)
+        this.props.LOADCOMBATANTS(this.props.combatId);
+        this.props.GETALLSTATUSES(this.props.combatId);
+        this.props.PAGELOCATION(this.props.match.url)
     }
 
     render() {
@@ -93,7 +94,8 @@ let actionBuilder = {
     OPENTOP,
     OPENMODAL2,
     OPENTOP2,
-    GETALLSTATUSES
+    GETALLSTATUSES,
+    PAGELOCATION
 }
 
 export default connect(mapStateToProps, actionBuilder)(BattleFieldMain)

@@ -4,7 +4,7 @@ import axios from 'axios'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { NEWFIELD } from '../ducks/reducer'
+import { NEWFIELD, PAGELOCATION } from '../ducks/reducer'
 import { GETCOMBATFIGHTERS } from '../ducks/CompReducers/CombatantsReducer'
 
 import DeleteDoubleCheck from './deleteDoubleCheck'
@@ -24,6 +24,7 @@ class SaveFieldMain extends Component {
         axios.get('/api/fighters').then((req, res) => {
             this.setState({ combats: req.data })
         })
+        this.props.PAGELOCATION(this.props.match.url)
     }
 
     deleteFieldCheck = (id) => {
@@ -114,7 +115,8 @@ function mapStateToProps(state) {
 
 let actionBuilders = {
     GETCOMBATFIGHTERS,
-    NEWFIELD
+    NEWFIELD,
+    PAGELOCATION
 }
 
 export default connect(mapStateToProps, actionBuilders)(SaveFieldMain)

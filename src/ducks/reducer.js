@@ -4,6 +4,7 @@ import sort from '../components/sort'
 import { ADDNEWSTATUS } from './CompReducers/StatusReducer';
 
 const initialState = {
+    page: '/',
     count: 1,
     combatId: 0,
     combatName: 'New Battle',
@@ -48,6 +49,8 @@ const DELETE_STATUSES = "DELETE_STATUSES"
 const ADD_NEW_STATUS = "ADD_NEW_STATUS"
 
 const CHANGE_BATTLE_NAME = "CHANGE_BATTLE_NAME"
+
+const PAGE_LOCATION = "PAGE_LOCATION"
 
 //ACTION BUILDERS
 
@@ -100,6 +103,13 @@ export function CHANGEBATTLENAME(newName) {
     return {
         type: CHANGE_BATTLE_NAME,
         payload: newName
+    }
+}
+
+export function PAGELOCATION(url) {
+    return {
+        type: PAGE_LOCATION,
+        payload: url
     }
 }
 
@@ -266,6 +276,9 @@ export default function reducer(state = initialState, action) {
             if (action.payload) {
             return Object.assign( {}, state, { combatName: action.payload })
             }
+
+        case PAGE_LOCATION:
+            return Object.assign( {}, state, { page: action.payload})
 
         default: return state
     }

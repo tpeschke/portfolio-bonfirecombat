@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './reset.css'
 import './App.css';
 
-import NavBar from './NavBar'
+import NavBar from './NavBar/NavBar'
 import routes from './routes'
 import Statusest from './BattleField/MainFieldComp/Statuses'
 import Statuses from './BattleField/MainFieldComp/Statuses';
