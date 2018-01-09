@@ -11,7 +11,7 @@ class Statuses extends Component {
         if (this.props.statusList) {
             var statuses = this.props.statusList.map((d, i) => {
                 
-                if (d.timestatus - this.props.count > 0) {
+                if (d.timestatus - this.props.count > 0 && this.props.page === "/BattleField") {
                     return <button key={d.id}
                         className="StatusItemBox"
                         onClick={_=>this.props.DELETESTATUSES(d.id)}>
@@ -32,11 +32,12 @@ class Statuses extends Component {
 }
 
 function mapStateToProps(state) {
-    var { statusList, count } = state
+    var { statusList, count, page } = state
 
     return {
         statusList,
-        count
+        count, 
+        page
     }
 }
 

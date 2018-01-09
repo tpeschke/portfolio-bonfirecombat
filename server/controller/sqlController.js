@@ -32,7 +32,7 @@ module.exports = {
         const db = req.app.get('db')
 
         db.GetFieldNumber()
-            .then(num => db.addNewField('New Battlefield ' + num[0].count)
+            .then(num => db.addNewField(num[0].count === '0' ? 'New Battlefield' : 'New Battlefield ' + num[0].count)
                 .then(result => res.status(200).send(result)))
 
     },
@@ -50,7 +50,6 @@ module.exports = {
     saveField: (req, res ) => {
 
         const db = req.app.get('db')
-
 
     }
 

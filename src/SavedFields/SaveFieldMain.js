@@ -37,7 +37,7 @@ class SaveFieldMain extends Component {
             this.setState({ combats: req.data })
         })
         this.props.GETCOMBATFIGHTERS(0, '', 0)
-        this.defDelete
+        this.defDelete()
     }
 
     defDelete = () => {
