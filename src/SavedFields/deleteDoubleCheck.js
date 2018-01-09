@@ -9,7 +9,6 @@ export default class DeleteDoubleCheck extends Component {
         super(props)
 
         this.state = {
-            open: props.open,
             choppingBlock: 100000
         }
     }
@@ -20,11 +19,11 @@ export default class DeleteDoubleCheck extends Component {
 
     render() {
 
-        var { open } = this.props
+        var { open, close } = this.props
 
         return (
             <div>
-                <Modal open={open} onClose={this.props.close} little
+                <Modal open={open} onClose={close} little
                     classNames={{ modal: 'modalDelete'}}>
                     <div className="modalDeleteOuter">
                         <h2>Are You Sure?</h2>

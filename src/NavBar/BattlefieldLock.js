@@ -8,7 +8,7 @@ export default class BattleLock extends Component {
         if (this.props.id === 0) {
            return  <div 
                     className='navItem navLock'>
-                        Battle Fields</div>
+                        Battle Field</div>
         } else {
             return <Link to='/BattleField'
             style={{ textDecoration: 'none' }}>

@@ -184,7 +184,7 @@ export default function reducer(state = initialState, action) {
 
         case NEW_FIELD + '_FULFILLED':
             var { id, namecombat } = action.payload.data[0]
-            return Object.assign({}, state, { combatId: id, combatName: namecombat })
+            return Object.assign({}, state, { combatId: id, combatName: namecombat, fighterList: [], statusList: [], count: 1 })
 
         case SAVE_FIELD + "_FULFILLED":
             console.log('Finished :D')

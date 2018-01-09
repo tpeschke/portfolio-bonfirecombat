@@ -49,7 +49,6 @@ const port = process.env.PORT
 
 massive(process.env.CONNECTION_STRING).then(dbInstance => {
     app.set('db', dbInstance);
-    // console.log(dbInstance)
     app.listen(port, _ => {
         console.log(`Autumn Ends: The Frogs Settle Down Into The Earth ${port}`);
     })
