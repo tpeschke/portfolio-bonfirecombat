@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 
 import { DELETESTATUSES } from '../../ducks/CompReducers/StatusReducer'
 
+import './Statuses.css'
+
 class Statuses extends Component {
 
     render() {

@@ -1,0 +1,206 @@
+.BattleMain {
+    height: 100%;
+    width: 900px;
+}
+
+.BattleHeader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+
+.BattleBody {
+    display: flex;
+    justify-content: space-between;
+    margin: 35px 15px;
+    min-height: 150px;
+}
+
+.BattleField {
+    background:  rgba(218, 197, 182, .75);
+    width: 600px;
+    border-radius: 25px;
+}
+
+.BattleSidebarOuter {
+    display: flex;
+    flex-direction: column;
+}
+
+.BattleSidebar {
+    background:  rgba(218, 197, 182, .75);
+    width: 300px;
+    border-radius: 25px;
+    min-height: 150px;
+    margin-top: 15px;
+}
+
+#Workspace {
+    margin-top: 0;
+}
+
+.WorkspaceBody {
+    margin: 0 20px;
+}
+
+.workshopButton {
+    margin-top: 5px
+}
+
+/* ================================= */
+
+.counterOuter {
+    margin-top: 25px;
+}
+
+.counterMain {
+    display: flex;
+    justify-content: space-around;
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.counterSide {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 275px;
+}
+
+.counterMiddle {
+    height: 95px;
+    width: 200px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+}
+
+.counterButton {
+    font-weight: 800;
+    font-family: 'MedievalSharp';
+    color: rgb(151, 23, 21);
+    font-size: 30px;
+}
+
+
+
+/* ================================= */
+
+.Main {
+    margin: 15px 25px;
+    padding: 0 0 15px 0;
+}
+
+.Header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-weight: 800;
+    height: 35px;
+}
+
+.List {
+    display: flex;
+    align-items: center;
+    height: 30px;
+}
+
+.ListItem {
+    min-width: 65px;
+    text-align: center;
+}
+
+.Name {
+    min-width: 145px;
+    text-align: left;
+}
+
+.NameHeader {
+    margin-left: 25px;
+}
+
+.color {
+    height: 15px;
+    width: 15px;
+    border-radius: 25px;
+    margin: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+}
+
+.top {
+    background: radial-gradient(rgb(151, 23, 21) 5%, rgb(151, 23, 21) 10% ,transparent  60%)
+}
+
+/* ================================= */
+
+.HeaderGrave {
+    display: flex;
+    justify-content: space-between;
+    max-width: 225px;
+    margin: 0 auto;
+}
+
+.ListGrave {
+    display: flex;
+    justify-content: space-between;
+    max-width: 225px;
+    margin: 0 auto;
+}
+
+.ListItemGrave {
+    min-width: 55px;
+    text-align: center;
+    font-size: 13px;
+    margin: 10px 0 10px 0;
+}
+
+.GraveName {
+    min-width: 70px;
+    max-width: 70px;
+    text-align: left;
+    line-height: auto;
+}
+
+.gravelist {
+    line-height: 19px;
+}
+
+/* ==================== */
+
+#BattleNameInput {
+    font-weight: 800;
+    margin: 25px 25px 10px 25px;
+    font-family: 'Spectral SC', serif;
+    color: rgb(151, 23, 21);
+    font-size: 20px;
+    min-width: 100%;
+    text-align: center;
+}
+
+#BattleNameInput::placeholder {
+    font-weight: 800;
+    margin: 25px 25px 10px 25px;
+    font-family: 'Spectral SC', serif;
+    color: rgb(151, 23, 21);
+    font-size: 20px;
+    text-align: center;
+}
+
+#BattleNameInput:hover{
+    text-shadow: 0 0 transparent
+}
+
+#newCombat {
+    color: rgba(33, 53, 80, 1);
+    margin-top: 25px;
+    text-align: center;
+    font-size: 25px;
+}
+
+.countNum {
+    font-size: 45px
+}

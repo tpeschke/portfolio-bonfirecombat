@@ -9,6 +9,8 @@ import { GETCOMBATFIGHTERS } from '../ducks/CompReducers/CombatantsReducer'
 
 import DeleteDoubleCheck from './deleteDoubleCheck'
 
+import './SavedField.css'
+
 class SaveFieldMain extends Component {
     constructor() {
         super()

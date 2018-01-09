@@ -1,0 +1,30 @@
+.modalDelete {
+    border-radius: 25px;
+}
+
+.modalDeleteOuter {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    background-color:rgba(218, 197, 182, 1);
+    margin: -37px;
+    position: relative;
+    border-radius: 25px;
+    height: 200px;
+    width: 300px;
+    border: 7px outset rgb(151, 23, 21)
+}
+
+#modalDeleteButton {
+    color: rgb(151, 23, 21);
+    font-weight: 800;
+    font-size: 20px;
+    margin: 25px;
+}
+
+.modalBorder {
+        min-width: 50%;
+        max-width: 50%;
+        margin: 0 0 15px 0;
+}

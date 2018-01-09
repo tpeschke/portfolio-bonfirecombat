@@ -13,6 +13,8 @@ import Graveyard from './MainFieldComp/Graveyard';
 import CombatWorkspace from './CombatWorkspace/CombatWorkspaceMain';
 import BattleName from './MainFieldComp/BattleName'
 
+import "./BattleField.css"
+
 class BattleFieldMain extends Component {
 
     componentDidMount() {

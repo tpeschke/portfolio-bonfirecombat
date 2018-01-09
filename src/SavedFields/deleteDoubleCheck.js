@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import 'react-responsive-modal/lib/react-responsive-modal.css';
 import Modal from 'react-responsive-modal/lib/css';
 
+import './deleteCheck.css'
+
 
 export default class DeleteDoubleCheck extends Component {
     constructor(props) {

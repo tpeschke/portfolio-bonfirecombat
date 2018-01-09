@@ -7,6 +7,8 @@ import { ADDNEWSTATUS } from '../../ducks/CompReducers/StatusReducer'
 import 'react-responsive-modal/lib/react-responsive-modal.css';
 import Modal from 'react-responsive-modal/lib/css';
 
+import './AddStatus.css'
+
 class NewStatus extends Component {
     constructor() {
         super()

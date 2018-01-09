@@ -1,0 +1,31 @@
+.StatusOver {
+    display: flex;
+    justify-content:center;
+}
+
+.StatusList {
+    position: fixed;
+    bottom: 0;
+    width: 900px;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.StatusItemBox {
+    background: white;
+    width: auto;
+    height: 75px;
+    margin-right: 25px;
+    padding: 0 25px;
+    text-align: center;
+    background: rgba(218, 197, 182, .75);
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+    min-width: 120px;
+}
+
+#modalStatusButton {
+    margin: 5px 0 15px 0;
+}

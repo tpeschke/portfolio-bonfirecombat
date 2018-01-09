@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 
 import BatteLock from './BattlefieldLock'
 
+import './NavBar.css'
+
 
 class NavBar extends Component {
 

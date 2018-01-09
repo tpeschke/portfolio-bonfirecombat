@@ -1,0 +1,42 @@
+
+.SavedField {
+    height: 100%;
+    width: 100%;
+    padding: 15px;
+}
+
+.savedMenu { 
+    margin: 15px 0 15px 20px;
+}
+
+.savedList {
+    background: rgba(218, 197, 182, .75);
+    border-radius: 25px;
+    padding: 5px 0 25px 0;
+}
+
+.savedListHeader {
+    display: flex;
+    justify-content: flex-start;
+    font-weight: 800;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+.savedItem {
+    min-width: 75px;
+    text-align: center;
+    margin: 10px 20px;
+}
+
+.savedItemName {
+    min-width: 225px;
+    margin: 10px 25px;
+    text-align: left;
+    border: none;
+}
+
+.savedCombat {
+    display: flex;
+    justify-content: flex-start;
+}
