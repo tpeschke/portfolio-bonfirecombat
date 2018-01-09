@@ -15,19 +15,23 @@ class NavBar extends Component {
         var { combatId, page } = this.props
 
         return (
-            <div className="navBar">
-                <BatteLock 
-                    page={page}
-                    id={combatId}/>
+            <div >
+                <div className="navBar">
 
-                <Link to='/'
-                style={{ textDecoration: 'none' }}>
-                
-                <div 
-                className={page==="/"?'navItemCurrent':'navItem'}>
-                Saved Fields</div>
-                
-                </Link>
+                    <BatteLock
+                        page={page}
+                        id={combatId} />
+
+                    <Link to='/'
+                        style={{ textDecoration: 'none' }}>
+
+                        <div
+                            className={this.props.page === "/" ? 'navItem Current' : 'navItem'}>
+                            Saved Fields</div>
+
+                    </Link>
+
+                </div>
             </div>
         )
     }

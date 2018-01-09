@@ -27,6 +27,7 @@ class App extends Component {
           <div className="headpic"></div>
         </div>
         <div className="appContent">
+          
           <NavBar />
 
           <div className="border"></div>

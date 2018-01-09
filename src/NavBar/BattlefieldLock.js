@@ -14,7 +14,7 @@ export default class BattleLock extends Component {
             style={{ textDecoration: 'none' }}>
             
             <div 
-            className={this.props.page==="/BattleField"?'navItemCurrent':'navItem'}>
+            className={this.props.page === "/BattleField" ? 'navItem Current' : 'navItem'}>
             Battle Field
             </div>
             
