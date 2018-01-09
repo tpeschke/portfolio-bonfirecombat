@@ -8,18 +8,6 @@ module.exports = {
 
     },
 
-    // addNewFighter: (req, res) => {
-
-    //     var { colorcode, name, speed, actioncount, combatId } = req.body
-
-    //     const db = req.app.get('db')
-
-    //     db.addCombatant(name, colorcode, speed, actioncount, combatId)
-
-    //     db.getCombatants( combatId ).then( result => res.status(200).send(result) )
-        
-    // },
-
     loadCombatants: (req, res) => {
 
         const db = req.app.get('db')
@@ -43,7 +31,9 @@ module.exports = {
 
         const db = req.app.get('db')
 
-       db.addNewField().then(result => res.status(200).send(result))
+        db.GetFieldNumber()
+            .then(num => db.addNewField('New Battlefield ' + num[0].count)
+                .then(result => res.status(200).send(result)))
 
     },
 

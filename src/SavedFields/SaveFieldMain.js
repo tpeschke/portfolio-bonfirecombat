@@ -32,16 +32,12 @@ class SaveFieldMain extends Component {
         this.setState({ open: true})
     }
 
-    defDelete = () => {
-        this.setState({ open: false})
-    } 
-
     deleteFieldTotal = (id) => {
         axios.delete(`/api/battle/${id}`).then(req => {
             this.setState({ combats: req.data })
         })
-
-        this.defDelete()
+        this.props.GETCOMBATFIGHTERS(0, '', 0)
+        this.setState({ open: false})
 
     }
 
@@ -110,7 +106,10 @@ class SaveFieldMain extends Component {
 }
 
 function mapStateToProps(state) {
-    return {}
+    var {combatId} = state
+    return {
+        combatId
+    }
 }
 
 let actionBuilders = {
