@@ -27,7 +27,8 @@ class NavBar extends Component {
 
                         <div
                             className={this.props.page === "/" ? 'navItem Current' : 'navItem'}>
-                            Saved Fields</div>
+                            <p id='navItem'>Saved Fields</p>
+                            </div>
 
                     </Link>
 

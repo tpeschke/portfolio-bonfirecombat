@@ -1,7 +1,6 @@
 import axios from 'axios'
 
 import sort from '../components/sort'
-import { ADDNEWSTATUS } from './CompReducers/StatusReducer';
 
 const initialState = {
     page: '/',
@@ -262,7 +261,7 @@ export default function reducer(state = initialState, action) {
         case DELETE_STATUSES:
             var modifiedStatus = []
             for (var i = 0; i < state.statusList.length; i++) {
-                if (state.statusList[i].id != action.payload) {
+                if (state.statusList[i].id !== action.payload) {
                     modifiedStatus.push(state.statusList[i])
                 }
             }
@@ -276,6 +275,7 @@ export default function reducer(state = initialState, action) {
             if (action.payload) {
             return Object.assign( {}, state, { combatName: action.payload })
             }
+            break
 
         case PAGE_LOCATION:
             return Object.assign( {}, state, { page: action.payload})

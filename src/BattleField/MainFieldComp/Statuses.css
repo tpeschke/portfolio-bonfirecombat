@@ -24,8 +24,18 @@
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
     min-width: 120px;
+
+    overflow-y: hidden;
+	max-height: 500px;
+
+	transition-property: all;
+	transition-duration: .8s;
 }
 
 #modalStatusButton {
     margin: 5px 0 15px 0;
+}
+
+#modalClose {
+    transform: translateY(100%);
 }

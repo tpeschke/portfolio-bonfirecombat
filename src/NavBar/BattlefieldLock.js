@@ -8,14 +8,14 @@ export default class BattleLock extends Component {
         if (this.props.id === 0) {
            return  <div 
                     className='navItem navLock'>
-                        Battle Field</div>
+                        <p id='navItem'>Battle Field</p></div>
         } else {
             return <Link to='/BattleField'
             style={{ textDecoration: 'none' }}>
             
             <div 
             className={this.props.page === "/BattleField" ? 'navItem Current' : 'navItem'}>
-            Battle Field
+            <p id='navItem'>Battle Field</p>
             </div>
             
             </Link>
@@ -23,8 +23,6 @@ export default class BattleLock extends Component {
     }
 
     render() {
-
-        var {page} = this.props
 
         return (
             <div>
