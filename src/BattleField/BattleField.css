@@ -50,44 +50,6 @@
 
 /* ================================= */
 
-.counterOuter {
-    margin-top: 25px;
-}
-
-.counterMain {
-    display: flex;
-    justify-content: space-around;
-    max-width: 750px;
-    margin: 0 auto;
-}
-
-.counterSide {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 275px;
-}
-
-.counterMiddle {
-    height: 95px;
-    width: 200px;
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    align-items: center;
-}
-
-.counterButton {
-    font-weight: 800;
-    font-family: 'MedievalSharp';
-    color: rgb(151, 23, 21);
-    font-size: 30px;
-}
-
-
-
-/* ================================= */
-
 .Main {
     margin: 15px 25px;
     padding: 0 0 15px 0;
@@ -105,6 +67,10 @@
     display: flex;
     align-items: center;
     height: 30px;
+}
+
+.top {
+    background: radial-gradient(rgb(151, 23, 21) 5%, rgb(151, 23, 21) 10% ,transparent  60%);
 }
 
 .ListItem {
@@ -129,10 +95,6 @@
     border-style: solid;
     border-width: 1px;
     border-color: black;
-}
-
-.top {
-    background: radial-gradient(rgb(151, 23, 21) 5%, rgb(151, 23, 21) 10% ,transparent  60%)
 }
 
 /* ================================= */
