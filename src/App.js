@@ -19,7 +19,7 @@ class App extends Component {
   render() {
 
     return (
-      <div>
+      <div className="slideDown">
         <div className="header">
           <div className="logo">
             <h4>Combat Counter</h4>

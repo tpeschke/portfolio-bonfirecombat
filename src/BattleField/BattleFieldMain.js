@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AnimatedWrapper from "../AnimatedWrapper"
 
 import { connect } from 'react-redux';
 
@@ -20,7 +21,7 @@ class BattleFieldMain extends Component {
     componentDidMount() {
         this.props.LOADCOMBATANTS(this.props.combatId);
         this.props.GETALLSTATUSES(this.props.combatId);
-        this.props.PAGELOCATION(this.props.match.url)
+        // this.props.PAGELOCATION(this.props.match.url)
     }
 
     render() {
@@ -28,7 +29,7 @@ class BattleFieldMain extends Component {
         var { fighterList, count, KILLCOMBATANT, ADVANCESPEED, INPUTACTION, OPENMODAL, OPENMODAL2, OPENTOP, OPENTOP2, REMOVEFIGHTER } = this.props
 
         return (
-            <div className="BattleMain">
+            <div className="BattleMain fadeInApp">
                 <BattleName 
                     combat={this.props.combatName}/>
 
@@ -100,4 +101,4 @@ let actionBuilder = {
     PAGELOCATION
 }
 
-export default connect(mapStateToProps, actionBuilder)(BattleFieldMain)
+export default connect(mapStateToProps, actionBuilder)(AnimatedWrapper(BattleFieldMain))

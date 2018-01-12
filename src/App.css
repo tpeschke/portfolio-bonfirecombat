@@ -37,6 +37,18 @@ body {
     padding-bottom: 25px;
 }
 
+.fadeInApp {
+    animation: fadeIn;
+    animation-timing-function: linear;
+    animation-duration: 1s;
+}
+
+.slideDown {
+    animation: slideDown;
+    /* animation-timing-function: linear; */
+    animation-duration: 1s;
+}
+
 .border {
     border-bottom-style: solid;
     border-color: black;
@@ -271,4 +283,24 @@ h6 {
 
 #modalHeader {
     margin: 0
+}
+
+/* ========================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%)
+    }
+    to {
+        transform: translateY(0%)
+    }
 }
