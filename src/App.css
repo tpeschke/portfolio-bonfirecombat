@@ -71,6 +71,10 @@ body {
     max-width: 50%
 }
 
+.routes {
+    transition: .6s
+}
+
 /* ================================= */
 
 input {

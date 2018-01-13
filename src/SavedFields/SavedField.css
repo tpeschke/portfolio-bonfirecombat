@@ -1,6 +1,5 @@
 
 .SavedField {
-    height: 100%;
     width: 100%;
     padding: 15px;
 }
@@ -39,4 +38,13 @@
 .savedCombat {
     display: flex;
     justify-content: flex-start;
+}
+
+.mounted {
+    opacity: 1;
+    transition: .6s
+}
+
+.unmounted {
+    opacity: 0
 }

@@ -15,7 +15,7 @@ class NavBar extends Component {
         var { combatId, page } = this.props
 
         return (
-            <div >
+
                 <div className="navBar">
 
                     <BatteLock
@@ -33,7 +33,7 @@ class NavBar extends Component {
                     </Link>
 
                 </div>
-            </div>
+    
         )
     }
 }

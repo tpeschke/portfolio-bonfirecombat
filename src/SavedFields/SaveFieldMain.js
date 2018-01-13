@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import AnimatedWrapper from "../AnimatedWrapper"
 
 import axios from 'axios'
 import { connect } from 'react-redux';
@@ -9,7 +8,6 @@ import { NEWFIELD, PAGELOCATION } from '../ducks/reducer'
 import { GETCOMBATFIGHTERS } from '../ducks/CompReducers/CombatantsReducer'
 
 import DeleteDoubleCheck from './deleteDoubleCheck'
-import * as Animated from "animated/lib/targets/react-dom";
 
 import './SavedField.css'
 
@@ -24,18 +22,11 @@ class SaveFieldMain extends Component {
         }
     }
 
-    componentWillLeave(cb) {
-        console.log('hit')
-        // Animated.spring(this.state.animate, { toValue: 0 }).start();
-        // setTimeout(() => cb(), 175);
-    }
-
     componentDidMount() {
         axios.get('/api/fighters').then((req, res) => {
             this.setState({ combats: req.data })
         })
-        // this.props.PAGELOCATION(this.props.match.url)
-        console.log(this.props)
+        this.props.PAGELOCATION(this.props.match.url)
     }
 
     deleteFieldCheck = (id) => {
@@ -56,6 +47,7 @@ class SaveFieldMain extends Component {
     }
 
     render() {
+
 
         var { combats } = this.state
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './reset.css'
 import './App.css';
+import PageTransition from 'react-router-page-transition'
 
 import NavBar from './NavBar/NavBar'
 import routes from './routes'
@@ -27,20 +28,20 @@ class App extends Component {
           <div className="headpic"></div>
         </div>
         <div className="appContent">
-          
+
           <NavBar />
 
           <div className="border"></div>
           <div className="border"></div>
-
-          {routes}
+      
+            {routes}
           
         </div>
-        <div className="StatusOver">
-        <Statuses />
+          <div className="StatusOver">
+            <Statuses />
+          </div>
         </div>
-      </div>
-    );
+        );
   }
 }
 
