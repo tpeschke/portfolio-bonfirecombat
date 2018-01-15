@@ -67,11 +67,14 @@
     display: flex;
     align-items: center;
     height: 30px;
+    background: transparent;
+    transition: 30s;
 }
 
 .top {
     background: radial-gradient(rgb(151, 23, 21) 5%, rgb(151, 23, 21) 10% ,transparent  60%);
 }
+
 
 .ListItem {
     min-width: 65px;

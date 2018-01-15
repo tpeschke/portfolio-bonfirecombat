@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom';
 
 import ActEditFighter from './ActingOnDeckComponents/ActEditFighter'
 import ActToP from './ActingOnDeckComponents/ActThresholdOfPain'
@@ -15,14 +16,45 @@ export default class Acting extends Component {
             holdcolor: '',
             holdname: '',
             holdspeed: 0,
-            holdid: 0
+            holdid: 0,
         }
     }
 
     componentWillReceiveProps(next) {
         this.setState({ list: next.list })
+        // this.state.list.forEach( child => {
+        //     const ref = this.refs[+child.id];
+        //     const domNode = ReactDOM.findDOMNode( ref );
+        //     const boundingBox = domNode.getBoundingClientRect();
+
+        //     this.setState({
+        //         [+child.id]: boundingBox
+        //     })
+        // })
 
     }
+
+    // componentDidUpdate(prev) {
+    //     prev.list.forEach( child => {
+    //         let domNode = ReactDOM.findDOMNode( this.ref[child.id])
+            
+    //         const newBox = domNode.getBoundingClientRect();
+    //         const oldBox = this.state[child.id];
+
+    //         const deltaX = oldBox.left - newBox.left;
+    //         const deltaY = oldBox.top - newBox.top;
+
+    //         requestAnimationFrame( _ => {
+    //             domNode.style.transform = `translate(${deltaX},${deltaY}px)`;
+    //             domNode.style.transition = 'transform 0s';
+
+    //             requestAnimationFrame( _ => {
+    //                 domNode.style.transform = '';
+    //                 domNode.style.transition = 'transform 500ms'
+    //             })
+    //         })
+    //     })
+    // }
 
     modifyFighter = (d) => {
         this.setState({

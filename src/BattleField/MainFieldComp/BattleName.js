@@ -7,13 +7,12 @@ import { CHANGEBATTLENAME } from '../../ducks/reducer'
 class BattleName extends Component {
 
     render() {
-
         return (
             <div className="BattleHeader">
                 <input 
                     className="fontHeader inputFinder"
                     id="BattleNameInput"
-                    placeholder={this.props.combat}
+                    placeholder={this.props.combatName}
                     onBlur={e=>this.props.CHANGEBATTLENAME(e.target.value)}/>
                 <button
                     >Save Field</button>

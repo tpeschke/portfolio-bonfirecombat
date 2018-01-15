@@ -73,7 +73,6 @@ export function CLEARFIELD() {
     }
 }
 
-
 export function OPENMODAL() {
     return {
         type: OPEN_MODAL
@@ -275,7 +274,7 @@ export default function reducer(state = initialState, action) {
             if (action.payload) {
             return Object.assign( {}, state, { combatName: action.payload })
             }
-            break
+            // don't put a break here: it screws with the combatId weirdly enough
 
         case PAGE_LOCATION:
             return Object.assign( {}, state, { page: action.payload})
