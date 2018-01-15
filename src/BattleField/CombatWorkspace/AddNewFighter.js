@@ -102,13 +102,13 @@ class AddNewFighter extends Component {
                                 <h1 id="newCombat">Add New Combatant</h1>
 
                                 <div className="border modalBorder"></div>
-                                <input placeholder="Name" id="modalEditInput"
+                                <input placeholder="Name inputFinder" id="modalEditInput"
                                     onChange={e => this.handleName(e.target.value)} />
 
-                                <input placeholder="Speed"id="modalEditInput"
+                                <input placeholder="Speed" className="inputFinder" id="modalEditInput"
                                     onChange={e => this.handleSpeed(e.target.value)} />
 
-                                <input placeholder="Initiative" id="modalEditInput"
+                                <input placeholder="Initiative" className="inputFinder" id="modalEditInput"
                                     onChange={e => this.handleAction(e.target.value)} />
  
                                  <button id="modalEditButton"

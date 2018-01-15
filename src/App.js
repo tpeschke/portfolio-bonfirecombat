@@ -4,7 +4,7 @@ import './App.css';
 import PageTransition from 'react-router-page-transition'
 
 import NavBar from './NavBar/NavBar'
-import routes from './routes'
+import Routes from './routes'
 import Statusest from './BattleField/MainFieldComp/Statuses'
 import Statuses from './BattleField/MainFieldComp/Statuses';
 
@@ -13,8 +13,19 @@ class App extends Component {
     super()
 
     this.state = {
-      fighters: ''
+      fighters: '',
+      style: {
+        height: '0px'
+      }
     }
+  }
+
+  setHeight = (height) => {
+    this.setState({
+      style: {
+        height: height
+      }
+    })
   }
 
   render() {
@@ -27,21 +38,21 @@ class App extends Component {
           </div>
           <div className="headpic"></div>
         </div>
-        <div className="appContent">
+        <div className="appContent" style={this.state.style}>
 
           <NavBar />
 
           <div className="border"></div>
           <div className="border"></div>
-      
-            {routes}
-          
+
+          <Routes setHeight={this.setHeight}/>
+
         </div>
-          <div className="StatusOver">
-            <Statuses />
-          </div>
+        <div className="StatusOver">
+          <Statuses />
         </div>
-        );
+      </div>
+    );
   }
 }
 

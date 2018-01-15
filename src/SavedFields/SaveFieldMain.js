@@ -26,7 +26,11 @@ class SaveFieldMain extends Component {
         axios.get('/api/fighters').then((req, res) => {
             this.setState({ combats: req.data })
         })
-        this.props.PAGELOCATION(this.props.match.url)
+        this.props.PAGELOCATION('/')
+        this.props.setHeight((72+document.getElementById('Saved').clientHeight) + 'px')
+    }
+    componentDidUpdate(){
+        this.props.setHeight((72+document.getElementById('Saved').clientHeight) + 'px');
     }
 
     deleteFieldCheck = (id) => {
@@ -77,7 +81,7 @@ class SaveFieldMain extends Component {
         }
 
         return (
-            <div className="SavedField fadeInApp">
+            <div className="SavedField fadeInApp" id="Saved">
                 <h1 className="fontHeader">Saved Fields</h1>
 
                 <div className="savedMenu">

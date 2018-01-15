@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import BatteLock from './BattlefieldLock'
+import SignIn from './SignIn'
 
 import './NavBar.css'
 
@@ -17,7 +18,7 @@ class NavBar extends Component {
         return (
 
                 <div className="navBar">
-
+                    <div className="navBarInner">
                     <BatteLock
                         page={page}
                         id={combatId} />
@@ -31,7 +32,8 @@ class NavBar extends Component {
                             </div>
 
                     </Link>
-
+                    </div>
+                    <SignIn />
                 </div>
     
         )

@@ -11,7 +11,7 @@ class BattleName extends Component {
         return (
             <div className="BattleHeader">
                 <input 
-                    className="fontHeader"
+                    className="fontHeader inputFinder"
                     id="BattleNameInput"
                     placeholder={this.props.combat}
                     onBlur={e=>this.props.CHANGEBATTLENAME(e.target.value)}/>

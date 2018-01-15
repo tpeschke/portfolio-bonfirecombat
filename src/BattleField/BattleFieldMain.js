@@ -11,7 +11,7 @@ import OnDeck from './MainFieldComp/OnDeck';
 import Acting from './MainFieldComp/Acting';
 import Graveyard from './MainFieldComp/Graveyard';
 import CombatWorkspace from './CombatWorkspace/CombatWorkspaceMain';
-import BattleName from './MainFieldComp/BattleName'
+import BattleName from './MainFieldComp/BattleName';
 
 import "./BattleField.css"
 
@@ -20,15 +20,20 @@ class BattleFieldMain extends Component {
     componentDidMount() {
         this.props.LOADCOMBATANTS(this.props.combatId);
         this.props.GETALLSTATUSES(this.props.combatId);
-        this.props.PAGELOCATION(this.props.match.url)
+        this.props.PAGELOCATION('/BattleField');
+        this.props.setHeight((72+document.getElementById('Battle').clientHeight) + 'px')
+    }
+    componentDidUpdate(){
+        this.props.setHeight((72+document.getElementById('Battle').clientHeight) + 'px');
     }
 
     render() {
 
         var { fighterList, count, KILLCOMBATANT, ADVANCESPEED, INPUTACTION, OPENMODAL, OPENMODAL2, OPENTOP, OPENTOP2, REMOVEFIGHTER } = this.props
 
+
         return (
-            <div className="BattleMain fadeInApp">
+            <div className="BattleMain fadeInApp" id="Battle">
                 <BattleName 
                     combat={this.props.combatName}/>
 

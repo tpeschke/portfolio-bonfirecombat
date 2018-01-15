@@ -35,6 +35,8 @@ body {
     background-image: url('./img/Wood1.jpg');
     border-radius: 25px;
     padding-bottom: 25px;
+    transition: .6s;
+    overflow: hidden;
 }
 
 .fadeInApp {

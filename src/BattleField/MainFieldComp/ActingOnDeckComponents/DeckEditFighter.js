@@ -89,11 +89,11 @@ class DeckEditFighter extends Component {
 
                                 <div className="modalEditInputs">
                                     <p>Name</p>
-                                    <input placeholder={name} id="modalEditInput"
+                                    <input placeholder={name} className="inputFinder" id="modalEditInput"
                                         onChange={e => this.handleName(e.target.value)} />
 
                                     <p>Speed</p>
-                                    <input placeholder={speed} id="modalEditInput"
+                                    <input placeholder={speed} className="inputFinder" id="modalEditInput"
                                         onChange={e => this.handleSpeed(e.target.value)} />
 
                                     <button id="modalEditButton"

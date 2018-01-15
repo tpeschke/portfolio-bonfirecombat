@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Mousetrap from 'mousetrap'
 
 import CounterLeft from './CounterLeft';
 import CounterRight from './CounterRight';
@@ -16,8 +17,27 @@ class Counter extends Component {
         super()
 
         this.state = {
-            timeId: 0
+            timeId: null
         }
+    }
+
+    componentDidMount() {
+        Mousetrap.bind(['d'], this.props.INCREASECOUNT)
+        Mousetrap.bind(['a'], this.props.DECREASECOUNT)
+        Mousetrap.bind(['w', 'space'], this.autoTimer1)
+        Mousetrap.bind(['e'], this.autoTimer2)
+        Mousetrap.bind(['s'], this.stopTime)
+        Mousetrap.bind(['x'], this.props.RESETCOUNT)
+    }
+
+    componentWillUnmount() {
+        Mousetrap.unbind(['d'], this.props.INCREASECOUNT)
+        Mousetrap.unbind(['a'], this.props.DECREASECOUNT)
+        Mousetrap.unbind(['w', 'space'], this.autoTimer1)
+        Mousetrap.unbind(['e'], this.autoTimer2)
+        Mousetrap.unbind(['s'], this.stopTime)
+        Mousetrap.unbind(['x'], this.props.RESETCOUNT)
+        this.stopTime()
     }
 
     stopTime = () => {
@@ -25,32 +45,49 @@ class Counter extends Component {
     }
 
     autoTimer1 = () => {
-        clearInterval(this.state.timeId) 
-        this.setState( { timeId: setInterval(this.props.INCREASECOUNT, 1000) } )
+        clearInterval(this.state.timeId)
+        this.setState({ timeId: setInterval(this.props.INCREASECOUNT, 1000) })
     }
 
     autoTimer2 = () => {
         clearInterval(this.state.timeId)
-        this.setState( { timeId: setInterval(this.props.INCREASECOUNT, 500) } )
+        this.setState({ timeId: setInterval(this.props.INCREASECOUNT, 500) })
     }
 
     render() {
 
+        var inputFinder = document.getElementsByClassName("")
+        if (document.hasFocus()) {
+            Mousetrap.bind(['d'], this.props.INCREASECOUNT)
+            Mousetrap.bind(['a'], this.props.DECREASECOUNT)
+            Mousetrap.bind(['w', 'space'], this.autoTimer1)
+            Mousetrap.bind(['e'], this.autoTimer2)
+            Mousetrap.bind(['s'], this.stopTime)
+            Mousetrap.bind(['x'], this.props.RESETCOUNT)
+        } else {
+            Mousetrap.unbind(['d'], this.props.INCREASECOUNT)
+            Mousetrap.unbind(['a'], this.props.DECREASECOUNT)
+            Mousetrap.unbind(['w', 'space'], this.autoTimer1)
+            Mousetrap.unbind(['e'], this.autoTimer2)
+            Mousetrap.unbind(['s'], this.stopTime)
+            Mousetrap.unbind(['x'], this.props.RESETCOUNT)
+        }
+
         return (
             <div className="counterMain">
 
-                <CounterLeft 
+                <CounterLeft
                     RESETCOUNT={this.props.RESETCOUNT}
                     stopTime={this.stopTime}
-                    DECREASECOUNT={this.props.DECREASECOUNT}/>
+                    DECREASECOUNT={this.props.DECREASECOUNT} />
 
                 <CounterMiddle
-                    count={this.props.count}/>
+                    count={this.props.count} />
 
-                <CounterRight 
+                <CounterRight
                     INCREASECOUNT={this.props.INCREASECOUNT}
                     autoTimer1={this.autoTimer1}
-                    autoTimer2={this.autoTimer2}/>
+                    autoTimer2={this.autoTimer2} />
 
             </div>
         )

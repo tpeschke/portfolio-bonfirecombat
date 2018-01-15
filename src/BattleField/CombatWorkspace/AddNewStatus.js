@@ -75,11 +75,11 @@ class NewStatus extends Component {
 
                             <div className="border modalBorder"></div>
                                 <p>Name</p>
-                                <input id="statusInput"
+                                <input className="inputFinder" id="statusInput"
                                     onChange={e => this.handleName(e.target.value)} />
 
                                 <p>Duration</p>
-                                <input id="statusInput"
+                                <input className="inputFinder" id="statusInput"
                                     onChange={e => this.handleDuration(e.target.value)} />
                             </div>
                             <button id="modalStatusButton"
