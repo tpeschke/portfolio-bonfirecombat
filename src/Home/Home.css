@@ -1,23 +1,59 @@
 .outHome {
-    height: 900px;
+    height: 450px;
     width: 900px
 }
 
-.img {
-    margin: 50px auto;
-    background-image: url('../img/signIn.jpg');
-    height: 800px;
-    width: 850px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 35px;
+.outDiveHome {
+    display: flex;
+    justify-content: space-around;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .inHome {
-    background-color:rgba(218, 197, 182);
-    margin: -37px;
-    width: 499px;
-    height: auto;
-    position: relative;
-    border-radius: 25px
+    background-color:rgba(218, 197, 182, 0.75);
+    width: 350px;
+    height: 350px;
+    border-radius: 25px;
+    margin: 25px 0;
+}
+
+.signInInner {
+    background-color:rgba(214, 205, 199, 1);
+    width: 200px;
+    height: 200px;
+    border-radius: 25px;
+}
+
+.signIn {
+    margin: 75px;
+}
+
+.signInText {
+    margin: 20px;
+    font-size: 12px;
+}
+
+#signInButton {
+    font-weight: 800;
+    margin: 35px 25px 0 25px;
+    color: rgb(151, 23, 21);
+    font-size: 25px;
+}
+
+.outerFeatures {
+    margin: 0 35px 25px 35px;
+    overflow-y: hidden;
+    height: 275px;
+}
+
+.featureList {
+    text-align: left;
+    margin-top: 5px;
+}
+
+#odd {
+    background: rgba(211, 211, 211, 0.50)
 }

@@ -13,7 +13,8 @@ const initialState = {
     editopen: false,
     editopen2: false,
     topopen: false,
-    topopen2: false
+    topopen2: false,
+    settings: false
 }
 //TYPES
 
@@ -53,6 +54,8 @@ const CHANGE_BATTLE_NAME = "CHANGE_BATTLE_NAME"
 const PAGE_LOCATION = "PAGE_LOCATION"
 
 const GET_USER_INFO = "GET_USER_INFO"
+
+const OPEN_SETTINGS = "OPEN_SETTINGS"
 
 //ACTION BUILDERS
 
@@ -118,6 +121,12 @@ export function getUserInfo() {
     return {
         type: GET_USER_INFO,
         payload: axios.get('/auth/me').then()
+    }
+}
+
+export function OPENSETTINGS() {
+    return {
+        type: OPEN_SETTINGS
     }
 }
 
@@ -291,6 +300,9 @@ export default function reducer(state = initialState, action) {
 
         case GET_USER_INFO + '_FULFILLED':
             return Object.assign({}, state, { user: action.payload })
+
+        case OPEN_SETTINGS:
+            return Object.assign({}, state, { settings: !state.settings})
 
         default: return state
     }

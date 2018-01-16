@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import { getUserInfo } from '../ducks/reducer'
@@ -19,8 +18,6 @@ class NavBar extends Component {
 
     render() {
 
-        console.log(this.props)
-
         var { combatId, page, user } = this.props
 
         return (
@@ -29,16 +26,19 @@ class NavBar extends Component {
                     <BattleLock
                         page={page}
                         id={combatId}
-                        // userId={user.id} 
+                        userId={user.data} 
                         />
 
                     <SavedLock
                         page={page}
                         id={combatId}
-                        // userId={user.id} 
+                        userId={user.data} 
                         />
                 </div>
-                {/* <LogDisplay /> */}
+
+                <LogDisplay 
+                    userId={user.data} 
+                    />
 
             </div>
         )
@@ -50,7 +50,8 @@ function mapStateToProps(state) {
 
     return {
         combatId,
-        page
+        page,
+        user
     }
 }
 

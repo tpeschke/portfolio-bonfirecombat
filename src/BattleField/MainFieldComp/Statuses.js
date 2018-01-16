@@ -16,7 +16,7 @@ class Statuses extends Component {
                 if (d.timestatus - this.props.count > 0) {
                     return <button key={d.id}
                         className="StatusItemBox"
-                        id={this.props.page === '/' ? 'modalClose' : null}
+                        id={this.props.page === '/SavedFields' || this.props.page === '/' ? 'modalClose' : null}
                         onClick={_=>this.props.DELETESTATUSES(d.id)}>
                         <h5 className="StatusItem">{d.namestatus}</h5>
                         <div className="border"></div>

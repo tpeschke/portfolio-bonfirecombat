@@ -81,6 +81,10 @@
     text-align: center;
 }
 
+input.ListItem:hover {
+    text-shadow: 2px 2px 1px white;
+}
+
 .Name {
     min-width: 145px;
     text-align: left;

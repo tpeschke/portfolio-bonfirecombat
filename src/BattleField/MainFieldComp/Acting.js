@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import ReactDOM from 'react-dom';
 import FlipMove from 'react-flip-move'
 
 import ActEditFighter from './ActingOnDeckComponents/ActEditFighter'
@@ -82,8 +81,6 @@ export default class Acting extends Component {
                     // }
                 })
         }
-
-        console.log(actingList)
 
         return (
             <div className="Main">

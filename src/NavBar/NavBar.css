@@ -44,3 +44,68 @@
 #navItem {
     margin-top: 10px;
 }
+
+.navInVis{
+    display: none;
+}
+
+#settings {
+    color: black;
+    font-weight: 400;
+    min-width: 150px;
+    height: 35px;
+    margin: 0 5px 5px 0;
+    text-align: right;
+    font-size: 17px;
+}
+
+button#settings:hover {
+    text-shadow: 1px 1px 1px white;
+}
+
+img {
+    height: 100px;
+    width: 100px;
+    border-radius: 100px;
+    margin-left: 80px;
+    margin-top: 25px;
+    border: 3px solid rgba(33, 53, 80, 1)
+}
+
+.settingBanner {
+    position: absolute;
+    top: 0;
+    right: 0; 
+    height: 550px;
+    width: 300px;
+    background: rgba(33, 53, 80, 1);
+    overflow-y: hidden;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+
+    transition: .6s;
+}
+
+.settingInnerBanner {
+    background: rgba(218, 197, 182, .7);
+    height: 540px;
+    width: 280px;
+    margin-left: 10px;
+    overflow-y: hidden;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+
+    transition: .6s;
+}
+
+.closed {
+    height: 0;
+}
+
+h6 {
+    font-size: 18px;
+    font-family: 'Spectral SC', serif;
+    margin-top: 15px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+}

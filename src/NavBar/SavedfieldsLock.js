@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 export default class SaveLock extends Component {
 
     lock = () => {
-        console.log(this.props)
-        if (!this.props.user) {
+       
+        if (!this.props.userId) {
             return <div
-                className='navItem navLock'>
+                className='navItem navLock navInVis'>
                 <p id='navItem'>Saved Fields</p></div>
         } else {
             return <Link to='/SavedFields'
@@ -16,7 +16,7 @@ export default class SaveLock extends Component {
 
                 <div
                     className={this.props.page === "/SavedFields" ? 'navItem Current' : 'navItem'}>
-                    <p id='navItem'>SavedFields</p>
+                    <p id='navItem'>Saved Fields</p>
                 </div>
 
             </Link>

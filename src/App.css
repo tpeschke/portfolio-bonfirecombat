@@ -47,7 +47,6 @@ body {
 
 .slideDown {
     animation: slideDown;
-    /* animation-timing-function: linear; */
     animation-duration: 1s;
 }
 
@@ -225,6 +224,16 @@ button:hover {
 input#modalEditInput::placeholder {
     color: rgb(121, 121, 121);
     font-weight: 400;
+}
+
+/* =================================== */
+
+.settingsBannerOut {
+    position: relative;
+}
+
+.NavContianer {
+    position: relative
 }
 
 /* =================================== */
