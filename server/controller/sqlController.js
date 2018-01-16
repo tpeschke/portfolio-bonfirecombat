@@ -4,7 +4,9 @@ module.exports = {
 
         const db = req.app.get('db')
 
-        db.getAllCombats().then( result => res.status(200).send(result) )
+        var {id} = req.user
+
+        db.getAllCombats(id).then( result => res.status(200).send(result) )
 
     },
 

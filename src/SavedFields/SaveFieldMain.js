@@ -23,10 +23,10 @@ class SaveFieldMain extends Component {
     }
 
     componentDidMount() {
-        axios.get('/api/fighters').then((req, res) => {
+        axios.get(`/api/combats/${this.props.user.id}`).then((req, res) => {
             this.setState({ combats: req.data })
         })
-        this.props.PAGELOCATION('/')
+        this.props.PAGELOCATION('/SavedFields')
         this.props.setHeight((72+document.getElementById('Saved').clientHeight) + 'px')
     }
     componentDidUpdate(){
@@ -78,6 +78,8 @@ class SaveFieldMain extends Component {
                     >X</button>
                 </div>
             })
+        } else {
+            combatList = <div><h1 id="noCombats">No Combats to Display</h1></div>
         }
 
         return (
@@ -102,6 +104,7 @@ class SaveFieldMain extends Component {
                     <div className="border"></div>
 
                     {combatList}
+
                     <div className="border savedborder"></div>
                 </div>
 
@@ -116,9 +119,10 @@ class SaveFieldMain extends Component {
 }
 
 function mapStateToProps(state) {
-    var {combatId} = state
+    var {combatId, user} = state
     return {
-        combatId
+        combatId,
+        user
     }
 }
 

@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import './reset.css'
 import './App.css';
-import PageTransition from 'react-router-page-transition'
 
 import NavBar from './NavBar/NavBar'
 import Routes from './routes'
-import Statusest from './BattleField/MainFieldComp/Statuses'
-import Statuses from './BattleField/MainFieldComp/Statuses';
+import Statuses from './BattleField/MainFieldComp/Statuses'
 
 class App extends Component {
   constructor() {
@@ -38,7 +36,7 @@ class App extends Component {
           </div>
           <div className="headpic"></div>
         </div>
-        <div className="appContent" style={this.state.style}>
+        <div className="appContent" id="container" style={this.state.style}>
 
           <NavBar />
 

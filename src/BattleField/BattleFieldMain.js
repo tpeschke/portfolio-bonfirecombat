@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import FlipMove from 'react-flip-move'
 
 import { connect } from 'react-redux';
 
 import { OPENMODAL, OPENTOP, OPENMODAL2, OPENTOP2, PAGELOCATION } from '../ducks/reducer'
-import { LOADCOMBATANTS, KILLCOMBATANT, REMOVEFIGHTER, ADVANCESPEED, INPUTACTION} from '../ducks/CompReducers/CombatantsReducer'
+import { LOADCOMBATANTS, KILLCOMBATANT, REMOVEFIGHTER, ADVANCESPEED, INPUTACTION } from '../ducks/CompReducers/CombatantsReducer'
 import { GETALLSTATUSES } from '../ducks/CompReducers/StatusReducer'
 
 import Counter from './CountComp/Count';
@@ -21,10 +22,10 @@ class BattleFieldMain extends Component {
         this.props.LOADCOMBATANTS(this.props.combatId);
         this.props.GETALLSTATUSES(this.props.combatId);
         this.props.PAGELOCATION('/BattleField');
-        this.props.setHeight((72+document.getElementById('Battle').clientHeight) + 'px')
+        this.props.setHeight((72 + document.getElementById('Battle').clientHeight) + 'px')
     }
-    componentDidUpdate(){
-        this.props.setHeight((72+document.getElementById('Battle').clientHeight) + 'px');
+    componentDidUpdate() {
+        this.props.setHeight((72 + document.getElementById('Battle').clientHeight) + 'px');
     }
 
     render() {
@@ -34,8 +35,8 @@ class BattleFieldMain extends Component {
 
         return (
             <div className="BattleMain fadeInApp" id="Battle">
-                <BattleName 
-                    combat={this.props.combatName}/>
+                <BattleName
+                    combat={this.props.combatName} />
 
                 <div className="counterOuter">
                     <Counter />
@@ -45,23 +46,25 @@ class BattleFieldMain extends Component {
                     <div className="BattleBody">
                         <div className="BattleField">
                             <h2>the Quick</h2>
-                            <OnDeck
-                                list={fighterList}
-                                count={count}
-                                kill={KILLCOMBATANT}
-                                advance={ADVANCESPEED}
-                                action={INPUTACTION}
-                                modal={OPENMODAL}
-                                top={OPENTOP} />
+                            <FlipMove>
+                                <OnDeck
+                                    list={fighterList}
+                                    count={count}
+                                    kill={KILLCOMBATANT}
+                                    advance={ADVANCESPEED}
+                                    action={INPUTACTION}
+                                    modal={OPENMODAL}
+                                    top={OPENTOP} />
 
-                            <Acting
-                                list={fighterList}
-                                count={count}
-                                kill={KILLCOMBATANT}
-                                advance={ADVANCESPEED}
-                                action={INPUTACTION}
-                                modal2={OPENMODAL2}
-                                top2={OPENTOP2} />
+                                <Acting
+                                    list={fighterList}
+                                    count={count}
+                                    kill={KILLCOMBATANT}
+                                    advance={ADVANCESPEED}
+                                    action={INPUTACTION}
+                                    modal2={OPENMODAL2}
+                                    top2={OPENTOP2} />
+                            </FlipMove>
                         </div>
 
                         <div className="BattleSidebarOuter">

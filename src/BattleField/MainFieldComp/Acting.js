@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom';
+import FlipMove from 'react-flip-move'
 
 import ActEditFighter from './ActingOnDeckComponents/ActEditFighter'
 import ActToP from './ActingOnDeckComponents/ActThresholdOfPain'
@@ -22,39 +23,7 @@ export default class Acting extends Component {
 
     componentWillReceiveProps(next) {
         this.setState({ list: next.list })
-        // this.state.list.forEach( child => {
-        //     const ref = this.refs[+child.id];
-        //     const domNode = ReactDOM.findDOMNode( ref );
-        //     const boundingBox = domNode.getBoundingClientRect();
-
-        //     this.setState({
-        //         [+child.id]: boundingBox
-        //     })
-        // })
-
     }
-
-    // componentDidUpdate(prev) {
-    //     prev.list.forEach( child => {
-    //         let domNode = ReactDOM.findDOMNode( this.ref[child.id])
-            
-    //         const newBox = domNode.getBoundingClientRect();
-    //         const oldBox = this.state[child.id];
-
-    //         const deltaX = oldBox.left - newBox.left;
-    //         const deltaY = oldBox.top - newBox.top;
-
-    //         requestAnimationFrame( _ => {
-    //             domNode.style.transform = `translate(${deltaX},${deltaY}px)`;
-    //             domNode.style.transition = 'transform 0s';
-
-    //             requestAnimationFrame( _ => {
-    //                 domNode.style.transform = '';
-    //                 domNode.style.transition = 'transform 500ms'
-    //             })
-    //         })
-    //     })
-    // }
 
     modifyFighter = (d) => {
         this.setState({
@@ -68,50 +37,53 @@ export default class Acting extends Component {
     }
 
     handleTop = (id) => {
-        this.setState( { holdid: id} )
-        
+        this.setState({ holdid: id })
+
         this.props.top2()
     }
 
     render() {
 
         if (this.state.list) {
-            var actingList = this.state.list.map((d, i) => {
 
-                if (d.acting === '1' && d.dead === '0') {
+            var actingList = this.state.list.filter(d => d.acting === '1').map((d, i) => {
 
-                    let color = { background: d.colorcode }
+                    // if (d.acting === '1' && d.dead === '0') {
 
-                    return <div 
-                        className={d.topcheck === '1' ? 'List top' : 'List'}
-                        key={d.id}>
-                        <div className="color" style={color}></div>
+                        let color = { background: d.colorcode }
 
-                        <p className="ListItem Name">{d.namefighter}</p>
+                        return <div
+                            className={d.topcheck === '1' ? 'List top' : 'List'}
+                            key={d.id}>
+                            <div className="color" style={color}></div>
 
-                        <button className="ListItem"
-                            onClick={_ => this.props.advance(d.id)}
-                        >{d.speed}</button>
+                            <p className="ListItem Name">{d.namefighter}</p>
 
-                        <input className="ListItem inputFinder" placeholder={d.actioncount}
-                            onBlur={e => this.props.action(d.id, e.target.value)} />
+                            <button className="ListItem"
+                                onClick={_ => this.props.advance(d.id)}
+                            >{d.speed}</button>
 
-                        <button className="ListItem"
-                            onClick={_ => this.handleTop(d.id)}
-                        >(ง'̀-'́)ง</button>
+                            <input className="ListItem inputFinder" placeholder={d.actioncount}
+                                onBlur={e => this.props.action(d.id, e.target.value)} />
 
-                        <button className="ListItem"
-                            onClick={_ => this.props.kill(d.id)}
-                        >X</button>
+                            <button className="ListItem"
+                                onClick={_ => this.handleTop(d.id)}
+                            >(ง'̀-'́)ง</button>
 
-                        <button className="ListItem"
-                            onClick={_ => this.modifyFighter(d)}
-                        >---</button>
+                            <button className="ListItem"
+                                onClick={_ => this.props.kill(d.id)}
+                            >X</button>
 
-                    </div>
-                }
-            })
+                            <button className="ListItem"
+                                onClick={_ => this.modifyFighter(d)}
+                            >---</button>
+
+                        </div>
+                    // }
+                })
         }
+
+        console.log(actingList)
 
         return (
             <div className="Main">
@@ -126,7 +98,11 @@ export default class Acting extends Component {
                     <p className="ListItem listHeader">Edit</p>
                 </div>
                 <div className="border"></div>
-                {actingList}
+
+                <FlipMove>
+                    {actingList}
+                </FlipMove>
+
                 <div className="border"></div>
 
                 <ActEditFighter
@@ -135,8 +111,8 @@ export default class Acting extends Component {
                     speed={this.state.holdspeed}
                     id={this.state.holdid} />
 
-                <ActToP 
-                    id={this.state.holdid}/>
+                <ActToP
+                    id={this.state.holdid} />
             </div>
         )
     }

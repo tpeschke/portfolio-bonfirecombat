@@ -49,3 +49,7 @@
 .unmounted {
     opacity: 0
 }
+
+#noCombats {
+    text-align: center;
+}

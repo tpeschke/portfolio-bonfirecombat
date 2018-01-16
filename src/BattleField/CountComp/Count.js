@@ -56,23 +56,6 @@ class Counter extends Component {
 
     render() {
 
-        var inputFinder = document.getElementsByClassName("")
-        if (document.hasFocus()) {
-            Mousetrap.bind(['d'], this.props.INCREASECOUNT)
-            Mousetrap.bind(['a'], this.props.DECREASECOUNT)
-            Mousetrap.bind(['w', 'space'], this.autoTimer1)
-            Mousetrap.bind(['e'], this.autoTimer2)
-            Mousetrap.bind(['s'], this.stopTime)
-            Mousetrap.bind(['x'], this.props.RESETCOUNT)
-        } else {
-            Mousetrap.unbind(['d'], this.props.INCREASECOUNT)
-            Mousetrap.unbind(['a'], this.props.DECREASECOUNT)
-            Mousetrap.unbind(['w', 'space'], this.autoTimer1)
-            Mousetrap.unbind(['e'], this.autoTimer2)
-            Mousetrap.unbind(['s'], this.stopTime)
-            Mousetrap.unbind(['x'], this.props.RESETCOUNT)
-        }
-
         return (
             <div className="counterMain">
 

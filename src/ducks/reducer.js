@@ -3,6 +3,7 @@ import axios from 'axios'
 import sort from '../components/sort'
 
 const initialState = {
+    user: {},
     page: '/',
     count: 1,
     combatId: 0,
@@ -50,6 +51,8 @@ const ADD_NEW_STATUS = "ADD_NEW_STATUS"
 const CHANGE_BATTLE_NAME = "CHANGE_BATTLE_NAME"
 
 const PAGE_LOCATION = "PAGE_LOCATION"
+
+const GET_USER_INFO = "GET_USER_INFO"
 
 //ACTION BUILDERS
 
@@ -108,6 +111,13 @@ export function PAGELOCATION(url) {
     return {
         type: PAGE_LOCATION,
         payload: url
+    }
+}
+
+export function getUserInfo() {
+    return {
+        type: GET_USER_INFO,
+        payload: axios.get('/auth/me').then()
     }
 }
 
@@ -278,6 +288,9 @@ export default function reducer(state = initialState, action) {
 
         case PAGE_LOCATION:
             return Object.assign( {}, state, { page: action.payload})
+
+        case GET_USER_INFO + '_FULFILLED':
+            return Object.assign({}, state, { user: action.payload })
 
         default: return state
     }

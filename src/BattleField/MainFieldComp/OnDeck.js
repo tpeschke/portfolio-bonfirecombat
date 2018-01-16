@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import FlipMove from 'react-flip-move'
 
 import DeckEditFighter from './ActingOnDeckComponents/DeckEditFighter'
 import DeckToP from './ActingOnDeckComponents/DeckThresholdOfPain'
@@ -36,7 +37,7 @@ export default class OnDeck extends Component {
     }
 
     handleTop = (id) => {
-        this.setState( { topId: id })
+        this.setState({ topId: id })
 
         this.props.top()
     }
@@ -94,7 +95,10 @@ export default class OnDeck extends Component {
                     <p className="ListItem listHeader">Edit</p>
                 </div>
                 <div className="border"></div>
-                {deckList}
+
+                <FlipMove>
+                    {deckList}
+                </FlipMove>
 
                 <DeckEditFighter
                     color={this.state.holdcolor}

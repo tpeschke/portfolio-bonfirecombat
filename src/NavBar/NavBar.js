@@ -2,46 +2,51 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
+import { getUserInfo } from '../ducks/reducer'
 
-import BatteLock from './BattlefieldLock'
-import SignIn from './SignIn'
+import BattleLock from './BattlefieldLock'
+import LogDisplay from './LoginComps/LogDisplay'
+import SavedLock from './SavedfieldsLock'
 
 import './NavBar.css'
 
 
 class NavBar extends Component {
 
+    componentDidMount() {
+        this.props.getUserInfo()
+    }
+
     render() {
 
-        var { combatId, page } = this.props
+        console.log(this.props)
+
+        var { combatId, page, user } = this.props
 
         return (
-
-                <div className="navBar">
-                    <div className="navBarInner">
-                    <BatteLock
+            <div className="navBar">
+                <div className="navBarInner">
+                    <BattleLock
                         page={page}
-                        id={combatId} />
+                        id={combatId}
+                        // userId={user.id} 
+                        />
 
-                    <Link to='/'
-                        style={{ textDecoration: 'none' }}>
-
-                        <div
-                            className={this.props.page === "/" ? 'navItem Current' : 'navItem'}>
-                            <p id='navItem'>Saved Fields</p>
-                            </div>
-
-                    </Link>
-                    </div>
-                    <SignIn />
+                    <SavedLock
+                        page={page}
+                        id={combatId}
+                        // userId={user.id} 
+                        />
                 </div>
-    
+                {/* <LogDisplay /> */}
+
+            </div>
         )
     }
 }
 
 function mapStateToProps(state) {
-    var { combatId, page } = state
+    var { combatId, page, user } = state
 
     return {
         combatId,
@@ -49,4 +54,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, {})(NavBar)
+export default connect(mapStateToProps, {getUserInfo})(NavBar)
