@@ -74,8 +74,8 @@ img {
 
 .settingBanner {
     position: absolute;
-    top: 0;
-    right: 0; 
+    top: 181px;
+    right: -410px; 
     height: 550px;
     width: 300px;
     background: rgba(33, 53, 80, 1);

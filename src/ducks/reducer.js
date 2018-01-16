@@ -32,7 +32,6 @@ const REMOVE_FIGHTER = 'REMOVE_FIGHTER'
 const ADVANCE_SPEED = "ADVANCE_SPEED"
 
 const NEW_FIELD = "NEW_FIELD"
-const SAVE_FIELD = "SAVE_FIELD"
 const CLEAR_FIELD = "CLEAR_FIELD"
 
 const INPUT_ACTION = "INPUT_ACTION"
@@ -57,6 +56,8 @@ const GET_USER_INFO = "GET_USER_INFO"
 
 const OPEN_SETTINGS = "OPEN_SETTINGS"
 
+const SAVE_FIELD = "SAVE_FIELD"
+
 //ACTION BUILDERS
 
 export function NEWFIELD() {
@@ -66,10 +67,10 @@ export function NEWFIELD() {
     }
 }
 
-export function SAVEFIELD() {
+export function SAVEFIELD(field) {
     return {
         type: SAVE_FIELD,
-        payload: axios.patch('/api/battle').then()
+        payload: axios.patch('/api/battle', field).then()
     }
 }
 
@@ -205,7 +206,6 @@ export default function reducer(state = initialState, action) {
 
         case SAVE_FIELD + "_FULFILLED":
             console.log('Finished :D')
-            break
 
         case INPUT_ACTION:
             var updatedAction = sort(state.fighterList.map(val => {

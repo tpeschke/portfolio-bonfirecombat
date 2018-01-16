@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import FlipMove from 'react-flip-move'
 
 import { connect } from 'react-redux';
 
@@ -46,7 +45,7 @@ class BattleFieldMain extends Component {
                     <div className="BattleBody">
                         <div className="BattleField">
                             <h2>the Quick</h2>
-                            <FlipMove>
+                           
                                 <OnDeck
                                     list={fighterList}
                                     count={count}
@@ -64,7 +63,7 @@ class BattleFieldMain extends Component {
                                     action={INPUTACTION}
                                     modal2={OPENMODAL2}
                                     top2={OPENTOP2} />
-                            </FlipMove>
+                            
                         </div>
 
                         <div className="BattleSidebarOuter">

@@ -35,8 +35,8 @@ class NavBar extends Component {
                         userId={user.data} 
                         />
                 </div>
-
-                <LogDisplay 
+            
+                 <LogDisplay 
                     userId={user.data} 
                     />
 

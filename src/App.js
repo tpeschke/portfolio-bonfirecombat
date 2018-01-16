@@ -3,6 +3,7 @@ import './reset.css'
 import './App.css';
 
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 import NavBar from './NavBar/NavBar'
 import Routes from './routes'
@@ -36,29 +37,27 @@ class App extends Component {
         <div className="header">
           <div className="logo">
             <h4>Combat Counter</h4>
+            <div className="settingsBannerOut">
+              <Settings
+                user={this.props.user}
+                settings={this.props.settings} />
+            </div>
           </div>
           <div className="headpic"></div>
         </div>
         <div className="appContent" id="container" style={this.state.style}>
 
-      <div className="NavContainer">
-          <NavBar />
-
-          <div className="settingsBannerOut">
-            <Settings
-              user={this.props.user}
-              settings={this.props.settings} />
+          <div className="NavContainer">
+            <NavBar />
           </div>
-        </div>
 
           <div className="border"></div>
           <div className="border"></div>
 
           <Routes setHeight={this.setHeight} />
-
-
-
         </div>
+
+
 
         <div className="StatusOver">
           <Statuses />
@@ -77,4 +76,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, {})(App)
+export default withRouter(connect(mapStateToProps)(App))

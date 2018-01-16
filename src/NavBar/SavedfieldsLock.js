@@ -9,7 +9,7 @@ export default class SaveLock extends Component {
         if (!this.props.userId) {
             return <div
                 className='navItem navLock navInVis'>
-                <p id='navItem'>Saved Fields</p></div>
+                <p id='navItem'></p></div>
         } else {
             return <Link to='/SavedFields'
                 style={{ textDecoration: 'none' }}>

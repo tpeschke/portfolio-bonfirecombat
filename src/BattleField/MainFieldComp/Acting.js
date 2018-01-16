@@ -45,9 +45,9 @@ export default class Acting extends Component {
 
         if (this.state.list) {
 
-            var actingList = this.state.list.filter(d => d.acting === '1').map((d, i) => {
+            var actingList = this.state.list.map((d, i) => {
 
-                    // if (d.acting === '1' && d.dead === '0') {
+                    if (d.acting === '1' && d.dead === '0') {
 
                         let color = { background: d.colorcode }
 
@@ -78,7 +78,7 @@ export default class Acting extends Component {
                             >---</button>
 
                         </div>
-                    // }
+                    }
                 })
         }
 
