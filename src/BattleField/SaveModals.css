@@ -1,0 +1,36 @@
+.baseModalSave {
+    background-color: rgba(218, 197, 182, 1);
+    border-radius: 15px;
+}
+
+.outModal {
+    margin: 5px;
+    text-align: center;
+}
+
+.loadBar {
+    margin: 5px;
+    display: flex;
+}
+
+.loadbit {
+    margin-top: 10px;
+    height: 20px;
+    width: 20px;
+    background: rgb(199, 199, 199);
+    transition: .6s;
+}
+
+.active {
+    background: rgb(151, 23, 21)
+}
+
+.first {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.last {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}

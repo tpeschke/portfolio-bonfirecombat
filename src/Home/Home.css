@@ -1,56 +1,52 @@
 .outHome {
     height: 900px;
     width: 900px;
-    margin: 0 auto;
+    margin: 75px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
   
 iframe {
-    position: relative;
-    width: 900px;
-    height: 450px;
+    min-width: 900px;
+    min-height: 450px;
     pointer-events: none;
-    z-index: -99;
+    z-index: -5;
   }
 
 .foreground {
+    display: flex;
+    flex-direction: column;
+}
+
+.videoBox {
     position: relative;
-    margin-top: 225px;
 }
 
 .coverUp {
-    background: #000;
+    background: black;
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 900px;
-    height: 50px;
-    z-index: -50;
+    min-width: 900px;
+    min-height: 50px;
+    z-index: 0;
   }
 
 .outDiveHome {
-    position: relative;
     z-index: 1;
-    margin-top: -370px;
     display: flex;
-    justify-content: space-around;
-    align-content: center;
-    align-items: center;
-    text-align: center;
+    flex-direction: column;
+    max-width: 425px;
+    margin: -375px auto;
 }
 
 .logoHome {
-    position: absolute;
-    top: 0;
-    left: 235px;
     background-image: url('../img/translogo.png');
     height: 150px;
-    width: 425px
-}
-
-.logoWords {
-    position: absolute;
-    bottom: 0;
-    left: 123px;
+    width: 425px;
+    margin: 0 auto;
+    z-index: 1;
 }
 
 .inHome {
@@ -58,47 +54,38 @@ iframe {
     width: 350px;
     height: 350px;
     border-radius: 25px;
-    margin: 25px 0;
 }
 
 .signInInner {
     background-color:rgba(214, 205, 199, .9);
-    width: 300px;
-    height: 150px;
+    max-width: 350px;
+    min-height: 150px;
     border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .signIn {
-    margin: 125px;
+    margin: -25px auto;
+    z-index: 0;
 }
 
 .signInText {
-    margin: 20px;
+    text-align: center;
+    margin: 0 45px 25px 45px;
     font-size: 12px;
 }
 
 #signInButton {
     font-weight: 800;
-    margin: 35px 25px 0 25px;
     color: rgb(151, 23, 21);
     font-size: 25px;
+    margin-top: 25px;
 }
 
 button#signInButton:hover {
     text-shadow: 1px 1px white
 }
 
-.outerFeatures {
-    margin: 0 35px 25px 35px;
-    overflow-y: hidden;
-    height: 275px;
-}
-
-.featureList {
-    text-align: left;
-    margin-top: 5px;
-}
-
-#odd {
-    background: rgba(211, 211, 211, 0.50)
-}

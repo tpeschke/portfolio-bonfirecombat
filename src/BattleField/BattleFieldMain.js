@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import { OPENMODAL, OPENTOP, OPENMODAL2, OPENTOP2, PAGELOCATION } from '../ducks/reducer'
+import { OPENMODAL, OPENTOP, OPENMODAL2, OPENTOP2, PAGELOCATION, TOGGLESAVE } from '../ducks/reducer'
 import { LOADCOMBATANTS, KILLCOMBATANT, REMOVEFIGHTER, ADVANCESPEED, INPUTACTION } from '../ducks/CompReducers/CombatantsReducer'
 import { GETALLSTATUSES } from '../ducks/CompReducers/StatusReducer'
 
@@ -12,7 +12,8 @@ import Acting from './MainFieldComp/Acting';
 import Graveyard from './MainFieldComp/Graveyard';
 import CombatWorkspace from './CombatWorkspace/CombatWorkspaceMain';
 import BattleName from './MainFieldComp/BattleName';
-import Statuses from './MainFieldComp/Statuses'
+import Statuses from './MainFieldComp/Statuses';
+import SaveFieldModals from './SaveFieldModals'
 
 import "./BattleField.css"
 
@@ -79,6 +80,11 @@ class BattleFieldMain extends Component {
                     </div>
                 </div>
 
+                <SaveFieldModals 
+                    pending={this.props.pendingSaveOpen}
+                    finished={this.props.finishedSaveOpen}
+                    TOGGLESAVE={this.props.TOGGLESAVE}/>
+
                 <div className="StatusOver">
                     <Statuses />
                 </div>
@@ -88,13 +94,15 @@ class BattleFieldMain extends Component {
 }
 
 function mapStateToProps(state) {
-    var { combatId, combatName, fighterList, count } = state
+    var { combatId, combatName, fighterList, count, pendingSaveOpen, finishedSaveOpen } = state
 
     return {
         combatId,
         combatName,
         fighterList,
-        count
+        count,
+        pendingSaveOpen,
+        finishedSaveOpen
     }
 }
 
@@ -109,7 +117,8 @@ let actionBuilder = {
     OPENMODAL2,
     OPENTOP2,
     GETALLSTATUSES,
-    PAGELOCATION
+    PAGELOCATION,
+    TOGGLESAVE
 }
 
 export default connect(mapStateToProps, actionBuilder)(BattleFieldMain)

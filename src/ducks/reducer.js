@@ -14,6 +14,8 @@ const initialState = {
     editopen2: false,
     topopen: false,
     topopen2: false,
+    pendingSaveOpen: false,
+    finishedSaveOpen: false,
     settings: false
 }
 //TYPES
@@ -59,6 +61,8 @@ const OPEN_SETTINGS = "OPEN_SETTINGS"
 const SAVE_FIELD = "SAVE_FIELD"
 
 const FLIP_TOOLTIP = "FLIP_TOOLTIP"
+
+const TOGGLE_SAVE = "TOGGLE_SAVE"
 
 //ACTION BUILDERS
 
@@ -139,6 +143,12 @@ export function FLIPTOOLTIP() {
     }
 }
 
+export function TOGGLESAVE() {
+    return {
+        type: TOGGLE_SAVE
+    }
+}
+
 //REDUCER
 
 export default function reducer(state = initialState, action) {
@@ -212,8 +222,11 @@ export default function reducer(state = initialState, action) {
             var { id, namecombat } = action.payload.data[0]
             return Object.assign({}, state, { combatId: id, combatName: namecombat, fighterList: [], statusList: [], count: 1 })
 
+        case SAVE_FIELD + "_PENDING":
+            return Object.assign({}, state, {pendingSaveOpen : !state.pendingSaveOpen})
+
         case SAVE_FIELD + "_FULFILLED":
-            console.log('Finished :D')
+            return Object.assign({}, state, {pendingSaveOpen : !state.pendingSaveOpen, finishedSaveOpen: !state.finishedSaveOpen})
 
         case INPUT_ACTION:
             var updatedAction = sort(state.fighterList.map(val => {
@@ -317,8 +330,10 @@ export default function reducer(state = initialState, action) {
             tempUser.data.tooltip === '1' ? tempUser.data.tooltip = '0' : tempUser.data.tooltip = '1';
             axios.post(`/api/settings`, tempUser.data).then()
             return Object.assign({}, state, {user : tempUser})
-        
 
+        case TOGGLE_SAVE:
+            return Object.assign({}, state, { finishedSaveOpen: !state.finishedSaveOpen})
+    
         default: return state
     }
 }
