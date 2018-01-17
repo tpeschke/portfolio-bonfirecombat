@@ -64,7 +64,7 @@ module.exports = {
             if (!isNaN(val.id)) {
                 tempArr.push(db.update_fighters(val.namefighter, val.colorcode, val.speed, val.actioncount, val.topcheck,val.acting, val.dead, val.id).then().catch(e=>console.log('1------------------------------',e)))
             } else {
-                tempArr.push(db.add_fighter(val.namefighter, val.colorcode, val.speed, val.actioncount, val.topcheck,val.acting, val.dead, val.combatId).then().catch(e=>console.log('21------------------------------',e)))
+                tempArr.push(db.add_fighter(val.namefighter, val.colorcode, val.speed, val.actioncount, val.topcheck,val.acting, val.dead, combatId).then().catch(e=>console.log('21------------------------------',e)))
             }
         })
 
@@ -73,10 +73,10 @@ module.exports = {
             if (!isNaN(val.id)) {
                 tempArr.push(db.update_status(val.namestatus, val.timestatus, val.id).then().catch(e=>console.log('41------------------------------',e)))
             } else {
-               tempArr.push(db.add_status(val.namestatus, val.timestatus, val.combatId).then().catch(e=>console.log('51------------------------------',e)))
+               tempArr.push(db.add_status(val.namestatus, val.timestatus, combatId).then().catch(e=>console.log('51------------------------------',e)))
             }})
 
-            tempArr.push(db.saveField(count, combatName, combatId).then().catch(e=>console.log('61------------------------------',e)))
+            tempArr.push(db.saveField(count, combatName, req.body.combatId).then().catch(e=>console.log('61------------------------------',e)))
             
         Promise.all(tempArr).then(result => res.send())
 

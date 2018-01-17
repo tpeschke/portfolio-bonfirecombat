@@ -53,7 +53,7 @@ class NewStatus extends Component {
         var newStatus = {
             id: newId,
             namestatus: this.state.name,
-            timestatus: this.state.duration + 1
+            timestatus: this.state.duration + +this.props.count
         }
 
         this.props.ADDNEWSTATUS(newStatus)
@@ -104,7 +104,11 @@ class NewStatus extends Component {
 }
 
 function mapStateToProps(state) {
-    return {}
+
+    var {count} = state
+    return {
+        count
+    }
 }
 
 export default connect(mapStateToProps, { ADDNEWSTATUS })(NewStatus)

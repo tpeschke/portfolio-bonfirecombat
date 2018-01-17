@@ -1,3 +1,2 @@
-insert into combatatants(namestatus, timestatus)
-values $1, $2
-where idcombat = $3;
+insert into statuses (namestatus, timestatus, idcombat)
+values ($1, $2, $3)
