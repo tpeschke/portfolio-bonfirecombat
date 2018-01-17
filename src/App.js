@@ -57,11 +57,11 @@ class App extends Component {
           <Routes setHeight={this.setHeight} />
         </div>
 
-
-
         <div className="StatusOver">
           <Statuses />
         </div>
+
+        
       </div>
     );
   }

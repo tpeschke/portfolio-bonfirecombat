@@ -69,16 +69,17 @@ img {
     border-radius: 100px;
     margin-left: 80px;
     margin-top: 25px;
-    border: 3px solid rgba(33, 53, 80, 1)
+    border: 5px solid rgba(218, 197, 182, .75)
 }
 
 .settingBanner {
+    background: url('../img/clothe.jpg');
+    background-size: 550px 300px;
     position: absolute;
     top: 181px;
-    right: -410px; 
+    right: -414px; 
     height: 550px;
     width: 300px;
-    background: rgba(33, 53, 80, 1);
     overflow-y: hidden;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
@@ -86,11 +87,21 @@ img {
     transition: .6s;
 }
 
+.settingBannerMid {
+    height: 550px;
+    width: 300px;
+    border-bottom: 5px solid rgba(33, 53, 80, .75);
+    border-left: 5px solid rgba(33, 53, 80, .75);
+    border-right: 5px solid rgba(33, 53, 80, .75);
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
 .settingInnerBanner {
-    background: rgba(218, 197, 182, .7);
-    height: 540px;
-    width: 280px;
-    margin-left: 10px;
+    background: rgba(33, 53, 80, 0.75);
+    height: 530px;
+    width: 260px;
+    margin-left: 15px;
     overflow-y: hidden;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
