@@ -1,15 +1,55 @@
 .outHome {
+    height: 900px;
+    width: 900px;
+    margin: 0 auto;
+}
+  
+iframe {
+    position: relative;
+    width: 900px;
     height: 450px;
-    width: 900px
+    pointer-events: none;
+    z-index: -99;
+  }
+
+.foreground {
+    position: relative
 }
 
+.coverUp {
+    background: #000;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 900px;
+    height: 50px;
+    z-index: -50;
+  }
+
 .outDiveHome {
+    position: relative;
+    z-index: 1;
+    margin-top: -195px;
     display: flex;
     justify-content: space-around;
-    display: flex;
     align-content: center;
     align-items: center;
     text-align: center;
+}
+
+.logoHome {
+    position: absolute;
+    top: 0;
+    left: 235px;
+    background-image: url('../img/translogo.png');
+    height: 150px;
+    width: 425px
+}
+
+.logoWords {
+    position: absolute;
+    bottom: 0;
+    left: 123px;
 }
 
 .inHome {
@@ -22,13 +62,13 @@
 
 .signInInner {
     background-color:rgba(214, 205, 199, 1);
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 150px;
     border-radius: 25px;
 }
 
 .signIn {
-    margin: 75px;
+    margin: 125px;
 }
 
 .signInText {
@@ -41,6 +81,10 @@
     margin: 35px 25px 0 25px;
     color: rgb(151, 23, 21);
     font-size: 25px;
+}
+
+button#signInButton:hover {
+    text-shadow: 1px 1px white
 }
 
 .outerFeatures {

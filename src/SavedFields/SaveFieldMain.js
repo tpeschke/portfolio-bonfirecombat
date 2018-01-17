@@ -79,9 +79,10 @@ class SaveFieldMain extends Component {
                     >X</button>
                 </div>
             })
-        } else {
-            combatList = <div><h1 id="noCombats">No Combats to Display</h1></div>
         }
+        //  else {
+        //     combatList = <div><h1 id="noCombats">No Combats to Display</h1></div>
+        // }
 
         return (
             <div className="SavedField fadeInApp" id="Saved">

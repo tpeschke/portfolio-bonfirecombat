@@ -98,6 +98,9 @@ img {
 }
 
 .settingInnerBanner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background: rgba(33, 53, 80, 0.75);
     height: 530px;
     width: 260px;

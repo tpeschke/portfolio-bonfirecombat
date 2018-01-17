@@ -1,0 +1,30 @@
+.keyboard {
+    margin: 10px 25px;
+}
+
+.keyrow {
+    display: flex;
+}
+
+.key {
+    width: 35px;
+    height: 35px;
+    background: grey;
+    border: 3px outset rgb(145, 145, 145);
+}
+
+.toprow {
+    margin-left: 20px;
+}
+
+.topbottomrow {
+    margin-left: 50px;
+}
+
+.bottombottomrow {
+    margin-left: 65px;
+}
+
+.space {
+    width: 140px;
+}

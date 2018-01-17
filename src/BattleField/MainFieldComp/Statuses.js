@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
+import FlipMove from 'react-flip-move'
 
 import { DELETESTATUSES } from '../../ducks/CompReducers/StatusReducer'
 
@@ -16,11 +17,10 @@ class Statuses extends Component {
                 if (d.timestatus - this.props.count > 0) {
                     return <button key={d.id}
                         className="StatusItemBox"
-                        id={this.props.page === '/SavedFields' || this.props.page === '/' ? 'modalClose' : null}
                         onClick={_=>this.props.DELETESTATUSES(d.id)}>
                         <h5 className="StatusItem">{d.namestatus}</h5>
                         <div className="border"></div>
-                        <h6 className="StatusItem">{+d.timestatus - +this.props.count}</h6>
+                        <h6 className="StatusItemCount">{+d.timestatus - +this.props.count}</h6>
                     </button>
                 }
             })
@@ -28,19 +28,20 @@ class Statuses extends Component {
 
         return (
             <div className="StatusList">
-                {statuses}
+                <FlipMove>
+                    {statuses}
+                </FlipMove>
             </div>
         )
     }
 }
 
 function mapStateToProps(state) {
-    var { statusList, count, page } = state
+    var { statusList, count } = state
 
     return {
         statusList,
-        count, 
-        page
+        count
     }
 }
 

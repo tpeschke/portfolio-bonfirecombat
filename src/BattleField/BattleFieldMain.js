@@ -12,6 +12,7 @@ import Acting from './MainFieldComp/Acting';
 import Graveyard from './MainFieldComp/Graveyard';
 import CombatWorkspace from './CombatWorkspace/CombatWorkspaceMain';
 import BattleName from './MainFieldComp/BattleName';
+import Statuses from './MainFieldComp/Statuses'
 
 import "./BattleField.css"
 
@@ -45,25 +46,25 @@ class BattleFieldMain extends Component {
                     <div className="BattleBody">
                         <div className="BattleField">
                             <h2>the Quick</h2>
-                           
-                                <OnDeck
-                                    list={fighterList}
-                                    count={count}
-                                    kill={KILLCOMBATANT}
-                                    advance={ADVANCESPEED}
-                                    action={INPUTACTION}
-                                    modal={OPENMODAL}
-                                    top={OPENTOP} />
 
-                                <Acting
-                                    list={fighterList}
-                                    count={count}
-                                    kill={KILLCOMBATANT}
-                                    advance={ADVANCESPEED}
-                                    action={INPUTACTION}
-                                    modal2={OPENMODAL2}
-                                    top2={OPENTOP2} />
-                            
+                            <OnDeck
+                                list={fighterList}
+                                count={count}
+                                kill={KILLCOMBATANT}
+                                advance={ADVANCESPEED}
+                                action={INPUTACTION}
+                                modal={OPENMODAL}
+                                top={OPENTOP} />
+
+                            <Acting
+                                list={fighterList}
+                                count={count}
+                                kill={KILLCOMBATANT}
+                                advance={ADVANCESPEED}
+                                action={INPUTACTION}
+                                modal2={OPENMODAL2}
+                                top2={OPENTOP2} />
+
                         </div>
 
                         <div className="BattleSidebarOuter">
@@ -76,6 +77,10 @@ class BattleFieldMain extends Component {
                                 remove={REMOVEFIGHTER} />
                         </div>
                     </div>
+                </div>
+
+                <div className="StatusOver">
+                    <Statuses />
                 </div>
             </div>
         )

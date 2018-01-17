@@ -3,7 +3,7 @@ import './reset.css'
 import './App.css';
 
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Switch, Route } from 'react-router-dom'
 
 import NavBar from './NavBar/NavBar'
 import Routes from './routes'
@@ -56,11 +56,6 @@ class App extends Component {
 
           <Routes setHeight={this.setHeight} />
         </div>
-
-        <div className="StatusOver">
-          <Statuses />
-        </div>
-
         
       </div>
     );
