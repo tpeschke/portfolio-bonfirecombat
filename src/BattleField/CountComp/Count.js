@@ -62,7 +62,8 @@ class Counter extends Component {
                 <CounterLeft
                     RESETCOUNT={this.props.RESETCOUNT}
                     stopTime={this.stopTime}
-                    DECREASECOUNT={this.props.DECREASECOUNT} />
+                    DECREASECOUNT={this.props.DECREASECOUNT}
+                    user={this.props.user} />
 
                 <CounterMiddle
                     count={this.props.count} />
@@ -70,7 +71,8 @@ class Counter extends Component {
                 <CounterRight
                     INCREASECOUNT={this.props.INCREASECOUNT}
                     autoTimer1={this.autoTimer1}
-                    autoTimer2={this.autoTimer2} />
+                    autoTimer2={this.autoTimer2}
+                    user={this.props.user}  />
 
             </div>
         )
@@ -79,10 +81,11 @@ class Counter extends Component {
 
 function mapStateToProps(state) {
 
-    var { count } = state
+    var { count, user } = state
 
     return {
-        count
+        count,
+        user
     }
 }
 

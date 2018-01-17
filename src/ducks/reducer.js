@@ -58,6 +58,8 @@ const OPEN_SETTINGS = "OPEN_SETTINGS"
 
 const SAVE_FIELD = "SAVE_FIELD"
 
+const FLIP_TOOLTIP = "FLIP_TOOLTIP"
+
 //ACTION BUILDERS
 
 export function NEWFIELD(id) {
@@ -128,6 +130,12 @@ export function getUserInfo() {
 export function OPENSETTINGS() {
     return {
         type: OPEN_SETTINGS
+    }
+}
+
+export function FLIPTOOLTIP() {
+    return {
+        type: FLIP_TOOLTIP
     }
 }
 
@@ -303,6 +311,12 @@ export default function reducer(state = initialState, action) {
 
         case OPEN_SETTINGS:
             return Object.assign({}, state, { settings: !state.settings})
+
+        case FLIP_TOOLTIP:
+            var tempUser = Object.assign( {} ,state.user)
+            tempUser.data.tooltip === '1' ? tempUser.data.tooltip = '0' : tempUser.data.tooltip = '1'
+            return Object.assign({}, state, {user : tempUser})
+        
 
         default: return state
     }

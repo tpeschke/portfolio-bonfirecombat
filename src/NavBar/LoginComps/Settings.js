@@ -21,7 +21,6 @@ class Settings extends Component {
                             <Keyboard />
                         </div>
                         <div>
-                            <h7>Turn off Counter Tool-tips</h7>
                             <TooltipSwitch />
                         </div>
                         <a href='http://localhost:5678/auth/logout'><button>Log Out</button></a>

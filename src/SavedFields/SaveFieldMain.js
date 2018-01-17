@@ -53,7 +53,6 @@ class SaveFieldMain extends Component {
 
     render() {
 
-
         var { combats } = this.state
 
         if (combats) {
@@ -80,9 +79,6 @@ class SaveFieldMain extends Component {
                 </div>
             })
         }
-        //  else {
-        //     combatList = <div><h1 id="noCombats">No Combats to Display</h1></div>
-        // }
 
         return (
             <div className="SavedField fadeInApp" id="Saved">
