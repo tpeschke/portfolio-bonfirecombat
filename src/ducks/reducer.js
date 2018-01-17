@@ -65,7 +65,7 @@ const FLIP_TOOLTIP = "FLIP_TOOLTIP"
 export function NEWFIELD(id) {
     return {
         type: NEW_FIELD,
-        payload: axios.get(`/api/newfield/${id}`).then()
+        payload: axios.post(`/api/newfield/${id}`).then()
     }
 }
 
@@ -314,7 +314,8 @@ export default function reducer(state = initialState, action) {
 
         case FLIP_TOOLTIP:
             var tempUser = Object.assign( {} ,state.user)
-            tempUser.data.tooltip === '1' ? tempUser.data.tooltip = '0' : tempUser.data.tooltip = '1'
+            tempUser.data.tooltip === '1' ? tempUser.data.tooltip = '0' : tempUser.data.tooltip = '1';
+            axios.post(`/api/settings`, tempUser.data).then()
             return Object.assign({}, state, {user : tempUser})
         
 

@@ -80,6 +80,15 @@ module.exports = {
             
         Promise.all(tempArr).then(result => res.send())
 
+    },
+
+    setTooltip: (req, res)=> {
+
+        const db = req.app.get('db')
+
+        var {id, tooltip} = req.body
+
+        db.update_tooltip(tooltip, id).then(result => res.send())
     }
 
 }
