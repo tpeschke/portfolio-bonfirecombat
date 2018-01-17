@@ -96,7 +96,7 @@ app.get('/api/combats/:id', sqlCtrl.getAllCombats);
 app.get('/api/combat/:id', sqlCtrl.loadCombatants);
 app.get('/api/status/:id', sqlCtrl.getAllStatuses)
 
-app.get('/api/battle', sqlCtrl.newField);
+app.get('/api/newfield/:id', sqlCtrl.newField);
 app.delete('/api/battle/:id', sqlCtrl.deleteField);
 app.patch('/api/battle', sqlCtrl.saveField)
 

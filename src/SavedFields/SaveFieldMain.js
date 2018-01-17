@@ -29,6 +29,7 @@ class SaveFieldMain extends Component {
         this.props.PAGELOCATION('/SavedFields')
         this.props.setHeight((72+document.getElementById('Saved').clientHeight) + 'px')
     }
+
     componentDidUpdate(){
         this.props.setHeight((72+document.getElementById('Saved').clientHeight) + 'px');
     }
@@ -72,7 +73,7 @@ class SaveFieldMain extends Component {
                     <p className="savedItem"></p>
                     <p className="savedItem">{d.countnum}</p>
                     <p className="savedItem">{d.fighternum}</p>
-                    <p className="savedItem">{d.deadnum}</p>
+                    <p className="savedItem">{d.deadnum ? d.deadnum : 0}</p>
                     <button className="savedItem"
                         onClick={_ => this.deleteFieldCheck(d.id)}
                     >X</button>
@@ -88,7 +89,7 @@ class SaveFieldMain extends Component {
 
                 <div className="savedMenu">
                     <Link to='/BattleField'>
-                        <button onClick={this.props.NEWFIELD}>New Field</button>
+                        <button onClick={_=>this.props.NEWFIELD(this.props.user.data.id)}>New Field</button>
                     </Link>
                 </div>
 

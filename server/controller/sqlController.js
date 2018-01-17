@@ -33,8 +33,10 @@ module.exports = {
 
         const db = req.app.get('db')
 
-        db.GetFieldNumber()
-            .then(num => db.addNewField(num[0].count === '0' ? 'New Battlefield' : 'New Battlefield ' + num[0].count)
+        var { id } = req.params
+
+        db.GetFieldNumber(id)
+            .then(num => db.addNewField(num[0].count === '0' ? 'New Battlefield' : 'New Battlefield ' + num[0].count, id)
                 .then(result => res.status(200).send(result)))
 
     },

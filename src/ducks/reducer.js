@@ -60,10 +60,10 @@ const SAVE_FIELD = "SAVE_FIELD"
 
 //ACTION BUILDERS
 
-export function NEWFIELD() {
+export function NEWFIELD(id) {
     return {
         type: NEW_FIELD,
-        payload: axios.get('/api/battle').then()
+        payload: axios.get(`/api/newfield/${id}`).then()
     }
 }
 
