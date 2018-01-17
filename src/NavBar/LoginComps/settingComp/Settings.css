@@ -1,5 +1,5 @@
 .keyboard {
-    margin: 10px 25px;
+    margin: 10px 20px;
 }
 
 .keyrow {
@@ -14,15 +14,16 @@
 }
 
 .toprow {
-    margin-left: 20px;
+    margin-left: 25px;
+    margin-top: 20px;
 }
 
 .topbottomrow {
-    margin-left: 50px;
+    margin-left: 55px;
 }
 
 .bottombottomrow {
-    margin-left: 70px;
+    margin-left: 80px;
 }
 
 .space {
@@ -33,10 +34,11 @@
 
 .outTooltip {
     display: flex;
+    margin-top: 25px;
 }
 
 .switchOuter {
-    margin: 7px 10px;
+    margin: 7px 20px;
     position: relative;
     height: 14px;
     width: 34px;
@@ -65,4 +67,12 @@
 .OuterOff {
     background: rgb(151, 23, 21);
     border: 2px inset rgb(175, 28, 26);
+}
+
+/* ======================== */
+
+h7 {
+    min-width: 175px;
+    text-align: center;
+    padding-top: 5px;
 }

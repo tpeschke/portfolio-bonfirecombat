@@ -9,6 +9,7 @@ export default class Keyboard extends Component {
     render() {
         return (
             <div className="keyboard">
+                <h7>Keyboard Shortcuts</h7>
                 <div className="keyrow toprow">
                     <div className="key"
                         data-tip="+1 Count/1 Sec">

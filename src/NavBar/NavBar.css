@@ -112,8 +112,19 @@ img {
     transition: .6s;
 }
 
+.bannerBody {
+    margin-top: 0px;
+}
+
 .closed {
     height: 0;
+}
+
+#settingButton {
+    margin: 25px 89px;
+    height: 35px;
+    width: 82px;
+    font-size: 18px;
 }
 
 h6 {

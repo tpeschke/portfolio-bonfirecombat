@@ -16,14 +16,15 @@ class Settings extends Component {
                             <img src={user.data ? user.data.img : null} />
                             <h6>Welcome, {user.data ? user.data.username : null}</h6>
                         </div>
-                        <div>
-                            <h7>Keyboard Shortcuts</h7>
-                            <Keyboard />
+
+                        <div className="bannerBody">
+        
+                                <Keyboard />
+                           
+                                <TooltipSwitch />
+                            
                         </div>
-                        <div>
-                            <TooltipSwitch />
-                        </div>
-                        <a href='http://localhost:5678/auth/logout'><button>Log Out</button></a>
+                        <a href='http://localhost:5678/auth/logout'><button id="settingButton">Log Out</button></a>
                     </div>
                 </div>
             </div>

@@ -13,7 +13,8 @@ iframe {
   }
 
 .foreground {
-    position: relative
+    position: relative;
+    margin-top: 225px;
 }
 
 .coverUp {
@@ -29,7 +30,7 @@ iframe {
 .outDiveHome {
     position: relative;
     z-index: 1;
-    margin-top: -195px;
+    margin-top: -370px;
     display: flex;
     justify-content: space-around;
     align-content: center;
@@ -61,7 +62,7 @@ iframe {
 }
 
 .signInInner {
-    background-color:rgba(214, 205, 199, 1);
+    background-color:rgba(214, 205, 199, .9);
     width: 300px;
     height: 150px;
     border-radius: 25px;
