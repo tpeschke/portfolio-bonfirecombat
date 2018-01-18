@@ -67,6 +67,8 @@ const FLIP_TOOLTIP = "FLIP_TOOLTIP"
 
 const TOGGLE_SAVE = "TOGGLE_SAVE"
 
+const TOGGLE_PLAYERVIEW = "TOGGLE_PLAYERVIEW"
+
 //ACTION BUILDERS
 
 export function NEWFIELD(id) {
@@ -149,6 +151,12 @@ export function FLIPTOOLTIP() {
 export function TOGGLESAVE() {
     return {
         type: TOGGLE_SAVE
+    }
+}
+
+export function TOGGLEPLAYERVIEW() {
+    return {
+        type: TOGGLE_PLAYERVIEW
     }
 }
 
@@ -338,6 +346,9 @@ export default function reducer(state = initialState, action) {
 
         case TOGGLE_SAVE:
             return Object.assign({}, state, { finishedSaveOpen: !state.finishedSaveOpen})
+
+        case TOGGLE_PLAYERVIEW:
+            return Object.assign({}, state, { playerview: !state.playerview})
     
         default: return state
     }
