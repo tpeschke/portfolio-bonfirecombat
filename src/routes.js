@@ -3,6 +3,8 @@ import { Switch, Route } from 'react-router-dom';
 
 import BattleField from './BattleField/BattleFieldMain';
 import SavedField from './SavedFields/SaveFieldMain';
+import PlayerView from './playerview/Playerview';
+import PlayerNoBattle from './playerview/PlayerNoBattle';
 import Home from './Home/Home'
 import App from './App'
 
@@ -31,10 +33,17 @@ export class LandingPage extends Component {
             <div>
                 <Switch>
                     <Route
+                        path='/player/:battle'
+                        component={PlayerView} />
+                    <Route
+                        path='/player'
+                        component={PlayerNoBattle} />
+                    <Route
                         exact path='/'
                         component={Home} />
                     <Route
                         component={App} />
+
                 </Switch>
             </div>
         )

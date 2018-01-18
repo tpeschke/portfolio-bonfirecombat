@@ -8,8 +8,11 @@ const initialState = {
     count: 1,
     combatId: 0,
     combatName: 'New Battle',
+    playerview: false,
+
     fighterList: [],
     statusList: [],
+
     editopen: false,
     editopen2: false,
     topopen: false,
@@ -205,6 +208,7 @@ export default function reducer(state = initialState, action) {
                     return val
                 }
             })
+            axios.delete(`/api/fighter/${action.payload}`).then()
             return Object.assign({}, state, { fighterList: gonefighter })
 
         case ADVANCE_SPEED:
@@ -304,6 +308,7 @@ export default function reducer(state = initialState, action) {
                     modifiedStatus.push(state.statusList[i])
                 }
             }
+            axios.delete(`/api/status/${action.payload}`).then()
         return Object.assign( {}, state, { statusList: modifiedStatus})
 
         case ADD_NEW_STATUS:

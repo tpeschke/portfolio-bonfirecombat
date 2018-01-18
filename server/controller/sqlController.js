@@ -89,6 +89,24 @@ module.exports = {
         var {id, tooltip} = req.body
 
         db.update_tooltip(tooltip, id).then(result => res.send())
+    },
+
+    deleteFighter: (req, res)=> {
+
+        const db = req.app.get('db')
+
+        var { id } = req.params
+
+        db.delete_fighter(id).then()
+    },
+
+    deleteStatus: ( req, res ) => {
+
+        const db = req.app.get('db')
+
+        var { id } = req.params
+
+        db.delete_status(id).then()
     }
 
 }

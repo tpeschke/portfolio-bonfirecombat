@@ -3,11 +3,10 @@ import './reset.css'
 import './App.css';
 
 import { connect } from 'react-redux'
-import { withRouter, Switch, Route } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 import NavBar from './NavBar/NavBar'
 import Routes from './routes'
-import Statuses from './BattleField/MainFieldComp/Statuses'
 import Settings from './NavBar/LoginComps/Settings'
 
 class App extends Component {

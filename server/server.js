@@ -97,10 +97,13 @@ app.get('/api/combat/:id', sqlCtrl.loadCombatants);
 app.get('/api/status/:id', sqlCtrl.getAllStatuses)
 
 app.post('/api/newfield/:id', sqlCtrl.newField);
-app.delete('/api/battle/:id', sqlCtrl.deleteField);
-app.patch('/api/battle', sqlCtrl.saveField);
-app.post('/api/settings', sqlCtrl.setTooltip)
+app.post('/api/settings', sqlCtrl.setTooltip);
 
+app.delete('/api/battle/:id', sqlCtrl.deleteField);
+app.delete('/api/fighter/:id', sqlCtrl.deleteFighter);
+app.delete('/api/status/:id', sqlCtrl.deleteStatus)
+
+app.patch('/api/battle', sqlCtrl.saveField);
 
 const port = process.env.PORT
 
