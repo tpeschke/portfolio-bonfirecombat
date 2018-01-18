@@ -6,6 +6,7 @@ const express = require('express')
     , session = require('express-session')
     , passport = require('passport')
     , Auth0Strategy = require('passport-auth0')
+    , socket = require('socket.io')
 
 const sqlCtrl = require('./controller/sqlController')
 
@@ -105,11 +106,24 @@ app.delete('/api/status/:id', sqlCtrl.deleteStatus)
 
 app.patch('/api/battle', sqlCtrl.saveField);
 
+
+// ==========================================
+
 const port = process.env.PORT
 
 massive(process.env.CONNECTION_STRING).then(dbInstance => {
     app.set('db', dbInstance);
-    app.listen(port, _ => {
-        console.log(`Autumn Ends: The Frogs Settle Down Into The Earth ${port}`);
-    })
 });
+
+const io = socket(app.listen(port, _ => {
+    console.log(`Autumn Ends: The Frogs Settle Down Into The Earth ${port}`);
+}))
+
+// ====================================================
+
+io.on('connection', socket => {
+    socket.on('updateBattle', info => {
+        io.emit('playerInfo', info)
+    })
+})
+

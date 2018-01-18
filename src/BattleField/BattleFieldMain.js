@@ -13,7 +13,9 @@ import Graveyard from './MainFieldComp/Graveyard';
 import CombatWorkspace from './CombatWorkspace/CombatWorkspaceMain';
 import BattleName from './MainFieldComp/BattleName';
 import Statuses from './MainFieldComp/Statuses';
-import SaveFieldModals from './SaveFieldModals'
+import SaveFieldModals from './SaveFieldModals';
+
+import updatePlayer from '../playerview/SocketApi'
 
 import "./BattleField.css"
 
@@ -25,14 +27,17 @@ class BattleFieldMain extends Component {
         this.props.PAGELOCATION('/BattleField');
         this.props.setHeight((72 + document.getElementById('Battle').clientHeight) + 'px')
     }
+
     componentDidUpdate() {
         this.props.setHeight((72 + document.getElementById('Battle').clientHeight) + 'px');
+
+        var { fighterList, count, statusList, combatName, playerview } = this.props 
+        playerview ? updatePlayer(fighterList, count, statusList, combatName) : null;
     }
 
     render() {
 
         var { fighterList, count, KILLCOMBATANT, ADVANCESPEED, INPUTACTION, OPENMODAL, OPENMODAL2, OPENTOP, OPENTOP2, REMOVEFIGHTER } = this.props
-
 
         return (
             <div className="BattleMain fadeInApp" id="Battle">
@@ -94,13 +99,15 @@ class BattleFieldMain extends Component {
 }
 
 function mapStateToProps(state) {
-    var { combatId, combatName, fighterList, count, pendingSaveOpen, finishedSaveOpen } = state
+    var { combatId, combatName, fighterList, count, playerview, pendingSaveOpen, finishedSaveOpen, statusList } = state
 
     return {
         combatId,
         combatName,
         fighterList,
         count,
+        statusList,
+        playerview,
         pendingSaveOpen,
         finishedSaveOpen
     }
