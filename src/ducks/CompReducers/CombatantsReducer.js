@@ -11,6 +11,7 @@ const ADVANCE_SPEED = "ADVANCE_SPEED"
 const INPUT_ACTION = "INPUT_ACTION"
 const EDIT_FIGHTER = "EDIT_FIGHTER"
 const HANDLE_TOP = "HANDLE_TOP"
+const GET_HASH = "GET_HASH"
 
 //ACTION BUILDERS
 
@@ -79,5 +80,12 @@ export function HANDLETOP(fighter) {
     return {
         type: HANDLE_TOP,
         payload: fighter
+    }
+}
+
+export function GETHASH(id) {
+    return {
+        type: GET_HASH,
+        payload: axios.get(`/api/hash/${id}`).then()
     }
 }

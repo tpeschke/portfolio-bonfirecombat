@@ -29,6 +29,14 @@ module.exports = {
         db.getAllStatuses( id ).then( result => res.status(200).send(result) )
     },
 
+    getHash: (req, res) => {
+        const db = req.app.get('db')
+
+        var { id } = req.params
+
+        db.getHash( id ).then( result => res.status(200).send(result) )
+    },
+
     newField: (req, res) => {
 
         const db = req.app.get('db')

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { OPENMODAL, OPENTOP, OPENMODAL2, OPENTOP2, PAGELOCATION, TOGGLESAVE } from '../ducks/reducer'
-import { LOADCOMBATANTS, KILLCOMBATANT, REMOVEFIGHTER, ADVANCESPEED, INPUTACTION } from '../ducks/CompReducers/CombatantsReducer'
+import { LOADCOMBATANTS, KILLCOMBATANT, REMOVEFIGHTER, ADVANCESPEED, INPUTACTION, GETHASH } from '../ducks/CompReducers/CombatantsReducer'
 import { GETALLSTATUSES } from '../ducks/CompReducers/StatusReducer'
 
 import Counter from './CountComp/Count';
@@ -15,24 +15,40 @@ import BattleName from './MainFieldComp/BattleName';
 import Statuses from './MainFieldComp/Statuses';
 import SaveFieldModals from './SaveFieldModals';
 
-import updatePlayer from '../playerview/SocketApi'
+import socketFun from '../playerview/SocketApi'
 
 import "./BattleField.css"
 
 class BattleFieldMain extends Component {
+    constructor() {
+        super()
+
+        this.state = {intervalId: null,
+                     hello: 1}
+    }
 
     componentDidMount() {
         this.props.LOADCOMBATANTS(this.props.combatId);
         this.props.GETALLSTATUSES(this.props.combatId);
         this.props.PAGELOCATION('/BattleField');
+        this.props.GETHASH(this.props.combatId);
         this.props.setHeight((72 + document.getElementById('Battle').clientHeight) + 'px')
+
+        this.setState({ id: setInterval(this.startSending,500) })
+    }
+
+    componentWillUnmount(){
+        clearInterval(this.state.id)
     }
 
     componentDidUpdate() {
-        this.props.setHeight((72 + document.getElementById('Battle').clientHeight) + 'px');
+        this.props.setHeight((72 + document.getElementById('Battle').clientHeight) + 'px');   
+    }
 
-        var { fighterList, count, statusList, combatName, playerview } = this.props 
-        playerview ? updatePlayer(fighterList, count, statusList, combatName) : null;
+    startSending = () => {
+        var { count, hash } = this.props
+
+        socketFun.sendBattle({count: count, hash: hash})
     }
 
     render() {
@@ -99,33 +115,15 @@ class BattleFieldMain extends Component {
 }
 
 function mapStateToProps(state) {
-    var { combatId, combatName, fighterList, count, playerview, pendingSaveOpen, finishedSaveOpen, statusList } = state
+    var { combatId, combatName, fighterList, count, playerview, pendingSaveOpen, finishedSaveOpen, statusList, hash } = state
 
     return {
-        combatId,
-        combatName,
-        fighterList,
-        count,
-        statusList,
-        playerview,
-        pendingSaveOpen,
-        finishedSaveOpen
+        combatId,combatName,fighterList,count,statusList,playerview,pendingSaveOpen,finishedSaveOpen, hash
     }
 }
 
 let actionBuilder = {
-    LOADCOMBATANTS,
-    KILLCOMBATANT,
-    REMOVEFIGHTER,
-    ADVANCESPEED,
-    INPUTACTION,
-    OPENMODAL,
-    OPENTOP,
-    OPENMODAL2,
-    OPENTOP2,
-    GETALLSTATUSES,
-    PAGELOCATION,
-    TOGGLESAVE
+    LOADCOMBATANTS, KILLCOMBATANT, REMOVEFIGHTER, ADVANCESPEED, INPUTACTION, OPENMODAL, OPENTOP, OPENMODAL2, OPENTOP2, GETALLSTATUSES, PAGELOCATION, TOGGLESAVE, GETHASH
 }
 
 export default connect(mapStateToProps, actionBuilder)(BattleFieldMain)

@@ -85,6 +85,7 @@ app.get('/auth/logout', function(req, res) {
 })
 
 // ==================================================
+
 app.get('/auth/me', (req,res) => {
     if (!req.user) {
         res.status(404).send('User not found.');
@@ -95,7 +96,8 @@ app.get('/auth/me', (req,res) => {
 
 app.get('/api/combats/:id', sqlCtrl.getAllCombats);
 app.get('/api/combat/:id', sqlCtrl.loadCombatants);
-app.get('/api/status/:id', sqlCtrl.getAllStatuses)
+app.get('/api/status/:id', sqlCtrl.getAllStatuses);
+app.get('/api/hash/:id', sqlCtrl.getHash)
 
 app.post('/api/newfield/:id', sqlCtrl.newField);
 app.post('/api/settings', sqlCtrl.setTooltip);
@@ -105,7 +107,6 @@ app.delete('/api/fighter/:id', sqlCtrl.deleteFighter);
 app.delete('/api/status/:id', sqlCtrl.deleteStatus)
 
 app.patch('/api/battle', sqlCtrl.saveField);
-
 
 // ==========================================
 
@@ -122,8 +123,15 @@ const io = socket(app.listen(port, _ => {
 // ====================================================
 
 io.on('connection', socket => {
-    socket.on('updateBattle', info => {
-        io.emit('playerInfo', info)
+    socket.on('sub', interval => {
+        setInterval(_=> {
+            socket.emit('timer', new Date());
+        }, interval)
     })
-})
 
+    socket.on('battleSend', data => {
+        console.log(data)
+        io.emit(`${data.hash}`, data.count)
+    })
+
+})

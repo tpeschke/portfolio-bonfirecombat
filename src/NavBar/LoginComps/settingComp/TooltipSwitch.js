@@ -7,7 +7,7 @@ class TooltipSwitch extends Component {
 
     render() {
 
-        var { user, playerview } = this.props
+        var { user, hash } = this.props
 
         return (
             <div className="outTooltip">
@@ -18,13 +18,18 @@ class TooltipSwitch extends Component {
                     </div>
                     <h7 className="switchLabel">Counter Tool-tips</h7>
                 </div>
+
                 <div className="inTooltip">
+                <p>{hash}</p>
+                <h7 className="switchLabel">Combat Url Hash</h7>
+                </div>
+                {/* <div className="inTooltip">
                     <div className={user.data && playerview ? "switchOuter" : "switchOuter OuterOff"}
                         onClick={_ => this.props.TOGGLEPLAYERVIEW()}>
                         <div className={user.data && playerview ? "switch" : "switch off"}></div>
                     </div>
                     <h7  className="switchLabel">Player View</h7>
-                </div>
+                </div> */}
             </div>
 
         )
@@ -32,10 +37,10 @@ class TooltipSwitch extends Component {
 }
 
 function mapStateToProps(state) {
-    var { user, playerview } = state
+    var { user, hash } = state
     return {
         user,
-        playerview
+        hash
     }
 }
 

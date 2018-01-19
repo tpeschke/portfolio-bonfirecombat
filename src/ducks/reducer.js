@@ -4,6 +4,7 @@ import sort from '../components/sort'
 
 const initialState = {
     user: {},
+    hash: '',
     page: '/',
     count: 1,
     combatId: 0,
@@ -68,6 +69,8 @@ const FLIP_TOOLTIP = "FLIP_TOOLTIP"
 const TOGGLE_SAVE = "TOGGLE_SAVE"
 
 const TOGGLE_PLAYERVIEW = "TOGGLE_PLAYERVIEW"
+
+const GET_HASH = "GET_HASH"
 
 //ACTION BUILDERS
 
@@ -176,6 +179,9 @@ export default function reducer(state = initialState, action) {
 
         case GET_ALL_STATUSES + '_FULFILLED':
             return Object.assign({}, state, { statusList: action.payload.data })
+
+        case GET_HASH + '_FULFILLED':
+            return Object.assign({}, state, { hash : action.payload.data[0].urlhash}) 
 
         case INCREASE_COUNT:
             var newCount = +state.count + 1

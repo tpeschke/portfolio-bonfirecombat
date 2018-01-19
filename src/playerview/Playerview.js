@@ -4,8 +4,10 @@ import io from 'socket.io-client'
 
 import { connect } from 'react-redux'
 
-import playerBattle from './SocketApi'
+import socketFun from './SocketApi'
 import './playerview.css'
+
+// import getBattle from '../playerview/SocketApi'
 
 const socket = io(process.env.PORT)
 
@@ -14,34 +16,31 @@ export default class PlayerView extends Component {
         super(props)
 
         this.state = {
-            count: 0,
-            fighterList: [],
+            count: 'none yet',
+            combatName: "Battleplaceholder",
             statusList: [],
-            combatName: ''
+            fighterList: []
         }
     }
 
-    componentWillMount() {
-        socket.on('playerInfo', info => {
-            this.updateState(info)
+    componentDidMount() {
+        this.socket = io('/')
+        this.socket.on(`${this.props.match.params.battle}`, data => {
+            console.log('hello from the player')
+            this.updateDisplay(data)
         })
     }
 
-    componentDidUpdate() {
-        socket.on('playerInfo', info => {
-            this.updateState(info)
-        })
-    }
-
-    updateState = (battle) => {
-        var {count, fighterList, statusList, combatName } = battle
-        this.setState({ count: count, fighterList: fighterList, statusList: statusList, combatName: combatName  })
+    updateDisplay = (data) => {
+        this.setState({ count: data })
     }
 
     render() {
+
         return (
             <div className="playerBody">
                 <h1>Player view</h1>
+                <p>{this.state.combatName}</p>
                 <p>{this.state.count}</p>
             </div>
         )
