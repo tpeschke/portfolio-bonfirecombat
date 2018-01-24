@@ -20,13 +20,7 @@ import socketFun from '../playerview/SocketApi'
 import "./BattleField.css"
 
 class BattleFieldMain extends Component {
-    constructor() {
-        super()
-
-        this.state = {intervalId: null,
-                     hello: 1}
-    }
-
+    
     componentDidMount() {
         this.props.LOADCOMBATANTS(this.props.combatId);
         this.props.GETALLSTATUSES(this.props.combatId);

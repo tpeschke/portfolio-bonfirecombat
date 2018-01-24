@@ -96,7 +96,7 @@ export default class Acting extends Component {
                 </div>
                 <div className="border"></div>
 
-                <FlipMove>
+                <FlipMove duration={750} easing="ease-out">
                     {actingList}
                 </FlipMove>
 
