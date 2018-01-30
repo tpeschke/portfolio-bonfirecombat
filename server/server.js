@@ -11,6 +11,7 @@ const express = require('express')
 const sqlCtrl = require('./controller/sqlController')
 
 const app = new express()
+app.use(express.static(`${__dirname}/../build`))
 app.use(bodyParser.json())
 app.use(cors())
 app.use(session({
@@ -107,6 +108,11 @@ app.delete('/api/fighter/:id', sqlCtrl.deleteFighter);
 app.delete('/api/status/:id', sqlCtrl.deleteStatus)
 
 app.patch('/api/battle', sqlCtrl.saveField);
+
+const path = require('path')
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname,'../build/index.html'))
+})
 
 // ==========================================
 

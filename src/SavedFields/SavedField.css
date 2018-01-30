@@ -17,28 +17,48 @@
 
 .savedListHeader {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-around;
     font-weight: 800;
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
+    min-width: 180px;
 }
 
 .savedItem {
-    min-width: 75px;
+    min-width: 80px;
     text-align: center;
-    margin: 10px 20px;
+    margin: 10px 25px;
 }
 
 .savedItemName {
-    min-width: 225px;
-    margin: 10px 25px;
+    min-width: 180px;
+    margin: 0 25px;
+    padding: 0;
     text-align: left;
     border: none;
 }
 
 .savedCombat {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-around;
+}
+
+.savedFieldDisplay {
+    display: flex;
+    justify-content: space-around;
+    margin: 12px;
+    font-weight: 800;
+    transition: .6s
+}
+
+#loading {
+    animation-name: fade;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes fade {
+    0% {color: rgb(151, 23, 21);}
+    100% {color: white;}
 }
 
 .mounted {

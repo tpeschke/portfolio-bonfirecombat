@@ -102,9 +102,11 @@ input:hover {
 
 button {
     border-style: none;
+    height: 100%;
     background-color: transparent;
     font-weight: 800;
     font-family: 'MedievalSharp';
+    padding: 0;
 }
 
 button:hover {
@@ -297,6 +299,7 @@ h6 {
 .listHeader {
     font-family: 'Spectral SC', serif;
     color: rgb(151, 23, 21);
+    margin: 10px 25px;
 }
 
 #modalHeader {
