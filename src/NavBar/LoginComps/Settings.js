@@ -24,7 +24,7 @@ class Settings extends Component {
                                 <TooltipSwitch />
                             
                         </div>
-                        <a href='http://localhost:5678/auth/logout'><button id="settingButton">Log Out</button></a>
+                        <a href={`${process.env.REACT_APP_LOGOUT}`}><button id="settingButton">Log Out</button></a>
                     </div>
                 </div>
             </div>

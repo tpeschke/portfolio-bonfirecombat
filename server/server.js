@@ -11,7 +11,7 @@ const express = require('express')
 const sqlCtrl = require('./controller/sqlController')
 
 const app = new express()
-app.use(express.static(`${__dirname}/../build`))
+app.use( express.static( `${__dirname}/../build` ) );
 app.use(bodyParser.json())
 app.use(cors())
 app.use(session({
@@ -68,7 +68,7 @@ passport.use(new Auth0Strategy({
 
 app.get('/auth', passport.authenticate('auth0'));
 app.get('/auth/callback', passport.authenticate('auth0', {
-    successRedirect: 'http://localhost:5679/SavedFields'
+    successRedirect: `${process.env.LOCALHOST}/SavedFields`
 }));
 
 passport.serializeUser((id, done) => {
@@ -82,7 +82,7 @@ passport.deserializeUser((id, done) => {
 
 app.get('/auth/logout', function(req, res) {
     req.logOut();
-    res.redirect('http://localhost:5679/')
+    res.redirect(`${process.env.LOCALHOST}/`)
 })
 
 // ==================================================
