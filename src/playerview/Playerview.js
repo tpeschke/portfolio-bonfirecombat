@@ -36,6 +36,8 @@ export default class PlayerView extends Component {
     }
 
     render() {
+        console.log(this.state.view)
+
         if (this.state.playerview) {
             return (
                 <div className="playerBody">
