@@ -36,9 +36,8 @@ export default class PlayerView extends Component {
     }
 
     render() {
-        console.log(this.state.view)
 
-        if (this.state.playerview) {
+        if (this.state.view) {
             return (
                 <div className="playerBody">
                     <h1>Player view</h1>
@@ -49,7 +48,7 @@ export default class PlayerView extends Component {
         } else {
             return (
                 <div className="playerBody">
-                    Your GM has currently turned off the view on {this.state.combatName}
+                    Your GM has currently turned off the view on this field
                 </div>
             )
         }
