@@ -121,7 +121,7 @@ class AddNewFighter extends Component {
                                 <input placeholder="Initiative" className="inputFinder" id="modalEditInput"
                                     onChange={e => this.handleAction(e.target.value)} />
  
-                                 <button id="modalEditButton"
+                                 <button id="modalAddButton"
                                      onClick={_ => this.handleSubmit(color, name, speed, action, combatId)}>SUBMIT</button>
                             </div>
                         </div>

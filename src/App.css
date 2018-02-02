@@ -231,6 +231,10 @@ input#modalEditInput::placeholder {
     font-weight: 400;
 }
 
+#modalAddButton {
+    height: auto;
+}
+
 /* =================================== */
 
 .settingsBannerOut {
