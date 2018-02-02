@@ -7,7 +7,7 @@ class TooltipSwitch extends Component {
 
     render() {
 
-        var { user, hash } = this.props
+        var { user, hash, playerview } = this.props
 
         return (
             <div className="outTooltip">
