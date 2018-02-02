@@ -23,13 +23,13 @@ class TooltipSwitch extends Component {
                 <p>{hash}</p>
                 <h7 className="switchLabel">Combat Url Hash</h7>
                 </div>
-                {/* <div className="inTooltip">
+                <div className="inTooltip">
                     <div className={user.data && playerview ? "switchOuter" : "switchOuter OuterOff"}
                         onClick={_ => this.props.TOGGLEPLAYERVIEW()}>
                         <div className={user.data && playerview ? "switch" : "switch off"}></div>
                     </div>
                     <h7  className="switchLabel">Player View</h7>
-                </div> */}
+                </div>
             </div>
 
         )

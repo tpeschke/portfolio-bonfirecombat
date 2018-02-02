@@ -19,20 +19,21 @@ export default class PlayerView extends Component {
             count: 'none yet',
             combatName: "Battleplaceholder",
             statusList: [],
-            fighterList: []
+            fighterList: [],
+            view: false
         }
     }
 
     componentDidMount() {
         this.socket = io('/')
         this.socket.on(`${this.props.match.params.battle}`, data => {
-            console.log('hello from the player')
+            console.log(data)
             this.updateDisplay(data)
         })
     }
 
     updateDisplay = (data) => {
-        this.setState({ count: data })
+        this.setState({ count: data.count, view: data.playerview })
     }
 
     render() {
@@ -42,6 +43,7 @@ export default class PlayerView extends Component {
                 <h1>Player view</h1>
                 <p>{this.state.combatName}</p>
                 <p>{this.state.count}</p>
+                {this.state.view}
             </div>
         )
     }
