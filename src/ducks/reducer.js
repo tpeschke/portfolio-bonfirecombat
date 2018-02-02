@@ -9,7 +9,7 @@ const initialState = {
     count: 1,
     combatId: 0,
     combatName: 'New Battle',
-    playerview: true,
+    playerview: false,
 
     fighterList: [],
     statusList: [],

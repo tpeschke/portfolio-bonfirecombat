@@ -78,7 +78,7 @@ img {
     position: absolute;
     top: 181px;
     right: -414px; 
-    height: 550px;
+    height: 600px;
     width: 300px;
     overflow-y: hidden;
     border-bottom-left-radius: 25px;
@@ -88,7 +88,7 @@ img {
 }
 
 .settingBannerMid {
-    height: 550px;
+    height: 600px;
     width: 300px;
     border-bottom: 5px solid rgba(33, 53, 80, .75);
     border-left: 5px solid rgba(33, 53, 80, .75);
@@ -102,12 +102,12 @@ img {
     flex-direction: column;
     justify-content: space-between;
     background: rgba(33, 53, 80, 0.75);
-    height: 530px;
+    height: 580px;
     width: 260px;
     margin-left: 15px;
     overflow-y: hidden;
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 
     transition: .6s;
 }
@@ -121,7 +121,7 @@ img {
 }
 
 #settingButton {
-    margin: 25px 89px;
+    margin: 15px 89px;
     height: 35px;
     width: 82px;
     font-size: 18px;
