@@ -13,7 +13,7 @@ const sqlCtrl = require('./controller/sqlController')
 const app = new express()
 app.use(bodyParser.json())
 app.use(cors())
-app.use( express.static( `./../build` ) );
+app.use( express.static( __dirname + `/../build` ) );
 app.use(session({
         secret: process.env.SESSION_SECRET,
         resave: false,
