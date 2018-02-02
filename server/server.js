@@ -68,7 +68,7 @@ passport.use(new Auth0Strategy({
 
 app.get('/auth', passport.authenticate('auth0'));
 app.get('/auth/callback', passport.authenticate('auth0', {
-    successRedirect: `${process.env.LOCALHOST}/SavedFields`
+    successRedirect: `/SavedFields`
 }));
 
 passport.serializeUser((id, done) => {
@@ -82,7 +82,7 @@ passport.deserializeUser((id, done) => {
 
 app.get('/auth/logout', function(req, res) {
     req.logOut();
-    res.redirect(`${process.env.LOCALHOST}/`)
+    res.redirect(`/`)
 })
 
 // ==================================================
