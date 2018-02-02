@@ -84,7 +84,7 @@ class NewStatus extends Component {
                             <div className="modalEditInputs">
 
                             <div className="border modalBorder"></div>
-                                <p>Name</p>
+                                <p id="statusName">Name</p>
                                 <input className="inputFinder" id="statusInput"
                                     onChange={e => this.handleName(e.target.value)} />
 

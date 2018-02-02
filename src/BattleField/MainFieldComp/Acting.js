@@ -86,7 +86,7 @@ export default class Acting extends Component {
             <div className="Main">
                 <p>Acting</p>
                 <div className="border sectionborder"></div>
-                <div className="Header">
+                <div className="Header" id="sectionHeader">
                     <p className="ListItem Name NameHeader listHeader">Name</p>
                     <p className="ListItem listHeader">Speed</p>
                     <p className="ListItem listHeader">Action</p>

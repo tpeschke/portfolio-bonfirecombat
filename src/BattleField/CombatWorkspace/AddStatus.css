@@ -40,3 +40,12 @@
     font-size: 25px;
     margin: 15px 0 0 0;
 }
+
+#modalStatusButton {
+    height: auto;
+    /* margin: 10px 0; */
+}
+
+#statusName {
+    margin-top: 10px;
+}
