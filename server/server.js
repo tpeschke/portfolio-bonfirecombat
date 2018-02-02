@@ -99,7 +99,8 @@ app.get('/api/combats/:id', sqlCtrl.getAllCombats);
 app.get('/api/combat/:id', sqlCtrl.loadCombatants);
 app.get('/api/status/:id', sqlCtrl.getAllStatuses);
 app.get('/api/hash/:id', sqlCtrl.getHash);
-app.get('/api/player/battle/:hash', sqlCtrl.getBattleByHash)
+app.get('/api/player/battle/:hash', sqlCtrl.getBattleByHash);
+app.get('/api/player/fighter/:hash', sqlCtrl.getCombatantsbyHash)
 
 app.post('/api/newfield/:id', sqlCtrl.newField);
 app.post('/api/settings', sqlCtrl.setTooltip);

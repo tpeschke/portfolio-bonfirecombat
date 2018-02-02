@@ -45,6 +45,18 @@ module.exports = {
         db.getBattleByHash(hash).then( result => res.send(result))
     },
 
+    getCombatantsbyHash: (req, res) => {
+        const db = req.app.get('db')
+
+        var { hash } = req.params;
+        tempArr = []
+
+        tempArr.push(db.getFighterByHash(hash).then())
+        tempArr.push(db.getStatusByHash(hash).then())
+
+        Promise.all(tempArr).then( result => res.send(result))
+    },
+
     newField: (req, res) => {
 
         const db = req.app.get('db')

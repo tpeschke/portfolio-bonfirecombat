@@ -3,6 +3,7 @@ import './reset.css'
 import './App.css';
 
 import { connect } from 'react-redux'
+import {TOGGLEPLAYERVIEW} from './ducks/reducer'
 import { withRouter } from 'react-router-dom'
 
 import NavBar from './NavBar/NavBar'
@@ -39,7 +40,9 @@ class App extends Component {
             <div className="settingsBannerOut">
               <Settings
                 user={this.props.user}
-                settings={this.props.settings} />
+                settings={this.props.settings}
+                TOGGLEPLAYERVIEW={this.props.TOGGLEPLAYERVIEW}
+                playerview={this.props.playerview} />
             </div>
           </div>
           <div className="headpic"></div>
@@ -62,12 +65,13 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
-  var { user, settings } = state
+  var { user, settings, playerview } = state
 
   return {
     user,
-    settings
+    settings,
+    playerview
   }
 }
 
-export default withRouter(connect(mapStateToProps)(App))
+export default withRouter(connect(mapStateToProps, {TOGGLEPLAYERVIEW})(App))

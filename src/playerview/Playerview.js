@@ -7,8 +7,6 @@ import { connect } from 'react-redux'
 import socketFun from './SocketApi'
 import './playerview.css'
 
-// import getBattle from '../playerview/SocketApi'
-
 const socket = io(process.env.PORT)
 
 export default class PlayerView extends Component {
@@ -16,11 +14,11 @@ export default class PlayerView extends Component {
         super(props)
 
         this.state = {
-            count: 'none yet',
+            count: 0,
             combatName: "Battleplaceholder",
             statusList: [],
             fighterList: [],
-            view: false
+            view: true
         }
     }
 
@@ -29,20 +27,22 @@ export default class PlayerView extends Component {
 
         this.socket = io('/')
         this.socket.on(`${battle}`, data => {
-            this.updateDisplay(data)
+            this.setState({ view: data.playerview })
         })
+
         if (this.state.combatName == 'Battleplaceholder') {
         axios.get('/api/player/battle/' + battle).then((req, res) => {
             this.setState({combatName: req.data[0].namecombat})
         })}
-    }
 
-    updateDisplay = (data) => {
-        this.setState({ view: data.playerview })
+        axios.get(`/api/player/fighter/${battle}`).then((req, res) => {
+            this.setState({fighterList: req.data[0], statusList: req.data[1]})
+        })
     }
 
     render() {
         if (this.state.fighterList) {
+
             var playerList = this.state.fighterList.map((d, i) => {
 
                 let color = { background: d.colorcode }
@@ -51,8 +51,22 @@ export default class PlayerView extends Component {
                     return <div
                     className={d.topcheck === '1' ? 'List top' : 'List'}
                     key={d.id}>
+                    <div className="color" style={color}></div>
                     <p className="ListItem Name">{d.namefighter}</p>
-                    <p className="ListItem Name">{d.actioncount}</p>
+                    </div>
+                }
+            })
+
+            var deadList = this.state.fighterList.map((d, i) => {
+
+                let color = { background: d.colorcode }
+
+                if (d.dead === '1') {
+                    return <div
+                    className='List'
+                    key={d.id}>
+                    <div className="color" style={color}></div>
+                    <p className="ListItem Name">{d.namefighter}</p>
                     </div>
                 }
             })
@@ -64,8 +78,10 @@ export default class PlayerView extends Component {
                     <h1>Player view</h1>
                     <p>{this.state.combatName}</p>
                     <p>{this.state.count}</p>
-
+                    <p>The Quick</p>
                     {playerList}
+                    <p>The Dead</p>
+                    {deadList}
                 </div>
             )
         } else {

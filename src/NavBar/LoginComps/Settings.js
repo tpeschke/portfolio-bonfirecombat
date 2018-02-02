@@ -18,13 +18,17 @@ class Settings extends Component {
                         </div>
 
                         <div className="bannerBody">
-        
-                                <Keyboard />
-                           
-                                <TooltipSwitch />
-                            
+
+                            <Keyboard />
+
+                            <TooltipSwitch />
+
                         </div>
-                        <a href={`${process.env.REACT_APP_LOGOUT}`}><button id="settingButton">Log Out</button></a>
+                        <a href={`${process.env.REACT_APP_LOGOUT}`}>
+                            <button id="settingButton"
+                                onClick={_ => this.props.playerview ? this.props.TOGGLEPLAYERVIEW() : null}
+                            >Log Out</button>
+                        </a>
                     </div>
                 </div>
             </div>
