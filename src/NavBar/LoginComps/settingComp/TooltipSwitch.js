@@ -37,10 +37,11 @@ class TooltipSwitch extends Component {
 }
 
 function mapStateToProps(state) {
-    var { user, hash } = state
+    var { user, hash, playerview } = state
     return {
         user,
-        hash
+        hash,
+        playerview
     }
 }
 
