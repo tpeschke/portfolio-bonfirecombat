@@ -27,7 +27,6 @@ export default class PlayerView extends Component {
     componentDidMount() {
         this.socket = io('/')
         this.socket.on(`${this.props.match.params.battle}`, data => {
-            console.log(data)
             this.updateDisplay(data)
         })
     }
@@ -37,14 +36,21 @@ export default class PlayerView extends Component {
     }
 
     render() {
-
-        return (
-            <div className="playerBody">
-                <h1>Player view</h1>
-                <p>{this.state.combatName}</p>
-                <p>{this.state.count}</p>
-                {this.state.view}
-            </div>
-        )
+        if (this.state.playerview) {
+            return (
+                <div className="playerBody">
+                    <h1>Player view</h1>
+                    <p>{this.state.combatName}</p>
+                    <p>{this.state.count}</p>
+                </div>
+            )
+        } else {
+            return (
+                <div>
+                    Your GM has currently turned off the view on {this.state.combatName}
+                </div>
+            )
+        }
+        
     }
 }
