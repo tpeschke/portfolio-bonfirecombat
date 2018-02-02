@@ -46,7 +46,7 @@ export default class PlayerView extends Component {
             )
         } else {
             return (
-                <div>
+                <div className="playerBody">
                     Your GM has currently turned off the view on {this.state.combatName}
                 </div>
             )
