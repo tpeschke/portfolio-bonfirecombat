@@ -38,7 +38,7 @@ export default class PlayerView extends Component {
     }
 
     updateDisplay = (data) => {
-        this.setState({ count: data.count, view: data.playerview, fighterList: data.fighterList, statusList: data.statusList   })
+        this.setState({ count: data.count, view: data.playerview })
     }
 
     render() {

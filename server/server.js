@@ -134,7 +134,6 @@ io.on('connection', socket => {
     })
     
     socket.on('battleSend', data => {
-        console.log(data)
         io.emit(`${data.hash}`, data)
     })
     
