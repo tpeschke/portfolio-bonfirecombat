@@ -40,9 +40,9 @@ class BattleFieldMain extends Component {
     }
 
     startSending = () => {
-        var { count, hash, playerview } = this.props
+        var { fighterList, count, statusList , hash, playerview } = this.props
 
-        socketFun.sendBattle({count: count, hash: hash, playerview: playerview})
+        socketFun.sendBattle({count: count, hash: hash, fighterList: fighterList, statusList: statusList})
     }
 
     render() {

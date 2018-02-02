@@ -20,22 +20,43 @@ export default class PlayerView extends Component {
             combatName: "Battleplaceholder",
             statusList: [],
             fighterList: [],
-            view: false
+            view: true
         }
     }
 
     componentDidMount() {
+        var { battle } = this.props.match.params
+
         this.socket = io('/')
-        this.socket.on(`${this.props.match.params.battle}`, data => {
+        this.socket.on(`${battle}`, data => {
             this.updateDisplay(data)
         })
+        if (this.state.combatName == 'Battleplaceholder') {
+        axios.get('/api/player/battle/' + battle).then((req, res) => {
+            this.setState({combatName: req.data[0].namecombat})
+        })}
     }
 
     updateDisplay = (data) => {
-        this.setState({ count: data.count, view: data.playerview })
+        this.setState({ count: data.count, view: data.playerview, fighterList: data.fighterList, statusList: data.statusList   })
     }
 
     render() {
+        if (this.state.fighterList) {
+            var playerList = this.state.fighterList.map((d, i) => {
+
+                let color = { background: d.colorcode }
+
+                if (d.dead === '0') {
+                    return <div
+                    className={d.topcheck === '1' ? 'List top' : 'List'}
+                    key={d.id}>
+                    <p className="ListItem Name">{d.namefighter}</p>
+                    <p className="ListItem Name">{d.actioncount}</p>
+                    </div>
+                }
+            })
+        }
 
         if (this.state.view) {
             return (
@@ -43,11 +64,14 @@ export default class PlayerView extends Component {
                     <h1>Player view</h1>
                     <p>{this.state.combatName}</p>
                     <p>{this.state.count}</p>
+
+                    {playerList}
                 </div>
             )
         } else {
             return (
                 <div className="playerBody">
+                    {this.state.combatName}
                     Your GM has currently turned off the view on this field
                 </div>
             )

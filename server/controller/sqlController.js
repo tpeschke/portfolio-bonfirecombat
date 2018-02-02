@@ -37,6 +37,14 @@ module.exports = {
         db.getHash( id ).then( result => res.status(200).send(result) )
     },
 
+    getBattleByHash: (req, res) => {
+        const db = req.app.get('db')
+
+        var { hash } = req.params
+
+        db.getBattleByHash(hash).then( result => res.send(result))
+    },
+
     newField: (req, res) => {
 
         const db = req.app.get('db')
