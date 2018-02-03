@@ -24,40 +24,80 @@ export default class PlayerView extends Component {
 
     componentDidMount() {
         var { battle } = this.props.match.params
+        var { count, view } = this.state
 
-        this.socket = io('/')
-        this.socket.on(`${battle}`, data => {
-            this.setState({ view: data.playerview })
-        })
-        this.socket.on(`${battle}-count`, data => {
-            this.setState({ count: data.count})
-        })
-        this.socket.on(`${battle}-top`, data => {
-            console.log(data.id)
-            var topfighter = this.state.fighterList.map(val => {
-                console.log(val.id)
-                if (val.id === data.id) {
-                    console.log('fighter')
-                    val.topcheck = '1'
-                    return val
-                } else {
-                    console.log('not fighter')
-                    return val
-                }})
-            this.setState({ fighterList: topfighter})
-        }) 
-        
+        // this.socket = io('/')
+        // this.socket.on(`${battle}`, data => {
+        //     if (view !== data.playerview) {
+        //         this.setState({ view: data.playerview })
+        //     }
+        // })
+        // this.socket.on(`${battle}-count`, data => {
+        //     if (data.count) {
+        //         this.setState({ count: data.count })
+        //     }
+        // })
+        // this.socket.on(`${battle}-top`, data => {
+        //     if (data.id) {
+        //         var topfighter = this.state.fighterList.map(val => {
+        //             console.log(val.id)
+        //             if (val.id === data.id) {
+        //                 console.log('fighter')
+        //                 val.topcheck = '1'
+        //                 return val
+        //             } else {
+        //                 console.log('not fighter')
+        //                 return val
+        //             }
+        //         })
+        //         this.setState({ fighterList: topfighter })
+        //     }
+        // })
+
         if (this.state.combatName == 'Battleplaceholder') {
             axios.get('/api/player/battle/' + battle).then((req, res) => {
-                this.setState({combatName: req.data[0].namecombat})
-            })}
-            
-            axios.get(`/api/player/fighter/${battle}`).then((req, res) => {
-                this.setState({fighterList: req.data[0], statusList: req.data[1]})
+                this.setState({ combatName: req.data[0].namecombat })
             })
         }
 
-        
+        axios.get(`/api/player/fighter/${battle}`).then((req, res) => {
+            this.setState({ fighterList: req.data[0], statusList: req.data[1] })
+        })
+    }
+
+    componentWillUpdate() {
+        var { battle } = this.props.match.params
+        var { count, view } = this.state
+
+        this.socket = io('/')
+        this.socket.on(`${battle}`, data => {
+            if (view !== data.playerview) {
+                this.setState({ view: data.playerview })
+            }
+        })
+        this.socket.on(`${battle}-count`, data => {
+            if (data.count) {
+                this.setState({ count: data.count })
+            }
+        })
+        this.socket.on(`${battle}-top`, data => {
+            if (data.id) {
+                var topfighter = this.state.fighterList.map(val => {
+                    console.log(val.id)
+                    if (val.id === data.id) {
+                        console.log('fighter')
+                        val.topcheck = '1'
+                        return val
+                    } else {
+                        console.log('not fighter')
+                        return val
+                    }
+                })
+                this.setState({ fighterList: topfighter })
+            }
+        })
+    }
+
     render() {
         if (this.state.fighterList) {
 
@@ -67,10 +107,10 @@ export default class PlayerView extends Component {
 
                 if (d.dead === '0') {
                     return <div
-                    className={d.topcheck === '1' ? 'List top' : 'List'}
-                    key={d.id}>
-                    <div className="color" style={color}></div>
-                    <p className="ListItem Name">{d.namefighter}</p>
+                        className={d.topcheck === '1' ? 'List top' : 'List'}
+                        key={d.id}>
+                        <div className="color" style={color}></div>
+                        <p className="ListItem Name">{d.namefighter}</p>
                     </div>
                 }
             })
@@ -81,10 +121,10 @@ export default class PlayerView extends Component {
 
                 if (d.dead === '1') {
                     return <div
-                    className='List'
-                    key={d.id}>
-                    <div className="color" style={color}></div>
-                    <p className="ListItem Name">{d.namefighter}</p>
+                        className='List'
+                        key={d.id}>
+                        <div className="color" style={color}></div>
+                        <p className="ListItem Name">{d.namefighter}</p>
                     </div>
                 }
             })
@@ -110,6 +150,6 @@ export default class PlayerView extends Component {
                 </div>
             )
         }
-        
+
     }
 }
