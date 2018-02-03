@@ -35,13 +35,13 @@ export default class PlayerView extends Component {
         this.socket.on(`${battle}-top`, data => {
             console.log(data.id)
             var topfighter = this.state.fighterList.map(val => {
-                console.log('hit')
+                console.log(val.id)
                 if (val.id === data.id) {
                     console.log('fighter')
                     val.topcheck = '1'
                     return val
                 } else {
-                    
+                    console.log('not fighter')
                     return val
                 }})
             this.setState({ fighterList: topfighter})
