@@ -17,7 +17,7 @@ export default class Graveyard extends Component {
 
     handleResurrect = (id) => {
         console.log(this.props.hash)
-        this.props.remove(id)
+        this.props.kill(id)
         socketFun.playerResurrect({id: id, hash: this.props.hash})
     }
 
@@ -34,11 +34,11 @@ export default class Graveyard extends Component {
                         <p className="ListItemGrave GraveName gravelist">{d.namefighter}</p>
 
                         <button className="ListItemGrave gravelist"
-                            onClick={_ => this.props.kill(d.id)}
+                            onClick={_ => this.handleResurrect(d.id)}
                         >\(•◡•)/</button>
 
                         <button className="ListItemGrave gravelist"
-                            onClick={_ => this.handleResurrect(d.id)}
+                            onClick={_ => this.props.remove(d.id)}
                         >X</button>
 
                     </div>
