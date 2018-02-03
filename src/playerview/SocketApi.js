@@ -4,6 +4,9 @@ const socket = io(process.env.PORT)
 const socketFun = {
     sendBattle(data) {
         socket.emit('battleSend', data)
+    },
+    updateCount(data) {
+        socket.emit('updateCount', data)
     }
    
 }

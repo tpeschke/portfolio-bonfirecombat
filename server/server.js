@@ -137,6 +137,10 @@ io.on('connection', socket => {
     socket.on('battleSend', data => {
         io.emit(`${data.hash}`, data)
     })
+
+    socket.on('updateCount', data => {
+        io.emit(`${data.hash}-count`, data)
+    })
     
 })
 

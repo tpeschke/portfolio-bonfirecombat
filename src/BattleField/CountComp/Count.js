@@ -8,7 +8,7 @@ import CounterMiddle from './CounterMiddle'
 import './Count.css'
 
 import { connect } from 'react-redux'
-
+import socketFun from '../../playerview/SocketApi'
 import { INCREASECOUNT, DECREASECOUNT, RESETCOUNT } from '../../ducks/CompReducers/counterReducer'
 
 
@@ -38,6 +38,10 @@ class Counter extends Component {
         Mousetrap.unbind(['s'], this.stopTime)
         Mousetrap.unbind(['x'], this.props.RESETCOUNT)
         this.stopTime()
+    }
+
+    componentWillReceiveProps(next) {
+        socketFun.updateCount({count: next.count, hash: this.props.hash})
     }
 
     stopTime = () => {
@@ -81,11 +85,12 @@ class Counter extends Component {
 
 function mapStateToProps(state) {
 
-    var { count, user } = state
+    var { count, user, hash } = state
 
     return {
         count,
-        user
+        user,
+        hash
     }
 }
 

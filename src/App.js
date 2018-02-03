@@ -65,13 +65,12 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
-  var { user, settings, playerview } = state
+  var { user, settings } = state
 
   return {
     user,
-    settings,
-    playerview
+    settings
   }
 }
 
-export default withRouter(connect(mapStateToProps, {TOGGLEPLAYERVIEW})(App))
+export default withRouter(connect(mapStateToProps)(App))
