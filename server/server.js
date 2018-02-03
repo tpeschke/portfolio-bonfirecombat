@@ -158,6 +158,9 @@ io.on('connection', socket => {
         io.emit(`${data.hash}-resurrect`, data)
     })
     
+    socket.on('playerUpdate', data => {
+        io.emit(`${data}-update`, data)
+    })
 })
 
 app.get('*', (req, res) => {

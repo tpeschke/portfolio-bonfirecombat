@@ -52,7 +52,8 @@ class BattleFieldMain extends Component {
         return (
             <div className="BattleMain fadeInApp" id="Battle">
                 <BattleName
-                    combat={this.props.combatName} />
+                    combat={this.props.combatName}
+                    hash={hash} />
 
                 <div className="counterOuter">
                     <Counter />

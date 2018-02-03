@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import socketFun from '../../playerview/SocketApi'
 
 import { connect } from 'react-redux'
 
@@ -21,6 +22,7 @@ class BattleName extends Component {
             statusList: statusList
         }
 
+        socketFun.playerUpdate({hash: this.props.hash})
         this.props.SAVEFIELD(tempField)
     }
 

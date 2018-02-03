@@ -94,6 +94,9 @@ export default class PlayerView extends Component {
                 this.setState({ fighterList: topfighter })
             }
         })
+        this.socket.on(`${battle}-update`, data => {
+            this.forceUpdate()
+        })
     }
 
     render() {
