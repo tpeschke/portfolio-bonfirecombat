@@ -82,6 +82,7 @@ export default class PlayerView extends Component {
             }
         })
         this.socket.on(`${battle}-resurrect`, data => {
+            console.log('player')
             if (data.id) {
                 var topfighter = this.state.fighterList.map(val => {
                     if (val.id === data.id) {
