@@ -72,7 +72,7 @@ export default class PlayerView extends Component {
             if (data.id) {
                 var topfighter = this.state.fighterList.map(val => {
                     if (val.id === data.id) {
-                        val.dead = '0'
+                        val.topcheck = '0'
                         return val
                     } else {
                         return val
