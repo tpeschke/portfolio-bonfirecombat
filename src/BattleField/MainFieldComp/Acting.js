@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import FlipMove from 'react-flip-move'
-import socketFun from '../../playerview/SocketApi'
 
 import ActEditFighter from './ActingOnDeckComponents/ActEditFighter'
 import ActToP from './ActingOnDeckComponents/ActThresholdOfPain'
@@ -38,7 +37,6 @@ export default class Acting extends Component {
 
     handleTop = (id) => {
         this.setState({ holdid: id })
-        socketFun.playerTop({id: id, hash: this.props.hash})
         this.props.top2()
     }
 
@@ -110,7 +108,8 @@ export default class Acting extends Component {
                     id={this.state.holdid} />
 
                 <ActToP
-                    id={this.state.holdid} />
+                    id={this.state.holdid}
+                    hash={this.props.hash} />
             </div>
         )
     }
