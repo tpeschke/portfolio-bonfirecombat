@@ -147,10 +147,12 @@ export default class PlayerView extends Component {
                         <div className='border'></div>
                         <div className="listDiv">{deadList}</div>
                     </div>
+
+                    <div className="playerStatus">
                     <StatusContainer
                         list={this.state.statusList}
                         count={this.state.count} />
-
+                    </div>
                 </div>
             )
         } else {
