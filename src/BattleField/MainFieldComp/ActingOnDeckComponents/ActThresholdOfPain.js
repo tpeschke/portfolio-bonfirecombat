@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import socketFun from '../../playerview/SocketApi'
+import socketFun from '../../../playerview/SocketApi'
 
 import { connect } from 'react-redux';
 
