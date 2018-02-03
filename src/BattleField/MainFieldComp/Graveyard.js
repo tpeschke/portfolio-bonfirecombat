@@ -16,6 +16,7 @@ export default class Graveyard extends Component {
     }
 
     handleResurrect = (id) => {
+        console.log(this.props.hash)
         this.props.remove(id)
         socketFun.playerResurrect({id: id, hash: this.props.hash})
     }
