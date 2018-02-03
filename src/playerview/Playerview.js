@@ -41,6 +41,8 @@ export default class PlayerView extends Component {
         }
         
         componentWillReceiveProps() {
+            var { battle } = this.props.match.params
+
             this.socket.on(`${battle}-count`, data => {
                 this.setState({ count: data.count})
             })
