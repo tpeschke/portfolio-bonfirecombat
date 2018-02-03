@@ -33,9 +33,11 @@ export default class PlayerView extends Component {
             this.setState({ count: data.count})
         })
         this.socket.on(`${battle}-top`, data => {
-            console.log('hit')
+            console.log(data.id)
             var topfighter = this.state.fighterList.map(val => {
+                console.log('hit')
                 if (val.id === data.id) {
+                    console.log('fighter')
                     val.topcheck = '1'
                     return val
                 } else {
