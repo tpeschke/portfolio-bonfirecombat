@@ -107,7 +107,8 @@ export default class OnDeck extends Component {
                     id={this.state.holdid} />
 
                 <DeckToP
-                    id={this.state.topId} />
+                    id={this.state.topId}
+                    hash={this.props.hash} />
             </div>
         )
     }

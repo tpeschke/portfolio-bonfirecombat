@@ -50,16 +50,11 @@ export default class PlayerView extends Component {
         })
         this.socket.on(`${battle}-top`, data => {
             if (data.id) {
-                console.log(data.id)
-                console.log(this.state.fighterList)
                 var topfighter = this.state.fighterList.map(val => {
-                    console.log(val.id)
                     if (val.id === data.id) {
-                        console.log('fighter')
                         val.topcheck = '1'
                         return val
                     } else {
-                        console.log('not fighter')
                         return val
                     }
                 })

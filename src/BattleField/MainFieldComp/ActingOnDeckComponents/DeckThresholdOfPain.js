@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import socketFun from '../../../playerview/SocketApi'
 
 import { connect } from 'react-redux';
 
@@ -33,6 +34,7 @@ class DeckToP extends Component {
         }
 
         this.props.HANDLETOP(topFighter)
+        socketFun.playerTop({id: this.state.id, hash: this.props.hash})
 
         if (this.props.topopen) {
         this.props.OPENTOP()
