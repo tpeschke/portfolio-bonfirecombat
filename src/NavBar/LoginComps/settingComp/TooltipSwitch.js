@@ -24,6 +24,7 @@ class TooltipSwitch extends Component {
                 <PlayerviewToggle
                     user={user}
                     playerview={playerview}
+                    hash={hash}
                     TOGGLEPLAYERVIEW={this.props.TOGGLEPLAYERVIEW} />
 
                 <div>
