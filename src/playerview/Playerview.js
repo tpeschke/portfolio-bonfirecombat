@@ -26,49 +26,6 @@ export default class PlayerView extends Component {
         var { battle } = this.props.match.params
         var { count, view } = this.state
 
-        // this.socket = io('/')
-        // this.socket.on(`${battle}`, data => {
-        //     if (view !== data.playerview) {
-        //         this.setState({ view: data.playerview })
-        //     }
-        // })
-        // this.socket.on(`${battle}-count`, data => {
-        //     if (data.count) {
-        //         this.setState({ count: data.count })
-        //     }
-        // })
-        // this.socket.on(`${battle}-top`, data => {
-        //     if (data.id) {
-        //         var topfighter = this.state.fighterList.map(val => {
-        //             console.log(val.id)
-        //             if (val.id === data.id) {
-        //                 console.log('fighter')
-        //                 val.topcheck = '1'
-        //                 return val
-        //             } else {
-        //                 console.log('not fighter')
-        //                 return val
-        //             }
-        //         })
-        //         this.setState({ fighterList: topfighter })
-        //     }
-        // })
-
-        if (this.state.combatName == 'Battleplaceholder') {
-            axios.get('/api/player/battle/' + battle).then((req, res) => {
-                this.setState({ combatName: req.data[0].namecombat })
-            })
-        }
-
-        axios.get(`/api/player/fighter/${battle}`).then((req, res) => {
-            this.setState({ fighterList: req.data[0], statusList: req.data[1] })
-        })
-    }
-
-    componentWillUpdate() {
-        var { battle } = this.props.match.params
-        var { count, view } = this.state
-
         this.socket = io('/')
         this.socket.on(`${battle}`, data => {
             if (view !== data.playerview) {
@@ -95,6 +52,16 @@ export default class PlayerView extends Component {
                 })
                 this.setState({ fighterList: topfighter })
             }
+        })
+
+        if (this.state.combatName == 'Battleplaceholder') {
+            axios.get('/api/player/battle/' + battle).then((req, res) => {
+                this.setState({ combatName: req.data[0].namecombat })
+            })
+        }
+
+        axios.get(`/api/player/fighter/${battle}`).then((req, res) => {
+            this.setState({ fighterList: req.data[0], statusList: req.data[1] })
         })
     }
 
