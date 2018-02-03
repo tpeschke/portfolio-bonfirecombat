@@ -41,6 +41,7 @@ export default class PlayerView extends Component {
                     val.topcheck = '1'
                     return val
                 } else {
+                    
                     return val
                 }})
             this.setState({ fighterList: topfighter})
