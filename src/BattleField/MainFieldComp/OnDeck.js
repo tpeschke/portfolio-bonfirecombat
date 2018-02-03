@@ -56,7 +56,7 @@ export default class OnDeck extends Component {
 
                     let color = { background: d.colorcode }
                     
-                    d.topcheck === '1' ?socketFun.playerUnTop({id: d.id, hash: this.props.hash}) : null;
+                   socketFun.playerUnTop({id: d.id, hash: this.props.hash})
 
                     return <div className="List"
                         key={d.id}>
