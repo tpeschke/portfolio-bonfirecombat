@@ -57,6 +57,28 @@ export default class PlayerView extends Component {
             })
         }
 
+    componentWillUpdate() {
+        var { battle } = this.props.match.params
+        
+        this.socket.on(`${battle}-count`, data => {
+            this.setState({ count: data.count})
+        })
+        this.socket.on(`${battle}-top`, data => {
+            console.log(data.id)
+            var topfighter = this.state.fighterList.map(val => {
+                console.log(val.id)
+                if (val.id === data.id) {
+                    console.log('fighter')
+                    val.topcheck = '1'
+                    return val
+                } else {
+                    console.log('not fighter')
+                    return val
+                }})
+            this.setState({ fighterList: topfighter})
+        }) 
+    }
+
         
     render() {
         if (this.state.fighterList) {
