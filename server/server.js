@@ -141,6 +141,10 @@ io.on('connection', socket => {
     socket.on('updateCount', data => {
         io.emit(`${data.hash}-count`, data)
     })
+
+    socket.on('playerTop', data => {
+        io.emit(`${data.hash}-top`, data)
+    })
     
 })
 

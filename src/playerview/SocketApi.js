@@ -7,6 +7,9 @@ const socketFun = {
     },
     updateCount(data) {
         socket.emit('updateCount', data)
+    },
+    playerTop(data) {
+        socket.emit('playerTop', data)
     }
    
 }

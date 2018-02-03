@@ -47,7 +47,7 @@ class BattleFieldMain extends Component {
 
     render() {
 
-        var { fighterList, count, KILLCOMBATANT, ADVANCESPEED, INPUTACTION, OPENMODAL, OPENMODAL2, OPENTOP, OPENTOP2, REMOVEFIGHTER } = this.props
+        var { fighterList, count, hash, KILLCOMBATANT, ADVANCESPEED, INPUTACTION, OPENMODAL, OPENMODAL2, OPENTOP, OPENTOP2, REMOVEFIGHTER } = this.props
 
         return (
             <div className="BattleMain fadeInApp" id="Battle">
@@ -70,7 +70,8 @@ class BattleFieldMain extends Component {
                                 advance={ADVANCESPEED}
                                 action={INPUTACTION}
                                 modal={OPENMODAL}
-                                top={OPENTOP} />
+                                top={OPENTOP}
+                                hash={hash} />
 
                             <Acting
                                 list={fighterList}
@@ -79,7 +80,8 @@ class BattleFieldMain extends Component {
                                 advance={ADVANCESPEED}
                                 action={INPUTACTION}
                                 modal2={OPENMODAL2}
-                                top2={OPENTOP2} />
+                                top2={OPENTOP2}
+                                hash={hash} />
 
                         </div>
 
@@ -90,7 +92,8 @@ class BattleFieldMain extends Component {
                                 list={fighterList}
                                 count={count}
                                 kill={KILLCOMBATANT}
-                                remove={REMOVEFIGHTER} />
+                                remove={REMOVEFIGHTER}
+                                hash={hash} />
                         </div>
                     </div>
                 </div>
