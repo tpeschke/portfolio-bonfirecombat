@@ -64,6 +64,7 @@ export default class PlayerView extends Component {
 
         axios.get(`/api/player/fighter/${battle}`).then((req, res) => {
             this.setState({ fighterList: req.data[0], statusList: req.data[1] })
+            console.log(this.state.fighterList)
         })
     }
 
