@@ -2,12 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import io from 'socket.io-client'
 
-import { connect } from 'react-redux'
-
-import socketFun from './SocketApi'
 import './playerview.css'
-
-const socket = io(process.env.PORT)
 
 export default class PlayerView extends Component {
     constructor(props) {
@@ -24,9 +19,9 @@ export default class PlayerView extends Component {
 
     componentDidMount() {
         var { battle } = this.props.match.params
-        var { count, view } = this.state
+        var { view } = this.state
         
-        if (this.state.combatName == 'Battleplaceholder') {
+        if (this.state.combatName === 'Battleplaceholder') {
             axios.get('/api/player/battle/' + battle).then((req, res) => {
                 this.setState({ combatName: req.data[0].namecombat })
             })
@@ -61,7 +56,19 @@ export default class PlayerView extends Component {
                 this.setState({ fighterList: topfighter })
             }
         })
-
+        this.socket.on(`${battle}-kill`, data => {
+            if (data.id) {
+                var topfighter = this.state.fighterList.map(val => {
+                    if (val.id === data.id) {
+                        val.dead = '1'
+                        return val
+                    } else {
+                        return val
+                    }
+                })
+                this.setState({ fighterList: topfighter })
+            }
+        })
     }
 
     render() {

@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import FlipMove from 'react-flip-move'
+import React, { Component } from 'react';
+import FlipMove from 'react-flip-move';
+import socketFun from '../../playerview/SocketApi'
 
 import ActEditFighter from './ActingOnDeckComponents/ActEditFighter'
 import ActToP from './ActingOnDeckComponents/ActThresholdOfPain'
@@ -40,6 +41,11 @@ export default class Acting extends Component {
         this.props.top2()
     }
 
+    handleDeath = (id) => {
+        this.props.kill(id)
+        socketFun.playerKill({ id: id, hash: this.props.hash})
+    }
+
     render() {
 
         if (this.state.list) {
@@ -69,7 +75,7 @@ export default class Acting extends Component {
                             >(ง'̀-'́)ง</button>
 
                             <button className="ListItem"
-                                onClick={_ => this.props.kill(d.id)}
+                                onClick={_ => this.handleDeath(d.id)}
                             >X</button>
 
                             <button className="ListItem"

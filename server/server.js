@@ -145,6 +145,10 @@ io.on('connection', socket => {
     socket.on('playerTop', data => {
         io.emit(`${data.hash}-top`, data)
     })
+
+    socket.on('playerKill', data => {
+        io.emit(`${data.hash}-kill`, data)
+    })
     
 })
 

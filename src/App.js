@@ -3,7 +3,6 @@ import './reset.css'
 import './App.css';
 
 import { connect } from 'react-redux'
-import {TOGGLEPLAYERVIEW} from './ducks/reducer'
 import { withRouter } from 'react-router-dom'
 
 import NavBar from './NavBar/NavBar'

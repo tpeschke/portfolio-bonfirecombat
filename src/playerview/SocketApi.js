@@ -10,6 +10,9 @@ const socketFun = {
     },
     playerTop(data) {
         socket.emit('playerTop', data)
+    },
+    playerKill(data) {
+        socket.emit('playerKill', data)
     }
    
 }

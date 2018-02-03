@@ -55,10 +55,10 @@ class SaveFieldMain extends Component {
 
         var { combats } = this.state
 
-        if (combats == []){
-            combatList = <div className='savedFieldDisplay' id='loading'>Loading Combats</div>
-        } else if (combats == '') {
-            var combatList = <div className='savedFieldDisplay'>No Combats to Display</div>
+        if (combats === []){
+            var combatList = <div className='savedFieldDisplay' id='loading'>Loading Combats</div>
+        } else if (combats === '') {
+            combatList = <div className='savedFieldDisplay'>No Combats to Display</div>
         } else {
             combatList = combats.map((d, i) => {
 
