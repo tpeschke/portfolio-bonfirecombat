@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import io from 'socket.io-client'
 
+import StatusContainer from './StatusContainer'
+
 import './playerview.css'
 
 export default class PlayerView extends Component {
@@ -13,14 +15,14 @@ export default class PlayerView extends Component {
             combatName: "Battleplaceholder",
             statusList: [],
             fighterList: [],
-            view: false
+            view: true
         }
     }
 
     componentDidMount() {
         var { battle } = this.props.match.params
         var { view } = this.state
-        
+
         if (this.state.combatName === 'Battleplaceholder') {
             axios.get('/api/player/battle/' + battle).then((req, res) => {
                 this.setState({ combatName: req.data[0].namecombat })
@@ -30,7 +32,7 @@ export default class PlayerView extends Component {
         axios.get(`/api/player/fighter/${battle}`).then((req, res) => {
             this.setState({ fighterList: req.data[0], statusList: req.data[1] })
         })
-        
+
         this.socket = io('/')
         this.socket.on(`${battle}`, data => {
             if (view !== data.playerview) {
@@ -94,9 +96,6 @@ export default class PlayerView extends Component {
                 this.setState({ fighterList: topfighter })
             }
         })
-        this.socket.on(`${battle}-update`, data => {
-            this.forceUpdate()
-        })
     }
 
     render() {
@@ -134,13 +133,24 @@ export default class PlayerView extends Component {
         if (this.state.view) {
             return (
                 <div className="playerBody">
-                    <h1>Player view</h1>
-                    <p>{this.state.combatName}</p>
-                    <p>{this.state.count}</p>
-                    <p>The Quick</p>
-                    {playerList}
-                    <p>The Dead</p>
-                    {deadList}
+                    <div className="playerHeader">
+                        <h2>{this.state.combatName}</h2>
+                        <p>Player view</p>
+                        <h3 id="playerCount">{this.state.count}</h3>
+                    </div>
+                    <div className="playerContent">
+                        <h2>The Quick</h2>
+                        <div className='border'></div>
+                        <div className="listDiv">{playerList}</div>
+
+                        <h2>The Dead</h2>
+                        <div className='border'></div>
+                        <div className="listDiv">{deadList}</div>
+                    </div>
+                    <StatusContainer
+                        list={this.state.statusList}
+                        count={this.state.count} />
+
                 </div>
             )
         } else {

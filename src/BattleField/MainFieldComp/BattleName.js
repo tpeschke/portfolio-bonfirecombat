@@ -21,11 +21,13 @@ class BattleName extends Component {
             fighterList: fighterList,
             statusList: statusList
         }
-
-        socketFun.playerUpdate({hash: this.props.hash})
         this.props.SAVEFIELD(tempField)
     }
 
+    handleSave = () => {
+        socketFun.playerUpdate({hash: this.props.hash})
+    }
+    
     render() {
         return (
             <div className="BattleHeader">

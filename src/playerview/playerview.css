@@ -1,5 +1,77 @@
 .playerBody {
-    height: 100%;
-    width: 100%;
-    background: lightblue
+    height: 100vh;
+    width: 100vw;
+    margin: -25px 0;
+    background-image: url('../img/Wood1.jpg');
 }
+
+.playerHeader {
+    text-align: center;
+    padding-top: 25px;
+}
+
+.playerContent {
+    margin: 15px 0 10px 0;
+    background: rgba(218, 197, 182, .75);
+    border-radius: 25px;
+    padding-top: 1px;
+    padding-bottom: 20px;
+}
+
+.listDiv {
+    padding: 0 20px;
+}
+
+/* =============================== */
+.statusListOuter {
+    min-height: 40px;
+}
+
+.playerListItem {
+    margin-left: 5px;
+    height: auto;
+    font-size: 14px;
+}
+
+.statusDiv {
+    position: relative;
+    left: 15px;
+    height: 30px;
+    width: 30px;
+    background-image: url('../img/timer.png');
+    background-repeat: no-repeat;
+    background-size: 30px;
+    background-position: center;
+    transition: .6s;
+}
+
+.openStatus {
+    transform: rotate(90deg) scale(1.5);
+}
+
+.statusList {
+    right: -1000px;
+    text-align: center;
+    height: auto;
+    display: flex;
+    position: absolute;
+    transition: .6s
+}
+
+.openList {
+    overflow-x: scroll;
+    right: 5px
+}
+
+.statusButton{
+    height: 35px;
+    width: 35px;
+}
+
+#playerCount {
+    margin-top: 25px;
+    font-size: 45px;
+}
+
+/* ==================================== */
+
