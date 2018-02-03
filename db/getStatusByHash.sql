@@ -1,3 +1,3 @@
-select namestatus, timestatus from statuses
+select id, namestatus, timestatus from statuses
 join combat on statuses.idcombat = combat.id
 where urlhash = $1
