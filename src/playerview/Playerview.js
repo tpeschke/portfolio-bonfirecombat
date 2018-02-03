@@ -25,7 +25,18 @@ export default class PlayerView extends Component {
     componentDidMount() {
         var { battle } = this.props.match.params
         var { count, view } = this.state
+        
+        if (this.state.combatName == 'Battleplaceholder') {
+            axios.get('/api/player/battle/' + battle).then((req, res) => {
+                this.setState({ combatName: req.data[0].namecombat })
+            })
+        }
 
+        axios.get(`/api/player/fighter/${battle}`).then((req, res) => {
+            this.setState({ fighterList: req.data[0], statusList: req.data[1] })
+            console.log(this.state.fighterList)
+        })
+        
         this.socket = io('/')
         this.socket.on(`${battle}`, data => {
             if (view !== data.playerview) {
@@ -56,16 +67,6 @@ export default class PlayerView extends Component {
             }
         })
 
-        if (this.state.combatName == 'Battleplaceholder') {
-            axios.get('/api/player/battle/' + battle).then((req, res) => {
-                this.setState({ combatName: req.data[0].namecombat })
-            })
-        }
-
-        axios.get(`/api/player/fighter/${battle}`).then((req, res) => {
-            this.setState({ fighterList: req.data[0], statusList: req.data[1] })
-            console.log(this.state.fighterList)
-        })
     }
 
     render() {
