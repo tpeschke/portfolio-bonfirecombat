@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import FlipMove from 'react-flip-move'
+import socketFun from '../../playerview/SocketApi'
 
 import DeckEditFighter from './ActingOnDeckComponents/DeckEditFighter'
 import DeckToP from './ActingOnDeckComponents/DeckThresholdOfPain'
@@ -32,14 +33,17 @@ export default class OnDeck extends Component {
             holdspeed: d.speed,
             holdid: d.id
         })
-
         this.props.modal()
     }
 
     handleTop = (id) => {
         this.setState({ topId: id })
-
         this.props.top()
+    }
+
+    handleDeath = (id) => {
+        this.props.kill(id)
+        socketFun.playerKill({ id: id, hash: this.props.hash})
     }
 
     render() {
@@ -51,6 +55,8 @@ export default class OnDeck extends Component {
                 if (d.acting === '0' && d.dead === '0') {
 
                     let color = { background: d.colorcode }
+                    
+                    socketFun.playerUnTop({id: d.id, hash: this.props.hash})
 
                     return <div className="List"
                         key={d.id}>
@@ -70,7 +76,7 @@ export default class OnDeck extends Component {
                         >(ง'̀-'́)ง</button>
 
                         <button className="ListItem"
-                            onClick={_ => this.props.kill(d.id)}
+                            onClick={_ => this.handleDeath(d.id)}
                         >X</button>
 
                         <button className="ListItem"

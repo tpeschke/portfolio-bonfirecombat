@@ -13,8 +13,10 @@ const socketFun = {
     },
     playerKill(data) {
         socket.emit('playerKill', data)
+    },
+    playerUnTop(data) {
+        socket.emit('playerUnTop', data)
     }
-   
 }
 
 export default socketFun

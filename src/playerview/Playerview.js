@@ -29,7 +29,6 @@ export default class PlayerView extends Component {
 
         axios.get(`/api/player/fighter/${battle}`).then((req, res) => {
             this.setState({ fighterList: req.data[0], statusList: req.data[1] })
-            console.log(this.state.fighterList)
         })
         
         this.socket = io('/')
@@ -61,6 +60,19 @@ export default class PlayerView extends Component {
                 var topfighter = this.state.fighterList.map(val => {
                     if (val.id === data.id) {
                         val.dead = '1'
+                        return val
+                    } else {
+                        return val
+                    }
+                })
+                this.setState({ fighterList: topfighter })
+            }
+        })
+        this.socket.on(`${battle}-untop`, data => {
+            if (data.id) {
+                var topfighter = this.state.fighterList.map(val => {
+                    if (val.id === data.id) {
+                        val.dead = '0'
                         return val
                     } else {
                         return val

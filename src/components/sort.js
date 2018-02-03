@@ -1,4 +1,5 @@
-export default function sort(fightArr, count) {
+
+export default function sort(fightArr, count, hash) {
 
     fightArr.sort((a, b) => a.actioncount - b.actioncount);
 
