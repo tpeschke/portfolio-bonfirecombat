@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import socketFun from '../../playerview/SocketApi'
 
 export default class Graveyard extends Component {
     constructor(props) {
@@ -12,6 +13,11 @@ export default class Graveyard extends Component {
 
     componentWillReceiveProps(next) {
         this.setState({ list: next.list })
+    }
+
+    handleResurrect = (id) => {
+        this.props.remove(id)
+        socketFun.playerResurrect({id: id, hash: this.props.hash})
     }
 
     render() {
@@ -31,7 +37,7 @@ export default class Graveyard extends Component {
                         >\(•◡•)/</button>
 
                         <button className="ListItemGrave gravelist"
-                            onClick={_ => this.props.remove(d.id)}
+                            onClick={_ => this.handleResurrect(d.id)}
                         >X</button>
 
                     </div>

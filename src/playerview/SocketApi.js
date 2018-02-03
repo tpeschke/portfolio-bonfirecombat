@@ -16,6 +16,9 @@ const socketFun = {
     },
     playerUnTop(data) {
         socket.emit('playerUnTop', data)
+    },
+    playerResurrect(data){
+        socket.emit('playerResurrect', data)
     }
 }
 

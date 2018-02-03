@@ -153,6 +153,10 @@ io.on('connection', socket => {
     socket.on('playerUnTop', data => {
         io.emit(`${data.hash}-untop`, data)
     })
+
+    socket.on('playerResurrect', data => {
+        io.emit(`${data.hash}-resurrect`, data)
+    })
     
 })
 

@@ -69,11 +69,23 @@ export default class PlayerView extends Component {
             }
         })
         this.socket.on(`${battle}-untop`, data => {
-            console.log('player')
             if (data.id) {
                 var topfighter = this.state.fighterList.map(val => {
                     if (val.id === data.id) {
                         val.topcheck = '0'
+                        return val
+                    } else {
+                        return val
+                    }
+                })
+                this.setState({ fighterList: topfighter })
+            }
+        })
+        this.socket.on(`${battle}-resurrect`, data => {
+            if (data.id) {
+                var topfighter = this.state.fighterList.map(val => {
+                    if (val.id === data.id) {
+                        val.dead = '0'
                         return val
                     } else {
                         return val
