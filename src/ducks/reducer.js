@@ -4,7 +4,7 @@ import sort from '../components/sort'
 
 const initialState = {
     user: {},
-    hash: '',
+    hash: null,
     page: '/',
     count: 1,
     combatId: 0,

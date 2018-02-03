@@ -5,7 +5,7 @@ import { OPENSETTINGS } from '../../ducks/reducer'
 
 class LogDisplay extends Component {
 
-    componentWillReceiveProps(next){
+    componentWillReceiveProps(next) {
         next.page !== this.props.page && this.props.settings === true ? this.props.OPENSETTINGS() : null
     }
 
@@ -25,10 +25,10 @@ class LogDisplay extends Component {
                 <button id="settings"
                     onClick={this.props.OPENSETTINGS}
                 >{this.lock()}</button>
- 
- {/* <button id="settings"
-                     onClick={this.props.OPENSETTINGS}
-                 >test</button> */}
+
+                {/* <button id="settings"
+                    onClick={this.props.OPENSETTINGS}
+                >test</button> */}
 
             </div>
         )
