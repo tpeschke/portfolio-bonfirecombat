@@ -57,7 +57,7 @@ class NewStatus extends Component {
             timestatus: this.state.duration + +this.props.count
         }
 
-        socketFun.playerAddStatus(status: newStatus, hash: this.props.hash )
+        socketFun.playerAddStatus({status: newStatus, hash: this.props.hash})
         this.props.ADDNEWSTATUS(newStatus)
 
         this.onCloseModal()
