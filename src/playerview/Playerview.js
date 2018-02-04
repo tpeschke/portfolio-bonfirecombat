@@ -145,7 +145,7 @@ export default class PlayerView extends Component {
 
         if (this.state.statusList) {
             var statusList = this.state.statusList.map((d, i) => {
-                if (d.timestatus - this.state.count > 0) {
+                if (d.timestatus - this.state.count > 0 && d.timestatus) {
                     return <div
                         className='statusListInner'
                         key={d.id}>
