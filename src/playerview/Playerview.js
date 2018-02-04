@@ -107,6 +107,7 @@ export default class PlayerView extends Component {
                     return val
                 }
             })
+            this.setState({ statusList: tempArr })
         })
     }
 
