@@ -4,6 +4,15 @@
     background-image: url('../img/Wood1.jpg');
 }
 
+.topLock {
+    padding-top: 35px;
+}
+
+#viewLock {
+    text-align: center;
+    margin: 25px 25px;
+}
+
 .playerHeader {
     text-align: center;
     padding-top: 25px;
@@ -41,7 +50,7 @@
 }
 
 .statusListInner {
-    margin: 0 5px;
+    margin: 3px 5px;
 }
 
 
