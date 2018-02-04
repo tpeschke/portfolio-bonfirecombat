@@ -87,6 +87,7 @@ input {
     border-style: none;
     font-weight: 800;
     font-family: 'MedievalSharp';
+    outline: none;
 }
 
 ::placeholder {
@@ -107,6 +108,7 @@ button {
     font-weight: 800;
     font-family: 'MedievalSharp';
     padding: 0;
+    outline: none;
 }
 
 button:hover {
