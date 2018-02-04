@@ -28,17 +28,20 @@
 
 /* =============================== */
 .playerStatus{
+    width: 100vw;
     margin: 15px 0;
-    background-color: lightcoral;
-    height: 45px;
+    min-height: 45px;
+    text-align: center;
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	align-content: flex-start;
 }
 
-.StatusList {
-    lighting-color: aliceblue;
-    height: 45px;
-    width: 35px;
+.statusListInner {
+    margin: 0 5px;
 }
 
 

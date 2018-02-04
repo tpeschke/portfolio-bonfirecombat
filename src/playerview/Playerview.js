@@ -130,6 +130,19 @@ export default class PlayerView extends Component {
             })
         }
 
+        if (this.state.statusList) {
+            var statusList = this.state.statusList.map((d, i) => {
+                if (d.timestatus - this.state.count > 0) {
+                    return <div
+                        className='statusListInner'
+                        key={d.id}>
+                        <div className="">{d.namestatus}</div>
+                        <p className="">{d.timestatus - this.state.count}</p>
+                    </div>
+                }
+            })
+    }
+
         if (this.state.view) {
             return (
                 <div className="playerBody">
@@ -149,9 +162,7 @@ export default class PlayerView extends Component {
                     </div>
 
                     <div className="playerStatus">
-                    <StatusContainer
-                        list={this.state.statusList}
-                        count={this.state.count} />
+                        {statusList}
                     </div>
                 </div>
             )
