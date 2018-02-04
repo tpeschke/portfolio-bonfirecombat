@@ -102,7 +102,7 @@ export default class PlayerView extends Component {
             this.setState({ statusList : tempArr})
         })
         this.socket.on(`${battle}-delStatus`, data => {
-            console.log(data.id)
+            console.log(data)
             var tempArr = this.state.statusList.map(val => {
                 if (val.id !== data.id) {
                     console.log(val)
