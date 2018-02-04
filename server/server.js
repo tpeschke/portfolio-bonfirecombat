@@ -161,6 +161,14 @@ io.on('connection', socket => {
     socket.on('playerUpdate', data => {
         io.emit(`${data}-update`, data)
     })
+
+    socket.on('playerAddStatus', data => {
+        io.emit(`${data.hash}-addStatus`, data)
+    })
+
+    socket.on('playerDelStatus', data => {
+        io.emit(`${data.hash}-delStatus`, data)
+    })
 })
 
 app.get('*', (req, res) => {

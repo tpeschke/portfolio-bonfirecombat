@@ -4,10 +4,15 @@ import { connect } from 'react-redux'
 import FlipMove from 'react-flip-move'
 
 import { DELETESTATUSES } from '../../ducks/CompReducers/StatusReducer'
+import socketFun from '../../playerview/SocketApi'
 
 import './Statuses.css'
 
 class Statuses extends Component {
+    handleDelete = (id) => {
+        this.props.DELETESTATUSES(id)
+        socketFun.playerDelStatus({ id: id, hash: this.props.hash})
+    } 
 
     render() {
 
@@ -17,7 +22,7 @@ class Statuses extends Component {
                 if (d.timestatus - this.props.count > 0) {
                     return <button key={d.id}
                         className="StatusItemBox"
-                        onClick={_=>this.props.DELETESTATUSES(d.id)}>
+                        onClick={_=>this.handleDelete(d.id)}>
                         <h5 className="StatusItem">{d.namestatus}</h5>
                         <div className="border"></div>
                         <h6 className="StatusItemCount">{+d.timestatus - +this.props.count}</h6>
@@ -37,11 +42,12 @@ class Statuses extends Component {
 }
 
 function mapStateToProps(state) {
-    var { statusList, count } = state
+    var { statusList, count, hash } = state
 
     return {
         statusList,
-        count
+        count,
+        hash
     }
 }
 

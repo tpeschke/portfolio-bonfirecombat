@@ -30,7 +30,7 @@ export default class PlayerView extends Component {
         }
 
         axios.get(`/api/player/fighter/${battle}`).then((req, res) => {
-            this.setState({ fighterList: req.data[0], statusList: req.data[1] })
+            this.setState({ fighterList: req.data[0], statusList: req.data[1], count: req.data[2] })
         })
 
         this.socket = io('/')
@@ -95,6 +95,18 @@ export default class PlayerView extends Component {
                 })
                 this.setState({ fighterList: topfighter })
             }
+        })
+        this.socket.on(`${battle}-addStatus`, data => {
+            var tempArr = this.state.statusList
+            tempArr.push(data.status)
+            this.setState({ statusList : tempArr})
+        })
+        this.socket.on(`${battle}-addStatus`, data => {
+            var tempArr = this.state.statusList(val => {
+                if (val.id !== data.id) {
+                    return val
+                }
+            })
         })
     }
 

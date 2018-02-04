@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { ADDNEWSTATUS } from '../../ducks/CompReducers/StatusReducer'
+import socketFun from '../../playerview/SocketApi'
 
 import 'react-responsive-modal/lib/react-responsive-modal.css';
 import Modal from 'react-responsive-modal/lib/css';
@@ -56,6 +57,7 @@ class NewStatus extends Component {
             timestatus: this.state.duration + +this.props.count
         }
 
+        socketFun.playerAddStatus(status: newStatus, hash: this.props.hash )
         this.props.ADDNEWSTATUS(newStatus)
 
         this.onCloseModal()
@@ -105,9 +107,10 @@ class NewStatus extends Component {
 
 function mapStateToProps(state) {
 
-    var {count} = state
+    var {count, hash} = state
     return {
-        count
+        count,
+        hash
     }
 }
 

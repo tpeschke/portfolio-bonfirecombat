@@ -22,6 +22,12 @@ const socketFun = {
     },
     playerUpdate(data) {
         socket.emit('playerUpdate', data)
+    },
+    playerAddStatus(data) {
+        socket.emit('playerAddStatus', data)
+    },
+    playerDelStatus(data) {
+        socket.emit('playerDelStatus', data)
     }
 }
 
