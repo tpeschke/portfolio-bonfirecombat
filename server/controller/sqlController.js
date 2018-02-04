@@ -53,7 +53,6 @@ module.exports = {
 
         tempArr.push(db.getFighterByHash(hash).then())
         tempArr.push(db.getStatusByHash(hash).then())
-        tempArr.push(db.getCountByHash(hash).then())
 
         Promise.all(tempArr).then( result => res.send(result))
     },

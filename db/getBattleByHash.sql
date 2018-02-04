@@ -1,2 +1,2 @@
-select namecombat from combat
+select namecombat, countnum from combat
 where urlhash = $1

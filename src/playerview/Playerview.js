@@ -25,12 +25,12 @@ export default class PlayerView extends Component {
 
         if (this.state.combatName === 'Battleplaceholder') {
             axios.get('/api/player/battle/' + battle).then((req, res) => {
-                this.setState({ combatName: req.data[0].namecombat })
+                this.setState({ combatName: req.data[0].namecombat, count: req.data[0].countnum })
             })
         }
 
         axios.get(`/api/player/fighter/${battle}`).then((req, res) => {
-            this.setState({ fighterList: req.data[0], statusList: req.data[1], count: req.data[2] })
+            this.setState({ fighterList: req.data[0], statusList: req.data[1] })
         })
 
         this.socket = io('/')
