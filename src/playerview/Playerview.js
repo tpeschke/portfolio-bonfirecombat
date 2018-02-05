@@ -103,7 +103,8 @@ export default class PlayerView extends Component {
         })
         this.socket.on(`${battle}-delStatus`, data => {
             console.log(data)
-            var tempArr = this.state.statusList.map(val => {
+            var tempArr = []
+            tempArr = this.state.statusList.map(val => {
                 if (val.id === data.id) {
                 } else { return val}
             })
@@ -145,7 +146,7 @@ export default class PlayerView extends Component {
 
         if (this.state.statusList) {
             var statusList = this.state.statusList.map((d, i) => {
-                if (d.timestatus - this.state.count > 0 || d.timestatus) {
+                if (d.timestatus - this.state.count > 0) {
                     return <div
                         className='statusListInner'
                         key={d.id}>
