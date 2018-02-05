@@ -75,4 +75,8 @@
     #playerCount {
         margin-bottom: 15px;
     }
+
+    .playerStatus {
+        max-width: 450px
+    }
 }
