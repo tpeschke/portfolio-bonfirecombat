@@ -48,8 +48,6 @@ class BattleFieldMain extends Component {
     render() {
 
         var { fighterList, count, hash, KILLCOMBATANT, ADVANCESPEED, INPUTACTION, OPENMODAL, OPENMODAL2, OPENTOP, OPENTOP2, REMOVEFIGHTER } = this.props
-
-        console.log(fighterList)
         
         return (
             <div className="BattleMain fadeInApp" id="Battle">

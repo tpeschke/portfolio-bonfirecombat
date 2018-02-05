@@ -92,6 +92,7 @@ input.ListItem:hover {
 
 .Name {
     min-width: 135px;
+    max-width: 135px;
     text-align: left;
 }
 

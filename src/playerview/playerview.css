@@ -6,6 +6,10 @@
     border-radius: 25px;
 }
 
+.playertop {
+    background: linear-gradient(to right, red, transparent)
+}
+
 .topLock {
     padding-top: 35px;
 }
