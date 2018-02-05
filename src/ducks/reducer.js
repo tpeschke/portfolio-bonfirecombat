@@ -303,7 +303,7 @@ export default function reducer(state = initialState, action) {
         case HANDLE_TOP:
             var topfighter = sort(state.fighterList.map(val => {
                 if (val.id === action.payload.id) {
-                    val.actioncount = val.actioncount + action.payload.failedBy
+                    val.actioncount = state.count + action.payload.failedBy
                     val.topcheck = '1'
                     return val
                 } else {
