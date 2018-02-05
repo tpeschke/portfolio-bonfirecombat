@@ -64,7 +64,7 @@
 
 @media (min-width: 425px) {
     .playerBody {
-        max-width: 395px;
+        max-width: 450px;
         margin: 0 auto;
     }
 }
