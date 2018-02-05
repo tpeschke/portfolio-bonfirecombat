@@ -183,7 +183,7 @@ io.on('connection', socket => {
     })
 
     socket.on('playerEdit', data => {
-        io.emit(`${data.hash}-edit`)
+        io.emit(`${data.hash}-edit`, data)
     })
 })
 
