@@ -62,3 +62,9 @@
 
 /* ==================================== */
 
+@media (min-width: 425px) {
+    .playerBody {
+        max-width: 395px;
+        margin: 0 auto;
+    }
+}
