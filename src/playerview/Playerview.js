@@ -103,11 +103,11 @@ export default class PlayerView extends Component {
         })
         this.socket.on(`${battle}-delStatus`, data => {
             console.log(data)
-            var tempArr = []
-            tempArr = this.state.statusList.map(val => {
-                if (val.id === data.id) {
-                } else { return val}
-            })
+            const index = this.state.statusList.findIndex(e=> e.id === data.id)
+            var tempArr = this.state.statusList.slice()
+
+            tempArr.splice(index, 1)
+           
             this.setState({ statusList: tempArr })
         })
     }
@@ -129,19 +129,20 @@ export default class PlayerView extends Component {
                 }
             })
 
-            var deadList = this.state.fighterList.map((d, i) => {
+        if (this.state.statusList) {var deadList = this.state.fighterList.map((d, i) => {
 
-                let color = { background: d.colorcode }
+            let color = { background: d.colorcode }
 
-                if (d.dead === '1') {
-                    return <div
-                        className='List'
-                        key={d.id}>
-                        <div className="color" style={color}></div>
-                        <p className="ListItem Name">{d.namefighter}</p>
-                    </div>
-                }
-            })
+            if (d.dead === '1') {
+                return <div
+                    className='List'
+                    key={d.id}>
+                    <div className="color" style={color}></div>
+                    <p className="ListItem Name">{d.namefighter}</p>
+                </div>
+            }
+        })}
+            
         }
 
         if (this.state.statusList) {
