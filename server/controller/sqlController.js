@@ -59,6 +59,8 @@ module.exports = {
 
     newField: (req, res) => {
 
+        console.log(req.body)
+
         const db = req.app.get('db')
 
         var { id } = req.params

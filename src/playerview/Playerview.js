@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import io from 'socket.io-client'
 
-import StatusContainer from './StatusContainer'
-
 import './playerview.css'
 
 export default class PlayerView extends Component {

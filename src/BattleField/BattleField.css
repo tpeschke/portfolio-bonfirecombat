@@ -145,6 +145,10 @@ input.ListItem:hover {
     line-height: 19px;
 }
 
+.GraveEmpty {
+    height: 15px;
+}
+
 /* ==================== */
 
 #BattleNameInput {

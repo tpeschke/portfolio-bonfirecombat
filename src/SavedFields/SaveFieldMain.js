@@ -51,6 +51,22 @@ class SaveFieldMain extends Component {
         this.setState({ open: false})
     }
 
+    makeid= () => {
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      
+        for (var i = 0; i < 5; i++)
+          text += possible.charAt(Math.floor(Math.random() * possible.length));
+      
+        return text;
+      }
+
+    handleNewField = () => {
+        var urlhash = this.makeid()
+
+        this.props.NEWFIELD(this.props.user.data.id, urlhash)
+    }
+
     render() {
 
         var { combats } = this.state
@@ -90,7 +106,7 @@ class SaveFieldMain extends Component {
 
                 <div className="savedMenu">
                     <Link to='/BattleField'>
-                        <button onClick={_=>this.props.NEWFIELD(this.props.user.data.id)}>New Field</button>
+                        <button onClick={_=>this.handleNewField()}>New Field</button>
                     </Link>
                 </div>
 

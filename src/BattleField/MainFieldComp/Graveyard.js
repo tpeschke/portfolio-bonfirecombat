@@ -6,7 +6,7 @@ export default class Graveyard extends Component {
         super(props)
 
         this.state = {
-            list: [],
+            list: false,
             count: props.count
         }
     }
@@ -26,9 +26,10 @@ export default class Graveyard extends Component {
     }
 
     render() {
+        var graveList = []
 
         if (this.state.list) {
-            var graveList = this.state.list.map((d, i) => {
+            graveList = this.state.list.map((d, i) => {
 
                 if (d.dead === '1') {
 

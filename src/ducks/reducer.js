@@ -4,7 +4,7 @@ import sort from '../components/sort'
 
 const initialState = {
     user: {},
-    hash: null,
+    hash: 'test1',
     page: '/',
     count: 1,
     combatId: 0,
@@ -74,10 +74,10 @@ const GET_HASH = "GET_HASH"
 
 //ACTION BUILDERS
 
-export function NEWFIELD(id) {
+export function NEWFIELD(id, hash) {
     return {
         type: NEW_FIELD,
-        payload: axios.post(`/api/newfield/${id}`).then()
+        payload: axios.post(`/api/newfield/${id}`, hash).then()
     }
 }
 
