@@ -53,9 +53,9 @@ class DeckEditFighter extends Component {
             speed: +this.state.speed
         }
 
-        this.props.EDITFIGHTER(editedFighter)
-        socketFun.playerEdit({fighter: editedFighter, hash: this.props.hash})
-        this.props.OPENMODAL()
+        this.props.EDITFIGHTER(editedFighter);
+        socketFun.playerEdit({fighter: editedFighter, hash: this.props.hash});
+        this.props.OPENMODAL();
 
         this.forceUpdate()
 
