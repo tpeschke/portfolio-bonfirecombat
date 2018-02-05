@@ -173,6 +173,10 @@ io.on('connection', socket => {
     socket.on('playerAdd', data => {
         io.emit(`${data.hash}-add`, data)
     })
+
+    socket.on('playerRemove', data => {
+        io.emit(`${data.hash}-remove`, data)
+    })
 })
 
 app.get('*', (req, res) => {

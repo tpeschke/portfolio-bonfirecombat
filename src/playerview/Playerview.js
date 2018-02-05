@@ -112,6 +112,12 @@ export default class PlayerView extends Component {
             tempArr.push(data.fighter)
             this.setState({ fighterList: tempArr })
         })
+        this.socket.on(`${battle}-remove`, data => {
+            const index = this.state.fighterList.findIndex(e=> e.id === data.id)
+            var tempArr = this.state.fighterList.slice()
+            tempArr.splice(index, 1)
+            this.setState({ fighterList: tempArr })
+        })
     }
 
     render() {
