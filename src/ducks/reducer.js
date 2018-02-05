@@ -74,10 +74,10 @@ const GET_HASH = "GET_HASH"
 
 //ACTION BUILDERS
 
-export function NEWFIELD(id, hash) {
+export function NEWFIELD(id) {
     return {
         type: NEW_FIELD,
-        payload: axios.post(`/api/newfield/${id}`, hash).then()
+        payload: axios.post(`/api/newfield/${id}`).then()
     }
 }
 

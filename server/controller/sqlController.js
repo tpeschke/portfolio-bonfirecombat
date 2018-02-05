@@ -1,3 +1,13 @@
+makeid= () => {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  
+    for (var i = 0; i < 5; i++)
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+  
+    return text;
+  }
+
 
 module.exports = {
     getAllCombats: (req, res) => {
@@ -58,15 +68,13 @@ module.exports = {
     },
 
     newField: (req, res) => {
-
-        console.log(req.body)
+        var urlhash = makeid()
 
         const db = req.app.get('db')
-
         var { id } = req.params
 
         db.GetFieldNumber(id)
-            .then(num => db.addNewField(num[0].count === '0' ? 'New Battlefield' : 'New Battlefield ' + num[0].count, id)
+            .then(num => db.addNewField(num[0].count === '0' ? 'New Battlefield' : 'New Battlefield ' + num[0].count, id, urlhash)
                 .then(result => res.status(200).send(result)))
 
     },
