@@ -59,12 +59,20 @@
     margin: 3px 5px;
 }
 
-
 /* ==================================== */
 
-@media (min-width: 425px) {
+@media (min-width: 426px) {
     .playerBody {
         max-width: 450px;
+        margin: 25px auto;
+    }
+
+    .playerContent {
+        max-width: 400px;
         margin: 0 auto;
+    }
+
+    #playerCount {
+        margin-bottom: 15px;
     }
 }

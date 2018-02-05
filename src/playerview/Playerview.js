@@ -13,7 +13,7 @@ export default class PlayerView extends Component {
             combatName: "Battleplaceholder",
             statusList: [],
             fighterList: [],
-            view: false
+            view: true
         }
     }
 
