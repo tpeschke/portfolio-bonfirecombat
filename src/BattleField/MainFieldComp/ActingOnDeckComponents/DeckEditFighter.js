@@ -7,6 +7,7 @@ import Modal from 'react-responsive-modal/lib/css';
 
 import { SketchPicker } from 'react-color';
 
+import socketFun from '../../../playerview/SocketApi'
 import { OPENMODAL } from '../../../ducks/reducer'
 import {EDITFIGHTER} from '../../../ducks/CompReducers/CombatantsReducer'
 
@@ -53,7 +54,7 @@ class DeckEditFighter extends Component {
         }
 
         this.props.EDITFIGHTER(editedFighter)
-
+        socketFun.playerEdit({fighter: editedFighter, hash: this.props.hash})
         this.props.OPENMODAL()
 
         this.forceUpdate()
@@ -111,10 +112,11 @@ class DeckEditFighter extends Component {
 }
 
 function mapStateToProps(state) {
-    var { editopen } = state
+    var { editopen, hash } = state
 
     return {
-        editopen
+        editopen,
+        hash
     }
 }
 

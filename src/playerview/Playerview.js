@@ -119,6 +119,19 @@ export default class PlayerView extends Component {
         this.socket.on(`${battle}-clear`, _ => {
             this.setState({ fighterList : []})
         })
+        this.socket.on(`${battle}-edit`, data => {
+            const newList = state.fighterList.map(val => {
+                if (val.id === data.id) {
+                    val.namefighter = data.namefighter
+                    val.colorcode = data.colorcode
+                    val.speed = data.speed
+                    return val
+                } else {
+                    return val
+                }
+            })
+            this.setState({ fighterList : newList })
+        })
     }
 
     render() {

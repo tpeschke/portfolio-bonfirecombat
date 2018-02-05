@@ -37,6 +37,9 @@ const socketFun = {
     },
     playerClear(data) {
         socket.emit('playerClear', data)
+    },
+    playerEdit(data) {
+        socket.emit('playerEdit', data)
     }
 }
 

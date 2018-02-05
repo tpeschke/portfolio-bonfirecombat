@@ -181,6 +181,10 @@ io.on('connection', socket => {
     socket.on('playerClear', data => {
         io.emit(`${data.hash}-clear`)
     })
+
+    socket.on('playerEdit', data => {
+        io.emit(`${data.hash}-edit`)
+    })
 })
 
 app.get('*', (req, res) => {
