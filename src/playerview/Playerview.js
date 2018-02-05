@@ -97,18 +97,20 @@ export default class PlayerView extends Component {
             }
         })
         this.socket.on(`${battle}-addStatus`, data => {
-            var tempArr = this.state.statusList
+            var tempArr = this.state.statusList.splice()
             tempArr.push(data.status)
             this.setState({ statusList : tempArr})
         })
         this.socket.on(`${battle}-delStatus`, data => {
-            console.log(data)
             const index = this.state.statusList.findIndex(e=> e.id === data.id)
             var tempArr = this.state.statusList.slice()
-
             tempArr.splice(index, 1)
-           
             this.setState({ statusList: tempArr })
+        })
+        this.socket.on(`${battle}-add`, data => {
+            var tempArr = this.state.fighterList.splice()
+            tempArr.push(data.fighter)
+            this.setState({ fighterList: tempArr })
         })
     }
 

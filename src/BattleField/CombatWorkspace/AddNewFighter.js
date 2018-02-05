@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-
 import { connect } from 'react-redux';
 
 import 'react-responsive-modal/lib/react-responsive-modal.css';
 import Modal from 'react-responsive-modal/lib/css';
 
 import { SketchPicker } from 'react-color';
+import socketFun from '../../playerview/SocketApi'
 
 import { ADDNEWCOMBATANT } from '../../ducks/CompReducers/CombatantsReducer'
 
@@ -76,7 +76,7 @@ class AddNewFighter extends Component {
         }
 
         this.props.ADDNEWCOMBATANT(newFighter)
-
+        socketFun.playerAdd({hash: this.props.hash, fighter : newFighter})
         this.onCloseModal()
 
         this.forceUpdate()
@@ -134,11 +134,12 @@ class AddNewFighter extends Component {
 }
 
 function mapStateToProps(state) {
-        var { count, combatId } = state
+        var { count, combatId, hash } = state
 
         return {
             count,
-            combatId
+            combatId,
+            hash
         }
     }
 

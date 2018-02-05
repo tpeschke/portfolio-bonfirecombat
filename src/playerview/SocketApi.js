@@ -28,6 +28,9 @@ const socketFun = {
     },
     playerDelStatus(data) {
         socket.emit('playerDelStatus', data)
+    },
+    playerAdd(data) {
+        socket.emit('playerAdd', data)
     }
 }
 
