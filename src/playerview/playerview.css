@@ -7,7 +7,7 @@
 }
 
 .playertop {
-    background: linear-gradient(to right, red, transparent)
+    background: linear-gradient(to right, rgb(151, 23, 21), transparent, transparent)
 }
 
 .topLock {
