@@ -177,6 +177,10 @@ io.on('connection', socket => {
     socket.on('playerRemove', data => {
         io.emit(`${data.hash}-remove`, data)
     })
+
+    socket.on('playerClear', data => {
+        io.emit(`${data.hash}-clear`)
+    })
 })
 
 app.get('*', (req, res) => {

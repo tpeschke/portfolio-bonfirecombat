@@ -2,12 +2,18 @@ import React, { Component } from 'react';
 
 import AddNewFighter from './AddNewFighter'
 import NewStatus from './AddNewStatus'
+import socketFun from '../../playerview/SocketApi'
 
 import { connect } from 'react-redux'
 
 import { CLEARFIELD } from '../../ducks/reducer'
 
 class Workspace extends Component {
+
+    handleClearField = () => {
+        socketFun.playerClear({hash : this.props.hash})
+        this.props.CLEARFIELD()
+    }
 
     render() {
 
@@ -21,7 +27,7 @@ class Workspace extends Component {
                 <NewStatus />
 
                 <button className="workshopButton"
-                    onClick={this.props.CLEARFIELD}
+                    onClick={this.handleClearField}
                     >Clear Field</button>
                 </div>
             </div>
@@ -30,6 +36,10 @@ class Workspace extends Component {
 
 }
 
-function mapStateToProps(state) { return {}}
+function mapStateToProps(state) {
+    return {
+        hash : state.hash
+    }
+}
 
 export default connect(mapStateToProps, {CLEARFIELD})(Workspace)

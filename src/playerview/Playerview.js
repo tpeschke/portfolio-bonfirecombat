@@ -116,6 +116,9 @@ export default class PlayerView extends Component {
             tempArr.splice(index, 1)
             this.setState({ fighterList: tempArr })
         })
+        this.socket.on(`${battle}-clear`, _ => {
+            this.setState({ fighterList : []})
+        })
     }
 
     render() {
