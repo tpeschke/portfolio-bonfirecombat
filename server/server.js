@@ -183,6 +183,7 @@ io.on('connection', socket => {
     })
 
     socket.on('playerEdit', data => {
+        console.log('hit')
         io.emit(`${data.hash}-edit`)
     })
 })
