@@ -54,6 +54,7 @@ class DeckEditFighter extends Component {
         }
 
         this.props.EDITFIGHTER(editedFighter)
+        console.log(this.props.hash, editedFighter)
         socketFun.playerEdit({fighter: editedFighter, hash: this.props.hash})
         this.props.OPENMODAL()
 
