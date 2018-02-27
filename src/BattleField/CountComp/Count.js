@@ -43,7 +43,7 @@ class Counter extends Component {
     componentWillReceiveProps(next) {
         socketFun.updateCount({count: next.count, hash: this.props.hash})
     }
-
+compo
     stopTime = () => {
         clearInterval(this.state.timeId);
     }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import BattleField from './BattleField/BattleFieldMain';
 import SavedField from './SavedFields/SaveFieldMain';
@@ -20,6 +20,8 @@ export default class Routes extends Component {
                     <Route
                         path='/BattleField'
                         render={_ => <BattleField setHeight={this.props.setHeight} />} />
+
+                    <Redirect to='/' />
                 </Switch>
             </div>
         )

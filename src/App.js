@@ -32,33 +32,33 @@ class App extends Component {
   render() {
 
     return (
-      <div className="slideDown">
-        <div className="header">
-          <div className="logo">
-            <h4>Combat Counter</h4>
-            <div className="settingsBannerOut">
-              <Settings
-                user={this.props.user}
-                settings={this.props.settings}
-                TOGGLEPLAYERVIEW={this.props.TOGGLEPLAYERVIEW}
-                playerview={this.props.playerview} />
+        <div className="slideDown">
+          <div className="header">
+            <div className="logo">
+              <h4>Combat Counter</h4>
+              <div className="settingsBannerOut">
+                <Settings
+                  user={this.props.user}
+                  settings={this.props.settings}
+                  TOGGLEPLAYERVIEW={this.props.TOGGLEPLAYERVIEW}
+                  playerview={this.props.playerview} />
+              </div>
             </div>
+            <div className="headpic"></div>
           </div>
-          <div className="headpic"></div>
-        </div>
-        <div className="appContent" id="container" style={this.state.style}>
+          <div className="appContent" id="container" style={this.state.style}>
 
-          <div className="NavContainer">
-            <NavBar />
+            <div className="NavContainer">
+              <NavBar />
+            </div>
+
+            <div className="border"></div>
+            <div className="border"></div>
+
+            <Routes setHeight={this.setHeight} />
           </div>
 
-          <div className="border"></div>
-          <div className="border"></div>
-
-          <Routes setHeight={this.setHeight} />
         </div>
-        
-      </div>
     );
   }
 }

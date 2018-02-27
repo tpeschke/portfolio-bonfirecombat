@@ -26,9 +26,9 @@ class LogDisplay extends Component {
                     onClick={this.props.OPENSETTINGS}
                 >{this.lock()}</button>
 
-                {/* <button id="settings"
+                 {/* <button id="settings"
                     onClick={this.props.OPENSETTINGS}
-                >test</button> */}
+                >test</button>  */}
 
             </div>
         )
