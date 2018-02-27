@@ -20,7 +20,7 @@ const initialState = {
     topopen2: false,
     pendingSaveOpen: false,
     finishedSaveOpen: false,
-    settings: true
+    settings: false
 }
 //TYPES
 
