@@ -36,7 +36,7 @@ module.exports = {
 
         var { id } = req.params
         var { user } = req.session
-        console.log(user)
+        console.warn(user)
         db.getAllStatuses( id, user.id ).then( result => res.status(200).send(result) )
     },
 
