@@ -36,7 +36,7 @@ module.exports = {
 
         var { id } = req.params
 
-        db.getAllStatuses( id, req.user.id ).then( result => res.status(200).send(result) )
+        db.getAllStatuses( id ).then( result => res.status(200).send(result) )
     },
 
     getHash: (req, res) => {
@@ -85,7 +85,7 @@ module.exports = {
 
         var { id } = req.params
 
-        db.deleteField(id).then( result => res.status(200).send(result) )
+        db.deleteField(id, req.user.id).then( result => res.status(200).send(result) )
 
     },
 
