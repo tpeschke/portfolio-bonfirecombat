@@ -35,9 +35,8 @@ module.exports = {
         const db = req.app.get('db')
 
         var { id } = req.params
-        var { user } = req.session
-        console.warn(user)
-        db.getAllStatuses( id, user.id ).then( result => res.status(200).send(result) )
+
+        db.getAllStatuses( id, req.user.id ).then( result => res.status(200).send(result) )
     },
 
     getHash: (req, res) => {
