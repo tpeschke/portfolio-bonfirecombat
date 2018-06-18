@@ -15,7 +15,7 @@ module.exports = {
         const db = req.app.get('db')
 
         var {id} = req.user
-
+        
         db.getAllCombats(id).then( result => res.status(200).send(result) )
 
     },
@@ -86,7 +86,6 @@ module.exports = {
         var { id } = req.params
 
         db.deleteField(id, req.user.id).then( result => res.status(200).send(result) )
-
     },
 
     saveField: (req, res ) => {
