@@ -68,7 +68,7 @@ export default class Acting extends Component {
                             >{d.speed}</button>
 
                             <input className="ListItem inputFinder" value={d.actioncount}
-                                onChange={e => this.props.action(d.id, e.target.value)} />
+                                onChange={e => this.props.action(d.id, +e.target.value)} />
 
                             <button className="ListItem"
                                 onClick={_ => this.handleTop(d.id)}
