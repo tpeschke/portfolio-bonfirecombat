@@ -1,5 +1,4 @@
 import axios from 'axios'
-
 import sort from '../components/sort'
 
 const initialState = {
@@ -226,7 +225,7 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { fighterList: gonefighter })
 
         case ADVANCE_SPEED:
-            var speedFighter = sort(state.fighterList.filter((val, i) => {
+            var speedFighter = sort(state.fighterList.map((val, i) => {
                 if (val.id === action.payload) {
                     val.actioncount += +val.speed
                     return val
@@ -234,6 +233,7 @@ export default function reducer(state = initialState, action) {
                     return val
                 }
             }), state.count)
+
             return Object.assign({}, state, { fighterList: speedFighter })
 
         case NEW_FIELD + '_FULFILLED':
@@ -249,14 +249,13 @@ export default function reducer(state = initialState, action) {
         case INPUT_ACTION:
             var updatedAction = sort(state.fighterList.map(val => {
                 if (val.id === action.id) {
-                    if (action.payload) {
                         val.actioncount = +action.payload
-                    }
                     return val
                 } else {
                     return val
                 }
             }), state.count)
+
             return Object.assign({}, state, { fighterList: updatedAction })
 
         case OPEN_MODAL:

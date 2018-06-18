@@ -11,7 +11,7 @@ export default function sort(fightArr, count, hash) {
                 val.topcheck = '0'
             }
         })
-    
+       
     return fightArr
 
 }
