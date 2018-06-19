@@ -32,9 +32,9 @@ passport.use(new Auth0Strategy({
     let { displayName, user_id, picture } = profile;
     const db = app.get('db');
 
-    db.find_user([user_id]).then(function(users) {
+    db.get.find_User([user_id]).then(function(users) {
         if (!users[0]) {
-            db.create_user([
+            db.add.create_User([
                 displayName,
                 picture,
                 user_id
@@ -68,14 +68,14 @@ passport.use(new Auth0Strategy({
 
 app.get('/auth', passport.authenticate('auth0'));
 app.get('/auth/callback', passport.authenticate('auth0', {
-    successRedirect: `/SavedFields`
+    successRedirect: `http://localhost:5679/SavedFields`
 }));
 
 passport.serializeUser((id, done) => {
     done(null,id)
 })
 passport.deserializeUser((id, done) => {
-    app.get('db').find_session_user([id]).then( (user) => {
+    app.get('db').get.find_Session_User([id]).then( (user) => {
         return done(null, user[0]);  
     })
 })
