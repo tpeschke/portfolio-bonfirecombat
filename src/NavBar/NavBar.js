@@ -20,6 +20,10 @@ class NavBar extends Component {
 
         var { combatId, page, user } = this.props
 
+        if (user.error) {
+            this.props.redirect('/')
+        }
+        
         return (
             <div className="navBar">
                 <div className="navBarInner">

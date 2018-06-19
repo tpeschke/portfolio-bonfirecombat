@@ -30,7 +30,7 @@ class App extends Component {
   }
 
   render() {
-
+    
     return (
         <div className="slideDown">
           <div className="header">
@@ -49,7 +49,7 @@ class App extends Component {
           <div className="appContent" id="container" style={this.state.style}>
 
             <div className="NavContainer">
-              <NavBar />
+              <NavBar redirect={this.props.history.push}/>
             </div>
 
             <div className="border"></div>

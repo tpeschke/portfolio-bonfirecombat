@@ -131,7 +131,7 @@ export function PAGELOCATION(url) {
     }
 }
 
-export function getUserInfo() {
+export function getUserInfo(cb) {
     return {
         type: GET_USER_INFO,
         payload: axios.get('/auth/me').then()
@@ -330,7 +330,7 @@ export default function reducer(state = initialState, action) {
 
         case CHANGE_BATTLE_NAME:
             if (action.payload) {
-            return Object.assign( {}, state, { combatName: action.payload })
+                return Object.assign( {}, state, { combatName: action.payload })
             }
             // don't put a break here: it screws with the combatId weirdly enough
 
@@ -339,6 +339,9 @@ export default function reducer(state = initialState, action) {
 
         case GET_USER_INFO + '_FULFILLED':
             return Object.assign({}, state, { user: action.payload })
+
+        case GET_USER_INFO + '_REJECTED':
+            return Object.assign({}, state, { user: {error: true} })
 
         case OPEN_SETTINGS:
             return Object.assign({}, state, { settings: !state.settings})
