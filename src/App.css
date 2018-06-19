@@ -312,6 +312,31 @@ h6 {
     margin: 0
 }
 
+#playerViewMain {
+    padding: 2.5% 1%;
+    text-align: center;
+    width: 600px
+}
+
+#playerViewSubtitle {
+    margin: 10px 0;
+    font-weight: 800;
+    font-size: 15px;
+}
+
+#playerViewInput {
+    margin: 10px auto;
+    width: 275px;
+}
+
+@media (max-width: 600px) {
+    #playerViewMain {
+        padding: 15px;
+        text-align: center;
+        width: 100%
+    }
+}
+
 /* ========================== */
 
 @keyframes fadeIn {

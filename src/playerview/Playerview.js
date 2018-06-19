@@ -205,7 +205,7 @@ export default class PlayerView extends Component {
             )
         } else {
             return (
-                <div className="playerBody">
+                <div className="playerBody" id='playerBodyLocked'>
                     <h2 className="topLock" id='viewLock'>{this.state.combatName}</h2>
                     <h1 id='viewLock'>Your GM has currently turned off the view on this field</h1>
                 </div>
