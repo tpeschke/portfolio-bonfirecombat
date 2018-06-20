@@ -41,7 +41,6 @@ class SaveFieldMain extends Component {
 
     deleteFieldTotal = (id) => {
         axios.delete(`/api/battle/${id}`).then(req => {
-            console.log(req.data)
             this.setState({ combats: req.data })
         })
         this.props.GETCOMBATFIGHTERS(0, '', 0)

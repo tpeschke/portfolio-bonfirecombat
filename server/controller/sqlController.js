@@ -16,7 +16,7 @@ module.exports = {
 
         var {id} = req.user
         
-        db.get.get_All_Combats(id).then( result => res.status(200).send(result) )
+        db.get.all_Combats(id).then( result => res.status(200).send(result) )
 
     },
 
@@ -26,7 +26,7 @@ module.exports = {
 
         var { id } = req.params
 
-        db.get.get_Combatants( id ).then( result => res.status(200).send(result) )
+        db.get.combatants( id ).then( result => res.status(200).send(result) )
 
     },
 
@@ -36,7 +36,7 @@ module.exports = {
 
         var { id } = req.params
 
-        db.get.get_All_Statuses( id ).then( result => res.status(200).send(result) )
+        db.get.all_Statuses( id ).then( result => res.status(200).send(result) )
     },
 
     getHash: (req, res) => {
@@ -44,7 +44,7 @@ module.exports = {
 
         var { id } = req.params
 
-        db.get.get_Hash( id ).then( result => res.status(200).send(result) )
+        db.get.hash( id ).then( result => res.status(200).send(result) )
     },
 
     getBattleByHash: (req, res) => {
@@ -52,7 +52,7 @@ module.exports = {
 
         var { hash } = req.params
 
-        db.get_Battle_By_Hash(hash).then( result => res.send(result))
+        db.get.battle_By_Hash(hash).then( result => res.send(result))
     },
 
     getCombatantsbyHash: (req, res) => {
@@ -61,8 +61,8 @@ module.exports = {
         var { hash } = req.params;
         tempArr = []
 
-        tempArr.push(db.get.get_Fighter_By_Hash(hash).then())
-        tempArr.push(db.get.get_Status_By_Hash(hash).then())
+        tempArr.push(db.get.fighter_By_Hash(hash).then())
+        tempArr.push(db.get.status_By_Hash(hash).then())
 
         Promise.all(tempArr).then( result => res.send(result))
     },
@@ -73,8 +73,8 @@ module.exports = {
         const db = req.app.get('db')
         var { id } = req.params
 
-        db.get.get_Field_Number(id)
-            .then(num => db.add.add_New_Field(num[0].count === '0' ? 'New Battlefield' : 'New Battlefield ' + num[0].count, id, urlhash)
+        db.get.field_Number(id)
+            .then(num => db.add.new_Field(num[0].count === '0' ? 'New Battlefield' : 'New Battlefield ' + num[0].count, id, urlhash)
                 .then(result => res.status(200).send(result)))
 
     },
@@ -85,7 +85,7 @@ module.exports = {
 
         var { id } = req.params
 
-        db.delete.delete_Field(id, req.user.id).then( result => res.status(200).send(result) )
+        db.delete.field(id, req.user.id).then( result => res.status(200).send(result) )
     },
 
     saveField: (req, res ) => {
@@ -99,21 +99,21 @@ module.exports = {
 
         fighterList.forEach(val => {
             if (!isNaN(val.id)) {
-                tempArr.push(db.update.update_fighters(val.namefighter, val.colorcode, val.speed, val.actioncount, val.topcheck,val.acting, val.dead, val.id).then().catch(e=>console.log('1------------------------------',e)))
+                tempArr.push(db.update.fighters(val.namefighter, val.colorcode, val.speed, val.actioncount, val.topcheck,val.acting, val.dead, val.id).then().catch(e=>console.log('1------------------------------',e)))
             } else {
-                tempArr.push(db.add.add_fighter(val.namefighter, val.colorcode, val.speed, val.actioncount, val.topcheck,val.acting, val.dead, combatId).then().catch(e=>console.log('21------------------------------',e)))
+                tempArr.push(db.add.fighter(val.namefighter, val.colorcode, val.speed, val.actioncount, val.topcheck,val.acting, val.dead, combatId).then().catch(e=>console.log('21------------------------------',e)))
             }
         })
 
         statusList.forEach(val => {
-            val.timestatus <= 0 ? tempArr.push(db.delete.delete_Status(val.id).then().catch(e=>console.log('31------------------------------',e))) : null;
+            val.timestatus <= 0 ? tempArr.push(db.delete.status(val.id).then().catch(e=>console.log('31------------------------------',e))) : null;
             if (!isNaN(val.id)) {
-                tempArr.push(db.update.update_Status(val.namestatus, val.timestatus, val.id).then().catch(e=>console.log('41------------------------------',e)))
+                tempArr.push(db.update.status(val.namestatus, val.timestatus, val.id).then().catch(e=>console.log('41------------------------------',e)))
             } else {
-               tempArr.push(db.add.add_Status(val.namestatus, val.timestatus, combatId).then().catch(e=>console.log('51------------------------------',e)))
+               tempArr.push(db.add.status(val.namestatus, val.timestatus, combatId).then().catch(e=>console.log('51------------------------------',e)))
             }})
 
-            tempArr.push(db.update.save_Field(count, combatName, req.body.combatId).then().catch(e=>console.log('61------------------------------',e)))
+            tempArr.push(db.update.field(count, combatName, req.body.combatId).then().catch(e=>console.log('61------------------------------',e)))
             
         Promise.all(tempArr).then(result => res.send())
 
@@ -125,7 +125,7 @@ module.exports = {
 
         var {id, tooltip} = req.body
 
-        db.update.update_Tooltip(tooltip, id).then(result => res.send())
+        db.update.tooltip(tooltip, id).then(result => res.send())
     },
 
     deleteFighter: (req, res)=> {
@@ -134,7 +134,7 @@ module.exports = {
 
         var { id } = req.params
 
-        db.delete.delete_Fighter(id).then()
+        db.delete.fighter(id).then()
     },
 
     deleteStatus: ( req, res ) => {
@@ -143,7 +143,7 @@ module.exports = {
 
         var { id } = req.params
 
-        db.delete.delete_Status(id).then()
+        db.delete.status(id).then()
     }
 
 }
