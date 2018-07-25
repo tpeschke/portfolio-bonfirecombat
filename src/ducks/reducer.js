@@ -228,8 +228,8 @@ export default function reducer(state = initialState, action) {
         case ADVANCE_SPEED:
             var speedFighter = sort(state.fighterList.map((val, i) => {
                 if (val.id === action.payload) {
-                    val.actioncount += +val.speed
-                    return val
+                    let tempVal = +val.actioncount + +val.speed
+                    return tempVal
                 } else {
                     return val
                 }
