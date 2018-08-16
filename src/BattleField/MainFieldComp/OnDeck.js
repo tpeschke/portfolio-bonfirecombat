@@ -43,7 +43,7 @@ export default class OnDeck extends Component {
 
     handleDeath = (id) => {
         this.props.kill(id)
-        socketFun.playerKill({ id: id, hash: this.props.hash})
+        socketFun.playerKill({ id: id, hash: this.props.hash })
     }
 
     render() {
@@ -53,10 +53,8 @@ export default class OnDeck extends Component {
             var deckList = this.state.list.map((d, i) => {
 
                 if (d.acting === '0' && d.dead === '0') {
-
                     let color = { background: d.colorcode }
-                    
-                   socketFun.playerUnTop({id: d.id, hash: this.props.hash})
+                    socketFun.playerUnTop({ id: d.id, hash: this.props.hash })
 
                     return <div className="List"
                         key={d.id}>
@@ -68,8 +66,10 @@ export default class OnDeck extends Component {
                             onClick={_ => this.props.advance(d.id)}
                         >{d.speed}</button>
 
-                        <input className="ListItem inputFinder" value={d.actioncount}
-                            onChange={e => this.props.action(d.id, +e.target.value)} />
+                        <input className="ListItem inputFinder"
+                            value={d.actioncount}
+                            onChange={e => this.props.action(d.id, +e.target.value, true)}
+                            onBlur={e => this.props.action(d.id, +e.target.value, false)} />
 
                         <button className="ListItem"
                             onClick={_ => this.handleTop(d.id)}

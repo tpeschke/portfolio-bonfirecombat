@@ -47,8 +47,7 @@ class BattleFieldMain extends Component {
 
     render() {
 
-        var { fighterList, count, hash, KILLCOMBATANT, ADVANCESPEED, INPUTACTION, OPENMODAL, OPENMODAL2, OPENTOP, OPENTOP2, REMOVEFIGHTER } = this.props
-        
+        var { fighterList, count, hash, KILLCOMBATANT, ADVANCESPEED, INPUTACTION, OPENMODAL, OPENMODAL2, OPENTOP, OPENTOP2, REMOVEFIGHTER, REDUXSORT } = this.props
         return (
             <div className="BattleMain fadeInApp" id="Battle">
                 <BattleName
@@ -72,7 +71,8 @@ class BattleFieldMain extends Component {
                                 action={INPUTACTION}
                                 modal={OPENMODAL}
                                 top={OPENTOP}
-                                hash={hash} />
+                                hash={hash}
+                                reduxSort={REDUXSORT} />
 
                             <Acting
                                 list={fighterList}

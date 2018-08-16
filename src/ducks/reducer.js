@@ -248,15 +248,28 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, {pendingSaveOpen : !state.pendingSaveOpen, finishedSaveOpen: !state.finishedSaveOpen})
 
         case INPUT_ACTION:
-            var updatedAction = sort(state.fighterList.map(val => {
-                if (val.id === action.id) {
-                        val.actioncount = +action.payload
-                    return val
-                } else {
-                    return val
-                }
-            }), state.count)
-
+            let updatedAction = []
+            
+            if (action.flipswitch) {
+                updatedAction = state.fighterList.map(val => {
+                    if (val.id === action.id) {
+                            val.actioncount = +action.payload
+                        return val
+                    } else {
+                        return val
+                    }
+                })
+            } else {
+                updatedAction = sort(state.fighterList.map(val => {
+                    if (val.id === action.id) {
+                            val.actioncount = +action.payload
+                        return val
+                    } else {
+                        return val
+                    }
+                }), state.count)
+            }
+            
             return Object.assign({}, state, { fighterList: updatedAction })
 
         case OPEN_MODAL:

@@ -60,11 +60,12 @@ export function ADVANCESPEED(id) {
     }
 }
 
-export function INPUTACTION(id, input) {
+export function INPUTACTION(id, input, flipswitch) {
     return {
         type: INPUT_ACTION,
         payload: input,
-        id: id
+        id: id,
+        flipswitch: flipswitch
     }
 }
 

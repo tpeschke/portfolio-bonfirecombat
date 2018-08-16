@@ -43,7 +43,7 @@ export default class Acting extends Component {
 
     handleDeath = (id) => {
         this.props.kill(id)
-        socketFun.playerKill({ id: id, hash: this.props.hash})
+        socketFun.playerKill({ id: id, hash: this.props.hash })
     }
 
     render() {
@@ -52,39 +52,41 @@ export default class Acting extends Component {
 
             var actingList = this.state.list.map((d, i) => {
 
-                    if (d.acting === '1' && d.dead === '0') {
+                if (d.acting === '1' && d.dead === '0') {
 
-                        let color = { background: d.colorcode }
+                    let color = { background: d.colorcode }
 
-                        return <div
-                            className={d.topcheck === '1' ? 'List top' : 'List'}
-                            key={d.id}>
-                            <div className="color" style={color}></div>
+                    return <div
+                        className={d.topcheck === '1' ? 'List top' : 'List'}
+                        key={d.id}>
+                        <div className="color" style={color}></div>
 
-                            <p className="ListItem Name">{d.namefighter}</p>
+                        <p className="ListItem Name">{d.namefighter}</p>
 
-                            <button className="ListItem"
-                                onClick={_ => this.props.advance(d.id)}
-                            >{d.speed}</button>
+                        <button className="ListItem"
+                            onClick={_ => this.props.advance(d.id)}
+                        >{d.speed}</button>
 
-                            <input className="ListItem inputFinder" value={d.actioncount}
-                                onChange={e => this.props.action(d.id, +e.target.value)} />
+                        <input className="ListItem inputFinder"
+                            value={d.actioncount}
+                            onChange={e => this.props.action(d.id, +e.target.value, true)}
+                            onBlur={e => this.props.action(d.id, +e.target.value, false)} />
 
-                            <button className="ListItem"
-                                onClick={_ => this.handleTop(d.id)}
-                            >(ง'̀-'́)ง</button>
+                        <button className="ListItem"
+                            onClick={_ => this.handleTop(d.id)}
+                        >(ง'̀-'́)ง</button>
 
-                            <button className="ListItem"
-                                onClick={_ => this.handleDeath(d.id)}
-                            >X</button>
+                        <button className="ListItem"
+                            onClick={_ => this.handleDeath(d.id)}
+                        >X</button>
 
-                            <button className="ListItem"
-                                onClick={_ => this.modifyFighter(d)}
-                            >---</button>
+                        <button className="ListItem"
+                            onClick={_ => this.modifyFighter(d)}
+                        >---</button>
 
-                        </div>
-                    }
-                })
+                    </div>
+                }
+            })
         }
 
         return (
