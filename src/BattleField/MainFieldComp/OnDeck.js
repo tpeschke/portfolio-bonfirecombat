@@ -4,6 +4,7 @@ import socketFun from '../../playerview/SocketApi'
 
 import DeckEditFighter from './ActingOnDeckComponents/DeckEditFighter'
 import DeckToP from './ActingOnDeckComponents/DeckThresholdOfPain'
+import DeckWeapon from './ActingOnDeckComponents/DeckWeapon'
 
 export default class OnDeck extends Component {
     constructor(props) {
@@ -17,6 +18,7 @@ export default class OnDeck extends Component {
             holdname: '',
             holdspeed: 0,
             holdid: 0,
+            holdweapons: [],
 
             topId: 0
         }
@@ -34,6 +36,11 @@ export default class OnDeck extends Component {
             holdid: d.id
         })
         this.props.modal()
+    }
+
+    chooseWeapon = (id, weapons) => {
+        this.setState({holdid: id, holdweapons: weapons})
+        this.props.weaponModal()
     }
 
     handleTop = (id) => {
@@ -56,15 +63,22 @@ export default class OnDeck extends Component {
                     let color = { background: d.colorcode }
                     socketFun.playerUnTop({ id: d.id, hash: this.props.hash })
 
+                    let speed = +d.weapons.filter(val => val.selected == 1)[0].speed
+
                     return <div className="List"
                         key={d.id}>
                         <div className="color" style={color}></div>
 
                         <p className="ListItem Name">{d.namefighter}</p>
 
+                        <div className="ListItem"
+                            onClick={_=> this.chooseWeapon(d.id, d.weapons)}>
+                            <div class="arrow right"></div>
+                        </div>
+
                         <button className="ListItem"
-                            onClick={_ => this.props.advance(d.id)}
-                        >{d.speed}</button>
+                            onClick={_ => this.props.advance(d.id, speed)}
+                        >{speed}</button>
 
                         <input className="ListItem inputFinder"
                             value={d.actioncount}
@@ -111,6 +125,10 @@ export default class OnDeck extends Component {
                     name={this.state.holdname}
                     speed={this.state.holdspeed}
                     id={this.state.holdid} />
+
+                <DeckWeapon 
+                    weapons={this.state.holdweapons}
+                    id={this.state.holdid}/>
 
                 <DeckToP
                     id={this.state.topId}

@@ -53,10 +53,11 @@ export function REMOVEFIGHTER(id) {
 }
 
 
-export function ADVANCESPEED(id) {
+export function ADVANCESPEED(id, speed) {
     return {
         type: ADVANCE_SPEED,
-        payload: id
+        payload: id,
+        speed
     }
 }
 

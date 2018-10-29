@@ -4,6 +4,7 @@ import socketFun from '../../playerview/SocketApi'
 
 import ActEditFighter from './ActingOnDeckComponents/ActEditFighter'
 import ActToP from './ActingOnDeckComponents/ActThresholdOfPain'
+import ActWeapon from './ActingOnDeckComponents/ActWeapon'
 
 export default class Acting extends Component {
     constructor(props) {
@@ -18,6 +19,7 @@ export default class Acting extends Component {
             holdname: '',
             holdspeed: 0,
             holdid: 0,
+            holdweapons: [],
         }
     }
 
@@ -31,9 +33,12 @@ export default class Acting extends Component {
             holdname: d.namefighter,
             holdspeed: d.speed,
             holdid: d.id
-        })
-
-        this.props.modal2()
+        }, _ => this.props.modal2())
+    }
+    
+    chooseWeapon = (id, weapons) => {
+        this.setState({holdid: id, holdweapons: weapons})
+        this.props.weaponModal2()
     }
 
     handleTop = (id) => {
@@ -56,6 +61,8 @@ export default class Acting extends Component {
 
                     let color = { background: d.colorcode }
 
+                    let speed = +d.weapons.filter(val => val.selected == 1)[0].speed
+
                     return <div
                         className={d.topcheck === '1' ? 'List top' : 'List'}
                         key={d.id}>
@@ -63,9 +70,14 @@ export default class Acting extends Component {
 
                         <p className="ListItem Name">{d.namefighter}</p>
 
+                        <div className="ListItem"
+                            onClick={_=> this.chooseWeapon(d.id, d.weapons)}>
+                            <div class="arrow right"></div>
+                        </div>
+
                         <button className="ListItem"
-                            onClick={_ => this.props.advance(d.id)}
-                        >{d.speed}</button>
+                            onClick={_ => this.props.advance(d.id, speed)}
+                        >{speed}</button>
 
                         <input className="ListItem inputFinder"
                             value={d.actioncount}
@@ -114,6 +126,10 @@ export default class Acting extends Component {
                     name={this.state.holdname}
                     speed={this.state.holdspeed}
                     id={this.state.holdid} />
+
+                <ActWeapon 
+                    weapons={this.state.holdweapons}
+                    id={this.state.holdid}/>
 
                 <ActToP
                     id={this.state.holdid}

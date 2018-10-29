@@ -26,22 +26,37 @@ create table combatants (
     id SERIAL PRIMARY KEY,
     namefighter VARCHAR(40),
     colorCode VarChar(10),
-    speed Int,
-    actionCount INT,
     topcheck BIT,
+    actionCount INT,
     acting bit,
     dead bit,
     idCombat Int,
         FOREIGN Key (idCombat) REFERENCES combat(id)
     )
 
---     insert into combatants (namefighter, colorcode, speed, actioncount, topcheck, acting, dead, idcombat)
+--     insert into combatants (namefighter, colorcode, topcheck, acting, dead, idcombat, actionCount)
 -- values 
---      ('Ragnar','#FF0000', 5, 17, '0', '0', '0',1),
---      ('Sir William','#FFFF00',7, 10,'0', '0', '0',1)
---      ('Robert','#FF00FF', 15, 10, '0', '0', '0', 2),
---      ('Urlich VonLichstein','#FFFFFF',10, 1,'0', '0', '0', 2)
---      ('Harris', '#000000', 3, 5, '0', '0', '1', 1)
+--      ('Ragnar','#FF0000', '0', '0', '0',1, 1),
+--      ('Sir William','#FFFF00','0', '0', '0',1, 15)
+--      ('Robert','#FF00FF', '0', '0', '0', 2, 2),
+--      ('Urlich VonLichstein','#FFFFFF', '0', '0', '0', 2, 3),
+--      ('Harris', '#000000','0', '0', '1', 1, 2)
+
+create table weapons (
+    id SERIAL PRIMARY KEY,
+    combatant Int,
+    weapon VARCHAR(40),
+    selected BIT,
+    speed Int
+)
+
+--     insert into weapons (combatant, weapon, speed, selected)
+-- values 
+--      (1, 'unarmed', 10, '0'),
+--      (1, 'longsword', 10, '1'),
+--      (2, 'dagger', 7, '1'),
+--      (3, 'pike', 18, '1')
+
 
 create table statuses (
     id SERIAL PRIMARY KEY,

@@ -1,12 +1,12 @@
-makeid= () => {
+makeid = () => {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  
-    for (var i = 0; i < 5; i++){
-      text += possible.charAt(Math.floor(Math.random() * possible.length));
-  }
+
+    for (var i = 0; i < 5; i++) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
     return text;
-  }
+}
 
 
 module.exports = {
@@ -14,20 +14,28 @@ module.exports = {
 
         const db = req.app.get('db')
 
-        var {id} = req.user
-        
-        db.get.all_Combats(id).then( result => res.status(200).send(result) )
+        var { id } = req.user
+
+        db.get.all_Combats(id).then(result => res.status(200).send(result))
 
     },
 
     loadCombatants: (req, res) => {
 
         const db = req.app.get('db')
-
         var { id } = req.params
 
-        db.get.combatants( id ).then( result => res.status(200).send(result) )
-
+        db.get.combatants(id).then(result => {
+            let tempArr = []
+            result.forEach( val => tempArr.push( db.get.weapon(val.id).then(weapons => {
+                if (weapons.length === 0) {
+                    return {...val, weapons: [{id: 1, weapon: "unarmed", selected: '1', speed: 10}] }
+                }
+                return {...val, weapons: [...weapons, {id: 1, weapon: "unarmed", selected: '0', speed: 10}]}
+            }) ) )
+            
+            Promise.all(tempArr).then( final => res.send(final) )
+        })
     },
 
     getAllStatuses: (req, res) => {
@@ -36,7 +44,7 @@ module.exports = {
 
         var { id } = req.params
 
-        db.get.all_Statuses( id ).then( result => res.status(200).send(result) )
+        db.get.all_Statuses(id).then(result => res.status(200).send(result))
     },
 
     getHash: (req, res) => {
@@ -44,7 +52,7 @@ module.exports = {
 
         var { id } = req.params
 
-        db.get.hash( id ).then( result => res.status(200).send(result) )
+        db.get.hash(id).then(result => res.status(200).send(result))
     },
 
     getBattleByHash: (req, res) => {
@@ -52,7 +60,7 @@ module.exports = {
 
         var { hash } = req.params
 
-        db.get.battle_By_Hash(hash).then( result => res.send(result))
+        db.get.battle_By_Hash(hash).then(result => res.send(result))
     },
 
     getCombatantsbyHash: (req, res) => {
@@ -64,7 +72,7 @@ module.exports = {
         tempArr.push(db.get.fighter_By_Hash(hash).then())
         tempArr.push(db.get.status_By_Hash(hash).then())
 
-        Promise.all(tempArr).then( result => res.send(result))
+        Promise.all(tempArr).then(result => res.send(result))
     },
 
     newField: (req, res) => {
@@ -85,10 +93,10 @@ module.exports = {
 
         var { id } = req.params
 
-        db.delete.field(id, req.user.id).then( result => res.status(200).send(result) )
+        db.delete.field(id, req.user.id).then(result => res.status(200).send(result))
     },
 
-    saveField: (req, res ) => {
+    saveField: (req, res) => {
 
         var { combatName, count, combatId, fighterList, statusList } = req.body
         var { id } = req.params
@@ -99,36 +107,37 @@ module.exports = {
 
         fighterList.forEach(val => {
             if (!isNaN(val.id)) {
-                tempArr.push(db.update.fighters(val.namefighter, val.colorcode, val.speed, val.actioncount, val.topcheck,val.acting, val.dead, val.id).then().catch(e=>console.log('1------------------------------',e)))
+                tempArr.push(db.update.fighters(val.namefighter, val.colorcode, val.speed, val.actioncount, val.topcheck, val.acting, val.dead, val.id).then().catch(e => console.log('1------------------------------', e)))
             } else {
-                tempArr.push(db.add.fighter(val.namefighter, val.colorcode, val.speed, val.actioncount, val.topcheck,val.acting, val.dead, combatId).then().catch(e=>console.log('21------------------------------',e)))
+                tempArr.push(db.add.fighter(val.namefighter, val.colorcode, val.speed, val.actioncount, val.topcheck, val.acting, val.dead, combatId).then().catch(e => console.log('21------------------------------', e)))
             }
         })
 
         statusList.forEach(val => {
-            val.timestatus <= 0 ? tempArr.push(db.delete.status(val.id).then().catch(e=>console.log('31------------------------------',e))) : null;
+            val.timestatus <= 0 ? tempArr.push(db.delete.status(val.id).then().catch(e => console.log('31------------------------------', e))) : null;
             if (!isNaN(val.id)) {
-                tempArr.push(db.update.status(val.namestatus, val.timestatus, val.id).then().catch(e=>console.log('41------------------------------',e)))
+                tempArr.push(db.update.status(val.namestatus, val.timestatus, val.id).then().catch(e => console.log('41------------------------------', e)))
             } else {
-               tempArr.push(db.add.status(val.namestatus, val.timestatus, combatId).then().catch(e=>console.log('51------------------------------',e)))
-            }})
+                tempArr.push(db.add.status(val.namestatus, val.timestatus, combatId).then().catch(e => console.log('51------------------------------', e)))
+            }
+        })
 
-            tempArr.push(db.update.field(count, combatName, req.body.combatId).then().catch(e=>console.log('61------------------------------',e)))
-            
+        tempArr.push(db.update.field(count, combatName, req.body.combatId).then().catch(e => console.log('61------------------------------', e)))
+
         Promise.all(tempArr).then(result => res.send())
 
     },
 
-    setTooltip: (req, res)=> {
+    setTooltip: (req, res) => {
 
         const db = req.app.get('db')
 
-        var {id, tooltip} = req.body
+        var { id, tooltip } = req.body
 
         db.update.tooltip(tooltip, id).then(result => res.send())
     },
 
-    deleteFighter: (req, res)=> {
+    deleteFighter: (req, res) => {
 
         const db = req.app.get('db')
 
@@ -137,7 +146,7 @@ module.exports = {
         db.delete.fighter(id).then()
     },
 
-    deleteStatus: ( req, res ) => {
+    deleteStatus: (req, res) => {
 
         const db = req.app.get('db')
 

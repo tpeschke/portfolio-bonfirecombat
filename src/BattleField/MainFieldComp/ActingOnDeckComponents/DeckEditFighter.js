@@ -61,7 +61,6 @@ class DeckEditFighter extends Component {
 
     }
 
-
     render() {
 
         const { color, name, speed } = this.state;

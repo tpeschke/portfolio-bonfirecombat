@@ -81,7 +81,7 @@
 
 
 .ListItem {
-    min-width: 65px;
+    min-width: 50px;
     margin: 3px;
     text-align: center;
 }
@@ -98,7 +98,7 @@ input.ListItem:hover {
 
 .NameHeader {
     margin-left: 25px;
-    min-width: 161px;
+    min-width: 216px;
 }
 
 .color {
@@ -183,4 +183,63 @@ input.ListItem:hover {
 
 .countNum {
     font-size: 45px
+}
+
+/* ======================== */
+
+.arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+
+.arrow:hover {
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+
+.wpHeader {
+    margin-top: 25px;
+}
+
+.wpItemTable {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    width: 100%;
+}
+
+.wpItem {
+    display: flex;
+    justify-content: space-between;
+    padding: 3px;
+    min-width: 50px;
+}
+
+.wpTableHeader {
+    display: flex;
+    justify-content: space-between;
+    padding: 3px;
+    border-bottom: 1px solid black;
+    margin-bottom: 5px;
+}
+
+.wpItem:hover {
+    background: rgb(151, 23, 21, .50);
+}
+
+.wpSelected {
+    background: gray;
+}
+
+.wpSpeed {
+    min-width: 50px
 }

@@ -18,6 +18,8 @@ const initialState = {
     editopen2: false,
     topopen: false,
     topopen2: false,
+    weaponModal: false,
+    weaponModal2: false,
     pendingSaveOpen: false,
     finishedSaveOpen: false,
     settings: false
@@ -72,6 +74,11 @@ const TOGGLE_PLAYERVIEW = "TOGGLE_PLAYERVIEW"
 
 const GET_HASH = "GET_HASH"
 
+const WEAPON_MODAL = "WEAPON_MODAL"
+const WEAPON_MODAL2 = "WEAPON_MODAL2"
+
+const SELECT_WEAPON = "SELECT_WEAPON"
+
 //ACTION BUILDERS
 
 export function NEWFIELD(id) {
@@ -115,6 +122,18 @@ export function OPENTOP() {
 export function OPENTOP2() {
     return {
         type: OPEN_TOP2
+    }
+}
+
+export function WEAPONMODAL() {
+    return {
+        type: WEAPON_MODAL
+    }
+}
+
+export function WEAPONMODAL2() {
+    return {
+        type: WEAPON_MODAL2
     }
 }
 
@@ -163,6 +182,13 @@ export function TOGGLEPLAYERVIEW() {
     }
 }
 
+export function SELECTWEAPON(weapon, id) {
+    return {
+        type: SELECT_WEAPON,
+        payload: {weapon, id}
+    }
+}
+
 //REDUCER
 
 export default function reducer(state = initialState, action) {
@@ -181,7 +207,7 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { statusList: action.payload.data })
 
         case GET_HASH + '_FULFILLED':
-            return Object.assign({}, state, { hash : action.payload.data[0].urlhash}) 
+            return Object.assign({}, state, { hash: action.payload.data[0].urlhash })
 
         case INCREASE_COUNT:
             var newCount = +state.count + 1
@@ -228,7 +254,7 @@ export default function reducer(state = initialState, action) {
         case ADVANCE_SPEED:
             var speedFighter = sort(state.fighterList.map((val, i) => {
                 if (val.id === action.payload) {
-                    val.actioncount = +val.actioncount + +val.speed
+                    val.actioncount = +val.actioncount + +action.speed
                     return val
                 } else {
                     return val
@@ -242,18 +268,18 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { combatId: id, combatName: namecombat, fighterList: [], statusList: [], count: 1 })
 
         case SAVE_FIELD + "_PENDING":
-            return Object.assign({}, state, {pendingSaveOpen : !state.pendingSaveOpen})
+            return Object.assign({}, state, { pendingSaveOpen: !state.pendingSaveOpen })
 
         case SAVE_FIELD + "_FULFILLED":
-            return Object.assign({}, state, {pendingSaveOpen : !state.pendingSaveOpen, finishedSaveOpen: !state.finishedSaveOpen})
+            return Object.assign({}, state, { pendingSaveOpen: !state.pendingSaveOpen, finishedSaveOpen: !state.finishedSaveOpen })
 
         case INPUT_ACTION:
             let updatedAction = []
-            
+
             if (action.flipswitch) {
                 updatedAction = state.fighterList.map(val => {
                     if (val.id === action.id) {
-                            val.actioncount = +action.payload
+                        val.actioncount = +action.payload
                         return val
                     } else {
                         return val
@@ -262,14 +288,14 @@ export default function reducer(state = initialState, action) {
             } else {
                 updatedAction = sort(state.fighterList.map(val => {
                     if (val.id === action.id) {
-                            val.actioncount = +action.payload
+                        val.actioncount = +action.payload
                         return val
                     } else {
                         return val
                     }
                 }), state.count)
             }
-            
+
             return Object.assign({}, state, { fighterList: updatedAction })
 
         case OPEN_MODAL:
@@ -284,6 +310,20 @@ export default function reducer(state = initialState, action) {
                 return Object.assign({}, state, { editopen2: true })
             } else {
                 return Object.assign({}, state, { editopen2: false })
+            }
+
+        case WEAPON_MODAL:
+            if (state.weaponModal === false) {
+                return Object.assign({}, state, { weaponModal: true })
+            } else {
+                return Object.assign({}, state, { weaponModal: false })
+            }
+
+        case WEAPON_MODAL2:
+            if (state.weaponModal2 === false) {
+                return Object.assign({}, state, { weaponModal2: true })
+            } else {
+                return Object.assign({}, state, { weaponModal2: false })
             }
 
         case EDIT_FIGHTER:
@@ -336,42 +376,56 @@ export default function reducer(state = initialState, action) {
                 }
             }
             axios.delete(`/api/status/${action.payload}`).then()
-        return Object.assign( {}, state, { statusList: modifiedStatus})
+            return Object.assign({}, state, { statusList: modifiedStatus })
 
         case ADD_NEW_STATUS:
             var newStatus = state.statusList.concat(action.payload)
-            return Object.assign( {}, state, { statusList: newStatus})
+            return Object.assign({}, state, { statusList: newStatus })
 
         case CHANGE_BATTLE_NAME:
             if (action.payload) {
-                return Object.assign( {}, state, { combatName: action.payload })
+                return Object.assign({}, state, { combatName: action.payload })
             }
-            // don't put a break here: it screws with the combatId weirdly enough
+        // don't put a break here: it screws with the combatId weirdly enough
 
         case PAGE_LOCATION:
-            return Object.assign( {}, state, { page: action.payload})
+            return Object.assign({}, state, { page: action.payload })
 
         case GET_USER_INFO + '_FULFILLED':
             return Object.assign({}, state, { user: action.payload })
 
         case GET_USER_INFO + '_REJECTED':
-            return Object.assign({}, state, { user: {error: true} })
+            return Object.assign({}, state, { user: { error: true } })
 
         case OPEN_SETTINGS:
-            return Object.assign({}, state, { settings: !state.settings})
+            return Object.assign({}, state, { settings: !state.settings })
 
         case FLIP_TOOLTIP:
-            var tempUser = Object.assign( {} ,state.user)
+            var tempUser = Object.assign({}, state.user)
             tempUser.data.tooltip === '1' ? tempUser.data.tooltip = '0' : tempUser.data.tooltip = '1';
             axios.post(`/api/settings`, tempUser.data).then()
-            return Object.assign({}, state, {user : tempUser})
+            return Object.assign({}, state, { user: tempUser })
 
         case TOGGLE_SAVE:
-            return Object.assign({}, state, { finishedSaveOpen: !state.finishedSaveOpen})
+            return Object.assign({}, state, { finishedSaveOpen: !state.finishedSaveOpen })
 
         case TOGGLE_PLAYERVIEW:
-            return Object.assign({}, state, { playerview: !state.playerview})
-    
+            return Object.assign({}, state, { playerview: !state.playerview })
+
+        case SELECT_WEAPON:
+            let { weapon, id } = action.payload
+            let fighters = state.fighterList.map(val => {
+                if (val.id == id) {
+                    val.weapons.forEach(w => {
+                        if (w.id == weapon) {
+                            w.selected = '1'
+                        } else { w.selected = '0' }
+                    })
+                }
+                return val
+            })
+            return Object.assign({}, state, { fighterList: fighters})
+
         default: return state
     }
 }

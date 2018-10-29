@@ -65,10 +65,9 @@ passport.use(new Auth0Strategy({
 //     next();
 // })
 
-
 app.get('/auth', passport.authenticate('auth0'));
 app.get('/auth/callback', passport.authenticate('auth0', {
-    successRedirect: `/SavedFields`
+    successRedirect: `http://localhost:5679/SavedFields`
 }));
 
 passport.serializeUser((id, done) => {
