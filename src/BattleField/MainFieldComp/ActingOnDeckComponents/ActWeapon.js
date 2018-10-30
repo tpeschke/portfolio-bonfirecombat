@@ -24,14 +24,12 @@ class ActWeapon extends Component {
         let { id, ADDWEAPON } = this.props
         let { holdWeapon, holdSpeed, holdId } = this.state
         ADDWEAPON(id, holdWeapon, holdSpeed, holdId)
-        this.setState({ holdWeapon: '', holdSpeed: 0, holdId: null, edit: false })
     }
 
     deleteWeapon = () => {
         let { id, DELETEWEAPON } = this.props
         let { holdId } = this.state
         DELETEWEAPON(id, holdId)
-        this.setState({ holdWeapon: '', holdSpeed: 0, holdId: null, edit: false })
     }
 
     editWeapon = (w) => {
@@ -80,22 +78,24 @@ class ActWeapon extends Component {
                         <div className='wpTableHeader'>
                             <p className="wpItemHeader">Weapon</p>
                             <p className="wpSpeed">Speed</p>
-                            <p className="wpSpeed">Edit</p>
+                            <p className="wpSpeed wpEdit">Edit</p>
+                        </div>
+                        <div className="wpTableInner">
+                            {display}
+
+                            <div className="wpInput">
+                                <input type="text"
+                                    className="wpItemHeader" id="wpInputItem"
+                                    onChange={e => this.setState({ holdWeapon: e.target.value })} />
+                                <input type="text"
+                                    className="wpSpeed" id="wpInputItem"
+                                    onChange={e => this.setState({ holdSpeed: e.target.value })} />
+                                <button
+                                    className="wpSpeed"
+                                    onClick={this.submitWeapon}>+</button>
+                            </div>
                         </div>
 
-                        {display}
-
-                        <div className="wpInput">
-                            <input type="text"
-                                className="wpItemHeader" id="wpInputItem"
-                                onChange={e => this.setState({ holdWeapon: e.target.value })} />
-                            <input type="text"
-                                className="wpSpeed" id="wpInputItem"
-                                onChange={e => this.setState({ holdSpeed: e.target.value })} />
-                            <button
-                                className="wpSpeed"
-                                onClick={this.submitWeapon}>+</button>
-                        </div>
                     </div>
                 )
             }

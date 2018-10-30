@@ -213,8 +213,6 @@ input.ListItem:hover {
 .wpItemTable {
     display: flex;
     flex-direction: column;
-    padding: 5px;
-    width: 100%;
 }
 
 .wpItem {
@@ -222,6 +220,12 @@ input.ListItem:hover {
     justify-content: space-between;
     padding: 3px;
     min-width: 50px;
+    min-height: 22px;
+}
+
+.wpTableInner {
+    overflow-y: scroll;
+    max-height: 200px;
 }
 
 .wpTableHeader {
@@ -241,14 +245,14 @@ input.ListItem:hover {
 }
 
 .wpSpeed {
-    width: 40px;
+    width: 50px;
     margin-left: 5px;
     margin-right: 5px;
     text-align: center;
 }
 
 .wpItemHeader {
-    min-width: 145px;
+    min-width: 135px;
     text-align: left;
     margin-right: 5px;
 }
@@ -256,4 +260,8 @@ input.ListItem:hover {
 #wpInputItem {
     background: rgba(245, 245, 245, 0.25);
     border-radius: 5px;
+}
+
+.wpEdit {
+    margin-right: 22px;
 }
