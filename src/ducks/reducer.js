@@ -1,5 +1,6 @@
 import axios from 'axios'
 import sort from '../components/sort'
+import makeid from '../components/makeid'
 import socketFun from '../playerview/SocketApi'
 
 const initialState = {
@@ -24,6 +25,7 @@ const initialState = {
     finishedSaveOpen: false,
     settings: false
 }
+
 //TYPES
 
 const GET_COMBAT_FIGHTERS = 'GET_COMBAT_FIGHTERS'
@@ -78,6 +80,8 @@ const WEAPON_MODAL = "WEAPON_MODAL"
 const WEAPON_MODAL2 = "WEAPON_MODAL2"
 
 const SELECT_WEAPON = "SELECT_WEAPON"
+const ADD_WEAPON = "ADD_WEAPON"
+const DELETE_WEAPON = "DELETE_WEAPON"
 
 //ACTION BUILDERS
 
@@ -186,6 +190,23 @@ export function SELECTWEAPON(weapon, id) {
     return {
         type: SELECT_WEAPON,
         payload: {weapon, id}
+    }
+}
+
+export function ADDWEAPON(id, weapon, speed, wid) {
+    return {
+        type: ADD_WEAPON,
+        payload: id,
+        weapon,
+        speed,
+        wid
+    }
+}
+
+export function DELETEWEAPON(id, weapon) {
+    return {
+        type: DELETE_WEAPON,
+        payload: {id, weapon}
     }
 }
 
@@ -425,6 +446,47 @@ export default function reducer(state = initialState, action) {
                 return val
             })
             return Object.assign({}, state, { fighterList: fighters})
+        
+        case ADD_WEAPON:
+            let fighter = state.fighterList.map(val => {
+                if (val.id == action.payload) {
+                    if (action.wid) {
+                        val.weapons.forEach((v, i) => {
+                            if (v.id == action.wid) {
+                                let selected = v.selected
+                                val.weapons.splice(i, 1, {weapon: action.weapon, speed: action.speed, selected: selected, id: action.wid})
+                            }
+                        })
+                    } else {
+                        val.weapons.push({weapon: action.weapon, speed: action.speed, selected: '0', id: makeid()})
+                    }
+                }
+                return val
+            })
+            return Object.assign({}, state, { fighterList: fighter})
+        
+        case DELETE_WEAPON:
+            let {payload} = action
+            let tempFighter = state.fighterList.map(val => {
+                if (val.id == payload.id) {
+                    if (val.weapons.length > 1 && payload.weapon !== 1) {
+                        val.weapons.forEach((v, i)=> {
+                            if (payload.weapon == v.id) {
+                                if (v.selected == '1') {
+                                    val.weapons.forEach(u => {
+                                        if (u.id == 1) {
+                                            u.selected = '1'
+                                        }
+                                    })
+                                }
+                                val.weapons.splice(i, 1)
+                            }
+                        })
+                    }
+                }
+                return val
+            })
+            return Object.assign({}, state, { fighterList: tempFighter})
 
         default: return state
     }

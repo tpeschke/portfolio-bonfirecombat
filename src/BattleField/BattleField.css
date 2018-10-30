@@ -237,9 +237,23 @@ input.ListItem:hover {
 }
 
 .wpSelected {
-    background: gray;
+    background: rgba(128, 128, 128, 0.5);
 }
 
 .wpSpeed {
-    min-width: 50px
+    width: 40px;
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: center;
+}
+
+.wpItemHeader {
+    min-width: 145px;
+    text-align: left;
+    margin-right: 5px;
+}
+
+#wpInputItem {
+    background: rgba(245, 245, 245, 0.25);
+    border-radius: 5px;
 }
