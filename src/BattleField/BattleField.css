@@ -265,3 +265,28 @@ input.ListItem:hover {
 .wpEdit {
     margin-right: 22px;
 }
+
+.wpInput {
+    display: flex;
+    justify-content: space-between;
+}
+
+.addwpbody {
+    height: 302px;
+    padding: 50px;
+    padding-top: 0px;
+}
+
+.addwpInner {
+    height: 180px;
+    background: rgba(211, 211, 211, 0.75);
+}
+
+.wpButton {
+    height: 50px;
+}
+
+.newFighterButton {
+    height: 19px;
+    margin: 5px 0px 35px 0px;
+}
