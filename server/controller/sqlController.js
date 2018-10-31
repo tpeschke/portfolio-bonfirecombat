@@ -126,18 +126,18 @@ module.exports = {
                         if (w.id !== 1 && !isNaN(w.id)) {
                             tempArr.push(db.update.weapons(val.id, w.weapon, w.selected, w.speed, w.id).then().catch(e => console.log("----------113")))
                         } else if (isNaN(w.id)) {
-                            tempArr.push(db.add.weapons(val.id, w.weapon, w.selected, w.speed).then().catch(e => console.log("----------115")))
+                            tempArr.push(db.add.weapons(val.id, w.weapon, w.selected, +w.speed).then().catch(e => console.log("----------115")))
                         }
                     })
-                })
+                }).catch(_=> console.log('132------------------------------------------'))
             } else {
-                db.add.fighter(val.namefighter, val.colorcode, val.speed, val.actioncount, val.topcheck, val.acting, val.dead, combatId).then(v => {
+                db.add.fighter(val.namefighter, val.colorcode, val.actioncount, val.topcheck, val.acting, val.dead, combatId).then(v => {
                     val.weapons.forEach(w => {
                         if (w.id !== 1) {
-                            tempArr.push(db.add.weapons(val.id, w.weapon, w.selected, w.speed).then().catch(e => console.log("----------121")))
+                            tempArr.push(db.add.weapons(val.id, w.weapon, w.selected, +w.speed).then())
                         }
                     })
-                })
+                }).catch(_=> console.log('140------------------------------------------'))
             }
         })
 
@@ -181,6 +181,14 @@ module.exports = {
         var { id } = req.params
 
         db.delete.status(id).then()
+    },
+
+    deleteWeapon: (req, res) => {
+        const db = req.app.get('db')
+
+        var { id } = req.params
+        
+        db.delete.weapon(id).then()
     }
 
 }

@@ -106,7 +106,8 @@ app.post('/api/settings', sqlCtrl.setTooltip);
 
 app.delete('/api/battle/:id', sqlCtrl.deleteField);
 app.delete('/api/fighter/:id', sqlCtrl.deleteFighter);
-app.delete('/api/status/:id', sqlCtrl.deleteStatus)
+app.delete('/api/status/:id', sqlCtrl.deleteStatus);
+app.delete('/api/weapon/:id', sqlCtrl.deleteWeapon);
 
 app.patch('/api/battle', sqlCtrl.saveField);
 

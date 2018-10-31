@@ -3,6 +3,7 @@ import Modal from 'react-responsive-modal'
 import { connect } from 'react-redux'
 import { WEAPONMODAL, SELECTWEAPON, ADDWEAPON, DELETEWEAPON } from '../../../ducks/reducer'
 import socketFun from '../../../playerview/SocketApi'
+import axios from 'axios'
 
 class DeckWeapon extends Component {
     constructor() {
@@ -36,6 +37,9 @@ class DeckWeapon extends Component {
     deleteWeapon = () => {
         let { id, DELETEWEAPON } = this.props
         let { holdId } = this.state
+        if (holdId !== 1) {
+            axios.delete(`/api/weapon/${holdId}`)
+        }
         DELETEWEAPON(id, holdId)
         this.setState({ edit: false, holdId: null })
     }
