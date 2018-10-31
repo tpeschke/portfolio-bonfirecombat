@@ -20,7 +20,7 @@ class AddNewFighter extends Component {
             color: '#fff',
             name: '',
             weapons: [{id: 1, weapon: 'Unarmed', speed: 10, selected: '1'}],
-            action: 0,
+            action: null,
             weapon: false
         }
 
@@ -137,14 +137,14 @@ class AddNewFighter extends Component {
                             <h1 id="newCombat">Add New Combatant</h1>
 
                             <div className="border modalBorder"></div>
-                            <input placeholder="Name" id="modalEditInput"
+                            <input placeholder="Name" id="modalEditInput" value={this.state.name}
                                 onChange={e => this.handleName(e.target.value)} />
 
                             <button className="newFighterButton"
                                 onClick={_ => this.setState({weapon: true})}
                                 >Add Weapons</button>
 
-                            <input placeholder="Initiative" className="inputFinder" id="modalEditInput" type='number'
+                            <input placeholder="Initiative" className="inputFinder" id="modalEditInput" type='number' placeholder={this.state.action}
                                 onChange={e => this.handleAction(+e.target.value)} />
 
                             <button id="modalAddButton"
