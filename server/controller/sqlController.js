@@ -107,9 +107,23 @@ module.exports = {
 
         fighterList.forEach(val => {
             if (!isNaN(val.id)) {
-                tempArr.push(db.update.fighters(val.namefighter, val.colorcode, val.speed, val.actioncount, val.topcheck, val.acting, val.dead, val.id).then())
+                db.update.fighters(val.namefighter, val.colorcode, val.actioncount, val.topcheck, val.acting, val.dead, val.id).then(r => {
+                    val.weapons.forEach(w => {
+                        if (w.id !== 1 && !isNaN(w.id)) {
+                            tempArr.push(db.update.weapons(val.id, w.weapon, w.selected, w.speed, w.id).then().catch(e=>console.log("----------113")))
+                        } else if (isNaN(w.id)) {
+                            tempArr.push(db.add.weapons(val.id, w.weapon, w.selected, w.speed).then().catch(e=>console.log("----------115")))
+                        }
+                    })
+                })
             } else {
-                tempArr.push(db.add.fighter(val.namefighter, val.colorcode, val.speed, val.actioncount, val.topcheck, val.acting, val.dead, combatId).then())
+                db.add.fighter(val.namefighter, val.colorcode, val.speed, val.actioncount, val.topcheck, val.acting, val.dead, combatId).then(v => {
+                    val.weapons.forEach(w => {
+                        if (w.id !== 1) {
+                            tempArr.push(db.add.weapons(val.id, w.weapon, w.selected, w.speed).then().catch(e=>console.log("----------121")))
+                        }
+                    })
+                })
             }
         })
 
