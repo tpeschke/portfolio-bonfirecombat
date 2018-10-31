@@ -8,7 +8,6 @@ makeid = () => {
     return text;
 }
 
-
 module.exports = {
     getAllCombats: (req, res) => {
 
@@ -30,6 +29,8 @@ module.exports = {
             result.forEach( val => tempArr.push( db.get.weapon(val.id).then(weapons => {
                 if (weapons.length === 0) {
                     return {...val, weapons: [{id: 1, weapon: "unarmed", selected: '1', speed: 10}] }
+                } else if (weapons.filter(w => w.selected == 1).length === 0) {
+                    return {...val, weapons: [...weapons, {id: 1, weapon: "unarmed", selected: '1', speed: 10}]}
                 }
                 return {...val, weapons: [...weapons, {id: 1, weapon: "unarmed", selected: '0', speed: 10}]}
             }) ) )

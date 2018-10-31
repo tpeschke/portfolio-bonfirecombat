@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PlayerviewToggle from './PlayerviewToggle'
 
 import AddNewFighter from './AddNewFighter'
 import NewStatus from './AddNewStatus'
@@ -6,9 +7,13 @@ import socketFun from '../../playerview/SocketApi'
 
 import { connect } from 'react-redux'
 
-import { CLEARFIELD } from '../../ducks/reducer'
+import { CLEARFIELD, TOGGLEPLAYERVIEW } from '../../ducks/reducer'
 
 class Workspace extends Component {
+
+    componentWillUnmount() {
+        this.props.TOGGLEPLAYERVIEW()
+    }
 
     handleClearField = () => {
         socketFun.playerClear({hash : this.props.hash})
@@ -16,6 +21,7 @@ class Workspace extends Component {
     }
 
     render() {
+        let {hash, user, playerview, TOGGLEPLAYERVIEW} = this.props
 
         return (
             <div className="BattleSidebar Main" id="Workspace">
@@ -30,6 +36,14 @@ class Workspace extends Component {
                     onClick={this.handleClearField}
                     >Clear Field</button>
                 </div>
+
+                <div className="border"></div>
+
+                <PlayerviewToggle
+                   user={user}
+                   playerview={playerview}
+                   hash={hash}
+                   TOGGLEPLAYERVIEW={this.props.TOGGLEPLAYERVIEW} />
             </div>
         )
     }
@@ -37,9 +51,12 @@ class Workspace extends Component {
 }
 
 function mapStateToProps(state) {
+    let {hash, user, playerview} = state
     return {
-        hash : state.hash
+        hash,
+        user,
+        playerview
     }
 }
 
-export default connect(mapStateToProps, {CLEARFIELD})(Workspace)
+export default connect(mapStateToProps, {CLEARFIELD, TOGGLEPLAYERVIEW})(Workspace)
