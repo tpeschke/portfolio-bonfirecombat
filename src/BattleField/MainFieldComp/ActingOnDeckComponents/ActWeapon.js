@@ -16,20 +16,26 @@ class ActWeapon extends Component {
     }
 
     select = (weapon) => {
-        this.props.SELECTWEAPON(weapon, this.props.id)
-        this.props.WEAPONMODAL2()
+        let { id, SELECTWEAPON, WEAPONMODAL2 } = this.props
+        SELECTWEAPON(weapon, id)
+        WEAPONMODAL2()
     }
 
     submitWeapon = () => {
         let { id, ADDWEAPON } = this.props
         let { holdWeapon, holdSpeed, holdId } = this.state
         ADDWEAPON(id, holdWeapon, holdSpeed, holdId)
+        this.forceUpdate()
+        if (holdId) {
+            this.setState({edit: false, holdId: null})
+        }
     }
 
     deleteWeapon = () => {
         let { id, DELETEWEAPON } = this.props
         let { holdId } = this.state
         DELETEWEAPON(id, holdId)
+        this.setState({edit: false, holdId: null})
     }
 
     editWeapon = (w) => {

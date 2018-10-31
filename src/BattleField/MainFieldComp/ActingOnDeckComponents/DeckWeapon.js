@@ -25,17 +25,22 @@ class DeckWeapon extends Component {
         let { id, ADDWEAPON } = this.props
         let { holdWeapon, holdSpeed, holdId } = this.state
         ADDWEAPON(id, holdWeapon, holdSpeed, holdId)
+        this.forceUpdate()
+        if (holdId) {
+            this.setState({edit: false, holdId: null})
+        }
     }
 
     deleteWeapon = () => {
         let { id, DELETEWEAPON } = this.props
         let { holdId } = this.state
         DELETEWEAPON(id, holdId)
+        this.setState({edit: false, holdId: null})
     }
 
     editWeapon = (w) => {
         let { id, weapon, speed } = w
-        this.setState({ edit: !this.state.edit, holdId: id, holdWeapon: weapon, holdSpeed: speed })
+        this.setState({ edit: true, holdId: id, holdWeapon: weapon, holdSpeed: speed })
     }
 
     render() {

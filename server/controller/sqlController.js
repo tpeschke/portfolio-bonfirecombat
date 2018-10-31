@@ -107,22 +107,22 @@ module.exports = {
 
         fighterList.forEach(val => {
             if (!isNaN(val.id)) {
-                tempArr.push(db.update.fighters(val.namefighter, val.colorcode, val.speed, val.actioncount, val.topcheck, val.acting, val.dead, val.id).then().catch(e => console.log('1------------------------------', e)))
+                tempArr.push(db.update.fighters(val.namefighter, val.colorcode, val.speed, val.actioncount, val.topcheck, val.acting, val.dead, val.id).then())
             } else {
-                tempArr.push(db.add.fighter(val.namefighter, val.colorcode, val.speed, val.actioncount, val.topcheck, val.acting, val.dead, combatId).then().catch(e => console.log('21------------------------------', e)))
+                tempArr.push(db.add.fighter(val.namefighter, val.colorcode, val.speed, val.actioncount, val.topcheck, val.acting, val.dead, combatId).then())
             }
         })
 
         statusList.forEach(val => {
-            val.timestatus <= 0 ? tempArr.push(db.delete.status(val.id).then().catch(e => console.log('31------------------------------', e))) : null;
+            val.timestatus <= 0 ? tempArr.push(db.delete.status(val.id).then()) : null;
             if (!isNaN(val.id)) {
-                tempArr.push(db.update.status(val.namestatus, val.timestatus, val.id).then().catch(e => console.log('41------------------------------', e)))
+                tempArr.push(db.update.status(val.namestatus, val.timestatus, val.id).then())
             } else {
-                tempArr.push(db.add.status(val.namestatus, val.timestatus, combatId).then().catch(e => console.log('51------------------------------', e)))
+                tempArr.push(db.add.status(val.namestatus, val.timestatus, combatId).then())
             }
         })
 
-        tempArr.push(db.update.field(count, combatName, req.body.combatId).then().catch(e => console.log('61------------------------------', e)))
+        tempArr.push(db.update.field(count, combatName, req.body.combatId).then())
 
         Promise.all(tempArr).then(result => res.send())
 

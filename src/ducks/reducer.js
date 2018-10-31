@@ -189,7 +189,7 @@ export function TOGGLEPLAYERVIEW() {
 export function SELECTWEAPON(weapon, id) {
     return {
         type: SELECT_WEAPON,
-        payload: {weapon, id}
+        payload: { weapon, id }
     }
 }
 
@@ -206,7 +206,7 @@ export function ADDWEAPON(id, weapon, speed, wid) {
 export function DELETEWEAPON(id, weapon) {
     return {
         type: DELETE_WEAPON,
-        payload: {id, weapon}
+        payload: { id, weapon }
     }
 }
 
@@ -445,32 +445,32 @@ export default function reducer(state = initialState, action) {
                 }
                 return val
             })
-            return Object.assign({}, state, { fighterList: fighters})
-        
+            return Object.assign({}, state, { fighterList: fighters })
+
         case ADD_WEAPON:
-            let fighter = state.fighterList.map(val => {
+            let fighter = state.fighterList.slice().map(val => {
                 if (val.id == action.payload) {
                     if (action.wid) {
                         val.weapons.forEach((v, i) => {
                             if (v.id == action.wid) {
                                 let selected = v.selected
-                                val.weapons.splice(i, 1, {weapon: action.weapon, speed: action.speed, selected: selected, id: action.wid})
+                                val.weapons.splice(i, 1, { weapon: action.weapon, speed: action.speed, selected: selected, id: action.wid })
                             }
                         })
                     } else {
-                        val.weapons.push({weapon: action.weapon, speed: action.speed, selected: '0', id: makeid()})
+                        val.weapons.push({ weapon: action.weapon, speed: action.speed, selected: '0', id: makeid() })
                     }
                 }
                 return val
             })
-            return Object.assign({}, state, { fighterList: fighter})
-        
+            return Object.assign({}, state, { fighterList: fighter })
+
         case DELETE_WEAPON:
-            let {payload} = action
+            let { payload } = action
             let tempFighter = state.fighterList.map(val => {
                 if (val.id == payload.id) {
                     if (val.weapons.length > 1 && payload.weapon !== 1) {
-                        val.weapons.forEach((v, i)=> {
+                        val.weapons.forEach((v, i) => {
                             if (payload.weapon == v.id) {
                                 if (v.selected == '1') {
                                     val.weapons.forEach(u => {
@@ -486,7 +486,7 @@ export default function reducer(state = initialState, action) {
                 }
                 return val
             })
-            return Object.assign({}, state, { fighterList: tempFighter})
+            return Object.assign({}, state, { fighterList: tempFighter })
 
         default: return state
     }

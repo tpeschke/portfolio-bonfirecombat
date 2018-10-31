@@ -15,11 +15,11 @@ class BattleName extends Component {
             statusList} = this.props
 
         var tempField = {
-            combatName: combatName,
-            count: count,
-            combatId: combatId,
-            fighterList: fighterList,
-            statusList: statusList
+            combatName,
+            count,
+            combatId,
+            fighterList,
+            statusList
         }
         this.props.SAVEFIELD(tempField)
     }
