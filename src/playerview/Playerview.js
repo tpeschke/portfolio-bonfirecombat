@@ -3,6 +3,8 @@ import axios from 'axios'
 import io from 'socket.io-client'
 
 import './playerview.css'
+import TurnedOff from './TurnedOff'
+import TurnedOn from './TurnedOn'
 
 export default class PlayerView extends Component {
     constructor(props) {
@@ -19,7 +21,6 @@ export default class PlayerView extends Component {
 
     componentDidMount() {
         var { battle } = this.props.match.params
-        var { view } = this.state
 
         if (this.state.combatName === 'Battleplaceholder') {
             axios.get('/api/player/battle/' + battle).then((req, res) => {
@@ -33,9 +34,7 @@ export default class PlayerView extends Component {
 
         this.socket = io('/')
         this.socket.on(`${battle}`, data => {
-            if (view !== data.playerview) {
-                this.setState({ view: data.playerview })
-            }
+            this.setState({ view: data.playerview })
         })
         this.socket.on(`${battle}-count`, data => {
             if (data.count) {
@@ -97,10 +96,10 @@ export default class PlayerView extends Component {
         this.socket.on(`${battle}-addStatus`, data => {
             var tempArr = this.state.statusList
             tempArr.push(data.status)
-            this.setState({ statusList : tempArr})
+            this.setState({ statusList: tempArr })
         })
         this.socket.on(`${battle}-delStatus`, data => {
-            const index = this.state.statusList.findIndex(e=> e.id === data.id)
+            const index = this.state.statusList.findIndex(e => e.id === data.id)
             var tempArr = this.state.statusList.slice()
             tempArr.splice(index, 1)
             this.setState({ statusList: tempArr })
@@ -111,13 +110,13 @@ export default class PlayerView extends Component {
             this.setState({ fighterList: tempArr })
         })
         this.socket.on(`${battle}-remove`, data => {
-            const index = this.state.fighterList.findIndex(e=> e.id === data.id)
+            const index = this.state.fighterList.findIndex(e => e.id === data.id)
             var tempArr = this.state.fighterList.slice()
             tempArr.splice(index, 1)
             this.setState({ fighterList: tempArr })
         })
         this.socket.on(`${battle}-clear`, _ => {
-            this.setState({ fighterList : []})
+            this.setState({ fighterList: [] })
         })
         this.socket.on(`${battle}-edit`, data => {
             const newList = this.state.fighterList.map(val => {
@@ -130,87 +129,75 @@ export default class PlayerView extends Component {
                     return val
                 }
             })
-            this.setState({ fighterList : newList })
+            this.setState({ fighterList: newList })
         })
     }
 
     render() {
-        if (this.state.fighterList) {
 
-            var playerList = this.state.fighterList.map((d, i) => {
-
-                let color = { background: d.colorcode }
-
-                if (d.dead === '0') {
-                    return <div
-                        className={d.topcheck === '1' ? 'List playertop' : 'List'}
-                        key={d.id}>
-                        <div className="color" style={color}></div>
-                        <p className="ListItem Name">{d.namefighter}</p>
-                    </div>
-                }
-            })
-
-        if (this.state.statusList) {var deadList = this.state.fighterList.map((d, i) => {
+        var playerList = this.state.fighterList.map(d => {
 
             let color = { background: d.colorcode }
 
-            if (d.dead === '1') {
-                return <div
-                    className='List'
+            if (d.dead === '0') {
+                return (<div
+                    className={d.topcheck === '1' ? 'List playertop' : 'List'}
                     key={d.id}>
                     <div className="color" style={color}></div>
                     <p className="ListItem Name">{d.namefighter}</p>
-                </div>
+                </div>)
             }
-        })}
-            
+        })
+
+        if (this.state.statusList) {
+            var deadList = this.state.fighterList.map(d => {
+
+                let color = { background: d.colorcode }
+
+                if (d.dead === '1') {
+                    return (<div
+                        className='List'
+                        key={d.id}>
+                        <div className="color" style={color}></div>
+                        <p className="ListItem Name">{d.namefighter}</p>
+                    </div>)
+                }
+            })
         }
 
         if (this.state.statusList) {
             var statusList = this.state.statusList.map((d, i) => {
                 if (d.timestatus - this.state.count > 0) {
-                    return <div
+                    return (<div
                         className='statusListInner'
                         key={d.id}>
                         <div className="">{d.namestatus}</div>
                         <p className="">{d.timestatus - this.state.count}</p>
-                    </div>
+                    </div>)
                 }
             })
-    }
+        }
 
-        if (this.state.view) {
+        // ============================================================= \\
+
+        if (!this.state.view) {
             return (
-                <div className="playerBody">
-                    <div className="playerHeader">
-                        <h2>{this.state.combatName}</h2>
-                        <p>Player view</p>
-                        <h3 id="playerCount">{this.state.count}</h3>
-                    </div>
-                    <div className="playerContent">
-                        <h2>The Quick</h2>
-                        <div className='border'></div>
-                        <div className="listDiv">{playerList}</div>
-
-                        <h2>The Dead</h2>
-                        <div className='border'></div>
-                        <div className="listDiv">{deadList}</div>
-                    </div>
-
-                    <div className="playerStatus">
-                        {statusList}
-                    </div>
+                <div>
+                    <TurnedOff
+                        combatName={this.state.combatName} />
                 </div>
             )
         } else {
             return (
-                <div className="playerBody" id='playerBodyLocked'>
-                    <h2 className="topLock" id='viewLock'>{this.state.combatName}</h2>
-                    <h1 id='viewLock'>Your GM has currently turned off the view on this field</h1>
+                <div>
+                    <TurnedOn
+                        combatName={this.state.combatName}
+                        count={this.state.count}
+                        playerList={playerList}
+                        deadList={deadList}
+                        statusList={statusList} />
                 </div>
             )
         }
-
     }
 }
