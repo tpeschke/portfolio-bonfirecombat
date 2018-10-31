@@ -132,6 +132,16 @@ export default class PlayerView extends Component {
             })
             this.setState({ fighterList: newList })
         })
+        this.socket.on(`${battle}-weapon`, data => {
+            let {weapon, id} = data
+            let tempfighter = this.state.fighterList.map(v => {
+                if (id === v.id) {
+                    v.weapon = weapon
+                }
+                return v
+            })
+            this.setState({fighterList: tempfighter})
+        })
     }
 
     render() {

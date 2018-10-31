@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Modal from 'react-responsive-modal'
 import { connect } from 'react-redux'
 import { WEAPONMODAL, SELECTWEAPON, ADDWEAPON, DELETEWEAPON } from '../../../ducks/reducer'
+import socketFun from '../../../playerview/SocketApi'
 
 class DeckWeapon extends Component {
     constructor() {
@@ -15,9 +16,10 @@ class DeckWeapon extends Component {
         }
     }
 
-    select = (weapon) => {
-        let { id, SELECTWEAPON, WEAPONMODAL } = this.props
-        SELECTWEAPON(weapon, id)
+    select = (wid, weapon) => {
+        let { id, SELECTWEAPON, WEAPONMODAL, hash } = this.props
+        socketFun.playerWeapon({ hash, weapon, id })
+        SELECTWEAPON(wid, id)
         WEAPONMODAL()
     }
 
@@ -27,7 +29,7 @@ class DeckWeapon extends Component {
         ADDWEAPON(id, holdWeapon, holdSpeed, holdId)
         this.forceUpdate()
         if (holdId) {
-            this.setState({edit: false, holdId: null})
+            this.setState({ edit: false, holdId: null })
         }
     }
 
@@ -35,7 +37,7 @@ class DeckWeapon extends Component {
         let { id, DELETEWEAPON } = this.props
         let { holdId } = this.state
         DELETEWEAPON(id, holdId)
-        this.setState({edit: false, holdId: null})
+        this.setState({ edit: false, holdId: null })
     }
 
     editWeapon = (w) => {
@@ -50,7 +52,7 @@ class DeckWeapon extends Component {
             return (
                 <div key={`${val.id}${i}${id}`} className={val.selected == 1 ? 'wpItem wpSelected' : 'wpItem'}>
                     <p className="wpItemHeader"
-                        onClick={_ => this.select(val.id)}>{val.weapon}</p>
+                        onClick={_ => this.select(val.id, val.weapon)}>{val.weapon}</p>
                     <p className="wpSpeed">{val.speed}</p>
                     <button className="wpSpeed"
                         onClick={_ => this.editWeapon(val)}>---</button>
@@ -128,7 +130,8 @@ class DeckWeapon extends Component {
 
 function mapStateToProps(state) {
     return {
-        open: state.weaponModal
+        open: state.weaponModal,
+        hash: state.hash
     }
 }
 export default connect(mapStateToProps, { WEAPONMODAL, SELECTWEAPON, ADDWEAPON, DELETEWEAPON })(DeckWeapon)

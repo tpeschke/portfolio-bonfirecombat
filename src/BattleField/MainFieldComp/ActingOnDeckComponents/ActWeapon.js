@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Modal from 'react-responsive-modal'
 import { connect } from 'react-redux'
 import { WEAPONMODAL2, SELECTWEAPON, ADDWEAPON, DELETEWEAPON } from '../../../ducks/reducer'
+import socketFun from '../../../playerview/SocketApi'
 
 class ActWeapon extends Component {
     constructor() {
@@ -15,9 +16,10 @@ class ActWeapon extends Component {
         }
     }
 
-    select = (weapon) => {
-        let { id, SELECTWEAPON, WEAPONMODAL2 } = this.props
-        SELECTWEAPON(weapon, id)
+    select = (wid, weapon) => {
+        let { id, SELECTWEAPON, WEAPONMODAL2, hash } = this.props
+        socketFun.playerWeapon({hash, weapon , id})
+        SELECTWEAPON(wid, id)
         WEAPONMODAL2()
     }
 
@@ -50,7 +52,7 @@ class ActWeapon extends Component {
             return (
                 <div key={`${val.id}${i}${id}`} className={val.selected == 1 ? 'wpItem wpSelected' : 'wpItem'}>
                     <p className="wpItemHeader"
-                        onClick={_ => this.select(val.id)}>{val.weapon}</p>
+                        onClick={_ => this.select(val.id, val.weapon)}>{val.weapon}</p>
                     <p className="wpSpeed">{val.speed}</p>
                     <button className="wpSpeed"
                         onClick={_ => this.editWeapon(val)}>---</button>
@@ -128,7 +130,8 @@ class ActWeapon extends Component {
 
 function mapStateToProps(state) {
     return {
-        open: state.weaponModal2
+        open: state.weaponModal2,
+        hash: state.hash
     }
 }
 export default connect(mapStateToProps, { WEAPONMODAL2, SELECTWEAPON, ADDWEAPON, DELETEWEAPON })(ActWeapon)

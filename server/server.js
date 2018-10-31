@@ -184,6 +184,10 @@ io.on('connection', socket => {
     socket.on('playerEdit', data => {
         io.emit(`${data.hash}-edit`, data)
     })
+
+    socket.on('playerWeapon', data => {
+        io.emit(`${data.hash}-weapon`, data)
+    })
 })
 
 app.get('*', (req, res) => {

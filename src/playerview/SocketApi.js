@@ -40,6 +40,9 @@ const socketFun = {
     },
     playerEdit(data) {
         socket.emit('playerEdit', data)
+    },
+    playerWeapon(data) {
+        socket.emit('playerWeapon', data)
     }
 }
 
