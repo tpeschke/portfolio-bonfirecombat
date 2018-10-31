@@ -43,6 +43,15 @@
     font-size: 45px;
 }
 
+.playerItem {
+    display: flex;
+    align-items: center;
+}
+
+.playerList {
+    justify-content: space-between;
+}
+
 /* =============================== */
 .playerStatus{
     width: 50%;

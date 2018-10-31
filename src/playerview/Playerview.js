@@ -33,6 +33,7 @@ export default class PlayerView extends Component {
         })
 
         this.socket = io('/')
+
         this.socket.on(`${battle}`, data => {
             this.setState({ view: data.playerview })
         })
@@ -141,10 +142,13 @@ export default class PlayerView extends Component {
 
             if (d.dead === '0') {
                 return (<div
-                    className={d.topcheck === '1' ? 'List playertop' : 'List'}
+                    className={d.topcheck === '1' ? 'List playertop playerList' : 'List playerList'}
                     key={d.id}>
-                    <div className="color" style={color}></div>
-                    <p className="ListItem Name">{d.namefighter}</p>
+                    <div className="playerItem">
+                        <div className="color" style={color}></div>
+                        <p className="ListItem Name">{d.namefighter}</p>
+                    </div>
+                    <p>{d.weapon}</p>
                 </div>)
             }
         })
