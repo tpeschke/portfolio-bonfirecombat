@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import 'react-responsive-modal/lib/react-responsive-modal.css';
 import Modal from 'react-responsive-modal/lib/css';
+import _ from 'lodash'
 
 import { SketchPicker } from 'react-color';
 import socketFun from '../../playerview/SocketApi'
@@ -31,7 +32,7 @@ class AddNewFighter extends Component {
     };
 
     onCloseModal = () => {
-        this.setState({ open: false });
+        this.setState({ open: false, color: '#fff',name: '', weapons: [{id: 1, weapon: 'Unarmed', speed: 10, selected: '1'}], action: null, weapon: false });
     };
 
 //==========================================
@@ -95,12 +96,12 @@ class AddNewFighter extends Component {
     handleSubmit = (c, n, w, a, id) => {
         if (n !== '') {
             var newId = makeid()
-    
+        
             var newFighter = {
                 id: newId,
                 namefighter: n,
                 colorcode: c,
-                weapons: w,
+                weapons: _.cloneDeep(w),
                 actioncount: a,
                 topcheck: '0',
                 acting: '0',
