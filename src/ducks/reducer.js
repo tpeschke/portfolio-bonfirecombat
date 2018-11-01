@@ -269,7 +269,9 @@ export default function reducer(state = initialState, action) {
                     return val
                 }
             })
-            axios.delete(`/api/fighter/${action.payload}`).then()
+            if (!isNaN(action.payload)) {
+                axios.delete(`/api/fighter/${action.payload}`).then()
+            }
             return Object.assign({}, state, { fighterList: gonefighter })
 
         case ADVANCE_SPEED:

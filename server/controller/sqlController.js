@@ -134,7 +134,7 @@ module.exports = {
                 db.add.fighter(val.namefighter, val.colorcode, val.actioncount, val.topcheck, val.acting, val.dead, combatId).then(v => {
                     val.weapons.forEach(w => {
                         if (w.id !== 1) {
-                            tempArr.push(db.add.weapons(val.id, w.weapon, w.selected, +w.speed).then())
+                            tempArr.push(db.add.weapons(v[0].id, w.weapon, w.selected, +w.speed).then())
                         }
                     })
                 }).catch(_=> console.log('140------------------------------------------'))
@@ -187,7 +187,7 @@ module.exports = {
         const db = req.app.get('db')
 
         var { id } = req.params
-        
+
         db.delete.weapon(id).then()
     }
 
