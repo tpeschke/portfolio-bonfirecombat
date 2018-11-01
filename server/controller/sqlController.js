@@ -20,7 +20,6 @@ module.exports = {
     },
 
     loadCombatants: (req, res) => {
-
         const db = req.app.get('db')
         var { id } = req.params
 
@@ -35,7 +34,9 @@ module.exports = {
                 return { ...val, weapons: [...weapons, { id: 1, weapon: "unarmed", selected: '0', speed: 10 }] }
             })))
 
-            Promise.all(tempArr).then(final => res.send(final))
+            Promise.all(tempArr).then(final => {
+                res.send(final)
+            })
         })
     },
 
@@ -113,10 +114,10 @@ module.exports = {
     saveField: (req, res) => {
 
         var { combatName, count, combatId, fighterList, statusList } = req.body
-        var { id } = req.params
 
         const db = req.app.get('db')
-
+        var { combatId } = req.body
+        
         var tempArr = []
 
         fighterList.forEach(val => {
@@ -129,7 +130,7 @@ module.exports = {
                             tempArr.push(db.add.weapons(val.id, w.weapon, w.selected, +w.speed).then().catch(e => console.log("----------115")))
                         }
                     })
-                }).catch(_=> console.log('132------------------------------------------'))
+                }).catch(_ => console.log('132------------------------------------------'))
             } else {
                 db.add.fighter(val.namefighter, val.colorcode, val.actioncount, val.topcheck, val.acting, val.dead, combatId).then(v => {
                     val.weapons.forEach(w => {
@@ -137,7 +138,7 @@ module.exports = {
                             tempArr.push(db.add.weapons(v[0].id, w.weapon, w.selected, +w.speed).then())
                         }
                     })
-                }).catch(_=> console.log('140------------------------------------------'))
+                }).catch(_ => console.log('140------------------------------------------'))
             }
         })
 
@@ -152,7 +153,24 @@ module.exports = {
 
         tempArr.push(db.update.field(count, combatName, req.body.combatId).then())
 
-        Promise.all(tempArr).then(result => res.send())
+        // Reload the field with the new IDs
+        Promise.all(tempArr).then(_ => {
+            db.get.combatants(combatId).then(result => {
+                let loadArr = []
+                result.forEach(val => loadArr.push(db.get.weapon(val.id).then(weapons => {
+                    if (weapons.length === 0) {
+                        return { ...val, weapons: [{ id: 1, weapon: "unarmed", selected: '1', speed: 10 }] }
+                    } else if (weapons.filter(w => w.selected == 1).length === 0) {
+                        return { ...val, weapons: [...weapons, { id: 1, weapon: "unarmed", selected: '1', speed: 10 }] }
+                    }
+                    return { ...val, weapons: [...weapons, { id: 1, weapon: "unarmed", selected: '0', speed: 10 }] }
+                })))
+
+                Promise.all(loadArr).then( fighters => {
+                    db.get.all_Statuses(combatId).then(statuses => res.send([fighters, statuses]))
+                } )
+            })
+        })
 
     },
 

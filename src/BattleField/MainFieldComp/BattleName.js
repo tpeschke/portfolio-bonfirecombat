@@ -12,7 +12,7 @@ class BattleName extends Component {
             count,
             combatId,
             fighterList,
-            statusList} = this.props
+            statusList,} = this.props
 
         var tempField = {
             combatName,

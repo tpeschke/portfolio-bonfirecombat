@@ -2,6 +2,7 @@ import axios from 'axios'
 import sort from '../components/sort'
 import makeid from '../components/makeid'
 import socketFun from '../playerview/SocketApi'
+import _ from 'lodash'
 
 const initialState = {
     user: {},
@@ -220,8 +221,7 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { combatId: action.payload, combatName: action.name, count: +action.count })
 
         case LOAD_COMBATANTS + '_FULFILLED':
-            state.fighterList = action.payload.data
-            var fighters = sort(state.fighterList, state.count);
+            var fighters = sort(action.payload.data, state.count);
             return Object.assign({}, state, { fighterList: fighters })
 
         case GET_ALL_STATUSES + '_FULFILLED':
@@ -294,7 +294,8 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { pendingSaveOpen: !state.pendingSaveOpen })
 
         case SAVE_FIELD + "_FULFILLED":
-            return Object.assign({}, state, { pendingSaveOpen: !state.pendingSaveOpen, finishedSaveOpen: !state.finishedSaveOpen })
+            let sortedFighters = sort(action.payload.data[0], state.count)
+            return Object.assign({}, state, { fighterList: sortedFighters, statusList: action.payload.data[1], pendingSaveOpen: !state.pendingSaveOpen, finishedSaveOpen: !state.finishedSaveOpen })
 
         case INPUT_ACTION:
             let updatedAction = []

@@ -18,7 +18,6 @@ class DeckEditFighter extends Component {
         this.state = {
             color: '',
             name: '',
-            speed: 0,
             id: 0
         }
 
@@ -41,16 +40,11 @@ class DeckEditFighter extends Component {
         this.setState({ name: name })
     }
 
-    handleSpeed = (speed) => {
-        this.setState({ speed: speed })
-    }
-
     handleSubmit = () => {
         var editedFighter = {
             id: this.state.id,
             namefighter: this.state.name,
-            colorcode: this.state.color,
-            speed: +this.state.speed
+            colorcode: this.state.color
         }
 
         this.props.EDITFIGHTER(editedFighter);
@@ -63,7 +57,7 @@ class DeckEditFighter extends Component {
 
     render() {
 
-        const { color, name, speed } = this.state;
+        const { color, name } = this.state;
         const { editopen } = this.props
 
         return (
@@ -91,10 +85,6 @@ class DeckEditFighter extends Component {
                                     <p>Name</p>
                                     <input placeholder={name} className="inputFinder" id="modalEditInput"
                                         onChange={e => this.handleName(e.target.value)} />
-
-                                    <p>Speed</p>
-                                    <input placeholder={speed} className="inputFinder" id="modalEditInput"
-                                        onChange={e => this.handleSpeed(e.target.value)} />
 
                                     <button id="modalEditButton"
                                         onClick={_ => this.handleSubmit()}
