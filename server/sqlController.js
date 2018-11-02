@@ -24,6 +24,13 @@ module.exports = {
         var { id } = req.params
 
         db.get.combatants(id).then(result => {
+            result.forEach(v => {
+                if (isNaN(+v.actioncount)) {
+                    v.actioncount = v.actioncount.split(",")
+                } else {
+                    v.actioncount = +v.actioncount
+                }
+            })
             let tempArr = []
             result.forEach(val => tempArr.push(db.get.weapon(val.id).then(weapons => {
                 if (weapons.length === 0) {
@@ -117,12 +124,12 @@ module.exports = {
 
         const db = req.app.get('db')
         var { combatId } = req.body
-        
+
         var tempArr = []
 
         fighterList.forEach(val => {
             if (!isNaN(val.id)) {
-                db.update.fighters(val.namefighter, val.colorcode, val.actioncount, val.topcheck, val.acting, val.dead, val.id).then(r => {
+                db.update.fighters(val.namefighter, val.colorcode, !isNaN(val.actioncount) ? `${val.actioncount}` : `${val.actioncount[0]},${val.actioncount[1]}`, val.topcheck, val.acting, val.dead, val.hidden, val.id).then(r => {
                     val.weapons.forEach(w => {
                         if (w.id !== 1 && !isNaN(w.id)) {
                             tempArr.push(db.update.weapons(val.id, w.weapon, w.selected, w.speed, w.id).then().catch(e => console.log("----------113")))
@@ -132,7 +139,7 @@ module.exports = {
                     })
                 }).catch(_ => console.log('132------------------------------------------'))
             } else {
-                db.add.fighter(val.namefighter, val.colorcode, val.actioncount, val.topcheck, val.acting, val.dead, combatId).then(v => {
+                db.add.fighter(val.namefighter, val.colorcode, !isNaN(val.actioncount) ? `${val.actioncount}` : `${val.actioncount[0]},${val.actioncount[1]}`, val.topcheck, val.acting, val.dead, combatId, val.hidden).then(v => {
                     val.weapons.forEach(w => {
                         if (w.id !== 1) {
                             tempArr.push(db.add.weapons(v[0].id, w.weapon, w.selected, +w.speed).then())
@@ -156,6 +163,13 @@ module.exports = {
         // Reload the field with the new IDs
         Promise.all(tempArr).then(_ => {
             db.get.combatants(combatId).then(result => {
+                result.forEach(v => {
+                    if (isNaN(+v.actioncount)) {
+                        v.actioncount = v.actioncount.split(",")
+                    } else {
+                        v.actioncount = +v.actioncount
+                    }
+                })
                 let loadArr = []
                 result.forEach(val => loadArr.push(db.get.weapon(val.id).then(weapons => {
                     if (weapons.length === 0) {
@@ -166,9 +180,9 @@ module.exports = {
                     return { ...val, weapons: [...weapons, { id: 1, weapon: "unarmed", selected: '0', speed: 10 }] }
                 })))
 
-                Promise.all(loadArr).then( fighters => {
+                Promise.all(loadArr).then(fighters => {
                     db.get.all_Statuses(combatId).then(statuses => res.send([fighters, statuses]))
-                } )
+                })
             })
         })
 

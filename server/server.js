@@ -8,7 +8,7 @@ const express = require('express')
     , Auth0Strategy = require('passport-auth0')
     , socket = require('socket.io')
 
-const sqlCtrl = require('./controller/sqlController')
+const sqlCtrl = require('./sqlController')
 
 const app = new express()
 app.use(bodyParser.json())
@@ -67,7 +67,7 @@ passport.use(new Auth0Strategy({
 
 app.get('/auth', passport.authenticate('auth0'));
 app.get('/auth/callback', passport.authenticate('auth0', {
-    successRedirect: `/SavedFields`
+    successRedirect: `http://localhost:5679/SavedFields`
 }));
 
 passport.serializeUser((id, done) => {

@@ -3,6 +3,7 @@ import sort from '../components/sort'
 import makeid from '../components/makeid'
 import socketFun from '../playerview/SocketApi'
 import _ from 'lodash'
+import rollDice from '../components/diceRoll'
 
 const initialState = {
     user: {},
@@ -83,6 +84,8 @@ const WEAPON_MODAL2 = "WEAPON_MODAL2"
 const SELECT_WEAPON = "SELECT_WEAPON"
 const ADD_WEAPON = "ADD_WEAPON"
 const DELETE_WEAPON = "DELETE_WEAPON"
+
+const ROLL_INIT = "ROLL_INIT"
 
 //ACTION BUILDERS
 
@@ -208,6 +211,13 @@ export function DELETEWEAPON(id, weapon) {
     return {
         type: DELETE_WEAPON,
         payload: { id, weapon }
+    }
+}
+
+export function ROLLINIT(id, dice, mod) {
+    return {
+        type: ROLL_INIT,
+        load: {id, dice, mod}
     }
 }
 
@@ -490,6 +500,16 @@ export default function reducer(state = initialState, action) {
                 return val
             })
             return Object.assign({}, state, { fighterList: tempFighter })
+        
+        case ROLL_INIT:
+            let { load } = action
+            let newFighter = sort(state.fighterList.map(v => {
+                if (v.id == load.id) {
+                    v.actioncount = +rollDice(load.dice) + +load.mod + state.count
+                }
+                return v
+            }), state.count)
+            return Object.assign({}, state, { fighterList: newFighter })
 
         default: return state
     }

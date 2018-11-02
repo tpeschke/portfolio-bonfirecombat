@@ -258,7 +258,7 @@ button:hover {
     color: rgba(33, 53, 80, 1);
     text-shadow: 0 0;
     text-align: center;
-    margin: 5px 0 35px 0;
+    margin: 5px 0 15px 0;
 }
 
 input#modalEditInput::placeholder {
@@ -278,6 +278,18 @@ input#modalEditInput::placeholder {
 
 .NavContianer {
     position: relative
+}
+
+#modalDiceInput {
+    max-width: 50px;
+    background: rgba(255, 255, 255, 0.50);
+    border-radius: 5px;
+    font-weight: 800;
+    font-size: 15px;
+    color: rgba(33, 53, 80, 1);
+    text-shadow: 0 0;
+    text-align: center;
+    margin: 5px 0 15px 0;
 }
 
 /* =================================== */

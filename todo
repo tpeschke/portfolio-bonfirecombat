@@ -13,5 +13,3 @@
     - Far West
 - Add loading bar to Field
 - Add loading bar to Saved Fields page
-- Move sqlController.js outside of controller file and delete file
-- Move status.jpg from CombatWorkspace to the img folder

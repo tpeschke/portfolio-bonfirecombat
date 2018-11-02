@@ -288,5 +288,16 @@ input.ListItem:hover {
 
 .newFighterButton {
     height: 19px;
-    margin: 5px 0px 35px 0px;
+    margin: 5px 0px 15px 0px;
+}
+
+.actionLocked {
+    display: flex;
+    height: 18px;
+    align-items: center;
+    width: 122px;
+}
+
+.actionDice {
+    width: 60px;
 }

@@ -1,6 +1,6 @@
 .modalStatusOuter {
     position: relative;
-    background-image: url('./status.jpg');
+    background-image: url('../../img/status.jpg');
     margin: -20px;
     width: 444px;
     height: 460px;

@@ -30,6 +30,8 @@ create table combatants (
     actionCount INT,
     acting bit,
     dead bit,
+    init VARCHAR(10),
+    hidden bit,
     idCombat Int,
         FOREIGN Key (idCombat) REFERENCES combat(id)
     )

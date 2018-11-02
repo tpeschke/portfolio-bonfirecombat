@@ -5,6 +5,7 @@ set
     actioncount = $3, 
     topcheck = $4, 
     acting = $5, 
-    dead = $6
+    dead = $6,
+    hidden = $7
 where 
-    id = $7
+    id = $8

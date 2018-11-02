@@ -22,6 +22,7 @@ class AddNewFighter extends Component {
             name: '',
             weapons: [{id: 1, weapon: 'Unarmed', speed: 10, selected: '1'}],
             action: null,
+            dice: null,
             weapon: false
         }
 
@@ -37,17 +38,8 @@ class AddNewFighter extends Component {
 
 //==========================================
 
-    handleChange = (color, event) => {
+    handleChange = (color) => {
         this.setState({ color: color.hex });
-    }
-
-    handleName = (name) => {
-        this.setState({ name: name })
-    }
-
-    handleAction = (action) => {
-        var totalAction = +this.props.count + +action - 1
-        this.setState({ action: totalAction })
     }
 
 // ============================ \\
@@ -93,7 +85,7 @@ class AddNewFighter extends Component {
 
 // ============================ \\
 
-    handleSubmit = (c, n, w, a, id) => {
+    handleSubmit = (c, n, w, a, d, id) => {
         if (n !== '') {
             var newId = makeid()
         
@@ -102,7 +94,7 @@ class AddNewFighter extends Component {
                 namefighter: n,
                 colorcode: c,
                 weapons: _.cloneDeep(w),
-                actioncount: a,
+                actioncount: d ? [d, a] : a,
                 topcheck: '0',
                 acting: '0',
                 dead: '0',
@@ -121,7 +113,7 @@ class AddNewFighter extends Component {
 
     render() {
 
-        const { open, color, name, weapons, action } = this.state;
+        const { open, color, name, weapons, action, dice } = this.state;
         const { combatId } = this.props
 
         let show = () => {
@@ -139,17 +131,25 @@ class AddNewFighter extends Component {
 
                             <div className="border modalBorder"></div>
                             <input placeholder="Name" id="modalEditInput" value={this.state.name}
-                                onChange={e => this.handleName(e.target.value)} />
+                                onChange={e => this.setState({ name: e.target.value})} />
 
                             <button className="newFighterButton"
                                 onClick={_ => this.setState({weapon: true})}
                                 >Add Weapons</button>
 
-                            <input placeholder="Initiative" className="inputFinder" id="modalEditInput" type='number' placeholder={this.state.action}
-                                onChange={e => this.handleAction(+e.target.value)} />
+                            <div>
+                                1d<input className="inputFinder" id="modalDiceInput"
+                                    value={this.state.dice}
+                                    onChange={e => this.setState({dice: +e.target.value})}/>
+                            </div>
+
+                            <input className="inputFinder" id="modalEditInput"
+                                placeholder={this.state.action ? this.state.action : "Initiative"}
+                                value={this.state.action}
+                                onChange={e => this.setState({action: +e.target.value})} />
 
                             <button id="modalAddButton"
-                                onClick={_ => this.handleSubmit(color, name, weapons, action, combatId)}>SUBMIT</button>
+                                onClick={_ => this.handleSubmit(color, name, weapons, action, dice, combatId)}>SUBMIT</button>
                         </div>
                     </div>
                 )

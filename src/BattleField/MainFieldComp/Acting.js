@@ -35,9 +35,9 @@ export default class Acting extends Component {
             holdid: d.id
         }, _ => this.props.modal2())
     }
-    
+
     chooseWeapon = (id, weapons) => {
-        this.setState({holdid: id, holdweapons: weapons})
+        this.setState({ holdid: id, holdweapons: weapons })
         this.props.weaponModal2()
     }
 
@@ -63,6 +63,29 @@ export default class Acting extends Component {
 
                     let speed = +d.weapons.filter(val => val.selected == 1)[0].speed
 
+                    let action = (<div className="actionLocked">
+                        <div className="ListItem">
+                            {speed}
+                        </div>
+
+                        <button className="ListItem actionDice"
+                            onClick={_ => this.props.rollInit(d.id, d.actioncount[0], d.actioncount[1])}
+                        >1d{d.actioncount[0]}+{d.actioncount[1]}</button>
+                    </div>)
+
+                    if (!isNaN(d.actioncount)) {
+                        action = (<div>
+                            <button className="ListItem"
+                                onClick={_ => this.props.advance(d.id, speed)}
+                            >{speed}</button>
+
+                            <input className="ListItem inputFinder"
+                                value={d.actioncount}
+                                onChange={e => this.props.action(d.id, +e.target.value, true)}
+                                onBlur={e => this.props.action(d.id, +e.target.value, false)} />
+                        </div>)
+                    }
+
                     return <div
                         className={d.topcheck === '1' ? 'List top' : 'List'}
                         key={d.id}>
@@ -71,18 +94,11 @@ export default class Acting extends Component {
                         <p className="ListItem Name">{d.namefighter}</p>
 
                         <div className="ListItem"
-                            onClick={_=> this.chooseWeapon(d.id, d.weapons)}>
+                            onClick={_ => this.chooseWeapon(d.id, d.weapons)}>
                             <div class="arrow right"></div>
                         </div>
 
-                        <button className="ListItem"
-                            onClick={_ => this.props.advance(d.id, speed)}
-                        >{speed}</button>
-
-                        <input className="ListItem inputFinder"
-                            value={d.actioncount}
-                            onChange={e => this.props.action(d.id, +e.target.value, true)}
-                            onBlur={e => this.props.action(d.id, +e.target.value, false)} />
+                        {action}
 
                         <button className="ListItem"
                             onClick={_ => this.handleTop(d.id)}
@@ -127,9 +143,9 @@ export default class Acting extends Component {
                     speed={this.state.holdspeed}
                     id={this.state.holdid} />
 
-                <ActWeapon 
+                <ActWeapon
                     weapons={this.state.holdweapons}
-                    id={this.state.holdid}/>
+                    id={this.state.holdid} />
 
                 <ActToP
                     id={this.state.holdid}
