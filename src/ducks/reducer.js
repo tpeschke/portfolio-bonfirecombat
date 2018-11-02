@@ -87,6 +87,8 @@ const DELETE_WEAPON = "DELETE_WEAPON"
 
 const ROLL_INIT = "ROLL_INIT"
 
+const HIDE_FIGHTER = "HIDE_FIGHTER"
+
 //ACTION BUILDERS
 
 export function NEWFIELD(id) {
@@ -218,6 +220,13 @@ export function ROLLINIT(id, dice, mod) {
     return {
         type: ROLL_INIT,
         load: {id, dice, mod}
+    }
+}
+
+export function HIDEFIGHTER(id) {
+    return {
+        type: HIDE_FIGHTER,
+        info: id
     }
 }
 
@@ -510,6 +519,21 @@ export default function reducer(state = initialState, action) {
                 return v
             }), state.count)
             return Object.assign({}, state, { fighterList: newFighter })
+
+        case HIDE_FIGHTER:
+            let {info} = action
+            let hiddenFighter = state.fighterList.map(v => {
+                if (v.id == info) {
+                    if (v.hidden === '1') {
+                        v.hidden = '0'
+                    } else {
+                        v.hidden = '1'
+                    }
+                }
+                return v
+            })
+
+            return Object.assign({}, state, { fighterList: hiddenFighter })
 
         default: return state
     }

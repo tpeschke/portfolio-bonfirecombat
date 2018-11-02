@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import { OPENMODAL, OPENTOP, OPENMODAL2, OPENTOP2, PAGELOCATION, TOGGLESAVE, WEAPONMODAL, WEAPONMODAL2, ROLLINIT } from '../ducks/reducer'
+import { OPENMODAL, OPENTOP, OPENMODAL2, OPENTOP2, PAGELOCATION, TOGGLESAVE, WEAPONMODAL, WEAPONMODAL2, ROLLINIT, HIDEFIGHTER } from '../ducks/reducer'
 import { LOADCOMBATANTS, KILLCOMBATANT, REMOVEFIGHTER, ADVANCESPEED, INPUTACTION, GETHASH } from '../ducks/CompReducers/CombatantsReducer'
 import { GETALLSTATUSES } from '../ducks/CompReducers/StatusReducer'
 
@@ -47,7 +47,7 @@ class BattleFieldMain extends Component {
 
     render() {
 
-        var { fighterList, count, hash, KILLCOMBATANT, ADVANCESPEED, INPUTACTION, OPENMODAL, OPENMODAL2, OPENTOP, OPENTOP2, REMOVEFIGHTER, REDUXSORT, WEAPONMODAL, WEAPONMODAL2, ROLLINIT } = this.props
+        var { fighterList, count, hash, KILLCOMBATANT, ADVANCESPEED, INPUTACTION, OPENMODAL, OPENMODAL2, OPENTOP, OPENTOP2, REMOVEFIGHTER, REDUXSORT, WEAPONMODAL, WEAPONMODAL2, ROLLINIT, HIDEFIGHTER } = this.props
         return (
             <div className="BattleMain fadeInApp" id="Battle">
                 <BattleName
@@ -74,7 +74,8 @@ class BattleFieldMain extends Component {
                                 hash={hash}
                                 reduxSort={REDUXSORT}
                                 weaponModal={WEAPONMODAL}
-                                rollInit={ROLLINIT} />
+                                rollInit={ROLLINIT}
+                                hide={HIDEFIGHTER} />
 
                             <Acting
                                 list={fighterList}
@@ -86,7 +87,8 @@ class BattleFieldMain extends Component {
                                 top2={OPENTOP2}
                                 hash={hash} 
                                 weaponModal2={WEAPONMODAL2}
-                                rollInit={ROLLINIT} />
+                                rollInit={ROLLINIT}
+                                hide={HIDEFIGHTER} />
 
                         </div>
 
@@ -125,7 +127,7 @@ function mapStateToProps(state) {
 }
 
 let actionBuilder = {
-    LOADCOMBATANTS, KILLCOMBATANT, REMOVEFIGHTER, ADVANCESPEED, INPUTACTION, OPENMODAL, OPENTOP, OPENMODAL2, OPENTOP2, GETALLSTATUSES, PAGELOCATION, TOGGLESAVE, GETHASH, WEAPONMODAL, WEAPONMODAL2, ROLLINIT
+    LOADCOMBATANTS, KILLCOMBATANT, REMOVEFIGHTER, ADVANCESPEED, INPUTACTION, OPENMODAL, OPENTOP, OPENMODAL2, OPENTOP2, GETALLSTATUSES, PAGELOCATION, TOGGLESAVE, GETHASH, WEAPONMODAL, WEAPONMODAL2, ROLLINIT, HIDEFIGHTER
 }
 
 export default connect(mapStateToProps, actionBuilder)(BattleFieldMain)

@@ -67,7 +67,7 @@ passport.use(new Auth0Strategy({
 
 app.get('/auth', passport.authenticate('auth0'));
 app.get('/auth/callback', passport.authenticate('auth0', {
-    successRedirect: `http://localhost:5679/SavedFields`
+    successRedirect: `/SavedFields`
 }));
 
 passport.serializeUser((id, done) => {
@@ -188,6 +188,10 @@ io.on('connection', socket => {
 
     socket.on('playerWeapon', data => {
         io.emit(`${data.hash}-weapon`, data)
+    })
+
+    socket.on('playerHide', data => {
+        io.emit(`${data.hash}-hide`, data)
     })
 })
 

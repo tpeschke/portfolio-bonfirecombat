@@ -22,7 +22,8 @@ class AddNewFighter extends Component {
             name: '',
             weapons: [{id: 1, weapon: 'Unarmed', speed: 10, selected: '1'}],
             action: null,
-            dice: null,
+            dice: 1,
+            hidden: '1',
             weapon: false
         }
 
@@ -98,6 +99,7 @@ class AddNewFighter extends Component {
                 topcheck: '0',
                 acting: '0',
                 dead: '0',
+                hidden: '1',
                 idcombat: id
             }
     

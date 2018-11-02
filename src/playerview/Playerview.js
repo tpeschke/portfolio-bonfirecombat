@@ -133,24 +133,37 @@ export default class PlayerView extends Component {
             this.setState({ fighterList: newList })
         })
         this.socket.on(`${battle}-weapon`, data => {
-            let {weapon, id} = data
+            let { weapon, id } = data
             let tempfighter = this.state.fighterList.map(v => {
                 if (id === v.id) {
                     v.weapon = weapon
                 }
                 return v
             })
-            this.setState({fighterList: tempfighter})
+            this.setState({ fighterList: tempfighter })
+        })
+        this.socket.on(`${battle}-hide`, data => {
+            let { id } = data
+            let tempfighter = this.state.fighterList.map(v => {
+                if (v.id == id) {
+                    if (v.hidden === '1') {
+                        v.hidden = '0'
+                    } else {
+                        v.hidden = '1'
+                    }
+                }
+                return v
+            })
+            this.setState({ fighterList: tempfighter })
         })
     }
 
     render() {
-
         var playerList = this.state.fighterList.map(d => {
 
             let color = { background: d.colorcode }
 
-            if (d.dead === '0') {
+            if (d.dead === '0' && d.hidden === '0') {
                 return (<div
                     className={d.topcheck === '1' ? 'List playertop playerList' : 'List playerList'}
                     key={d.id}>
@@ -168,7 +181,7 @@ export default class PlayerView extends Component {
 
                 let color = { background: d.colorcode }
 
-                if (d.dead === '1') {
+                if (d.dead === '1' && d.hidden === '0') {
                     return (<div
                         className='List'
                         key={d.id}>

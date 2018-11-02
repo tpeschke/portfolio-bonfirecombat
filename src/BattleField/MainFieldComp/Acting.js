@@ -5,6 +5,7 @@ import socketFun from '../../playerview/SocketApi'
 import ActEditFighter from './ActingOnDeckComponents/ActEditFighter'
 import ActToP from './ActingOnDeckComponents/ActThresholdOfPain'
 import ActWeapon from './ActingOnDeckComponents/ActWeapon'
+import HiddenEye from './ActingOnDeckComponents/HiddenEye'
 
 export default class Acting extends Component {
     constructor(props) {
@@ -51,6 +52,10 @@ export default class Acting extends Component {
         socketFun.playerKill({ id: id, hash: this.props.hash })
     }
 
+    handleHide = (id) => {
+        socketFun.playerHide({ id: id, hash: this.props.hash })
+    }
+
     render() {
 
         if (this.state.list) {
@@ -87,8 +92,15 @@ export default class Acting extends Component {
                     }
 
                     return <div
-                        className={d.topcheck === '1' ? 'List top' : 'List'}
+                        className={d.hidden === '1' ? 'List hidden' : d.topcheck === '1' ? 'List top' : 'List'}
                         key={d.id}>
+
+                        <HiddenEye 
+                            on={d.hidden}
+                            hide={this.props.hide}
+                            id={d.id}
+                            toggleHide={this.handleHide}/>
+
                         <div className="color" style={color}></div>
 
                         <p className="ListItem Name">{d.namefighter}</p>

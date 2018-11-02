@@ -72,13 +72,17 @@
     align-items: center;
     height: 30px;
     background: transparent;
-    transition: 30s;
+    /* transition: 10s; */
+    margin-left: -20px;
 }
 
 .top {
     background: radial-gradient(rgb(151, 23, 21) 5%, rgb(151, 23, 21) 10% ,transparent  60%);
 }
 
+.hidden {
+    background: radial-gradient(grey 5%, grey 10% ,transparent  60%);
+}
 
 .ListItem {
     min-width: 50px;
@@ -98,7 +102,7 @@ input.ListItem:hover {
 
 .NameHeader {
     margin-left: 25px;
-    min-width: 216px;
+    min-width: 215px;
 }
 
 .color {
@@ -300,4 +304,33 @@ input.ListItem:hover {
 
 .actionDice {
     width: 60px;
+}
+
+.hiddenShell {
+    transform: rotate(90deg);
+    display: flex;
+    justify-content: space-around;
+    width: 20px;
+}
+
+.openEye {
+    position: relative
+}
+
+.hiddenEye1 {
+    position: absolute;
+    right: 0px;
+    bottom: -9px;
+}
+
+.hiddenEye2 {
+    position: absolute;
+    left: -3px;
+    bottom: -8px;
+}
+
+.hiddenEye3 {
+    position: absolute;
+    left: 0px;
+    bottom: -9px;
 }

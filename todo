@@ -1,11 +1,6 @@
 - Hide fighter option (greys them out from GM view and compelely removes them from player view)
-    - Add column to database
-    - Add button to fighter row
     - Add choice to Add New fighter
-    - Add save to database
-    - Add to get on playerview
-    - Make it actually hide on playerview
-    - Add sockets to moniter and display change
+- New Fighters added when playerview is on don't come equip with their weapons
 - Themes
     - Bonfire
         - Background: https://codepen.io/Ulvbern/pen/bvxgjQ?page=2

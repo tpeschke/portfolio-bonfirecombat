@@ -43,6 +43,9 @@ const socketFun = {
     },
     playerWeapon(data) {
         socket.emit('playerWeapon', data)
+    },
+    playerHide(data) {
+        socket.emit('playerHide', data)
     }
 }
 

@@ -6,7 +6,7 @@ import diceRoll from '../../components/diceRoll'
 import DeckEditFighter from './ActingOnDeckComponents/DeckEditFighter'
 import DeckToP from './ActingOnDeckComponents/DeckThresholdOfPain'
 import DeckWeapon from './ActingOnDeckComponents/DeckWeapon'
-import { ROLLINIT } from '../../ducks/reducer';
+import HiddenEye from './ActingOnDeckComponents/HiddenEye'
 
 export default class OnDeck extends Component {
     constructor(props) {
@@ -55,6 +55,10 @@ export default class OnDeck extends Component {
         socketFun.playerKill({ id: id, hash: this.props.hash })
     }
 
+    handleHide = (id) => {
+        socketFun.playerHide({ id: id, hash: this.props.hash })
+    }
+
     render() {
 
         if (this.state.list) {
@@ -90,8 +94,15 @@ export default class OnDeck extends Component {
                         </div>)
                     }
 
-                    return <div className="List"
+                    return <div className={d.hidden === '1' ? 'List hidden' : 'List'}
                         key={d.id}>
+
+                        <HiddenEye 
+                            on={d.hidden}
+                            hide={this.props.hide}
+                            id={d.id}
+                            toggleHide={this.handleHide}/>
+
                         <div className="color" style={color}></div>
 
                         <p className="ListItem Name">{d.namefighter}</p>
