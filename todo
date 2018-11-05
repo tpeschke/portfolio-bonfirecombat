@@ -4,6 +4,5 @@
     - Odyssey
     - Far West
     - Blank
-- Add loading bar to Field
-- Add loading bar to Saved Fields page
 - Add input validation for Add Fighter
+- Fix log out redirect

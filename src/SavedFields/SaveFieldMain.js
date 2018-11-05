@@ -16,7 +16,7 @@ class SaveFieldMain extends Component {
         super()
 
         this.state = {
-            combats: '',
+            combats: null,
             holder: 0,
             open: false
         }
@@ -24,6 +24,7 @@ class SaveFieldMain extends Component {
 
     componentDidMount() {
         axios.get(`/api/combats/${this.props.user.id}`).then((req, res) => {
+            console.log(req.data)
             this.setState({ combats: req.data })
         })
         this.props.PAGELOCATION('/SavedFields')
@@ -55,9 +56,9 @@ class SaveFieldMain extends Component {
 
         var { combats } = this.state
 
-        if (combats === []){
+        if (!combats){
             var combatList = <div className='savedFieldDisplay' id='loading'>Loading Combats</div>
-        } else if (combats === '') {
+        } else if (combats.length === 0) {
             combatList = <div className='savedFieldDisplay'>No Combats to Display</div>
         } else {
             combatList = combats.map((d, i) => {
