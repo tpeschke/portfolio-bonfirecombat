@@ -11,6 +11,7 @@ import socketFun from '../../playerview/SocketApi'
 import { ADDNEWCOMBATANT } from '../../ducks/CompReducers/CombatantsReducer'
 import AddWeapon from './AddWeapon'
 import makeid from '../../components/makeid'
+import ToggleHidden from './ToggleHidden'
 
 class AddNewFighter extends Component {
     constructor() {
@@ -41,6 +42,14 @@ class AddNewFighter extends Component {
 
     handleChange = (color) => {
         this.setState({ color: color.hex });
+    }
+
+    handleHide = () => {
+        if (this.state.hidden === '1') {
+            this.setState({ hidden: '0'})
+        } else {
+            this.setState({ hidden: '1' })
+        }
     }
 
 // ============================ \\
@@ -86,7 +95,7 @@ class AddNewFighter extends Component {
 
 // ============================ \\
 
-    handleSubmit = (c, n, w, a, d, id) => {
+    handleSubmit = (c, n, w, a, d, id, h) => {
         if (n !== '') {
             var newId = makeid()
         
@@ -99,7 +108,7 @@ class AddNewFighter extends Component {
                 topcheck: '0',
                 acting: '0',
                 dead: '0',
-                hidden: '1',
+                hidden: h,
                 idcombat: id
             }
     
@@ -115,7 +124,7 @@ class AddNewFighter extends Component {
 
     render() {
 
-        const { open, color, name, weapons, action, dice } = this.state;
+        const { open, color, name, weapons, action, dice, hidden } = this.state;
         const { combatId } = this.props
 
         let show = () => {
@@ -150,8 +159,12 @@ class AddNewFighter extends Component {
                                 value={this.state.action}
                                 onChange={e => this.setState({action: +e.target.value})} />
 
+                            <ToggleHidden 
+                                on={hidden}
+                                hide={this.handleHide}/>
+
                             <button id="modalAddButton"
-                                onClick={_ => this.handleSubmit(color, name, weapons, action, dice, combatId)}>SUBMIT</button>
+                                onClick={_ => this.handleSubmit(color, name, weapons, action, dice, combatId, hidden)}>SUBMIT</button>
                         </div>
                     </div>
                 )

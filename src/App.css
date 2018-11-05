@@ -353,6 +353,11 @@ h6 {
     margin: 10px 3px;
 }
 
+.addNewHidden {
+    height: 25px;
+    margin-bottom: 12px;
+}
+
 #modalHeader {
     margin: 0
 }

@@ -1,6 +1,3 @@
-- Hide fighter option (greys them out from GM view and compelely removes them from player view)
-    - Add choice to Add New fighter
-- New Fighters added when playerview is on don't come equiped with their weapons
 - Themes
     - Bonfire
         - Background: https://codepen.io/Ulvbern/pen/bvxgjQ?page=2
@@ -9,4 +6,4 @@
     - Blank
 - Add loading bar to Field
 - Add loading bar to Saved Fields page
-
+- Add input validation for Add Fighter
