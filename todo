@@ -6,3 +6,4 @@
     - Blank
 - Add input validation for Add Fighter
 - Fix log out redirect
+- Limit the number of combatants and fields a person can have
