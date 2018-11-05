@@ -104,7 +104,7 @@ class AddNewFighter extends Component {
             }
     
             this.props.ADDNEWCOMBATANT(newFighter)
-            socketFun.playerAdd({ hash: this.props.hash, fighter: newFighter })
+            socketFun.playerAdd({ hash: this.props.hash, fighter: {colorcode: c, dead: '0', hidden: '1', id: newId, namefighter: n, topcheck: '0', weapon: w.filter(v=>v.selected=='1')[0].weapon} })
             this.onCloseModal()
     
             this.forceUpdate()
