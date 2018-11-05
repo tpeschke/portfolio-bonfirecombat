@@ -9,6 +9,7 @@ import NavBar from './NavBar/NavBar'
 import Routes from './routes'
 import Settings from './NavBar/LoginComps/Settings'
 
+
 class App extends Component {
   constructor() {
     super()
