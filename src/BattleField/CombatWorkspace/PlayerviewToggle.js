@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function PlayerviewToggle (props) {
 
-        let { user, playerview, TOGGLEPLAYERVIEW, hash } = props
+        let { user, playerview, TOGGLEPLAYERVIEW, hash, theme } = props
         return (
             <div>
                 <div className="inTooltip">
@@ -10,12 +10,12 @@ export default function PlayerviewToggle (props) {
                         onClick={_ => TOGGLEPLAYERVIEW()}>
                         <div className={user.data && playerview ? "switch" : "switch off"}></div>
                     </div>
-                    <h7 className="switchLabel">Player View</h7>
+                    <h7 className={`switchLabel ${theme}-font`}>Player View</h7>
                 </div>
 
                 <div>
                     <div className="inTooltip hash">
-                        <h7 className="switchLabel" id="hashTitle">Player View Hash</h7>
+                        <h7 className={`switchLabel ${theme}-font`} id="hashTitle">Player View Hash</h7>
                         <div className="hashUrl">
                             <div className="innerHashUrl">
                                 <p className="hashUrlText" id="hashBaseUrl">hmcombat.tpeschke.com/player/</p>

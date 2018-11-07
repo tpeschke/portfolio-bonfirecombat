@@ -5,8 +5,17 @@
 .counterMain {
     display: flex;
     justify-content: space-around;
-    max-width: 750px;
     margin: 0 auto;
+}
+
+.h-counterMain {
+    max-width: 752px;
+}
+
+.a-counterMain {
+    background: rgb(52,52,52);
+    padding: 10px 0;
+    width: 870px;
 }
 
 .counterSide {
@@ -28,7 +37,15 @@
 
 .counterButton {
     font-weight: 800;
+    font-size: 30px;
+}
+
+.a-counterButton {
+    font-family: 'Spectral SC', serif;
+    color: lightgrey;
+}
+
+.h-counterButton {
     font-family: 'MedievalSharp';
     color: rgb(151, 23, 21);
-    font-size: 30px;
 }

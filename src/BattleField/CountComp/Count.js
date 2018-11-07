@@ -61,13 +61,14 @@ compo
     render() {
 
         return (
-            <div className="counterMain">
+            <div className={`counterMain ${this.props.theme}-counterMain`}>
 
                 <CounterLeft
                     RESETCOUNT={this.props.RESETCOUNT}
                     stopTime={this.stopTime}
                     DECREASECOUNT={this.props.DECREASECOUNT}
-                    user={this.props.user} />
+                    user={this.props.user}
+                    theme={this.props.theme} />
 
                 <CounterMiddle
                     count={this.props.count}
@@ -77,7 +78,8 @@ compo
                     INCREASECOUNT={this.props.INCREASECOUNT}
                     autoTimer1={this.autoTimer1}
                     autoTimer2={this.autoTimer2}
-                    user={this.props.user}  />
+                    user={this.props.user}
+                    theme={this.props.theme}  />
 
             </div>
         )

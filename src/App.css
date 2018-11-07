@@ -68,6 +68,10 @@ body {
     margin: 5px auto;
 }
 
+.border-spacer {
+    margin: 15px auto;
+}
+
 .sectionborder {
     max-width: 25%;
     margin: 5px 0;
@@ -318,10 +322,19 @@ h1 {
 
 h2 {
     font-weight: 800;
-    margin: 25px 25px 10px 25px;
+    font-size: 20px;
+}
+
+.a-h2 {
+    padding: 10px 25px 10px 10px;
+    background: rgb(56, 56, 56);
+    color: lightgray
+}
+
+.h-h2 {
     font-family: 'Spectral SC', serif;
     color: rgb(151, 23, 21);
-    font-size: 20px;
+    margin: 25px 25px 10px 25px;
 }
 
 h3 {
@@ -352,8 +365,16 @@ h6 {
     font-family: 'Spectral SC', serif;
 }
 
+.a-color {
+    color: lightgray
+}
+
 .h-font {
     font-family: 'MedievalSharp';
+}
+
+.h-color {
+    color: rgb(151, 23, 21);
 }
 
 .fontHeader {

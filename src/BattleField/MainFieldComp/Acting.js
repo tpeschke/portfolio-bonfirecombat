@@ -57,6 +57,7 @@ export default class Acting extends Component {
     }
 
     render() {
+        let {theme} = this.props
 
         if (this.state.list) {
 
@@ -69,22 +70,22 @@ export default class Acting extends Component {
                     let speed = +d.weapons.filter(val => val.selected == 1)[0].speed
 
                     let action = (<div className="actionLocked">
-                        <div className="ListItem">
+                        <div className={`ListItem ${theme}-font`}>
                             {speed}
                         </div>
 
-                        <button className="ListItem actionDice"
+                        <button className={`ListItem ${theme}-font actionDice`}
                             onClick={_ => this.props.rollInit(d.id, d.actioncount[0], d.actioncount[1])}
                         >1d{d.actioncount[0]}+{d.actioncount[1]}</button>
                     </div>)
 
                     if (!isNaN(d.actioncount)) {
-                        action = (<div>
-                            <button className="ListItem"
+                        action = (<div className="actionLocked">
+                            <button className={`ListItem ${theme}-font`}
                                 onClick={_ => this.props.advance(d.id, speed)}
                             >{speed}</button>
 
-                            <input className="ListItem inputFinder"
+                            <input className={`ListItem ${theme}-font inputFinder`}
                                 value={d.actioncount}
                                 onChange={e => this.props.action(d.id, +e.target.value, true)}
                                 onBlur={e => this.props.action(d.id, +e.target.value, false)} />
@@ -103,24 +104,24 @@ export default class Acting extends Component {
 
                         <div className="color" style={color}></div>
 
-                        <p className="ListItem Name">{d.namefighter}</p>
+                        <p className={`ListItem ${theme}-font Name`}>{d.namefighter}</p>
 
-                        <div className="ListItem"
+                        <div className={`ListItem ${theme}-font`}
                             onClick={_ => this.chooseWeapon(d.id, d.weapons)}>
                             <div class="arrow right"></div>
                         </div>
 
                         {action}
 
-                        <button className="ListItem"
+                        <button className={`ListItem ${theme}-font`}
                             onClick={_ => this.handleTop(d.id)}
                         >(ง'̀-'́)ง</button>
 
-                        <button className="ListItem"
+                        <button className={`ListItem ${theme}-font`}
                             onClick={_ => this.handleDeath(d.id)}
                         >X</button>
 
-                        <button className="ListItem"
+                        <button className={`ListItem ${theme}-font`}
                             onClick={_ => this.modifyFighter(d)}
                         >---</button>
 
@@ -133,13 +134,13 @@ export default class Acting extends Component {
             <div className="Main">
                 <p>Acting</p>
                 <div className={`${this.props.theme}-border sectionborder`}></div>
-                <div className="Header" id="sectionHeader">
-                    <p className="ListItem Name NameHeader listHeader">Name</p>
-                    <p className="ListItem listHeader">Speed</p>
-                    <p className="ListItem listHeader">Action</p>
-                    <p className="ListItem listHeader">ToP</p>
-                    <p className="ListItem listHeader">Kill</p>
-                    <p className="ListItem listHeader">Edit</p>
+                <div className={`Header ${this.props.theme}-Header`}>
+                    <p className={`ListItem ${theme}-font Name NameHeader listHeader`}>Name</p>
+                    <p className={`ListItem ${theme}-font listHeader`}>Speed</p>
+                    <p className={`ListItem ${theme}-font listHeader action`}>Action</p>
+                    <p className={`ListItem ${theme}-font listHeader`}>ToP</p>
+                    <p className={`ListItem ${theme}-font listHeader`}>Kill</p>
+                    <p className={`ListItem ${theme}-font listHeader`}>Edit</p>
                 </div>
                 <div className={`${this.props.theme}-border`}></div>
 

@@ -18,9 +18,16 @@
 }
 
 .BattleField {
-    background:  rgba(218, 197, 182, .75);
     width: 575px;
+}
+
+.h-BattleField {
     border-radius: 25px;
+    background:  rgba(218, 197, 182, .75);
+}
+
+.a-BattleField {
+    background: lightgray;
 }
 
 .BattleSidebarOuter {
@@ -29,11 +36,18 @@
 }
 
 .BattleSidebar {
-    background:  rgba(218, 197, 182, .75);
     width: 270px;
-    border-radius: 25px;
     min-height: 150px;
     margin-top: 15px;
+}
+
+.a-BattleSidebar {
+    background: lightgrey;
+}
+
+.h-BattleSidebar {
+    background:  rgba(218, 197, 182, .75);
+    border-radius: 25px;
 }
 
 #Workspace {
@@ -67,12 +81,16 @@
     height: 35px;
 }
 
+.a-Header {
+    border-bottom: 1px solid rgb( 56, 56, 56);
+    margin-bottom: 15px;
+}
+
 .List {
     display: flex;
     align-items: center;
     height: 30px;
     background: transparent;
-    /* transition: 10s; */
     margin-left: -20px;
 }
 
@@ -90,8 +108,13 @@
     text-align: center;
 }
 
+
 input.ListItem:hover {
     text-shadow: 2px 2px 1px white;
+}
+
+.action {
+    width: 60px
 }
 
 .Name {
@@ -319,14 +342,14 @@ input.ListItem:hover {
 
 .hiddenEye1 {
     position: absolute;
-    right: 0px;
+    right: 2px;
     bottom: -9px;
 }
 
 .hiddenEye2 {
     position: absolute;
-    left: -3px;
-    bottom: -8px;
+    left: -5px;
+    bottom: -9px;
 }
 
 .hiddenEye3 {
@@ -334,3 +357,4 @@ input.ListItem:hover {
     left: 0px;
     bottom: -9px;
 }
+

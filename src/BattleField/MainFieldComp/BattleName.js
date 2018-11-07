@@ -32,12 +32,13 @@ class BattleName extends Component {
         return (
             <div className="BattleHeader">
                 <input 
-                    className="fontHeader inputFinder"
+                    className={`fontHeader inputFinder ${this.props.theme}-color`}
                     id="BattleNameInput"
                     placeholder={this.props.combatName}
                     onBlur={e=>this.props.CHANGEBATTLENAME(e.target.value)}/>
               
                 <button
+                    className={`${this.props.theme}-font`}
                     onClick={this.handleSaveField}
                 >Save Field</button>
             </div>
@@ -46,14 +47,15 @@ class BattleName extends Component {
 }
 
 function mapStateToProps(state) {
-    var { combatName, count, combatId, fighterList, statusList } = state
+    var { combatName, count, combatId, fighterList, statusList, theme } = state
     
     return {
         combatName,
         count,
         combatId,
         fighterList,
-        statusList
+        statusList,
+        theme
     }
 }
 

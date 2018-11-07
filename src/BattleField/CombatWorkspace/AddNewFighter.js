@@ -187,7 +187,7 @@ class AddNewFighter extends Component {
         return (
             <div>
                 <button
-                    className="workshopButton"
+                    className={`workshopButton ${theme}-font`}
                     onClick={this.onOpenModal}>Add New Combatant</button>
 
                 <Modal open={open} onClose={this.onCloseModal} little

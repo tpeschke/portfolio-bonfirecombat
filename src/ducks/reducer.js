@@ -13,7 +13,7 @@ const initialState = {
     combatId: 0,
     combatName: 'New Battle',
     playerview: false,
-    theme: 'h',
+    theme: 'a',
 
     fighterList: [],
     statusList: [],
@@ -248,7 +248,8 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { statusList: action.payload.data })
 
         case GET_HASH + '_FULFILLED':
-            return Object.assign({}, state, { hash: action.payload.data[0].urlhash })
+            // return Object.assign({}, state, { hash: action.payload.data[0].urlhash })
+            return Object.assign({}, state, { hash: '12345' })
 
         case INCREASE_COUNT:
             var newCount = +state.count + 1

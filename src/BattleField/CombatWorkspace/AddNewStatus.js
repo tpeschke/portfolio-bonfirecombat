@@ -68,11 +68,12 @@ class NewStatus extends Component {
     render() {
 
         const { open } = this.state
+        let {theme} = this.props
 
         return (
             < div >
                 <button
-                    className='workshopButton'
+                    className={`workshopButton ${theme}-font`}
                     onClick={this.onOpenModal}
                 >Add New Status</button>
 

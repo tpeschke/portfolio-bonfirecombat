@@ -28,6 +28,8 @@ export default class Graveyard extends Component {
     render() {
         var graveList = []
 
+        let {theme} = this.props
+
         if (this.state.list) {
             graveList = this.state.list.map((d, i) => {
 
@@ -52,16 +54,16 @@ export default class Graveyard extends Component {
         }
 
         return (
-            <div className="BattleSidebar Main">
-                <h2>the Dead</h2>
+            <div className={`BattleSidebar ${theme}-BattleSidebar Main`}>
+                <h2 className={`${theme}-h2`}>the Dead</h2>
                 <div className="HeaderGrave">
                     <h1 className="ListItemGrave GraveName">Name</h1>
                     <h1 className="ListItemGrave">Resurrect</h1>
                     <h1 className="ListItemGrave">Remove</h1>
                 </div>
-                <div className={`${this.props.theme}-border graveborder`}></div>
+                <div className={`${theme}-border graveborder`}></div>
                 {graveList}
-                <div className={`${this.props.theme}-border graveborder`}></div>
+                <div className={`${theme}-border graveborder`}></div>
             </div>
         )
     }

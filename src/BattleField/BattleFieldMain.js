@@ -52,7 +52,7 @@ class BattleFieldMain extends Component {
             <div className="BattleMain fadeInApp" id="Battle">
                 <BattleName
                     combat={this.props.combatName}
-                    hash={hash} />
+                    hash={hash}/>
 
                 <div className="counterOuter">
                     <Counter />
@@ -60,8 +60,8 @@ class BattleFieldMain extends Component {
 
                 <div className="BattleBodyWork">
                     <div className="BattleBody">
-                        <div className="BattleField">
-                            <h2>the Quick</h2>
+                        <div className={`BattleField ${theme}-BattleField`}>
+                            <h2 className={`${theme}-h2`}>the Quick</h2>
 
                             <OnDeck
                                 list={fighterList}
