@@ -1,12 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 import ReactTooltip from 'react-tooltip'
 
 import './Settings.css'
 
-export default class Keyboard extends Component {
-
-    render() {
+export default function Keyboard () {
         return (
             <div className="keyboard">
                 <h7>Keyboard Shortcuts</h7>
@@ -54,5 +52,4 @@ export default class Keyboard extends Component {
                     place="right" />
             </div>
         )
-    }
 }

@@ -13,6 +13,7 @@ const initialState = {
     combatId: 0,
     combatName: 'New Battle',
     playerview: false,
+    theme: 'h',
 
     fighterList: [],
     statusList: [],
@@ -219,7 +220,7 @@ export function DELETEWEAPON(id, weapon) {
 export function ROLLINIT(id, dice, mod) {
     return {
         type: ROLL_INIT,
-        load: {id, dice, mod}
+        load: { id, dice, mod }
     }
 }
 
@@ -438,7 +439,18 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { user: action.payload })
 
         case GET_USER_INFO + '_REJECTED':
-            return Object.assign({}, state, { user: { error: true } })
+            // return Object.assign({}, state, { user: { error: true } })
+            return Object.assign({}, state, {
+                user: {
+                    data: {
+                        auth0: "google-oauth2|113542570861213780439",
+                        id: 1,
+                        img: "https://lh6.googleusercontent.com/-KHfDi72gIZ0/AAAAAAAAAAI/AAAAAAAAAR0/4EHZlBEQ1ro/photo.jpg",
+                        tooltip: "0",
+                        username: "Trent Peschke",
+                    }
+                }
+            })
 
         case OPEN_SETTINGS:
             return Object.assign({}, state, { settings: !state.settings })
@@ -509,7 +521,7 @@ export default function reducer(state = initialState, action) {
                 return val
             })
             return Object.assign({}, state, { fighterList: tempFighter })
-        
+
         case ROLL_INIT:
             let { load } = action
             let newFighter = sort(state.fighterList.map(v => {
@@ -521,7 +533,7 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { fighterList: newFighter })
 
         case HIDE_FIGHTER:
-            let {info} = action
+            let { info } = action
             let hiddenFighter = state.fighterList.map(v => {
                 if (v.id == info) {
                     if (v.hidden === '1') {

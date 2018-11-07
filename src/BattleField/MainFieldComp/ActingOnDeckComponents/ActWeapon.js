@@ -120,7 +120,7 @@ class ActWeapon extends Component {
                     <div className="modalWeaponOuter">
                         <div className="modalWeaponInner">
                             <h2 className="wpHeader">Weapon Picker</h2>
-                            <div className="border modalBorder wpHeader"></div>
+                            <div className={`${this.props.theme}-border modalBorder wpHeader`}></div>
 
                             {edit()}
 
@@ -135,7 +135,8 @@ class ActWeapon extends Component {
 function mapStateToProps(state) {
     return {
         open: state.weaponModal2,
-        hash: state.hash
+        hash: state.hash,
+        theme: state.theme
     }
 }
 export default connect(mapStateToProps, { WEAPONMODAL2, SELECTWEAPON, ADDWEAPON, DELETEWEAPON })(ActWeapon)

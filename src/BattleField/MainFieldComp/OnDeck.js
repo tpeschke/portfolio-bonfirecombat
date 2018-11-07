@@ -134,7 +134,7 @@ export default class OnDeck extends Component {
         return (
             <div className="Main">
                 <p>On Deck</p>
-                <div className="border sectionborder"></div>
+                <div className={`${this.props.theme}-border sectionborder`}></div>
                 <div className="Header">
                     <p className="ListItem Name NameHeader listHeader">Name</p>
                     <p className="ListItem listHeader">Speed</p>
@@ -143,7 +143,7 @@ export default class OnDeck extends Component {
                     <p className="ListItem listHeader">Kill</p>
                     <p className="ListItem listHeader">Edit</p>
                 </div>
-                <div className="border"></div>
+                <div className={`${this.props.theme}-border`}></div>
 
                 <FlipMove>
                     {deckList}

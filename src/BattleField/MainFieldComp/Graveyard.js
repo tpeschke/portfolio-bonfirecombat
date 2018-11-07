@@ -59,9 +59,9 @@ export default class Graveyard extends Component {
                     <h1 className="ListItemGrave">Resurrect</h1>
                     <h1 className="ListItemGrave">Remove</h1>
                 </div>
-                <div className="border graveborder"></div>
+                <div className={`${this.props.theme}-border graveborder`}></div>
                 {graveList}
-                <div className="border graveborder"></div>
+                <div className={`${this.props.theme}-border graveborder`}></div>
             </div>
         )
     }

@@ -23,7 +23,7 @@ class SaveFieldMain extends Component {
     }
 
     componentDidMount() {
-        axios.get(`/api/combats/${this.props.user.id}`).then((req, res) => {
+        axios.get(`/api/combats/${this.props.user.id}`).then(req => {
             this.setState({ combats: req.data })
         })
         this.props.PAGELOCATION('/SavedFields')
@@ -67,17 +67,16 @@ class SaveFieldMain extends Component {
                     key={d.namecombat + i}>
 
                     <Link to='/BattleField'>
-                        <button className="savedItemName"
+                        <button className={`savedItemName ${this.props.theme}-font`}
                             onClick={_ => this.props.GETCOMBATFIGHTERS(d.id, d.namecombat, d.countnum)}>
                             {d.namecombat}
                         </button>
                     </Link>
 
-                    <p className="savedItem"></p>
-                    <p className="savedItem">{d.countnum}</p>
-                    <p className="savedItem">{d.fighternum}</p>
-                    <p className="savedItem">{d.deadnum ? d.deadnum : 0}</p>
-                    <button className="savedItem"
+                    <p className={`savedItem ${this.props.theme}-font`}>{d.countnum}</p>
+                    <p className={`savedItem ${this.props.theme}-font`}>{d.fighternum}</p>
+                    <p className={`savedItem ${this.props.theme}-font`}>{d.deadnum ? d.deadnum : 0}</p>
+                    <button className={`savedItem ${this.props.theme}-font`}
                         onClick={_ => this.deleteFieldCheck(d.id)}
                     >X</button>
                 </div>
@@ -86,45 +85,48 @@ class SaveFieldMain extends Component {
 
         return (
             <div className="SavedField fadeInApp" id="Saved">
-                <h1 className="fontHeader">Saved Fields</h1>
+                <h1 className={`fontHeader ${this.props.theme}-fontHeader`}>Saved Fields</h1>
 
                 <div className="savedMenu">
                     <Link to='/BattleField'>
-                        <button onClick={_=>this.props.NEWFIELD(this.props.user.data.id)}>New Field</button>
+                        <button 
+                            className={`${this.props.theme}-button`}
+                            onClick={_=>this.props.NEWFIELD(this.props.user.data.id)}>New Field</button>
                     </Link>
                 </div>
 
-                <div className="savedList">
-                    <div className="savedListHeader">
-                        <p className="savedItemName listHeader">Combat Name</p>
-                        <p className="savedItem"></p>
-                        <p className="savedItem listHeader">Count</p>
-                        <p className="savedItem listHeader">Fighters</p>
-                        <p className="savedItem listHeader">Dead</p>
-                        <p className="savedItem listHeader">Delete</p>
+                <div className={`savedList ${this.props.theme}-savedList`}>
+                    <div className={`savedListHeader ${this.props.theme}-savedListHeader`}>
+                        <p className={`savedItemName listHeader ${this.props.theme}-listHeader`}>Combat Name</p>
+                        <p className={`savedItem listHeader ${this.props.theme}-listHeader`}>Count</p>
+                        <p className={`savedItem listHeader ${this.props.theme}-listHeader`}>Fighters</p>
+                        <p className={`savedItem listHeader ${this.props.theme}-listHeader`}>Dead</p>
+                        <p className={`savedItem listHeader ${this.props.theme}-listHeader`}>Delete</p>
                     </div>
-                    <div className="border"></div>
+                    <div className={`${this.props.theme}-border`}></div>
 
                     {combatList}
 
-                    <div className="border savedborder"></div>
+                    <div className={`${this.props.theme}-border savedborder`}></div>
                 </div>
 
                 <DeleteDoubleCheck 
                     id={this.state.holder}
                     open={this.state.open}
                     close={this.defDelete}
-                    delete={this.deleteFieldTotal}/>
+                    delete={this.deleteFieldTotal}
+                    theme={this.props.theme}/>
             </div>
         )
     }
 }
 
 function mapStateToProps(state) {
-    var {combatId, user} = state
+    var {combatId, user, theme} = state
     return {
         combatId,
-        user
+        user,
+        theme
     }
 }
 

@@ -1,34 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-export default class SaveLock extends Component {
+export default function SaveLock ({userId, page, theme}) {
 
-    lock = () => {
-       
-        if (!this.props.userId) {
+        if (!userId) {
             return <div
-                className='navItem navLock navInVis'>
+                className={`navItem ${theme}-navItem ${theme}-navLock navInVis`}>
                 <p id='navItem'></p></div>
         } else {
             return <Link to='/SavedFields'
                 style={{ textDecoration: 'none' }}>
 
                 <div
-                    className={this.props.page === "/SavedFields" ? 'navItem Current' : 'navItem'}>
+                    className={page === "/SavedFields" ? `navItem ${theme}-navItem Current` : `navItem ${theme}-navItem`}>
                     <p id='navItem'>Saved Fields</p>
                 </div>
 
             </Link>
         }
-    }
-
-    render() {
-
-        return (
-            <div>
-                {this.lock()}
-            </div>
-        )
-    }
 }

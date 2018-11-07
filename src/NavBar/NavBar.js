@@ -18,30 +18,33 @@ class NavBar extends Component {
 
     render() {
 
-        var { combatId, page, user } = this.props
+        var { combatId, page, user, theme } = this.props
 
         if (user.error) {
             this.props.redirect('/')
         }
         
         return (
-            <div className="navBar">
+            <div className={`navBar ${theme}-nav`}>
                 <div className="navBarInner">
                     <BattleLock
                         page={page}
                         id={combatId}
                         userId={user.data} 
+                        theme={theme}
                         />
 
                     <SavedLock
                         page={page}
                         id={combatId}
                         userId={user.data} 
+                        theme={theme}
                         />
                 </div>
             
                  <LogDisplay 
-                    userId={user.data} 
+                    userId={user.data}
+                    theme={theme} 
                     />
 
             </div>
@@ -50,12 +53,13 @@ class NavBar extends Component {
 }
 
 function mapStateToProps(state) {
-    var { combatId, page, user } = state
+    var { combatId, page, user, theme } = state
 
     return {
         combatId,
         page,
-        user
+        user,
+        theme
     }
 }
 

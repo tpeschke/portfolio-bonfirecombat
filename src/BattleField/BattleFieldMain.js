@@ -47,7 +47,7 @@ class BattleFieldMain extends Component {
 
     render() {
 
-        var { fighterList, count, hash, KILLCOMBATANT, ADVANCESPEED, INPUTACTION, OPENMODAL, OPENMODAL2, OPENTOP, OPENTOP2, REMOVEFIGHTER, REDUXSORT, WEAPONMODAL, WEAPONMODAL2, ROLLINIT, HIDEFIGHTER } = this.props
+        var { fighterList, count, hash, KILLCOMBATANT, ADVANCESPEED, INPUTACTION, OPENMODAL, OPENMODAL2, OPENTOP, OPENTOP2, REMOVEFIGHTER, REDUXSORT, WEAPONMODAL, WEAPONMODAL2, ROLLINIT, HIDEFIGHTER, theme } = this.props
         return (
             <div className="BattleMain fadeInApp" id="Battle">
                 <BattleName
@@ -75,7 +75,8 @@ class BattleFieldMain extends Component {
                                 reduxSort={REDUXSORT}
                                 weaponModal={WEAPONMODAL}
                                 rollInit={ROLLINIT}
-                                hide={HIDEFIGHTER} />
+                                hide={HIDEFIGHTER}
+                                theme={theme} />
 
                             <Acting
                                 list={fighterList}
@@ -88,7 +89,8 @@ class BattleFieldMain extends Component {
                                 hash={hash} 
                                 weaponModal2={WEAPONMODAL2}
                                 rollInit={ROLLINIT}
-                                hide={HIDEFIGHTER} />
+                                hide={HIDEFIGHTER}
+                                theme={theme} />
 
                         </div>
 
@@ -100,7 +102,8 @@ class BattleFieldMain extends Component {
                                 count={count}
                                 kill={KILLCOMBATANT}
                                 remove={REMOVEFIGHTER}
-                                hash={hash} />
+                                hash={hash}
+                                theme={theme} />
                         </div>
                     </div>
                 </div>
@@ -119,10 +122,10 @@ class BattleFieldMain extends Component {
 }
 
 function mapStateToProps(state) {
-    var { combatId, combatName, fighterList, count, playerview, pendingSaveOpen, finishedSaveOpen, statusList, hash } = state
+    var { combatId, combatName, fighterList, count, playerview, pendingSaveOpen, finishedSaveOpen, statusList, hash, theme } = state
 
     return {
-        combatId,combatName,fighterList,count,statusList,playerview,pendingSaveOpen,finishedSaveOpen, hash
+        combatId,combatName,fighterList,count,statusList,playerview,pendingSaveOpen,finishedSaveOpen, hash, theme
     }
 }
 

@@ -70,7 +70,8 @@ compo
                     user={this.props.user} />
 
                 <CounterMiddle
-                    count={this.props.count} />
+                    count={this.props.count}
+                    theme={this.props.theme} />
 
                 <CounterRight
                     INCREASECOUNT={this.props.INCREASECOUNT}
@@ -85,12 +86,13 @@ compo
 
 function mapStateToProps(state) {
 
-    var { count, user, hash } = state
+    var { count, user, hash, theme } = state
 
     return {
         count,
         user,
-        hash
+        hash,
+        theme
     }
 }
 

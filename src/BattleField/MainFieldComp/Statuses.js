@@ -24,7 +24,7 @@ class Statuses extends Component {
                         className="StatusItemBox"
                         onClick={_=>this.handleDelete(d.id)}>
                         <h5 className="StatusItem">{d.namestatus}</h5>
-                        <div className="border"></div>
+                        <div className={`${this.props.theme}-border`}></div>
                         <h6 className="StatusItemCount">{+d.timestatus - +this.props.count}</h6>
                     </button>
                 }
@@ -42,12 +42,13 @@ class Statuses extends Component {
 }
 
 function mapStateToProps(state) {
-    var { statusList, count, hash } = state
+    var { statusList, count, hash, theme } = state
 
     return {
         statusList,
         count,
-        hash
+        hash,
+        theme
     }
 }
 

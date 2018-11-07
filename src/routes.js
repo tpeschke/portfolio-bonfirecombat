@@ -9,7 +9,6 @@ import Home from './Home/Home'
 import App from './App'
 
 export default class Routes extends Component {
-
     render() {
         return (
             <div>
@@ -29,7 +28,6 @@ export default class Routes extends Component {
 }
 
 export class LandingPage extends Component {
-
     render() {
         return (
             <div>
@@ -42,7 +40,7 @@ export class LandingPage extends Component {
                         component={PlayerNoBattle} />
                     <Route
                         exact path='/'
-                        component={Home} />
+                        render={_ => <Home theme={this.props.theme} />} />
                     <Route
                         component={App} />
 

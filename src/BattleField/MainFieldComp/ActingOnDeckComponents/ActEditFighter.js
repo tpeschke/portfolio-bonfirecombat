@@ -78,7 +78,7 @@ class ActEditFighter extends Component {
 
                                 <h1 id="newCombat">Edit Combatant</h1>
 
-                                <div className="border modalBorder"></div>
+                                <div className={`${this.props.theme}-border modalBorder`}></div>
 
                                 <div className="modalEditInputs">
                                     <p>Name</p>
@@ -100,10 +100,11 @@ class ActEditFighter extends Component {
 }
 
 function mapStateToProps(state) {
-    var { editopen2 } = state
+    var { editopen2, theme } = state
 
     return {
-        editopen2
+        editopen2,
+        theme
     }
 }
 

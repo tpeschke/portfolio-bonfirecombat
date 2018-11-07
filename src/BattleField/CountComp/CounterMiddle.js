@@ -1,14 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 
-export default class CounterMiddle extends Component {
-    render() {
+export default function CounterMiddle (props) {
         return (
             <div className="counterMiddle">
                 <h3>the Count</h3>
-                <div className="border countborder"></div>
-                <h3 className="countNum">{this.props.count}</h3>
+                <div className={`${props.theme}-border countborder`}></div>
+                <h3 className="countNum">{props.count}</h3>
             </div>
         )
-    }
 }

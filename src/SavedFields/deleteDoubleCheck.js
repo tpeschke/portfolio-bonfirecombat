@@ -5,7 +5,6 @@ import Modal from 'react-responsive-modal/lib/css';
 
 import './deleteCheck.css'
 
-
 export default class DeleteDoubleCheck extends Component {
     constructor(props) {
         super(props)
@@ -21,7 +20,7 @@ export default class DeleteDoubleCheck extends Component {
 
     render() {
 
-        var { open, close } = this.props
+        var { open, close, theme } = this.props
 
         return (
             <div>
@@ -29,7 +28,7 @@ export default class DeleteDoubleCheck extends Component {
                     classNames={{ modal: 'modalDelete'}}>
                     <div className="modalDeleteOuter">
                         <h2>Are You Sure?</h2>
-                        <div className="border modalBorder"></div>
+                        <div className={`${theme}-border modalBorder`}></div>
                         <p>Once you've deleted a field,</p>
                         <p>there's no going back</p>
                         <button 

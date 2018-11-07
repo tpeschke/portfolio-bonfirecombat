@@ -46,7 +46,7 @@ class DeckToP extends Component {
 
     render() {
 
-        const { topopen } = this.props
+        const { topopen, theme } = this.props
 
         return (
             <div>
@@ -57,7 +57,7 @@ class DeckToP extends Component {
                         
                             <div className="modalToPInner">
                                 <h2 id="modalHeader">Enter How Much They Failed By</h2>
-                                <div className="border modalBorder"></div>
+                                <div className={`${this.props.theme}-border modalBorder`}></div>
                                 <input className="inputFinder" id="modalToPInput"
                                     onBlur={e => this.handleChange(e.target.value)} />
                             </div>
@@ -70,10 +70,11 @@ class DeckToP extends Component {
 }
 
 function mapStateToProps(state) {
-    var { topopen } = state
+    var { topopen, theme } = state
 
     return {
-        topopen
+        topopen,
+        theme
     }
 }
 

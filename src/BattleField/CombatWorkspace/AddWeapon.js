@@ -44,7 +44,7 @@ class DeckWeapon extends Component {
     }
 
     render() {
-        let { weapons, id } = this.props
+        let { weapons, id, theme } = this.props
 
         let display = weapons.map((val, i) => {
             return (
@@ -110,7 +110,7 @@ class DeckWeapon extends Component {
         return (
             <div className="addwpbody">
                 <h2 className="wpHeader">Add Weapon</h2>
-                <div className="border modalBorder wpHeader"></div>
+                <div className={`${this.props.theme}-border modalBorder wpHeader`}></div>
 
                 {edit()}
 
@@ -123,7 +123,8 @@ class DeckWeapon extends Component {
 
 function mapStateToProps(state) {
     return {
-        open: state.weaponModal
+        open: state.weaponModal,
+        theme: state.theme
     }
 }
 export default connect(mapStateToProps, { SELECTWEAPON, DELETEWEAPON })(DeckWeapon)

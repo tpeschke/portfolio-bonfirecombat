@@ -79,7 +79,7 @@ class DeckEditFighter extends Component {
 
                                 <h1 id="newCombat">Edit Combatant</h1>
 
-                                <div className="border modalBorder"></div>
+                                <div className={`${this.props.theme}-border modalBorder`}></div>
 
                                 <div className="modalEditInputs">
                                     <p>Name</p>
@@ -101,11 +101,12 @@ class DeckEditFighter extends Component {
 }
 
 function mapStateToProps(state) {
-    var { editopen, hash } = state
+    var { editopen, hash, theme } = state
 
     return {
         editopen,
-        hash
+        hash,
+        theme
     }
 }
 

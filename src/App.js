@@ -42,19 +42,20 @@ class App extends Component {
                   user={this.props.user}
                   settings={this.props.settings}
                   TOGGLEPLAYERVIEW={this.props.TOGGLEPLAYERVIEW}
-                  playerview={this.props.playerview} />
+                  playerview={this.props.playerview}
+                  theme={this.props.theme} />
               </div>
             </div>
             <div className="headpic"></div>
           </div>
-          <div className="appContent" id="container" style={this.state.style}>
+          <div className={`appContent ${this.props.theme}-appContent`} id="container" style={this.state.style}>
 
             <div className="NavContainer">
               <NavBar redirect={this.props.history.push}/>
             </div>
 
-            <div className="border"></div>
-            <div className="border"></div>
+            <div className={`${this.props.theme}-border`}></div>
+            <div className={`${this.props.theme}-border`}></div>
 
             <Routes setHeight={this.setHeight} />
           </div>
@@ -65,11 +66,12 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
-  var { user, settings } = state
+  var { user, settings, theme } = state
 
   return {
     user,
-    settings
+    settings,
+    theme
   }
 }
 

@@ -25,7 +25,7 @@ class Workspace extends Component {
     }
 
     render() {
-        let {hash, user, playerview, TOGGLEPLAYERVIEW} = this.props
+        let {hash, user, playerview, TOGGLEPLAYERVIEW, theme} = this.props
 
         return (
             <div className="BattleSidebar Main" id="Workspace">
@@ -41,7 +41,7 @@ class Workspace extends Component {
                     >Clear Field</button>
                 </div>
 
-                <div className="border"></div>
+                <div className={`${this.props.theme}-border`}></div>
 
                 <PlayerviewToggle
                    user={user}
@@ -55,11 +55,12 @@ class Workspace extends Component {
 }
 
 function mapStateToProps(state) {
-    let {hash, user, playerview} = state
+    let {hash, user, playerview, theme} = state
     return {
         hash,
         user,
-        playerview
+        playerview,
+        theme
     }
 }
 

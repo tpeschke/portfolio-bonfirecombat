@@ -125,7 +125,7 @@ class AddNewFighter extends Component {
     render() {
 
         const { open, color, name, weapons, action, dice, hidden } = this.state;
-        const { combatId } = this.props
+        const { combatId, theme } = this.props
 
         let show = () => {
             if (!this.state.weapon) {
@@ -140,7 +140,7 @@ class AddNewFighter extends Component {
 
                             <h1 id="newCombat">Add New Combatant</h1>
 
-                            <div className="border modalBorder"></div>
+                            <div className={`${theme}-border modalBorder`}></div>
                             <input placeholder="Name" id="modalEditInput" value={this.state.name}
                                 onChange={e => this.setState({ name: e.target.value})} />
 
@@ -206,12 +206,13 @@ class AddNewFighter extends Component {
 }
 
 function mapStateToProps(state) {
-    var { count, combatId, hash } = state
+    var { count, combatId, hash, theme } = state
 
     return {
         count,
         combatId,
-        hash
+        hash,
+        theme
     }
 }
 

@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=MedievalSharp');
 
 body {
-    background: black;
+    background: black
 }
 
 .header {
@@ -32,11 +32,18 @@ body {
 .appContent {
     width: 900px;
     margin: 100px auto;
-    background-image: url('./img/Wood1.jpg');
-    border-radius: 25px;
     padding-bottom: 25px;
     transition: .6s;
     overflow: hidden;
+}
+
+.h-appContent {
+    background-image: url('./img/Wood1.jpg');
+    border-radius: 25px;
+}
+
+.a-appContent {
+    background: white;
 }
 
 .fadeInApp {
@@ -53,7 +60,7 @@ body {
     animation-duration: 1s;
 }
 
-.border {
+.h-border {
     border-bottom-style: solid;
     border-color: black;
     border-width: 1px;
@@ -106,9 +113,20 @@ button {
     height: 100%;
     background-color: transparent;
     font-weight: 800;
-    font-family: 'MedievalSharp';
     padding: 0;
     outline: none;
+}
+
+.a-button {
+    font-family: 'Spectral SC', serif;
+}
+
+.a-button:hover {
+    color: rgb(56, 56, 56)
+}
+
+.h-button {
+    font-family: 'MedievalSharp';
 }
 
 button:hover {
@@ -314,19 +332,7 @@ h3 {
 }
 
 h4 {
-    font-weight: 800;
-    font-size: 25px;
-    margin: 15px 0;
-    color: white;
-    font-family: 'MedievalSharp';
-    position: relative;
-    left: 123px;
-    top: 90px;
-    text-shadow:
-        -1px -1px 0 #000,
-        1px -1px 0 #000,
-        -1px 1px 0 #000,
-        1px 1px 0 #000; 
+    
 }
 
 h5 {
@@ -342,15 +348,39 @@ h6 {
     margin-top: 5px;
 }
 
+.a-font {
+    font-family: 'Spectral SC', serif;
+}
+
+.h-font {
+    font-family: 'MedievalSharp';
+}
+
 .fontHeader {
-    color: rgb(151, 23, 21);
     font-size: 25px;
 }
 
-.listHeader {
-    font-family: 'Spectral SC', serif;
+.a-fontHeader {
     color: rgb(151, 23, 21);
+    font-family: 'Spectral SC', serif;
+}
+
+.h-fontHeader {
+    color: rgb(151, 23, 21);
+    font-family: 'MedievalSharp';
+}
+
+.listHeader {
     margin: 10px 3px;
+}
+
+.a-listHeader {
+    font-family: 'Spectral SC', serif;
+}
+
+.h-listHeader {
+    font-family: 'MedievalSharp';
+    color: rgb(151, 23, 21);
 }
 
 .addNewHidden {

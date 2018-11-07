@@ -1,37 +1,27 @@
 .outHome {
-    height: 900px;
-    width: 900px;
+    height: 188px;
+    width: 550px;
     margin: 75px auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
 }
-  
-iframe {
-    min-width: 900px;
-    min-height: 450px;
-    pointer-events: none;
-    z-index: -5;
-  }
+
+.logoWords {
+    color: White;
+    font-weight: 800;
+    font-size: 25px;
+    margin: -7px 0;
+}
 
 .foreground {
     display: flex;
     flex-direction: column;
+    border-top: 40px solid rgb(56, 56, 56);
+    background: white;;
+    height: 188px;
 }
-
-.videoBox {
-    position: relative;
-}
-
-.coverUp {
-    background: black;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    min-width: 900px;
-    min-height: 50px;
-    z-index: 0;
-  }
 
 .outDiveHome {
     z-index: 1;
@@ -42,25 +32,19 @@ iframe {
 }
 
 .logoHome {
-    background-image: url('../img/translogo.png');
-    height: 150px;
-    width: 425px;
+    background-image: url('../img/KnC.jpg');
+    height: 188px;
+    width: 188px;
+    background-size: cover;
     margin: 0 auto;
     z-index: 1;
-}
-
-.inHome {
-    background-color:rgba(218, 197, 182, 0.75);
-    width: 350px;
-    height: 350px;
-    border-radius: 25px;
+    position: absolute;
+    top: 0;
 }
 
 .signInInner {
-    background-color:rgba(214, 205, 199, .9);
-    max-width: 350px;
     min-height: 150px;
-    border-radius: 25px;
+    margin-left: 188px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -80,12 +64,11 @@ iframe {
 
 #signInButton {
     font-weight: 800;
-    color: rgb(151, 23, 21);
-    font-size: 25px;
-    margin-top: 25px;
+    font-size: 20px;
+    font-family: 'Spectral SC', serif;
+    margin: 40px 0px 15px 0px;
 }
 
 button#signInButton:hover {
-    text-shadow: 1px 1px white
+    color: rgb(56, 56, 56)
 }
-

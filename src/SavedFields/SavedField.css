@@ -9,10 +9,15 @@
     margin: 15px 0 15px 20px;
 }
 
-.savedList {
+.h-savedList {
     background: rgba(218, 197, 182, .75);
-    border-radius: 25px;
     padding: 5px 0 25px 0;
+    border-radius: 25px;
+}
+
+.a-savedList {
+    background: lightgray;
+    padding: 5px 0 10px 0;
 }
 
 .savedListHeader {
@@ -22,6 +27,12 @@
     min-width: 180px;
 }
 
+.a-savedListHeader {
+    background: rgb(56, 56, 56);
+    margin-top: -5px;
+    color: lightgrey;
+}
+
 .savedItem {
     min-width: 80px;
     text-align: center;
@@ -29,7 +40,7 @@
 }
 
 .savedItemName {
-    min-width: 180px;
+    min-width: 306px;
     margin: 0 25px;
     padding: 0;
     text-align: left;

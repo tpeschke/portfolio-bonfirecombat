@@ -5,35 +5,64 @@
     height: 40px;
 }
 
+.a-nav {
+    background: rgb(56, 56, 56);
+}
+
 .navBarInner {
     display: flex;
 }
 
 .navItem {
-    color: rgb(151, 23, 21);
-    background: rgb(151, 23, 21);
     min-width: 150px;
     height: 35px;
     margin: 0 5px 5px 0;
     text-align: center;
     font-weight: 800;
+    max-height: 0px;
+}
+
+.h-navItem {
+    color: rgb(151, 23, 21);
+    background: rgb(151, 23, 21);
+    font-family: 'MedievalSharp';
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
+}
 
-    max-height: 0px;
+.a-navItem {
+    color: rgb(214, 214, 214);
+    background: rgb(151, 23, 21);
+    font-family: 'Spectral SC', serif;
+    height: 100%;
+}
+
+#navItem {
+    margin-top: 10px;
+}
+
+#h-settingItem {
+    margin-bottom: 20px;
+}
+
+#a-settingItem {
+    margin-bottom: 27px;
 }
 
 .Current {
     color: rgb(214, 214, 214);
     overflow-y: hidden;
     max-height: 500px;
-
 	transition-property: all;
 	transition-duration: .8s;
 }
 
-.navLock {
+.h-navLock {
     color: rgb(214, 214, 214);
+}
+
+.a-navLock {
+    color: rgb(214, 214, 214)
 }
 
 .signIn {
@@ -41,26 +70,33 @@
     align-items: center;
 }
 
-#navItem {
-    margin-top: 10px;
-}
-
 .navInVis{
     display: none;
 }
 
-#settings {
-    color: black;
+.settings {
     font-weight: 400;
     min-width: 150px;
-    height: 35px;
+    height: 100%;
     margin: 0 5px 5px 0;
     text-align: right;
     font-size: 17px;
 }
 
-button#settings:hover {
-    text-shadow: 1px 1px 1px white;
+.a-settings {
+    color: grey
+}
+
+.h-settings {
+    color: black;
+}
+
+button#h-settings:hover {
+    text-shadow: 2px 2px 2px white;
+}
+
+button#a-settings:hover {
+    text-shadow: 2px 2px 2px black;
 }
 
 img {
@@ -69,28 +105,45 @@ img {
     border-radius: 100px;
     margin-left: 80px;
     margin-top: 25px;
+    
+}
+
+.a-img {
+    border: 5px solid rgb(151, 23, 21)
+}
+
+.h-img {
     border: 5px solid rgba(218, 197, 182, .75)
 }
 
 .settingBanner {
     z-index: 3;
-    background: url('../img/clothe.jpg');
-    background-size: 550px 300px;
     position: relative;
     top: 0;
     left: 60vw; 
     height: 600px;
     width: 300px;
     overflow-y: hidden;
+    transition: .6s;
+}
+
+.h-settingBanner {
+    background: url('../img/clothe.jpg');
+    background-size: 550px 300px;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
+}
 
-    transition: .6s;
+.a-settingBanner {
+    background: white;
 }
 
 .settingBannerMid {
     height: 600px;
     width: 300px;
+}
+
+.h-settingsBannerMid {
     border-bottom: 5px solid rgba(33, 53, 80, .75);
     border-left: 5px solid rgba(33, 53, 80, .75);
     border-right: 5px solid rgba(33, 53, 80, .75);
@@ -98,19 +151,32 @@ img {
     border-bottom-right-radius: 25px;
 }
 
+.a-settingsBannerMid {
+    border-bottom: 25px solid rgb(56, 56, 56);
+}
+
 .settingInnerBanner {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    background: rgba(33, 53, 80, 0.75);
+    justify-content: space-between;  
     height: 580px;
     width: 260px;
-    margin-left: 15px;
+    
     overflow-y: hidden;
+    transition: .6s;
+}
+
+.a-settingInnerBanner {
+    height: 560px;
+    margin-left: 20px;
+    background: rgb(56, 56, 56, 0.75);
+}
+
+.h-settingInnerBanner {
+    background: rgba(33, 53, 80, 0.75);
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
-
-    transition: .6s;
+    margin-left: 15px;
 }
 
 .bannerBody {
@@ -129,17 +195,15 @@ img {
 }
 
 .settingsBackdrop {
-    position: fixed; /* Sit on top of the page content */
-    /* display: none; Hidden by default */
-    width: 100%; /* Full width (cover the whole page) */
-    height: 100%; /* Full height (cover the whole page) */
+    position: fixed;
+    width: 100%;
+    height: 100%;
     top: 0; 
     left: 0;
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, .5); 
-    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-    cursor: pointer; /* Add a pointer on hover */
+    z-index: 2;
     transition: .6s
 }
 

@@ -132,7 +132,7 @@ export default class Acting extends Component {
         return (
             <div className="Main">
                 <p>Acting</p>
-                <div className="border sectionborder"></div>
+                <div className={`${this.props.theme}-border sectionborder`}></div>
                 <div className="Header" id="sectionHeader">
                     <p className="ListItem Name NameHeader listHeader">Name</p>
                     <p className="ListItem listHeader">Speed</p>
@@ -141,13 +141,13 @@ export default class Acting extends Component {
                     <p className="ListItem listHeader">Kill</p>
                     <p className="ListItem listHeader">Edit</p>
                 </div>
-                <div className="border"></div>
+                <div className={`${this.props.theme}-border`}></div>
 
                 <FlipMove duration={750} easing="ease-out">
                     {actingList}
                 </FlipMove>
 
-                <div className="border"></div>
+                <div className={`${this.props.theme}-border`}></div>
 
                 <ActEditFighter
                     color={this.state.holdcolor}

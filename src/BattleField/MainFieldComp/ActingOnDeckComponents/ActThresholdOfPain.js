@@ -46,7 +46,7 @@ class ActToP extends Component {
 
     render() {
 
-        const { topopen2 } = this.props
+        const { topopen2, theme } = this.props
 
         return (
             <div>
@@ -57,7 +57,7 @@ class ActToP extends Component {
                     
                         <div className="modalToPInner">
                             <h2 id="modalHeader">Enter How Much They Failed By</h2>
-                            <div className="border modalBorder"></div>
+                            <div className={`${theme}-border modalBorder`}></div>
                             <input className="inputFinder" id="modalToPInput"
                                 onBlur={e => this.handleChange(e.target.value)} />
                         </div>
@@ -70,10 +70,11 @@ class ActToP extends Component {
 }
 
 function mapStateToProps(state) {
-    var { topopen2 } = state
+    var { topopen2, theme } = state
 
     return {
-        topopen2
+        topopen2,
+        theme
     }
 }
 

@@ -85,7 +85,7 @@ class NewStatus extends Component {
 
                             <div className="modalEditInputs">
 
-                            <div className="border modalBorder"></div>
+                            <div className={`${this.props.theme}-border modalBorder`}></div>
                                 <p id="statusName">Name</p>
                                 <input className="inputFinder" id="statusInput"
                                     onChange={e => this.handleName(e.target.value)} />
@@ -107,10 +107,11 @@ class NewStatus extends Component {
 
 function mapStateToProps(state) {
 
-    var {count, hash} = state
+    var {count, hash, theme} = state
     return {
         count,
-        hash
+        hash,
+        theme
     }
 }
 
