@@ -15,7 +15,7 @@ export default class DeleteDoubleCheck extends Component {
     }
 
     componentWillReceiveProps(next) {
-        this.setState({ choppingBlock: next.id})
+        this.setState({ choppingBlock: next.id })
     }
 
     render() {
@@ -25,16 +25,18 @@ export default class DeleteDoubleCheck extends Component {
         return (
             <div>
                 <Modal open={open} onClose={close} little
-                    classNames={{ modal: 'modalDelete'}}>
-                    <div className="modalDeleteOuter">
-                        <h2>Are You Sure?</h2>
-                        <div className={`${theme}-border modalBorder`}></div>
+                    showCloseIcon={false}
+                    classNames={{ modal: 'modalDelete' }}>
+                    <div className={`modalDeleteOuter ${theme}-modalDeleteOuter`}>
+                        <h2 className={`${theme}-font`} id="modalCheck">Are You Sure?</h2>
+                        <div className={`${theme}-border modalBorder`} id="checkBorder"></div>
                         <p>Once you've deleted a field,</p>
                         <p>there's no going back</p>
-                        <button 
+                        <button
+                            className={`${theme}-font`}
                             id="modalDeleteButton"
-                            onClick={_=>this.props.delete(this.state.choppingBlock)}
-                            >DO IT</button>
+                            onClick={_ => this.props.delete(this.state.choppingBlock)}
+                        >DO IT</button>
                     </div>
                 </Modal>
             </div>

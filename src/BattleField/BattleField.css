@@ -186,6 +186,7 @@ input.ListItem:hover {
     font-size: 20px;
     min-width: 100%;
     text-align: center;
+    background: transparent
 }
 
 #BattleNameInput::placeholder {
@@ -202,7 +203,6 @@ input.ListItem:hover {
 }
 
 #newCombat {
-    color: rgba(33, 53, 80, 1);
     margin-top: 25px;
     text-align: center;
     font-size: 25px;
@@ -358,3 +358,6 @@ input.ListItem:hover {
     bottom: -9px;
 }
 
+.modalDiceInput {
+    width: 50px;
+}

@@ -93,15 +93,39 @@ body {
 /* ================================= */
 
 input {
-    max-width: 60px;
-    background: transparent;
+    max-width: 60px;   
     border-style: none;
     font-weight: 800;
-    font-family: 'MedievalSharp';
     outline: none;
 }
 
-::placeholder {
+.a-input {
+    background: transparent;
+    font-family: 'Spectral SC', serif;
+}
+
+.a-inputSpecial {
+    background: lightgrey;
+    font-family: 'Spectral SC', serif;
+}
+
+.a-inputSpecial::placeholder {
+    font-weight: 800;
+    font-family: 'Spectral SC', serif;
+}
+
+.h-input {
+    font-family: 'MedievalSharp';
+    background: transparent;
+}
+
+.h-inputSpecial {
+    background: rgba(255, 255, 255, 0.50);
+    color: rgba(33, 53, 80, 1);
+    font-family: 'MedievalSharp';
+}
+
+.h-inputSpecial::placeholder {
     color: black;
     font-weight: 800;
     font-family: 'MedievalSharp';
@@ -217,7 +241,7 @@ button:hover {
     border-top-right-radius: 25px
 }
 
-.modalBannerNew {
+.h-modalBannerNew {
     background-image: url('./img/AddNew.jpg');
     height: 200px;
     width: 499px;
@@ -238,12 +262,20 @@ button:hover {
 .outModalNew {
     display: flex;
     flex-direction: column;
-    background-color:rgba(218, 197, 182, 1);
-    margin: -37px;
     width: 499px;
     height: auto;
     position: relative;
+    
+}
+
+.h-outModalNew {
+    background-color:rgba(218, 197, 182, 1);
+    margin: -37px;
     border-radius: 25px
+}
+
+.a-outModalNew {
+
 }
 
 .inModalNew {
@@ -271,13 +303,11 @@ button:hover {
     margin-top: 15px;
 }
 
-#modalEditInput {
+.modalEditInput {
     max-width: 100px;
-    background: rgba(255, 255, 255, 0.50);
     border-radius: 5px;
     font-weight: 800;
     font-size: 15px;
-    color: rgba(33, 53, 80, 1);
     text-shadow: 0 0;
     text-align: center;
     margin: 5px 0 15px 0;
@@ -300,18 +330,6 @@ input#modalEditInput::placeholder {
 
 .NavContianer {
     position: relative
-}
-
-#modalDiceInput {
-    max-width: 50px;
-    background: rgba(255, 255, 255, 0.50);
-    border-radius: 5px;
-    font-weight: 800;
-    font-size: 15px;
-    color: rgba(33, 53, 80, 1);
-    text-shadow: 0 0;
-    text-align: center;
-    margin: 5px 0 15px 0;
 }
 
 /* =================================== */
@@ -344,9 +362,9 @@ h3 {
     font-size: 20px;
 }
 
-h4 {
+/* h4 {
     
-}
+} */
 
 h5 {
     font-weight: 800;
@@ -365,16 +383,33 @@ h6 {
     font-family: 'Spectral SC', serif;
 }
 
+.a-secFont {
+    font-family: 'Spectral SC', serif;
+}
+
 .a-color {
     color: lightgray
+}
+
+.a-secColor {
+    color: rgb(151, 23, 21)
 }
 
 .h-font {
     font-family: 'MedievalSharp';
 }
 
+
+.h-secFont {
+    font-family: 'Spectral SC', serif;
+}
+
 .h-color {
     color: rgb(151, 23, 21);
+}
+
+.h-secColor {
+    color: rgba(33, 53, 80, 1);
 }
 
 .fontHeader {

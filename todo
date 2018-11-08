@@ -4,8 +4,9 @@
     - Far West
     - Agnostic
 - Add loading screen
-- Add input validation for Add Fighter
+- Add input validation for Add Fighter and character Action
 - Limit the number of combatants and fields a person can have
+- New fighter didn't get added to playerview if it's visible.
 
 REMOVE LOCALHOST FROM SERVER
 UNCOMMENT LINE 442 FROM REDUCER

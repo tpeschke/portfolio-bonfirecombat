@@ -85,7 +85,7 @@ export default class Acting extends Component {
                                 onClick={_ => this.props.advance(d.id, speed)}
                             >{speed}</button>
 
-                            <input className={`ListItem ${theme}-font inputFinder`}
+                            <input className={`ListItem ${theme}-input inputFinder`}
                                 value={d.actioncount}
                                 onChange={e => this.props.action(d.id, +e.target.value, true)}
                                 onBlur={e => this.props.action(d.id, +e.target.value, false)} />

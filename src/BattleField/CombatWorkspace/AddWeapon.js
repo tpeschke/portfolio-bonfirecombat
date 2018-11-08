@@ -109,12 +109,12 @@ class DeckWeapon extends Component {
 
         return (
             <div className="addwpbody">
-                <h2 className="wpHeader">Add Weapon</h2>
-                <div className={`${this.props.theme}-border modalBorder wpHeader`}></div>
+                <h2 className={`wpHeader ${theme}-secColor`}>Add Weapon</h2>
+                <div className={`${theme}-border modalBorder wpHeader`}></div>
 
                 {edit()}
 
-                <button className="wpButton"
+                <button className={`wpButton ${theme}-secColor ${theme}-secFont`}
                     onClick={this.props.doneWithWeapon}>Okay, I'm done!</button>
             </div>
         )

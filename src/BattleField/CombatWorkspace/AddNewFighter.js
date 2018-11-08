@@ -24,7 +24,7 @@ class AddNewFighter extends Component {
             weapons: [{id: 1, weapon: 'Unarmed', speed: 10, selected: '1'}],
             action: null,
             dice: 1,
-            hidden: '1',
+            hidden: '0',
             weapon: false
         }
 
@@ -138,23 +138,24 @@ class AddNewFighter extends Component {
                         </div>
                         <div className="modalRight">
 
-                            <h1 id="newCombat">Add New Combatant</h1>
+                            <h1 className={`${theme}-secFont ${theme}-secColor`} id="newCombat">Add New Combatant</h1>
 
                             <div className={`${theme}-border modalBorder`}></div>
-                            <input placeholder="Name" id="modalEditInput" value={this.state.name}
+                            <input placeholder="Name" className={`modalEditInput ${theme}-inputSpecial`} id="modalEditInput"
+                                 value={this.state.name}
                                 onChange={e => this.setState({ name: e.target.value})} />
 
-                            <button className="newFighterButton"
+                            <button className={`newFighterButton ${theme}-font`}
                                 onClick={_ => this.setState({weapon: true})}
                                 >Add Weapons</button>
 
                             <div>
-                                1d<input className="inputFinder" id="modalDiceInput"
+                                1d<input className={`modalEditInput ${theme}-inputSpecial modalDiceInput`}
                                     value={this.state.dice}
                                     onChange={e => this.setState({dice: +e.target.value})}/>
                             </div>
 
-                            <input className="inputFinder" id="modalEditInput"
+                            <input className={`modalEditInput ${theme}-inputSpecial`} id="modalEditInput"
                                 placeholder={this.state.action ? this.state.action : "Initiative"}
                                 value={this.state.action}
                                 onChange={e => this.setState({action: +e.target.value})} />
@@ -163,7 +164,7 @@ class AddNewFighter extends Component {
                                 on={hidden}
                                 hide={this.handleHide}/>
 
-                            <button id="modalAddButton"
+                            <button className={`${theme}-secColor ${theme}-secFont`} id="modalAddButton"
                                 onClick={_ => this.handleSubmit(color, name, weapons, action, dice, combatId, hidden)}>SUBMIT</button>
                         </div>
                     </div>
@@ -178,7 +179,8 @@ class AddNewFighter extends Component {
                             selectWeapon={this.selectWeapon}
                             deleteWeapon={this.deleteWeapon}
                             editWeapon={this.editWeapon}
-                            doneWithWeapon={this.doneWithWeapon}/>
+                            doneWithWeapon={this.doneWithWeapon}
+                            theme={theme}/>
                     </div>
                 )
             }
@@ -191,9 +193,10 @@ class AddNewFighter extends Component {
                     onClick={this.onOpenModal}>Add New Combatant</button>
 
                 <Modal open={open} onClose={this.onCloseModal} little
-                    classNames={{ modal: 'modalBaseToP' }}>>
-                <div className="outModalNew">
-                        <div className="modalBannerNew"></div >
+                    classNames={{ modal: 'modalBaseToP' }}
+                    showCloseIcon={false}>
+                <div className={`outModalNew ${theme}-outModalNew`}>
+                        <div className={`${theme}-modalBannerNew`}></div >
 
                             {show()}
 
