@@ -13,9 +13,9 @@ module.exports = {
 
         const db = req.app.get('db')
 
-        // var { id } = req.user
+        var { id } = req.user
 
-        db.get.all_Combats(1).then(result => res.status(200).send(result))
+        db.get.all_Combats(id).then(result => res.status(200).send(result))
 
     },
 
@@ -195,6 +195,16 @@ module.exports = {
         var { id, tooltip } = req.body
 
         db.update.tooltip(tooltip, id).then(result => res.send())
+    },
+
+    setTheme: (req, res) => {
+
+        const db = req.app.get('db')
+
+        let { theme } = req.params
+        let { id } = req.user
+
+        db.update.theme(theme, id).then(result => res.send())
     },
 
     deleteFighter: (req, res) => {

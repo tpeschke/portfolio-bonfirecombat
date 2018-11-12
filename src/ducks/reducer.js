@@ -13,7 +13,7 @@ const initialState = {
     combatId: 0,
     combatName: 'New Battle',
     playerview: false,
-    theme: 'a',
+    theme: 'h',
 
     fighterList: [],
     statusList: [],
@@ -89,6 +89,8 @@ const DELETE_WEAPON = "DELETE_WEAPON"
 const ROLL_INIT = "ROLL_INIT"
 
 const HIDE_FIGHTER = "HIDE_FIGHTER"
+
+const SET_THEME = "SET_THEME"
 
 //ACTION BUILDERS
 
@@ -231,6 +233,13 @@ export function HIDEFIGHTER(id) {
     }
 }
 
+export function SETTHEME(theme) {
+    return {
+        type: SET_THEME,
+        payload: theme
+    }
+}
+
 //REDUCER
 
 export default function reducer(state = initialState, action) {
@@ -248,8 +257,8 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { statusList: action.payload.data })
 
         case GET_HASH + '_FULFILLED':
-            // return Object.assign({}, state, { hash: action.payload.data[0].urlhash })
-            return Object.assign({}, state, { hash: '12345' })
+            return Object.assign({}, state, { hash: action.payload.data[0].urlhash })
+        // return Object.assign({}, state, { hash: '12345' })
 
         case INCREASE_COUNT:
             var newCount = +state.count + 1
@@ -437,21 +446,21 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { page: action.payload })
 
         case GET_USER_INFO + '_FULFILLED':
-            return Object.assign({}, state, { user: action.payload })
+            return Object.assign({}, state, { user: action.payload, theme: action.payload.data.theme })
 
         case GET_USER_INFO + '_REJECTED':
-            // return Object.assign({}, state, { user: { error: true } })
-            return Object.assign({}, state, {
-                user: {
-                    data: {
-                        auth0: "google-oauth2|113542570861213780439",
-                        id: 1,
-                        img: "https://lh6.googleusercontent.com/-KHfDi72gIZ0/AAAAAAAAAAI/AAAAAAAAAR0/4EHZlBEQ1ro/photo.jpg",
-                        tooltip: "0",
-                        username: "Trent Peschke",
-                    }
-                }
-            })
+            return Object.assign({}, state, { user: { error: true } })
+        // return Object.assign({}, state, {
+        //     user: {
+        //         data: {
+        //             auth0: "google-oauth2|113542570861213780439",
+        //             id: 1,
+        //             img: "https://lh6.googleusercontent.com/-KHfDi72gIZ0/AAAAAAAAAAI/AAAAAAAAAR0/4EHZlBEQ1ro/photo.jpg",
+        //             tooltip: "0",
+        //             username: "Trent Peschke",
+        //         }
+        //     }
+        // })
 
         case OPEN_SETTINGS:
             return Object.assign({}, state, { settings: !state.settings })
@@ -547,6 +556,9 @@ export default function reducer(state = initialState, action) {
             })
 
             return Object.assign({}, state, { fighterList: hiddenFighter })
+
+        case SET_THEME:
+            return Object.assign({}, state, { theme: action.payload })
 
         default: return state
     }

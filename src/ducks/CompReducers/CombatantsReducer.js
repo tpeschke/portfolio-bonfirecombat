@@ -27,7 +27,7 @@ export function GETCOMBATFIGHTERS(id, name, count) {
 export function LOADCOMBATANTS(id) {
     return {
         type: LOAD_COMBATANTS,
-        payload: axios.get(`/api/combat/3`).then()
+        payload: axios.get(`/api/combat/${id}`).then()
     }
 }
 

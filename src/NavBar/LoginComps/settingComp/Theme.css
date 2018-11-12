@@ -1,0 +1,32 @@
+.themeSelectorShell {
+    margin: 10px 20px;
+}
+
+.ThemeSelectorTitle {
+    margin-bottom: 7px;
+}
+
+.themeSelectorInner {
+    display: flex;
+    flex-direction: column;
+}
+
+.themeSelectorChoice {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.choice {
+    margin: 0 5px 0 0;
+    height: 16px;
+    width: 16px;
+    border-radius: 10px;
+    background: rgb(175, 28, 26);
+    border: 3px inset grey;
+}
+
+.selected {
+    background: green;
+    border: 3px inset grey;
+}

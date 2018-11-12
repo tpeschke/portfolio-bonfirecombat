@@ -110,6 +110,7 @@ app.delete('/api/status/:id', sqlCtrl.deleteStatus);
 app.delete('/api/weapon/:id', sqlCtrl.deleteWeapon);
 
 app.patch('/api/battle', sqlCtrl.saveField);
+app.patch('/api/theme/:theme', sqlCtrl.setTheme);
 
 const path = require('path')
 

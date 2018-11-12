@@ -1,6 +1,10 @@
 create table usersAuth (
     id SERIAL PRIMARY KEY,
-    auth0 TEXT
+    auth0 TEXT,
+    img Text,
+    username VARCHAR(40),
+    tooltip bit,
+    theme VARCHAR(1)
     );
 
 

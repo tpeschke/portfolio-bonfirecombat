@@ -1,9 +1,7 @@
-- Set up being able choose theme choice
 - Playerview themes - able to switch
 - Themes
     - Odyssey
     - Far West
-- Add loading screen
 - Add input validation
     - Add Fighter 
     - character Action
@@ -14,10 +12,11 @@
 - Limit the number of combatants and fields a person can have
 - New fighter didn't get added to playerview if it's visible.
 - Make it so status bar doesn't exist if Statuses don't
+- Style Authy
 
 REMOVE LOCALHOST FROM SERVER
-UNCOMMENT LINE 442 FROM REDUCER
-UNCOMMENT LINE 16 IN sqlController AND REPLACE 1 WITH id ON LINE 18
-REPLACE 3 WITH id ON LINE 30 OF CombatantsReducer
-UNCOMMENT LINE 251 FROM reducer
-REMOVE LINE 252 FROM reducer
+--------------UNCOMMENT LINE 442 FROM REDUCER
+--------------UNCOMMENT LINE 16 IN sqlController AND REPLACE 1 WITH id ON LINE 18
+--------------REPLACE 3 WITH id ON LINE 30 OF CombatantsReducer
+--------------UNCOMMENT LINE 251 FROM reducer
+--------------REMOVE LINE 252 FROM reducer
