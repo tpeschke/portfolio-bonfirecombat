@@ -1,4 +1,11 @@
 .modalStatusOuter {
+}
+
+.a-modalStatusOuter {
+    
+}
+
+.h-modalStatusOuter {
     position: relative;
     background-image: url('../../img/status.jpg');
     margin: -20px;
@@ -20,10 +27,6 @@
 }
 
 .modalStatusInner {
-    position: absolute;
-    left: 122px;
-    top: 117px;
-    background: rgba(218, 197, 182, .75);
     width: 200px;
     height: 225px;
     border-radius: 15px;
@@ -34,8 +37,18 @@
     align-items: center;
 }
 
+.a-modalStatusInner {
+    
+}
+
+.h-modalStatusInner {
+    position: absolute;
+    left: 122px;
+    top: 117px;
+    background: rgba(218, 197, 182, .75);
+}
+
 #newStatus {
-    color: rgb(103, 21, 151);
     text-align: center;
     font-size: 25px;
     margin: 15px 0 0 0;
@@ -48,4 +61,11 @@
 
 #statusName {
     margin-top: 10px;
+}
+
+.modalStatusBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
 }

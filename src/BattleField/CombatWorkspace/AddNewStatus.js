@@ -37,15 +37,15 @@ class NewStatus extends Component {
         this.setState({ duration: +duration })
     }
 
-    makeid= () => {
+    makeid = () => {
         var text = "";
         var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-      
+
         for (var i = 0; i < 5; i++)
-          text += possible.charAt(Math.floor(Math.random() * possible.length));
-      
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+
         return text;
-      }
+    }
 
     handleSubmit = () => {
 
@@ -57,7 +57,7 @@ class NewStatus extends Component {
             timestatus: this.state.duration + +this.props.count
         }
 
-        socketFun.playerAddStatus({status: newStatus, hash: this.props.hash})
+        socketFun.playerAddStatus({ status: newStatus, hash: this.props.hash })
         this.props.ADDNEWSTATUS(newStatus)
 
         this.onCloseModal()
@@ -68,7 +68,7 @@ class NewStatus extends Component {
     render() {
 
         const { open } = this.state
-        let {theme} = this.props
+        let { theme } = this.props
 
         return (
             < div >
@@ -77,25 +77,27 @@ class NewStatus extends Component {
                     onClick={this.onOpenModal}
                 >Add New Status</button>
 
-                <Modal open={open} onClose={this.onCloseModal} little
-                    classNames={{ modal: 'modalBaseToP' }}>
-                    <div className="modalStatusOuter">
+                <Modal open={true} onClose={this.onCloseModal} little
+                    classNames={{ modal: 'modalBaseToP' }}
+                    showCloseIcon={false}>
+                    <div className={`modalStatusOuter ${theme}-modalStatusOuter`}>
 
-                        <div className="modalStatusInner">
-                            <h1 id="newStatus">Add New Status</h1>
+                        <div className={`modalStatusInner ${theme}-modalStatusInner`}>
+                            <h1 className={`${theme}-thirdColor`} id="newStatus">Add New Status</h1>
 
-                            <div className="modalEditInputs">
+                            <div className="modalStatusBox">
 
-                            <div className={`${this.props.theme}-border modalBorder`}></div>
-                                <p id="statusName">Name</p>
-                                <input className="inputFinder" id="statusInput"
+                                <div className={`${this.props.theme}-border modalBorder`}></div>
+
+                                <input className={`modalEditInput ${theme}-inputSpecial`}
+                                    placeholder="Name"
                                     onChange={e => this.handleName(e.target.value)} />
 
-                                <p>Duration</p>
-                                <input className="inputFinder" id="statusInput"
+                                <input className={`modalEditInput ${theme}-inputSpecial`}
+                                    placeholder="Duration"
                                     onChange={e => this.handleDuration(e.target.value)} />
                             </div>
-                            <button id="modalStatusButton"
+                            <button className={`${theme}-secColor ${theme}-secFont`} id="modalAddButton"
                                 onClick={_ => this.handleSubmit()}
                             >SUBMIT</button>
                         </div>
@@ -108,7 +110,7 @@ class NewStatus extends Component {
 
 function mapStateToProps(state) {
 
-    var {count, hash, theme} = state
+    var { count, hash, theme } = state
     return {
         count,
         hash,

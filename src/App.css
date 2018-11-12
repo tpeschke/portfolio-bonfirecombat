@@ -395,10 +395,13 @@ h6 {
     color: rgb(151, 23, 21)
 }
 
+.a-thirdColor {
+    color: rgb(151, 23, 21);
+}
+
 .h-font {
     font-family: 'MedievalSharp';
 }
-
 
 .h-secFont {
     font-family: 'Spectral SC', serif;
@@ -410,6 +413,10 @@ h6 {
 
 .h-secColor {
     color: rgba(33, 53, 80, 1);
+}
+
+.h-thirdColor {
+    color: rgb(103, 21, 151);
 }
 
 .fontHeader {
