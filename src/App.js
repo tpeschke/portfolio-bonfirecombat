@@ -31,31 +31,32 @@ class App extends Component {
   }
 
   render() {
-    
+    let {theme, user, settings, TOGGLEPLAYERVIEW, playerview, history} = this.props
+
     return (
         <div className="slideDown">
           <div className="header">
-            <div className="logo">
+            <div className={`logo ${theme}-logo`}>
               <h4>Combat Counter</h4>
               <div className="settingsBannerOut">
                 <Settings
-                  user={this.props.user}
-                  settings={this.props.settings}
-                  TOGGLEPLAYERVIEW={this.props.TOGGLEPLAYERVIEW}
-                  playerview={this.props.playerview}
-                  theme={this.props.theme} />
+                  user={user}
+                  settings={settings}
+                  TOGGLEPLAYERVIEW={TOGGLEPLAYERVIEW}
+                  playerview={playerview}
+                  theme={theme} />
               </div>
             </div>
-            <div className="headpic"></div>
+            <div className={`headpic ${theme}-headpic`}></div>
           </div>
-          <div className={`appContent ${this.props.theme}-appContent`} id="container" style={this.state.style}>
+          <div className={`appContent ${theme}-appContent`} id="container" style={this.state.style}>
 
             <div className="NavContainer">
-              <NavBar redirect={this.props.history.push}/>
+              <NavBar redirect={history.push}/>
             </div>
 
-            <div className={`${this.props.theme}-border`}></div>
-            <div className={`${this.props.theme}-border`}></div>
+            <div className={`${theme}-border`}></div>
+            <div className={`${theme}-border`}></div>
 
             <Routes setHeight={this.setHeight} />
           </div>

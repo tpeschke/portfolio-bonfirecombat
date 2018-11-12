@@ -13,7 +13,6 @@ body {
 }
 
 .logo {
-    background-image: url('./img/logo.jpg');
     height: 145px;
     width: 425px;
     background-repeat: no-repeat;
@@ -21,12 +20,19 @@ body {
     margin-top: -10px;
 }
 
+.h-logo {
+    background-image: url('./img/logo.jpg');
+}
+
 .headpic {
-    background-image: url('./img/Header.jpg');
     height: 145px;
     width: 443px;
     background-repeat: no-repeat;
     margin-right: 20px;
+}
+
+.h-headpic {
+    background-image: url('./img/Header.jpg');
 }
 
 .appContent {
@@ -180,10 +186,6 @@ button:hover {
     height: 460px;
 }
 
-.a-modalToPOuter {
-
-}
-
 .modalWeaponOuter {
     position: relative;
     background-image: url("./img/weaponPicker.jpg");
@@ -227,10 +229,6 @@ button:hover {
     background: rgba(218, 197, 182, .75);
 }
 
-.a-modalToPInner {
-
-}
-
 #modalToPInput {
     margin-top: 15px;
     max-width: 100px;
@@ -244,7 +242,7 @@ button:hover {
 
 /* ==================================== */
 
-.modalBannerEdit {
+.h-modalBannerEdit {
     background-image: url('./img/edit.jpg');
     height: 200px;
     width: 499px;
@@ -284,10 +282,6 @@ button:hover {
     background-color:rgba(218, 197, 182, 1);
     margin: -37px;
     border-radius: 25px
-}
-
-.a-outModalNew {
-
 }
 
 .inModalNew {

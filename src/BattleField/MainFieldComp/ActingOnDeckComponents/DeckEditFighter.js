@@ -58,16 +58,17 @@ class DeckEditFighter extends Component {
     render() {
 
         const { color, name } = this.state;
-        const { editopen } = this.props
+        const { editopen, theme } = this.props
 
         return (
             <div>
 
                 <Modal open={editopen} onClose={this.props.OPENMODAL} little
-                    classNames={{ modal: 'modalBaseToP' }}>
-                    <div className="outModalNew">
-                        <div className="modalBannerEdit">
-                        </div >
+                    classNames={{ modal: 'modalBaseToP' }}
+                    showCloseIcon={false}>
+                    <div className={`outModalNew ${theme}-outModalNew`}>
+                        <div className={`${theme}-modalBannerEdit`}></div>
+                        
                         <div className="inModalNew">
 
                             <div className="modalLeft">
@@ -77,16 +78,16 @@ class DeckEditFighter extends Component {
                             </div>
                             <div className="modalRight">
 
-                                <h1 id="newCombat">Edit Combatant</h1>
+                                <h1 className={`${theme}-secFont ${theme}-secColor`} id="newCombat">Edit Combatant</h1>
 
-                                <div className={`${this.props.theme}-border modalBorder`}></div>
+                                <div className={`${theme}-border modalBorder`}></div>
 
                                 <div className="modalEditInputs">
                                     <p>Name</p>
-                                    <input placeholder={name} className="inputFinder" id="modalEditInput"
+                                    <input placeholder={name} className={`modalEditInput ${theme}-inputSpecial`} id="modalEditInput"
                                         onChange={e => this.handleName(e.target.value)} />
 
-                                    <button id="modalEditButton"
+                                    <button className={`${theme}-secColor ${theme}-secFont`} id="modalAddButton"
                                         onClick={_ => this.handleSubmit()}
                                     >SUBMIT</button>
                                 </div>
