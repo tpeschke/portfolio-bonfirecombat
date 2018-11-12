@@ -77,7 +77,7 @@ class NewStatus extends Component {
                     onClick={this.onOpenModal}
                 >Add New Status</button>
 
-                <Modal open={true} onClose={this.onCloseModal} little
+                <Modal open={open} onClose={this.onCloseModal} little
                     classNames={{ modal: 'modalBaseToP' }}
                     showCloseIcon={false}>
                     <div className={`modalStatusOuter ${theme}-modalStatusOuter`}>

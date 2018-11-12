@@ -16,16 +16,18 @@ class Statuses extends Component {
 
     render() {
 
-        if (this.props.statusList) {
-            var statuses = this.props.statusList.map((d, i) => {
+        let {statusList, count, theme} = this.props
+
+        if (statusList) {
+            var statuses = statusList.map((d, i) => {
                 
-                if (d.timestatus - this.props.count > 0) {
+                if (d.timestatus - count > 0) {
                     return <button key={d.id}
-                        className="StatusItemBox"
+                        className={`StatusItemBox ${theme}-StatusItemBox`}
                         onClick={_=>this.handleDelete(d.id)}>
-                        <h5 className="StatusItem">{d.namestatus}</h5>
-                        <div className={`${this.props.theme}-border`}></div>
-                        <h6 className="StatusItemCount">{+d.timestatus - +this.props.count}</h6>
+                        <h5 className={`${theme}-thirdColor ${theme}-font`}>{d.namestatus}</h5>
+                        <div className={`${theme}-border`}></div>
+                        <h6 className={`StatusItemCount ${theme}-StatusItemCount`}>{+d.timestatus - +this.props.count}</h6>
                     </button>
                 }
             })

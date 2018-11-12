@@ -52,13 +52,14 @@ class DeckToP extends Component {
             <div>
 
                 <Modal open={topopen} onClose={this.props.OPENTOP} little
-                    classNames={{ modal: 'modalBaseToP'}}>
-                    <div className="modalToPOuter">
+                    classNames={{ modal: 'modalBaseToP'}}
+                    showCloseIcon={false}>
+                    <div className={`modalToPOuter ${theme}-modalToPOuter`}>
                         
-                            <div className="modalToPInner">
-                                <h2 id="modalHeader">Enter How Much They Failed By</h2>
-                                <div className={`${this.props.theme}-border modalBorder`}></div>
-                                <input className="inputFinder" id="modalToPInput"
+                            <div className={`modalToPInner ${theme}-modalToPInner`}>
+                                <h2 className={`${theme}-fourColor ${theme}-secFont`} id="modalHeader">Enter How Much They Failed By</h2>
+                                <div className={`${theme}-border modalBorder`}></div>
+                                <input className={`modalEditInput ${theme}-inputSpecial`} id="modalToPInput"
                                     onBlur={e => this.handleChange(e.target.value)} />
                             </div>
                         </div>

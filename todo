@@ -9,9 +9,11 @@
     - character Action
     - Add New Status
     - Add New Weapon
+    - ToP
 - Add option to create a fighter and then add their initiative dice
 - Limit the number of combatants and fields a person can have
 - New fighter didn't get added to playerview if it's visible.
+- Make it so status bar doesn't exist if Statuses don't
 
 REMOVE LOCALHOST FROM SERVER
 UNCOMMENT LINE 442 FROM REDUCER
