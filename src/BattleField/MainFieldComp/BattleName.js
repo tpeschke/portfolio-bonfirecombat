@@ -4,6 +4,7 @@ import socketFun from '../../playerview/SocketApi'
 import { connect } from 'react-redux'
 
 import { CHANGEBATTLENAME, SAVEFIELD } from '../../ducks/reducer'
+import {checkStr} from '../../components/validation'
 
 class BattleName extends Component {
 
@@ -35,7 +36,7 @@ class BattleName extends Component {
                     className={`fontHeader inputFinder ${this.props.theme}-color`}
                     id="BattleNameInput"
                     placeholder={this.props.combatName}
-                    onBlur={e=>this.props.CHANGEBATTLENAME(e.target.value)}/>
+                    onBlur={e=> checkStr(e.target.value) ? this.props.CHANGEBATTLENAME(e.target.value) : null}/>
               
                 <button
                     className={`${this.props.theme}-font`}

@@ -161,7 +161,6 @@ class AddNewFighter extends Component {
 
                             <p>Initiative</p>
                             <input className={`modalEditInput ${theme}-inputSpecial`} id="modalEditInput"
-                                placeholder={this.state.action ? this.state.action : "Initiative"}
                                 value={this.state.action}
                                 onChange={e => checkNum(e.target.value) ? this.setState({action: +e.target.value}) : null } />
 

@@ -1,6 +1,6 @@
 module.exports = {
     checkStr: (str) => {
-        if (str.length > 10) {
+        if (str.length > 15) {
             return false
         }
             return true
