@@ -6,6 +6,7 @@ import DeckEditFighter from './ActingOnDeckComponents/DeckEditFighter'
 import DeckToP from './ActingOnDeckComponents/DeckThresholdOfPain'
 import DeckWeapon from './ActingOnDeckComponents/DeckWeapon'
 import HiddenEye from './ActingOnDeckComponents/HiddenEye'
+import {checkNum} from '../../components/validation'
 
 export default class OnDeck extends Component {
     constructor(props) {
@@ -89,8 +90,8 @@ export default class OnDeck extends Component {
 
                             <input className={`ListItem ${theme}-input inputFinder`}
                                 value={d.actioncount}
-                                onChange={e => this.props.action(d.id, +e.target.value, true)}
-                                onBlur={e => this.props.action(d.id, +e.target.value, false)} />
+                                onChange={e => checkNum(e.target.value) ? this.props.action(d.id, +e.target.value, true) : null}
+                                onBlur={e => checkNum(e.target.value) ? this.props.action(d.id, +e.target.value, false) : null} />
                         </div>)
                     }
 

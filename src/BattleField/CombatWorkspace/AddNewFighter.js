@@ -12,6 +12,7 @@ import { ADDNEWCOMBATANT } from '../../ducks/CompReducers/CombatantsReducer'
 import AddWeapon from './AddWeapon'
 import makeid from '../../components/makeid'
 import ToggleHidden from './ToggleHidden'
+import { checkStr, checkNum } from '../../components/validation'
 
 class AddNewFighter extends Component {
     constructor() {
@@ -22,7 +23,7 @@ class AddNewFighter extends Component {
             color: '#fff',
             name: '',
             weapons: [{id: 1, weapon: 'Unarmed', speed: 10, selected: '1'}],
-            action: null,
+            action: 0,
             dice: 1,
             hidden: '0',
             weapon: false
@@ -141,24 +142,28 @@ class AddNewFighter extends Component {
                             <h1 className={`${theme}-secFont ${theme}-secColor`} id="newCombat">Add New Combatant</h1>
 
                             <div className={`${theme}-border modalBorder`}></div>
-                            <input placeholder="Name" className={`modalEditInput ${theme}-inputSpecial`} id="modalEditInput"
-                                 value={this.state.name}
-                                onChange={e => this.setState({ name: e.target.value})} />
+
+                            <p>Name</p>
+                            <input className={`modalEditInput ${theme}-inputSpecial`} id="modalEditInput"
+                                value={this.state.name}
+                                onChange={e => checkStr(e.target.value) ? this.setState({ name: e.target.value}) : null }/>
 
                             <button className={`newFighterButton ${theme}-font`}
                                 onClick={_ => this.setState({weapon: true})}
                                 >Add Weapons</button>
 
+                            <p>Initiative Dice</p>
                             <div>
                                 1d<input className={`modalEditInput ${theme}-inputSpecial modalDiceInput`}
                                     value={this.state.dice}
-                                    onChange={e => this.setState({dice: +e.target.value})}/>
+                                    onChange={e => checkNum(e.target.value) ? this.setState({dice: +e.target.value}): null}/>
                             </div>
 
+                            <p>Initiative</p>
                             <input className={`modalEditInput ${theme}-inputSpecial`} id="modalEditInput"
                                 placeholder={this.state.action ? this.state.action : "Initiative"}
                                 value={this.state.action}
-                                onChange={e => this.setState({action: +e.target.value})} />
+                                onChange={e => checkNum(e.target.value) ? this.setState({action: +e.target.value}) : null } />
 
                             <ToggleHidden 
                                 on={hidden}
@@ -180,7 +185,9 @@ class AddNewFighter extends Component {
                             deleteWeapon={this.deleteWeapon}
                             editWeapon={this.editWeapon}
                             doneWithWeapon={this.doneWithWeapon}
-                            theme={theme}/>
+                            theme={theme}
+                            checkStr={checkStr}
+                            checkNum={checkNum}/>
                     </div>
                 )
             }

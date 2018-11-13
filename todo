@@ -2,17 +2,13 @@
 - Themes
     - Odyssey
     - Far West
-- Add input validation
-    - Add Fighter 
-    - character Action
-    - Add New Status
-    - Add New Weapon
-    - ToP
 - Add option to create a fighter and then add their initiative dice
+    - Before I put in the checkNum on Action, putting in a String changed it to look like "1d+", might be something there to work with
 - Limit the number of combatants and fields a person can have
 - New fighter didn't get added to playerview if it's visible.
 - Make it so status bar doesn't exist if Statuses don't
 - Style Authy
+- Add Weapon input doesn't have the correct font
 
 REMOVE LOCALHOST FROM SERVER
 --------------UNCOMMENT LINE 442 FROM REDUCER

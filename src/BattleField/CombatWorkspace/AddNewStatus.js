@@ -7,6 +7,7 @@ import socketFun from '../../playerview/SocketApi'
 
 import 'react-responsive-modal/lib/react-responsive-modal.css';
 import Modal from 'react-responsive-modal/lib/css';
+import { checkStr, checkNum } from '../../components/validation'
 
 import './AddStatus.css'
 
@@ -89,13 +90,15 @@ class NewStatus extends Component {
 
                                 <div className={`${this.props.theme}-border modalBorder`}></div>
 
+                                <p>Status Name</p>
                                 <input className={`modalEditInput ${theme}-inputSpecial`}
-                                    placeholder="Name"
-                                    onChange={e => this.handleName(e.target.value)} />
+                                    value={this.state.name}
+                                    onChange={e => checkStr(e.target.value) ? this.handleName(e.target.value) : null} />
 
+                                <p>Duration</p>
                                 <input className={`modalEditInput ${theme}-inputSpecial`}
-                                    placeholder="Duration"
-                                    onChange={e => this.handleDuration(e.target.value)} />
+                                    value={this.state.duration}
+                                    onChange={e => checkNum(e.target.value) ? this.handleDuration(e.target.value) : null} />
                             </div>
                             <button className={`${theme}-secColor ${theme}-secFont`} id="modalAddButton"
                                 onClick={_ => this.handleSubmit()}

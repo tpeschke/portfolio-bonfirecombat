@@ -6,6 +6,7 @@ import ActEditFighter from './ActingOnDeckComponents/ActEditFighter'
 import ActToP from './ActingOnDeckComponents/ActThresholdOfPain'
 import ActWeapon from './ActingOnDeckComponents/ActWeapon'
 import HiddenEye from './ActingOnDeckComponents/HiddenEye'
+import {checkNum} from '../../components/validation'
 
 export default class Acting extends Component {
     constructor(props) {
@@ -87,8 +88,8 @@ export default class Acting extends Component {
 
                             <input className={`ListItem ${theme}-input inputFinder`}
                                 value={d.actioncount}
-                                onChange={e => this.props.action(d.id, +e.target.value, true)}
-                                onBlur={e => this.props.action(d.id, +e.target.value, false)} />
+                                onChange={e => checkNum(e.target.value) ? this.props.action(d.id, +e.target.value, true) : null}
+                                onBlur={e => checkNum(e.target.value) ? this.props.action(d.id, +e.target.value, false) : null} />
                         </div>)
                     }
 

@@ -40,11 +40,11 @@ class DeckWeapon extends Component {
     saveEdit = () => {
         let { holdId, holdWeapon, holdSpeed } = this.state
         this.props.editWeapon({ id: holdId, weapon: holdWeapon, speed: holdSpeed })
-        this.setState({ edit: false })
+        this.setState({ edit: false, holdSpeed: 0, holdWeapon: '' })
     }
 
     render() {
-        let { weapons, id, theme } = this.props
+        let { weapons, id, theme, checkStr, checkNum } = this.props
 
         let display = weapons.map((val, i) => {
             return (
@@ -64,12 +64,12 @@ class DeckWeapon extends Component {
                     <div className="wpInput">
                         <input type="text"
                             className="wpItemHeader" id="wpInputItem"
-                            placeholder={this.state.holdWeapon}
-                            onChange={e => this.setState({ holdWeapon: e.target.value })} />
+                            value={this.state.holdWeapon}
+                            onChange={e => checkStr(e.target.value) ? this.setState({ holdWeapon: e.target.value }) : null} />
                         <input type="text"
                             className="wpSpeed" id="wpInputItem"
-                            placeholder={this.state.holdSpeed}
-                            onChange={e => this.setState({ holdSpeed: e.target.value })} />
+                            value={this.state.holdSpeed}
+                            onChange={e => checkNum(e.target.value) ? this.setState({ holdSpeed: e.target.value }) : null} />
                         <button
                             className="wpSpeed"
                             onClick={this.saveEdit}>+</button>
@@ -92,10 +92,12 @@ class DeckWeapon extends Component {
                             <div className="wpInput">
                                 <input type="text"
                                     className="wpItemHeader" id="wpInputItem"
-                                    onChange={e => this.setState({ holdWeapon: e.target.value })} />
+                                    value={this.state.holdWeapon}
+                                    onChange={e => checkStr(e.target.value) ? this.setState({ holdWeapon: e.target.value }) : null} />
                                 <input type="text"
                                     className="wpSpeed" id="wpInputItem"
-                                    onChange={e => this.setState({ holdSpeed: e.target.value })} />
+                                    value={this.state.holdSpeed}
+                                    onChange={e => checkNum(e.target.value) ? this.setState({ holdSpeed: e.target.value }) : null} />
                                 <button
                                     className="wpSpeed"
                                     onClick={this.submitWeapon}>+</button>

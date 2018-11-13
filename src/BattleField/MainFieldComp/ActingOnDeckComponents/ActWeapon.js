@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { WEAPONMODAL2, SELECTWEAPON, ADDWEAPON, DELETEWEAPON } from '../../../ducks/reducer'
 import socketFun from '../../../playerview/SocketApi'
 import axios from 'axios'
+import { checkStr, checkNum } from '../../../components/validation'
 
 class ActWeapon extends Component {
     constructor() {
@@ -70,12 +71,12 @@ class ActWeapon extends Component {
                     <div className="wpInput">
                         <input type="text"
                             className="wpItemHeader" id="wpInputItem"
-                            placeholder={this.state.holdWeapon}
-                            onChange={e => this.setState({ holdWeapon: e.target.value })} />
+                            value={this.state.holdWeapon}
+                            onChange={e => checkStr(e.target.value) ? this.setState({ holdWeapon: e.target.value }) : null} />
                         <input type="text"
                             className="wpSpeed" id="wpInputItem"
-                            placeholder={this.state.holdSpeed}
-                            onChange={e => this.setState({ holdSpeed: e.target.value })} />
+                            value={this.state.holdSpeed}
+                            onChange={e => checkNum(e.target.value) ? this.setState({ holdSpeed: e.target.value }) : null} />
                         <button
                             className="wpSpeed"
                             onClick={this.submitWeapon}>+</button>
@@ -98,10 +99,12 @@ class ActWeapon extends Component {
                             <div className="wpInput">
                                 <input type="text"
                                     className="wpItemHeader" id="wpInputItem"
-                                    onChange={e => this.setState({ holdWeapon: e.target.value })} />
+                                    value={this.state.holdWeapon}
+                                    onChange={e => checkStr(e.target.value) ? this.setState({ holdWeapon: e.target.value }) : null} />
                                 <input type="text"
                                     className="wpSpeed" id="wpInputItem"
-                                    onChange={e => this.setState({ holdSpeed: e.target.value })} />
+                                    value={this.state.holdSpeed}
+                                    onChange={e => checkNum(e.target.value) ? this.setState({ holdSpeed: e.target.value }) : null} />
                                 <button
                                     className="wpSpeed"
                                     onClick={this.submitWeapon}>+</button>

@@ -17,6 +17,10 @@
     margin-bottom: 5px;
 }
 
+.themeSelectorChoice:hover {
+    color: whitesmoke
+}
+
 .choice {
     margin: 0 5px 0 0;
     height: 16px;

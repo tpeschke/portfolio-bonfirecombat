@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import 'react-responsive-modal/lib/react-responsive-modal.css';
 import Modal from 'react-responsive-modal/lib/css';
+import {checkNum} from '../../../components/validation'
 
 import { OPENTOP2 } from '../../../ducks/reducer'
 import {HANDLETOP} from '../../../ducks/CompReducers/CombatantsReducer'
@@ -28,9 +29,14 @@ class ActToP extends Component {
 
     handleChange = (e) => {
 
+        let failedBy = 0
+        if (checkNum(+e)) {
+            failedBy = +e * 3
+        }
+
         var topFighter = {
             id: this.state.id,
-            failedBy: +e * 3
+            failedBy
         }
 
         this.props.HANDLETOP(topFighter)

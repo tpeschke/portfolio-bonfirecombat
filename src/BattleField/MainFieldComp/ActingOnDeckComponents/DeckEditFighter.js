@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import 'react-responsive-modal/lib/react-responsive-modal.css';
 import Modal from 'react-responsive-modal/lib/css';
+import {checkStr} from '../../../components/validation'
 
 import { SketchPicker } from 'react-color';
 
@@ -32,12 +33,8 @@ class DeckEditFighter extends Component {
         })
     }
 
-    handleChange = (color, event) => {
+    handleChange = (color) => {
         this.setState({ color: color.hex });
-    }
-
-    handleName = (name) => {
-        this.setState({ name: name })
     }
 
     handleSubmit = () => {
@@ -85,7 +82,8 @@ class DeckEditFighter extends Component {
                                 <div className="modalEditInputs">
                                     <p>Name</p>
                                     <input placeholder={name} className={`modalEditInput ${theme}-inputSpecial`} id="modalEditInput"
-                                        onChange={e => this.handleName(e.target.value)} />
+                                        value={this.state.name}
+                                        onChange={e => checkStr(e.target.value) ? this.setState({ name: e.target.value }) : null} />
 
                                     <button className={`${theme}-secColor ${theme}-secFont`} id="modalAddButton"
                                         onClick={_ => this.handleSubmit()}

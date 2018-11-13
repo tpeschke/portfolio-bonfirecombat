@@ -5,9 +5,10 @@ import { connect } from 'react-redux';
 
 import 'react-responsive-modal/lib/react-responsive-modal.css';
 import Modal from 'react-responsive-modal/lib/css';
+import { checkNum } from '../../../components/validation'
 
 import { OPENTOP } from '../../../ducks/reducer'
-import {HANDLETOP} from '../../../ducks/CompReducers/CombatantsReducer'
+import { HANDLETOP } from '../../../ducks/CompReducers/CombatantsReducer'
 
 class DeckToP extends Component {
     constructor() {
@@ -28,16 +29,21 @@ class DeckToP extends Component {
 
     handleChange = (e) => {
 
+        let failedBy = 0
+        if (checkNum(+e)) {
+            failedBy = +e * 3
+        }
+
         var topFighter = {
             id: this.state.id,
-            failedBy: +e * 3
+            failedBy
         }
 
         this.props.HANDLETOP(topFighter)
-        socketFun.playerTop({id: this.state.id, hash: this.props.hash})
+        socketFun.playerTop({ id: this.state.id, hash: this.props.hash })
 
         if (this.props.topopen) {
-        this.props.OPENTOP()
+            this.props.OPENTOP()
         }
 
         this.forceUpdate()
@@ -52,17 +58,17 @@ class DeckToP extends Component {
             <div>
 
                 <Modal open={topopen} onClose={this.props.OPENTOP} little
-                    classNames={{ modal: 'modalBaseToP'}}
+                    classNames={{ modal: 'modalBaseToP' }}
                     showCloseIcon={false}>
                     <div className={`modalToPOuter ${theme}-modalToPOuter`}>
-                        
-                            <div className={`modalToPInner ${theme}-modalToPInner`}>
-                                <h2 className={`${theme}-fourColor ${theme}-secFont`} id="modalHeader">Enter How Much They Failed By</h2>
-                                <div className={`${theme}-border modalBorder`}></div>
-                                <input className={`modalEditInput ${theme}-inputSpecial`} id="modalToPInput"
-                                    onBlur={e => this.handleChange(e.target.value)} />
-                            </div>
+
+                        <div className={`modalToPInner ${theme}-modalToPInner`}>
+                            <h2 className={`${theme}-fourColor ${theme}-secFont`} id="modalHeader">Enter How Much They Failed By</h2>
+                            <div className={`${theme}-border modalBorder`}></div>
+                            <input className={`modalEditInput ${theme}-inputSpecial`} id="modalToPInput"
+                                onBlur={e => this.handleChange(e.target.value)} />
                         </div>
+                    </div>
                 </Modal>
             </div>
         )
