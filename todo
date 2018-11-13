@@ -10,7 +10,7 @@
 - Style Authy
 - Add Weapon input doesn't have the correct font
 
-REMOVE LOCALHOST FROM SERVER
+--------------REMOVE LOCALHOST FROM SERVER
 --------------UNCOMMENT LINE 442 FROM REDUCER
 --------------UNCOMMENT LINE 16 IN sqlController AND REPLACE 1 WITH id ON LINE 18
 --------------REPLACE 3 WITH id ON LINE 30 OF CombatantsReducer

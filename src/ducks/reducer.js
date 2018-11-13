@@ -258,7 +258,6 @@ export default function reducer(state = initialState, action) {
 
         case GET_HASH + '_FULFILLED':
         return Object.assign({}, state, { hash: action.payload.data[0].urlhash })
-        // return Object.assign({}, state, { hash: '12345' })
 
         case INCREASE_COUNT:
             var newCount = +state.count + 1
@@ -450,17 +449,6 @@ export default function reducer(state = initialState, action) {
 
         case GET_USER_INFO + '_REJECTED':
             return Object.assign({}, state, { user: { error: true } })
-        // return Object.assign({}, state, {
-        //     user: {
-        //         data: {
-        //             auth0: "google-oauth2|113542570861213780439",
-        //             id: 1,
-        //             img: "https://lh6.googleusercontent.com/-KHfDi72gIZ0/AAAAAAAAAAI/AAAAAAAAAR0/4EHZlBEQ1ro/photo.jpg",
-        //             tooltip: "0",
-        //             username: "Trent Peschke",
-        //         }
-        //     }
-        // })
 
         case OPEN_SETTINGS:
             return Object.assign({}, state, { settings: !state.settings })
