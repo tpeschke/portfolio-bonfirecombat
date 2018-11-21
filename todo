@@ -1,7 +1,7 @@
 - Playerview themes - able to switch
 - Themes
-    - Odyssey
     - Far West
+    - Odyssey
 - Add option to create a fighter and then add their initiative dice
     - Before I put in the checkNum on Action, putting in a String changed it to look like "1d+", might be something there to work with
 - Limit the number of combatants and fields a person can have
