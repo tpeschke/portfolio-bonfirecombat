@@ -10,6 +10,7 @@
 - Style Authy
 - Add Weapon input doesn't have the correct font
 - Add Fighter HM styling is a little cramped - see if there's something that can be done
+- With a negative init the Action shows up as "1d12+-3"
 
 --------------REMOVE LOCALHOST FROM SERVER
 --------------UNCOMMENT LINE 442 FROM REDUCER

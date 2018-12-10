@@ -37,7 +37,7 @@ class App extends Component {
         <div className="slideDown">
           <div className="header">
             <div className={`logo ${theme}-logo`}>
-              <h4>Combat Counter</h4>
+              <h4 className={`subtitle ${theme}-subtitle`}>Combat Counter</h4>
               <div className="settingsBannerOut">
                 <Settings
                   user={user}

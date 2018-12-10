@@ -32,7 +32,7 @@
 }
 
 .logoHome {
-    background-image: url('../img/KnC.jpg');
+    background-image: url('../img/Logo.png');
     height: 188px;
     width: 188px;
     background-size: cover;
@@ -40,6 +40,7 @@
     z-index: 1;
     position: absolute;
     top: 0;
+    /* background-color: grey; */
 }
 
 .signInInner {
@@ -70,5 +71,5 @@
 }
 
 button#signInButton:hover {
-    color: rgb(56, 56, 56)
+    color: rgb(151, 23, 21);
 }
