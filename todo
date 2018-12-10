@@ -12,7 +12,7 @@
 - Add Fighter HM styling is a little cramped - see if there's something that can be done
 - With a negative init the Action shows up as "1d12+-3"
 
---------------REMOVE LOCALHOST FROM SERVER
+REMOVE LOCALHOST FROM SERVER
 --------------UNCOMMENT LINE 442 FROM REDUCER
 --------------UNCOMMENT LINE 16 IN sqlController AND REPLACE 1 WITH id ON LINE 18
 --------------REPLACE 3 WITH id ON LINE 30 OF CombatantsReducer
