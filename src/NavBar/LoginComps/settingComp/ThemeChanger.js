@@ -10,11 +10,11 @@ export default function ThemeChanger({ theme, setTheme }) {
             <div className="themeSelectorInner">
                 <div className="themeSelectorChoice"
                     onClick={_=> theme!=='a' ? axios.patch('/api/theme/a').then(_=>setTheme('a')) : null}>
-                    <div className={theme==="a"?"choice selected":"choice"}></div><p className="themeSelectorChoice>HackMaster">Agnostic</p>
+                    <div className={theme==="a"?"choice selected":"choice"}></div><p className="themeSelectorChoice>Bonfire">Agnostic</p>
                 </div>
                 <div className="themeSelectorChoice"
                     onClick={_=> theme!=='h' ? axios.patch('/api/theme/h').then(_=>setTheme('h')) : null}>
-                    <div className={theme==="h"?"choice selected":"choice"}></div><p className="themeSelectorChoice">HackMaster</p>
+                    <div className={theme==="h"?"choice selected":"choice"}></div><p className="themeSelectorChoice">Bonfire</p>
                 </div>
             </div>
         </div>
