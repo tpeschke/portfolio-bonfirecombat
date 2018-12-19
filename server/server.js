@@ -13,11 +13,11 @@ const sqlCtrl = require('./sqlController')
 const app = new express()
 app.use(bodyParser.json())
 app.use(cors())
-app.use( express.static( __dirname + `/../build` ) );
+app.use(express.static(__dirname + `/../build`));
 app.use(session({
-        secret: process.env.SESSION_SECRET,
-        resave: false,
-        saveUninitialized: true
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true
 }))
 app.use(passport.initialize());
 app.use(passport.session());
@@ -28,21 +28,21 @@ passport.use(new Auth0Strategy({
     clientSecret: process.env.AUTH_CLIENT_SECRET,
     callbackURL: process.env.AUTH_CALLBACK,
     scope: 'openid profile'
-}, function(accessToken, refreshToken, extraParams, profile, done){
+}, function (accessToken, refreshToken, extraParams, profile, done) {
     let { displayName, user_id, picture } = profile;
     const db = app.get('db');
 
-    db.get.find_User([user_id]).then(function(users) {
+    db.get.find_User([user_id]).then(function (users) {
         if (!users[0]) {
             db.add.create_User([
                 displayName,
                 picture,
                 user_id
             ]).then(users => {
-                return done(null,users[0].id)
+                return done(null, users[0].id)
             })
         } else {
-                return done(null,users[0].id)
+            return done(null, users[0].id)
         }
     })
 }))
@@ -71,22 +71,22 @@ app.get('/auth/callback', passport.authenticate('auth0', {
 }));
 
 passport.serializeUser((id, done) => {
-    done(null,id)
+    done(null, id)
 })
 passport.deserializeUser((id, done) => {
-    app.get('db').get.find_Session_User([id]).then( (user) => {
-        return done(null, user[0]);  
+    app.get('db').get.find_Session_User([id]).then((user) => {
+        return done(null, user[0]);
     })
 })
 
-app.get('/auth/logout', function(req, res) {
+app.get('/auth/logout', function (req, res) {
     req.logOut();
     res.redirect(`/`)
 })
 
 // ==================================================
 
-app.get('/auth/me', (req,res) => {
+app.get('/auth/me', (req, res) => {
     if (!req.user) {
         res.status(404).send('User not found.');
     } else {
@@ -130,11 +130,11 @@ const io = socket(app.listen(port, _ => {
 
 io.on('connection', socket => {
     socket.on('sub', interval => {
-        setInterval(_=> {
+        setInterval(_ => {
             socket.emit('timer', new Date());
         }, interval)
     })
-    
+
     socket.on('battleSend', data => {
         io.emit(`${data.hash}`, data)
     })
@@ -158,7 +158,7 @@ io.on('connection', socket => {
     socket.on('playerResurrect', data => {
         io.emit(`${data.hash}-resurrect`, data)
     })
-    
+
     socket.on('playerUpdate', data => {
         io.emit(`${data}-update`, data)
     })
@@ -197,5 +197,5 @@ io.on('connection', socket => {
 })
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname,'../build/index.html'))
+    res.sendFile(path.join(__dirname, '../build/index.html'))
 })

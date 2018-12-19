@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import axios from 'axios'
 
 import BattleField from './BattleField/BattleFieldMain';
 import SavedField from './SavedFields/SaveFieldMain';
@@ -40,10 +41,9 @@ export class LandingPage extends Component {
                         component={PlayerNoBattle} />
                     <Route
                         exact path='/'
-                        render={_ => <Home theme={this.props.theme} />} />
+                        component={Home} />
                     <Route
                         component={App} />
-
                 </Switch>
             </div>
         )

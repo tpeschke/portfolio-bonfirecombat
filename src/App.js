@@ -58,7 +58,7 @@ class App extends Component {
             <div className={`${theme}-border`}></div>
             <div className={`${theme}-border`}></div>
 
-            <Routes setHeight={this.setHeight} />
+            <Routes setHeight={this.setHeight}/>
           </div>
 
         </div>

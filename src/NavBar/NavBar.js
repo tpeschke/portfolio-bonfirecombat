@@ -19,7 +19,7 @@ class NavBar extends Component {
     render() {
 
         var { combatId, page, user, theme } = this.props
-
+        
         if (user.error) {
             this.props.redirect('/')
         }

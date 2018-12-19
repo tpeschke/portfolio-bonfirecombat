@@ -164,7 +164,7 @@ export function PAGELOCATION(url) {
     }
 }
 
-export function getUserInfo(cb) {
+export function getUserInfo() {
     return {
         type: GET_USER_INFO,
         payload: axios.get('/auth/me').then()
