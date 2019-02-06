@@ -13,9 +13,9 @@ module.exports = {
 
         const db = req.app.get('db')
 
-        // var { id } = req.user
+        var { id } = req.user
 
-        db.get.all_Combats(1).then(result => res.status(200).send(result))
+        db.get.all_Combats(id).then(result => res.status(200).send(result))
 
     },
 
@@ -116,7 +116,7 @@ module.exports = {
         let { id } = req.params
         , {user} = req
 
-        db.delete.field(id, 1).then(result => res.status(200).send(result))
+        db.delete.field(id, user.id).then(result => res.status(200).send(result))
     },
 
     saveField: (req, res) => {
@@ -205,7 +205,7 @@ module.exports = {
         let { theme } = req.params
         let { id } = req.user
 
-        db.update.theme(theme, 1).then(result => res.send())
+        db.update.theme(theme, id).then(result => res.send())
     },
 
     deleteFighter: (req, res) => {

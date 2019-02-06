@@ -14,16 +14,15 @@ body {
 }
 
 .logo {
-    height: 145px;
+    height: 100%;
     background-repeat: no-repeat;
-    /* margin-left: 20px; */
-    margin-top: -10px;
-    position: absolute;
-    top: 100px;
+    position: relative;
+    top: 0px;
+    left: 30px
 }
 
 .h-logo {
-    background-image: url('./img/bon-logo.png');
+    background-image: url('./img/bonfire.png');
     width: 250px;
     background-size: contain;
     /* margin-top: 0px; */
@@ -376,7 +375,7 @@ h3 {
 .h-subtitle {
     color: white;
     margin-top: 65px;
-    margin-left: 75px;
+    font-size: 14px;
 }
 
 .a-subtitle {

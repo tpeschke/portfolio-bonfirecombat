@@ -20,9 +20,9 @@ class NavBar extends Component {
 
         var { combatId, page, user, theme } = this.props
         
-        // if (user.error) {
-        //     this.props.redirect('/')
-        // }
+        if (user.error) {
+            this.props.redirect('/')
+        }
         
         return (
             <div className={`navBar ${theme}-nav`}>
