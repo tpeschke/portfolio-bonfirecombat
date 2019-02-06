@@ -18,7 +18,7 @@ export default function PlayerviewToggle (props) {
                         <h7 className={`switchLabel ${theme}-font`} id="hashTitle">Player View Hash</h7>
                         <div className="hashUrl">
                             <div className="innerHashUrl">
-                                <p className="hashUrlText" id="hashBaseUrl">hmcombat.tpeschke.com/player/</p>
+                                <p className="hashUrlText" id="hashBaseUrl">...highadventuregames.net/player/</p>
                                 <p className="hashUrlText" id="hashBattleUrl">{hash}</p>
                             </div>
                         </div>

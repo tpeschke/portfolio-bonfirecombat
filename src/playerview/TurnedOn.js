@@ -4,8 +4,8 @@ export default function TurnedOn(props) {
     let {combatName, count, playerList, deadList, statusList} = props
 
     return (
-        <div className="playerBody">
-            <div className="playerHeader">
+        <div className="playerBody" id="playerUnlocked">
+            <div className="playerHeader" id="playerHeaderField">
                 <h2>{combatName}</h2>
                 <p>Player view</p>
                 <h3 id="playerCount">{count}</h3>

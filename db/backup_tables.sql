@@ -4,7 +4,9 @@ create table usersAuth (
     img Text,
     username VARCHAR(40),
     tooltip bit,
-    theme VARCHAR(1)
+    theme VARCHAR(1),
+    gl varchar(10),
+    cc varchar(10)
     );
 
 
