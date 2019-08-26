@@ -24,7 +24,7 @@ export default function CounterLeft (props) {
                         >-</button>
                     </div>
     
-                    <ReactTooltip place="bottom" delayShow='2000' />
+                    <ReactTooltip place="bottom" />
                 </div>
             )
         } else {

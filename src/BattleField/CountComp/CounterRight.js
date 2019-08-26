@@ -24,9 +24,7 @@ export default function CounterRight (props) {
                     >>></button>
                 </div>
 
-                <ReactTooltip
-                    place="bottom"
-                    delayShow='2000' />
+                <ReactTooltip place="bottom"/>
 
             </div>
         )

@@ -20,7 +20,7 @@ import socketFun from '../playerview/SocketApi'
 import "./BattleField.css"
 
 class BattleFieldMain extends Component {
-    
+
     componentDidMount() {
         this.props.LOADCOMBATANTS(this.props.combatId);
         this.props.GETALLSTATUSES(this.props.combatId);
@@ -28,21 +28,21 @@ class BattleFieldMain extends Component {
         this.props.GETHASH(this.props.combatId);
         this.props.setHeight((72 + document.getElementById('Battle').clientHeight) + 'px')
 
-        this.setState({ id: setInterval(this.startSending,500) })
+        this.setState({ id: setInterval(this.startSending, 500) })
     }
 
-    componentWillUnmount(){
+    componentWillUnmount() {
         clearInterval(this.state.id)
     }
 
     componentDidUpdate() {
-        this.props.setHeight((72 + document.getElementById('Battle').clientHeight) + 'px');   
+        this.props.setHeight((72 + document.getElementById('Battle').clientHeight) + 'px');
     }
 
     startSending = () => {
         var { hash, playerview } = this.props
 
-        socketFun.sendBattle({hash: hash , playerview: playerview})
+        socketFun.sendBattle({ hash: hash, playerview: playerview })
     }
 
     render() {
@@ -52,7 +52,7 @@ class BattleFieldMain extends Component {
             <div className="BattleMain fadeInApp" id="Battle">
                 <BattleName
                     combat={this.props.combatName}
-                    hash={hash}/>
+                    hash={hash} />
 
                 <div className="counterOuter">
                     <Counter />
@@ -61,7 +61,10 @@ class BattleFieldMain extends Component {
                 <div className="BattleBodyWork">
                     <div className="BattleBody">
                         <div className={`BattleField ${theme}-BattleField`}>
-                            <h2 className={`${theme}-h2`}>the Quick</h2>
+                            <div className="battlefieldShell">
+                                <h2 className={`${theme}-h2`}>the Quick</h2>
+                                <i className="fas fa-edit editIconMain"></i>
+                            </div>
 
                             <OnDeck
                                 list={fighterList}
@@ -86,16 +89,11 @@ class BattleFieldMain extends Component {
                                 action={INPUTACTION}
                                 modal2={OPENMODAL2}
                                 top2={OPENTOP2}
-                                hash={hash} 
+                                hash={hash}
                                 weaponModal2={WEAPONMODAL2}
                                 rollInit={ROLLINIT}
                                 hide={HIDEFIGHTER}
                                 theme={theme} />
-
-                        </div>
-
-                        <div className="BattleSidebarOuter">
-                            <CombatWorkspace />
 
                             <Graveyard
                                 list={fighterList}
@@ -105,13 +103,18 @@ class BattleFieldMain extends Component {
                                 hash={hash}
                                 theme={theme} />
                         </div>
+
+                        {/* <div className="BattleSidebarOuter">
+                            <CombatWorkspace />
+
+                        </div> */}
                     </div>
                 </div>
 
-                <SaveFieldModals 
+                <SaveFieldModals
                     pending={this.props.pendingSaveOpen}
                     finished={this.props.finishedSaveOpen}
-                    TOGGLESAVE={this.props.TOGGLESAVE}/>
+                    TOGGLESAVE={this.props.TOGGLESAVE} />
 
                 <div className="StatusOver">
                     <Statuses />
@@ -125,7 +128,7 @@ function mapStateToProps(state) {
     var { combatId, combatName, fighterList, count, playerview, pendingSaveOpen, finishedSaveOpen, statusList, hash, theme } = state
 
     return {
-        combatId,combatName,fighterList,count,statusList,playerview,pendingSaveOpen,finishedSaveOpen, hash, theme
+        combatId, combatName, fighterList, count, statusList, playerview, pendingSaveOpen, finishedSaveOpen, hash, theme
     }
 }
 

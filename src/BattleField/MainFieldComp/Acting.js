@@ -6,7 +6,7 @@ import ActEditFighter from './ActingOnDeckComponents/ActEditFighter'
 import ActToP from './ActingOnDeckComponents/ActThresholdOfPain'
 import ActWeapon from './ActingOnDeckComponents/ActWeapon'
 import HiddenEye from './ActingOnDeckComponents/HiddenEye'
-import {checkNum} from '../../components/validation'
+import { checkNum } from '../../components/validation'
 
 export default class Acting extends Component {
     constructor(props) {
@@ -58,7 +58,7 @@ export default class Acting extends Component {
     }
 
     render() {
-        let {theme} = this.props
+        let { theme } = this.props
 
         if (this.state.list) {
 
@@ -97,11 +97,11 @@ export default class Acting extends Component {
                         className={d.hidden === '1' ? 'List hidden' : d.topcheck === '1' ? 'List top' : 'List'}
                         key={d.id}>
 
-                        <HiddenEye 
+                        <HiddenEye
                             on={d.hidden}
                             hide={this.props.hide}
                             id={d.id}
-                            toggleHide={this.handleHide}/>
+                            toggleHide={this.handleHide} />
 
                         <div className="color" style={color}></div>
 
@@ -111,6 +111,14 @@ export default class Acting extends Component {
                             onClick={_ => this.chooseWeapon(d.id, d.weapons)}>
                             <div class="arrow right"></div>
                         </div>
+
+                        <button className={`ListItem ${theme}-font`}
+                            onClick={_ => this.handleDeath(d.id)}
+                        >()</button>
+
+                        <button className={`ListItem ${theme}-font`}
+                            onClick={_ => this.handleDeath(d.id)}
+                        >()</button>
 
                         {action}
 
@@ -123,8 +131,9 @@ export default class Acting extends Component {
                         >X</button>
 
                         <button className={`ListItem ${theme}-font`}
-                            onClick={_ => this.modifyFighter(d)}
-                        >---</button>
+                            onClick={_ => this.modifyFighter(d)}>
+                            <i className="fas fa-edit editIconMini"></i>
+                        </button>
 
                     </div>
                 }
@@ -137,8 +146,10 @@ export default class Acting extends Component {
                 <div className={`${this.props.theme}-border sectionborder`}></div>
                 <div className={`Header ${this.props.theme}-Header`}>
                     <p className={`ListItem ${theme}-font Name NameHeader listHeader`}>Name</p>
+                    <p className={`ListItem ${theme}-font listHeader`}>Health</p>
+                    <p className={`ListItem ${theme}-font listHeader`}>Fatigue</p>
                     <p className={`ListItem ${theme}-font listHeader`}>Speed</p>
-                    <p className={`ListItem ${theme}-font listHeader action`}>Action</p>
+                    <p className={`ListItem ${theme}-font listHeader`}>Action</p>
                     <p className={`ListItem ${theme}-font listHeader`}>ToP</p>
                     <p className={`ListItem ${theme}-font listHeader`}>Kill</p>
                     <p className={`ListItem ${theme}-font listHeader`}>Edit</p>

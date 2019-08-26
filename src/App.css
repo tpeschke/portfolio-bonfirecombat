@@ -457,10 +457,10 @@ h6 {
     color: rgb(151, 23, 21);
     font-family: 'MedievalSharp';
 }
-
+/* 
 .listHeader {
     margin: 10px 3px;
-}
+} */
 
 .a-listHeader {
     font-family: 'Spectral SC', serif;

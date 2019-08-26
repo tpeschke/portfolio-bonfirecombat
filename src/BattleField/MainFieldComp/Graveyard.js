@@ -54,7 +54,7 @@ export default class Graveyard extends Component {
         }
 
         return (
-            <div className={`BattleSidebar ${theme}-BattleSidebar Main`}>
+            <div className={`BattleSidebar`}>
                 <h2 className={`${theme}-h2`}>the Dead</h2>
                 <div className="HeaderGrave">
                     <h1 className="ListItemGrave GraveName">Name</h1>
