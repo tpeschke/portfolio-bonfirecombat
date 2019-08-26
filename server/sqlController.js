@@ -10,7 +10,6 @@ makeid = () => {
 
 module.exports = {
     getAllCombats: (req, res) => {
-
         const db = req.app.get('db')
 
         var { id } = req.user

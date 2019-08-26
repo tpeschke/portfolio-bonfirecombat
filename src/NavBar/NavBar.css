@@ -57,11 +57,11 @@
 	transition-duration: .8s;
 }
 
-.h-navLock {
+.h-navLock p {
     color: rgb(214, 214, 214);
 }
 
-.a-navLock {
+.a-navLock p {
     color: grey
 }
 
@@ -121,7 +121,7 @@ img {
     position: relative;
     top: 0;
     left: 60vw; 
-    height: 600px;
+    height: 444px;
     width: 300px;
     overflow-y: hidden;
     transition: .6s;
@@ -139,7 +139,7 @@ img {
 }
 
 .settingBannerMid {
-    height: 600px;
+    height: 444px;
     width: 300px;
 }
 
@@ -159,15 +159,15 @@ img {
     display: flex;
     flex-direction: column;
     justify-content: space-between;  
-    height: 580px;
+    height: 420px;
     width: 260px;
-    
+    padding-top: 25px;
     overflow-y: hidden;
     transition: .6s;
 }
 
 .a-settingInnerBanner {
-    height: 560px;
+    height: 430px;
     margin-left: 20px;
     background: rgb(56, 56, 56, 0.75);
 }

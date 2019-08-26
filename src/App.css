@@ -25,14 +25,12 @@ body {
     background-image: url('./img/bonfire.png');
     width: 250px;
     background-size: contain;
-    /* margin-top: 0px; */
 }
 
 .headpic {
     height: 145px;
     width: 443px;
     background-repeat: no-repeat;
-    /* margin-right: 20px; */
 }
 
 .h-headpic {
@@ -374,8 +372,10 @@ h3 {
 
 .h-subtitle {
     color: white;
-    margin-top: 65px;
+    margin-top: 70px;
+    margin-left: 185px;
     font-size: 14px;
+    text-align: right;
 }
 
 .a-subtitle {
