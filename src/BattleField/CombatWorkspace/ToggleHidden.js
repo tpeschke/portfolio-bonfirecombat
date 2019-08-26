@@ -6,17 +6,13 @@ export default function HiddenEye({ on, hide }) {
             onClick={_ => {
                 hide()
                 }}>
-            <p className="hiddenEye">)</p>
+            <i className="fas fa-eye-slash openEye"></i>
         </button>)
     }
     return (<button className="hiddenShell addNewHidden"
         onClick={_ => {
             hide()
             }}>
-        <div className="openEye">
-            <p className="hiddenEye1">(</p>
-            <p className="hiddenEye2">o</p>
-            <p className="hiddenEye3">)</p>
-        </div>
+        <i className="fas fa-eye openEye"></i>
     </button>)
 }

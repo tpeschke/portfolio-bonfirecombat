@@ -22,7 +22,7 @@ class AddNewFighter extends Component {
             open: false,
             color: '#fff',
             name: '',
-            weapons: [{id: 1, weapon: 'Unarmed', speed: 10, selected: '1'}],
+            weapons: [{ id: 1, weapon: 'Unarmed', speed: 10, selected: '1' }],
             action: 0,
             dice: 1,
             hidden: '0',
@@ -36,10 +36,10 @@ class AddNewFighter extends Component {
     };
 
     onCloseModal = () => {
-        this.setState({ open: false, color: '#fff',name: '', weapons: [{id: 1, weapon: 'Unarmed', speed: 10, selected: '1'}], action: null, weapon: false });
+        this.setState({ open: false, color: '#fff', name: '', weapons: [{ id: 1, weapon: 'Unarmed', speed: 10, selected: '1' }], action: null, weapon: false });
     };
 
-//==========================================
+    //==========================================
 
     handleChange = (color) => {
         this.setState({ color: color.hex });
@@ -47,18 +47,18 @@ class AddNewFighter extends Component {
 
     handleHide = () => {
         if (this.state.hidden === '1') {
-            this.setState({ hidden: '0'})
+            this.setState({ hidden: '0' })
         } else {
             this.setState({ hidden: '1' })
         }
     }
 
-// ============================ \\
+    // ============================ \\
 
     addWeapon = (weapon) => {
         let weaponArray = this.state.weapons.slice()
-        weaponArray.push({...weapon, id: makeid()})
-        this.setState({weapons: weaponArray})
+        weaponArray.push({ ...weapon, id: makeid() })
+        this.setState({ weapons: weaponArray })
     }
 
     editWeapon = (weapon) => {
@@ -66,10 +66,10 @@ class AddNewFighter extends Component {
         weaponArray.forEach((v, i) => {
             if (v.id == weapon.id) {
                 let selected = v.selected
-                weaponArray.splice(i, 1, {...weapon, selected})
+                weaponArray.splice(i, 1, { ...weapon, selected })
             }
         })
-        this.setState({weapons: weaponArray})
+        this.setState({ weapons: weaponArray })
     }
 
     selectWeapon = (wid) => {
@@ -81,25 +81,25 @@ class AddNewFighter extends Component {
             }
             return val
         })
-        this.setState({weapons: weaponsArray})
+        this.setState({ weapons: weaponsArray })
     }
 
     deleteWeapon = (wid) => {
         let weaponsArray = this.state.weapons.slice()
         if (wid !== 1) { weaponsArray = this.state.weapons.filter(val => val.id != wid) }
-        this.setState({weapons: weaponsArray})
+        this.setState({ weapons: weaponsArray })
     }
 
     doneWithWeapon = () => {
-        this.setState({weapon: false})
+        this.setState({ weapon: false })
     }
 
-// ============================ \\
+    // ============================ \\
 
     handleSubmit = (c, n, w, a, d, id, h) => {
         if (n !== '') {
             var newId = makeid()
-        
+
             var newFighter = {
                 id: newId,
                 namefighter: n,
@@ -112,11 +112,11 @@ class AddNewFighter extends Component {
                 hidden: h,
                 idcombat: id
             }
-    
+
             this.props.ADDNEWCOMBATANT(newFighter)
-            socketFun.playerAdd({ hash: this.props.hash, fighter: {colorcode: c, dead: '0', hidden: '1', id: newId, namefighter: n, topcheck: '0', weapon: w.filter(v=>v.selected=='1')[0].weapon} })
+            socketFun.playerAdd({ hash: this.props.hash, fighter: { colorcode: c, dead: '0', hidden: '1', id: newId, namefighter: n, topcheck: '0', weapon: w.filter(v => v.selected == '1')[0].weapon } })
             this.onCloseModal()
-    
+
             this.forceUpdate()
         } else {
             this.onCloseModal()
@@ -146,27 +146,27 @@ class AddNewFighter extends Component {
                             <p>Name</p>
                             <input className={`modalEditInput ${theme}-inputSpecial`} id="modalEditInput"
                                 value={this.state.name}
-                                onChange={e => checkStr(e.target.value) ? this.setState({ name: e.target.value}) : null }/>
+                                onChange={e => checkStr(e.target.value) ? this.setState({ name: e.target.value }) : null} />
 
                             <button className={`newFighterButton ${theme}-font`}
-                                onClick={_ => this.setState({weapon: true})}
-                                >Add Weapons</button>
+                                onClick={_ => this.setState({ weapon: true })}
+                            >Add Weapons</button>
 
                             <p>Initiative Dice</p>
                             <div>
                                 1d<input className={`modalEditInput ${theme}-inputSpecial modalDiceInput`}
                                     value={this.state.dice}
-                                    onChange={e => checkNum(e.target.value) ? this.setState({dice: +e.target.value}): null}/>
+                                    onChange={e => checkNum(e.target.value) ? this.setState({ dice: +e.target.value }) : null} />
                             </div>
 
                             <p>Initiative</p>
                             <input className={`modalEditInput ${theme}-inputSpecial`} id="modalEditInput"
                                 value={this.state.action}
-                                onChange={e => checkNum(e.target.value) ? this.setState({action: +e.target.value}) : null } />
+                                onChange={e => checkNum(e.target.value) ? this.setState({ action: +e.target.value }) : null} />
 
-                            <ToggleHidden 
+                            <ToggleHidden
                                 on={hidden}
-                                hide={this.handleHide}/>
+                                hide={this.handleHide} />
 
                             <button className={`${theme}-secColor ${theme}-secFont`} id="modalAddButton"
                                 onClick={_ => this.handleSubmit(color, name, weapons, action, dice, combatId, hidden)}>SUBMIT</button>
@@ -177,7 +177,7 @@ class AddNewFighter extends Component {
             else {
                 return (
                     <div>
-                        <AddWeapon 
+                        <AddWeapon
                             weapons={this.state.weapons}
                             addWeapon={this.addWeapon}
                             selectWeapon={this.selectWeapon}
@@ -186,7 +186,7 @@ class AddNewFighter extends Component {
                             doneWithWeapon={this.doneWithWeapon}
                             theme={theme}
                             checkStr={checkStr}
-                            checkNum={checkNum}/>
+                            checkNum={checkNum} />
                     </div>
                 )
             }
@@ -201,10 +201,10 @@ class AddNewFighter extends Component {
                 <Modal open={open} onClose={this.onCloseModal} little
                     classNames={{ modal: 'modalBaseToP' }}
                     showCloseIcon={false}>
-                <div className={`outModalNew ${theme}-outModalNew`}>
+                    <div className={`outModalNew ${theme}-outModalNew`}>
                         <div className={`${theme}-modalBannerNew`}></div >
 
-                            {show()}
+                        {show()}
 
                     </div>
                 </Modal>
