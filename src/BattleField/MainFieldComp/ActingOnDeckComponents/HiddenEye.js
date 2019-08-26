@@ -7,7 +7,7 @@ export default function HiddenEye({ on, hide, id, toggleHide }) {
                 hide(id)
                 toggleHide(id)
                 }}>
-            <i class="fas fa-eye-slash openEye"></i>
+            <i className="fas fa-eye-slash openEye"></i>
         </button>)
     }
     return (<button className="hiddenShell"
@@ -15,6 +15,6 @@ export default function HiddenEye({ on, hide, id, toggleHide }) {
             hide(id)
             toggleHide(id)
             }}>
-        <i class="fas fa-eye openEye"></i>
+        <i className="fas fa-eye openEye"></i>
     </button>)
 }

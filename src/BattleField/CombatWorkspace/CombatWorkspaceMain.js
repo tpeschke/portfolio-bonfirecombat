@@ -30,6 +30,7 @@ class Workspace extends Component {
         return (
             <div className={`BattleSidebar ${theme}-BattleSidebar Main`} id="Workspace">
                 <h2 className={`${theme}-h2`}>Combat Workspace</h2>
+                <div className={`${this.props.theme}-border border-spacer`}></div>
 
                 <div className="WorkspaceBody">
                     <AddNewFighter />

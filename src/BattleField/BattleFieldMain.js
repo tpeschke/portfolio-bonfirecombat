@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
+import Modal from 'react-responsive-modal'
 
 import { OPENMODAL, OPENTOP, OPENMODAL2, OPENTOP2, PAGELOCATION, TOGGLESAVE, WEAPONMODAL, WEAPONMODAL2, ROLLINIT, HIDEFIGHTER } from '../ducks/reducer'
 import { LOADCOMBATANTS, KILLCOMBATANT, REMOVEFIGHTER, ADVANCESPEED, INPUTACTION, GETHASH } from '../ducks/CompReducers/CombatantsReducer'
@@ -20,6 +21,14 @@ import socketFun from '../playerview/SocketApi'
 import "./BattleField.css"
 
 class BattleFieldMain extends Component {
+
+    constructor() {
+        super()
+    
+        this.state = {
+          modalOpen: false
+        }
+      }
 
     componentDidMount() {
         this.props.LOADCOMBATANTS(this.props.combatId);
@@ -45,6 +54,10 @@ class BattleFieldMain extends Component {
         socketFun.sendBattle({ hash: hash, playerview: playerview })
     }
 
+    openWorkspace = () => {
+        this.setState({modalOpen: !this.state.modalOpen})
+    }
+
     render() {
 
         var { fighterList, count, hash, KILLCOMBATANT, ADVANCESPEED, INPUTACTION, OPENMODAL, OPENMODAL2, OPENTOP, OPENTOP2, REMOVEFIGHTER, REDUXSORT, WEAPONMODAL, WEAPONMODAL2, ROLLINIT, HIDEFIGHTER, theme } = this.props
@@ -63,7 +76,7 @@ class BattleFieldMain extends Component {
                         <div className={`BattleField ${theme}-BattleField`}>
                             <div className="battlefieldShell">
                                 <h2 className={`${theme}-h2`}>the Quick</h2>
-                                <i className="fas fa-edit editIconMain"></i>
+                                <i onClick={_=>this.openWorkspace()} className="fas fa-edit editIconMain"></i>
                             </div>
 
                             <OnDeck
@@ -103,13 +116,17 @@ class BattleFieldMain extends Component {
                                 hash={hash}
                                 theme={theme} />
                         </div>
-
-                        {/* <div className="BattleSidebarOuter">
-                            <CombatWorkspace />
-
-                        </div> */}
                     </div>
                 </div>
+
+                <Modal open={this.state.modalOpen} little
+                    onClose={this.openWorkspace}
+                    classNames={{ modal : 'baseModalSave' }}
+                    showCloseIcon={false}>
+                    <div className="combatWorkspaceModal">
+                        <CombatWorkspace />
+                    </div>
+                </Modal>
 
                 <SaveFieldModals
                     pending={this.props.pendingSaveOpen}

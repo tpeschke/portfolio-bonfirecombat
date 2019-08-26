@@ -109,7 +109,7 @@ export default class Acting extends Component {
 
                         <div className={`ListItem ${theme}-font`}
                             onClick={_ => this.chooseWeapon(d.id, d.weapons)}>
-                            <div class="arrow right"></div>
+                            <div className="arrow right"></div>
                         </div>
 
                         <button className={`ListItem ${theme}-font`}

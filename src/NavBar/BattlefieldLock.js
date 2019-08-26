@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 
 export default function BattleLock({userId, id, theme, page}) {
-    console.log(id)
+
     if (id === 0 && !userId) {
         return <div
             className={`navItem ${theme}-navItem ${theme}-navLock navInVis`}>

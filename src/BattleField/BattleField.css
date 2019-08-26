@@ -1,359 +1,369 @@
 .BattleMain {
-    height: 100%;
-    width: 900px;
+  height: 100%;
+  width: 900px;
 }
 
 .BattleHeader {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .BattleBody {
-    display: flex;
-    justify-content: space-between;
-    margin: 35px 15px;
-    min-height: 150px;
+  display: flex;
+  justify-content: space-between;
+  margin: 35px 15px;
+  min-height: 150px;
 }
 
 .BattleField {
-    width: 95%;
-    margin: 0 auto;
+  width: 95%;
+  margin: 0 auto;
 }
 
 .h-BattleField {
-    border-radius: 25px;
-    background:  rgba(218, 197, 182, .75);
+  border-radius: 25px;
+  background: rgba(218, 197, 182, 0.75);
 }
 
 .a-BattleField {
-    background: lightgray;
+  background: lightgray;
 }
 
 .battlefieldShell {
-    display: flex;
-    justify-content: space-between;
-    align-content: center;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
 }
 
 .editIconMain {
-    color: black;
-    font-size: 25px;
-    margin: 25px 25px 0 25px;
+  color: black;
+  font-size: 25px;
+  margin: 25px 25px 0 25px;
 }
 
 .editIconMini {
-    color: black;
-    font-size: 20px;
+  color: black;
+  font-size: 20px;
 }
 
-.editIconMain:hover, .editIconMini:hover {
-    color: white;
+.editIconMain:hover,
+.editIconMini:hover {
+  color: white;
 }
 
 .BattleSidebarOuter {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .BattleSidebar {
-    width: 270px;
-    min-height: 150px;
-    margin-top: 15px;
+  width: 270px;
+  min-height: 150px;
+  margin-top: 15px;
 }
 
 #Workspace {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 #sectionHeader {
-    min-width: 575px;
+  min-width: 575px;
 }
 
 .WorkspaceBody {
-    margin: 0 20px;
+  margin: 0 20px;
 }
 
 .workshopButton {
-    margin-top: 5px
+  margin-top: 5px;
 }
 
 /* ================================= */
 
 .Main {
-    margin: 15px 25px;
-    padding: 0 0 15px 0;
+  margin: 15px 25px;
+  padding: 0 0 15px 0;
 }
 
 .Header {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    font-weight: 800;
-    height: 35px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-weight: 800;
+  height: 35px;
 }
 
 .a-Header {
-    border-bottom: 1px solid rgb( 56, 56, 56);
-    margin-bottom: 15px;
+  border-bottom: 1px solid rgb(56, 56, 56);
+  margin-bottom: 15px;
 }
 
 .List {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    height: 30px;
-    background: transparent;
-    margin-left: -20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 30px;
+  background: transparent;
+  margin-left: -20px;
 }
 
 .top {
-    background: radial-gradient(rgb(151, 23, 21) 5%, rgb(151, 23, 21) 10% ,transparent  60%);
+  background: radial-gradient(rgb(151, 23, 21) 5%, rgb(151, 23, 21) 10%, transparent 60%);
 }
 
 .hidden {
-    background: radial-gradient(grey 5%, grey 10% ,transparent  60%);
+  background: radial-gradient(grey 5%, grey 10%, transparent 60%);
 }
 
 .ListItem {
-    min-width: 60px;
-    margin: 3px;
-    text-align: center;
+  min-width: 60px;
+  margin: 3px;
+  text-align: center;
 }
 
 input.ListItem:hover {
-    text-shadow: 2px 2px 1px white;
+  text-shadow: 2px 2px 1px white;
 }
 
 .Name {
-    width: 135px;
-    text-align: left;
+  width: 135px;
+  text-align: left;
 }
 
 .NameHeader {
-    margin-left: 25px;
-    min-width: 238px;;
+  margin-left: 25px;
+  min-width: 238px;
 }
 
 .color {
-    height: 15px;
-    width: 15px;
-    border-radius: 25px;
-    margin: 5px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: black;
+  height: 15px;
+  width: 15px;
+  border-radius: 25px;
+  margin: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
 }
 
 /* ================================= */
 
 .HeaderGrave {
-    display: flex;
-    justify-content: space-between;
-    max-width: 225px;
-    margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  max-width: 225px;
+  margin: 0 auto;
 }
 
 .ListGrave {
-    display: flex;
-    justify-content: space-between;
-    max-width: 225px;
-    margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  max-width: 225px;
+  margin: 0 auto;
 }
 
 .ListItemGrave {
-    min-width: 55px;
-    text-align: center;
-    font-size: 13px;
-    margin: 10px 0 10px 0;
+  min-width: 55px;
+  text-align: center;
+  font-size: 13px;
+  margin: 10px 0 10px 0;
 }
 
 .GraveName {
-    min-width: 70px;
-    max-width: 70px;
-    text-align: left;
-    line-height: auto;
+  min-width: 70px;
+  max-width: 70px;
+  text-align: left;
+  line-height: auto;
 }
 
 .gravelist {
-    line-height: 19px;
+  line-height: 19px;
 }
 
 .GraveEmpty {
-    height: 15px;
+  height: 15px;
 }
 
 /* ==================== */
 
 #BattleNameInput {
-    font-weight: 800;
-    margin: 25px 25px 10px 25px;
-    font-family: 'Spectral SC', serif;
-    color: rgb(151, 23, 21);
-    font-size: 20px;
-    min-width: 100%;
-    text-align: center;
-    background: transparent
+  font-weight: 800;
+  margin: 25px 25px 10px 25px;
+  font-family: "Spectral SC", serif;
+  color: rgb(151, 23, 21);
+  font-size: 20px;
+  min-width: 100%;
+  text-align: center;
+  background: transparent;
 }
 
 #BattleNameInput::placeholder {
-    font-weight: 800;
-    margin: 25px 25px 10px 25px;
-    font-family: 'Spectral SC', serif;
-    color: rgb(151, 23, 21);
-    font-size: 20px;
-    text-align: center;
+  font-weight: 800;
+  margin: 25px 25px 10px 25px;
+  font-family: "Spectral SC", serif;
+  color: rgb(151, 23, 21);
+  font-size: 20px;
+  text-align: center;
 }
 
-#BattleNameInput:hover{
-    text-shadow: 0 0 transparent
+#BattleNameInput:hover {
+  text-shadow: 0 0 transparent;
 }
 
 #newCombat {
-    margin-top: 25px;
-    text-align: center;
-    font-size: 25px;
+  margin-top: 25px;
+  text-align: center;
+  font-size: 25px;
 }
 
 .countNum {
-    font-size: 45px
+  font-size: 45px;
 }
 
 /* ======================== */
 
 .arrow {
-    border: solid black;
-    border-width: 0 3px 3px 0;
-    display: inline-block;
-    padding: 3px;
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
 }
 
 .arrow:hover {
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    display: inline-block;
-    padding: 3px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
 }
 
 .right {
-    transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
 }
 
 .wpHeader {
-    margin-top: 25px;
+  margin-top: 25px;
 }
 
 .wpItemTable {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .wpItem {
-    display: flex;
-    justify-content: space-between;
-    padding: 3px;
-    min-width: 50px;
-    min-height: 22px;
+  display: flex;
+  justify-content: space-between;
+  padding: 3px;
+  min-width: 50px;
+  min-height: 22px;
 }
 
 .wpTableInner {
-    overflow-y: scroll;
-    max-height: 200px;
+  overflow-y: scroll;
+  max-height: 200px;
 }
 
 .wpTableHeader {
-    display: flex;
-    justify-content: space-between;
-    padding: 3px;
-    border-bottom: 1px solid black;
-    margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  padding: 3px;
+  border-bottom: 1px solid black;
+  margin-bottom: 5px;
 }
 
 .wpItem:hover {
-    background: rgb(151, 23, 21, .50);
+  background: rgb(151, 23, 21, 0.5);
 }
 
 .wpSelected {
-    background: rgba(128, 128, 128, 0.5);
+  background: rgba(128, 128, 128, 0.5);
 }
 
 .wpSpeed {
-    width: 50px;
-    margin-left: 5px;
-    margin-right: 5px;
-    text-align: center;
+  width: 50px;
+  margin-left: 5px;
+  margin-right: 5px;
+  text-align: center;
 }
 
 .wpItemHeader {
-    min-width: 135px;
-    text-align: left;
-    margin-right: 5px;
+  min-width: 135px;
+  text-align: left;
+  margin-right: 5px;
 }
 
 #wpInputItem {
-    background: rgba(245, 245, 245, 0.25);
-    border-radius: 5px;
+  background: rgba(245, 245, 245, 0.25);
+  border-radius: 5px;
 }
 
 .wpEdit {
-    margin-right: 22px;
+  margin-right: 22px;
 }
 
 .wpInput {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .addwpbody {
-    height: 302px;
-    padding: 50px;
-    padding-top: 0px;
+  height: 302px;
+  padding: 50px;
+  padding-top: 0px;
 }
 
 .addwpInner {
-    height: 180px;
-    background: rgba(211, 211, 211, 0.75);
+  height: 180px;
+  background: rgba(211, 211, 211, 0.75);
 }
 
 .wpButton {
-    height: 50px;
+  height: 50px;
 }
 
 .newFighterButton {
-    height: 19px;
-    margin: 5px 0px 15px 0px;
+  height: 19px;
+  margin: 5px 0px 15px 0px;
 }
 
 .actionLocked {
-    display: flex;
-    height: 18px;
-    align-items: center;
-    width: 122px;
+  display: flex;
+  height: 18px;
+  align-items: center;
+  width: 122px;
 }
 
 .actionDice {
-    width: 60px;
+  width: 60px;
 }
 
 .hiddenShell {
-    transform: rotate(90deg);
-    display: flex;
-    justify-content: space-around;
-    width: 20px;
+  transform: rotate(90deg);
+  display: flex;
+  justify-content: space-around;
+  width: 20px;
 }
 
 .openEye {
-    color: black;
-    font-size: 17px;
-    transform: rotate(-90deg);
+  color: black;
+  font-size: 17px;
+  transform: rotate(-90deg);
 }
 
 .openEye:hover {
-    color: white;
+  color: white;
 }
 
 .modalDiceInput {
-    width: 50px;
+  width: 50px;
+}
+
+/* ==================== */
+
+.combatWorkspaceModal {
+  background-color: rgba(218, 197, 182, 1);
+  border-radius: 15px;
+  padding: 10px;
+  margin: -25px;
 }

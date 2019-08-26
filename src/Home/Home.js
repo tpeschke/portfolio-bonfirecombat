@@ -16,8 +16,8 @@ export default function Home(props) {
                 <h4 className="logoWords">Combat Counter</h4>
             </div>
             <div className="foreground">
-                <p className='signInText'>For the <a class="bonfireLink" href="https://bonfire.dragon-slayer.net/">Bonfire Roleplaying System.</a></p>
-                <a class="bonfireLink" id="signInButton" href={`${process.env.REACT_APP_LOGIN}`}>
+                <p className='signInText'>For the <a className="bonfireLink" href="https://bonfire.dragon-slayer.net/">Bonfire Roleplaying System.</a></p>
+                <a className="bonfireLink" id="signInButton" href={`${process.env.REACT_APP_LOGIN}`}>
                     Sign In Here
                     </a>
                 <p className='signInText'>with your Google, FaceBook, Twitter, or Yahoo account</p>
