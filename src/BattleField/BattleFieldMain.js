@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Modal from 'react-responsive-modal'
 
-import { OPENMODAL, OPENTOP, OPENMODAL2, OPENTOP2, PAGELOCATION, TOGGLESAVE, WEAPONMODAL, WEAPONMODAL2, ROLLINIT, HIDEFIGHTER } from '../ducks/reducer'
+import { OPENMODAL, OPENTOP, OPENMODAL2, OPENTOP2, PAGELOCATION, TOGGLESAVE, WEAPONMODAL, WEAPONMODAL2, ROLLINIT, HIDEFIGHTER, INPUTHEALTH, INPUTFATIGUE } from '../ducks/reducer'
 import { LOADCOMBATANTS, KILLCOMBATANT, REMOVEFIGHTER, ADVANCESPEED, INPUTACTION, GETHASH } from '../ducks/CompReducers/CombatantsReducer'
 import { GETALLSTATUSES } from '../ducks/CompReducers/StatusReducer'
 
@@ -60,7 +60,7 @@ class BattleFieldMain extends Component {
 
     render() {
 
-        var { fighterList, count, hash, KILLCOMBATANT, ADVANCESPEED, INPUTACTION, OPENMODAL, OPENMODAL2, OPENTOP, OPENTOP2, REMOVEFIGHTER, REDUXSORT, WEAPONMODAL, WEAPONMODAL2, ROLLINIT, HIDEFIGHTER, theme } = this.props
+        var { fighterList, count, hash, KILLCOMBATANT, ADVANCESPEED, INPUTACTION, OPENMODAL, OPENMODAL2, OPENTOP, OPENTOP2, REMOVEFIGHTER, REDUXSORT, WEAPONMODAL, WEAPONMODAL2, ROLLINIT, HIDEFIGHTER, theme, INPUTHEALTH, INPUTFATIGUE } = this.props
         return (
             <div className="BattleMain fadeInApp" id="Battle">
                 <BattleName
@@ -85,6 +85,8 @@ class BattleFieldMain extends Component {
                                 kill={KILLCOMBATANT}
                                 advance={ADVANCESPEED}
                                 action={INPUTACTION}
+                                health={INPUTHEALTH}
+                                fatigue={INPUTFATIGUE}
                                 modal={OPENMODAL}
                                 top={OPENTOP}
                                 hash={hash}
@@ -100,6 +102,8 @@ class BattleFieldMain extends Component {
                                 kill={KILLCOMBATANT}
                                 advance={ADVANCESPEED}
                                 action={INPUTACTION}
+                                health={INPUTHEALTH}
+                                fatigue={INPUTFATIGUE}
                                 modal2={OPENMODAL2}
                                 top2={OPENTOP2}
                                 hash={hash}
@@ -150,7 +154,7 @@ function mapStateToProps(state) {
 }
 
 let actionBuilder = {
-    LOADCOMBATANTS, KILLCOMBATANT, REMOVEFIGHTER, ADVANCESPEED, INPUTACTION, OPENMODAL, OPENTOP, OPENMODAL2, OPENTOP2, GETALLSTATUSES, PAGELOCATION, TOGGLESAVE, GETHASH, WEAPONMODAL, WEAPONMODAL2, ROLLINIT, HIDEFIGHTER
+    LOADCOMBATANTS, KILLCOMBATANT, REMOVEFIGHTER, ADVANCESPEED, INPUTACTION, OPENMODAL, OPENTOP, OPENMODAL2, OPENTOP2, GETALLSTATUSES, PAGELOCATION, TOGGLESAVE, GETHASH, WEAPONMODAL, WEAPONMODAL2, ROLLINIT, HIDEFIGHTER, INPUTHEALTH, INPUTFATIGUE
 }
 
 export default connect(mapStateToProps, actionBuilder)(BattleFieldMain)

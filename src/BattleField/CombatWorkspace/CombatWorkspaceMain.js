@@ -25,7 +25,7 @@ class Workspace extends Component {
     }
 
     render() {
-        let { hash, user, playerview, TOGGLEPLAYERVIEW, theme } = this.props
+        let { hash, user, playerview, TOGGLEPLAYERVIEW, theme, fighterListLength } = this.props
 
         return (
             <div className={`BattleSidebar ${theme}-BattleSidebar Main`} id="Workspace">
@@ -33,7 +33,7 @@ class Workspace extends Component {
                 <div className={`${this.props.theme}-border border-spacer`}></div>
 
                 <div className="WorkspaceBody">
-                    <AddNewFighter />
+                    <AddNewFighter user={user} fighterListLength={fighterListLength} />
 
                     <NewStatus />
 
@@ -57,12 +57,13 @@ class Workspace extends Component {
 }
 
 function mapStateToProps(state) {
-    let { hash, user, playerview, theme } = state
+    let { hash, user, playerview, theme, fighterList } = state
     return {
         hash,
         user,
         playerview,
-        theme
+        theme,
+        fighterListLength: fighterList.length
     }
 }
 

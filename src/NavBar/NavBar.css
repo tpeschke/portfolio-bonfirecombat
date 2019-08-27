@@ -25,7 +25,7 @@
 .h-navItem {
     color: rgb(151, 23, 21);
     background: rgb(151, 23, 21);
-    font-family: 'MedievalSharp';
+    font-family: 'Spectral SC', serif;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
 }

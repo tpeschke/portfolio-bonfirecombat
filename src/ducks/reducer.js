@@ -4,7 +4,6 @@ import makeid from '../components/makeid'
 import socketFun from '../playerview/SocketApi'
 import _ from 'lodash'
 import rollDice from '../components/diceRoll'
-import { ToastContainer } from "react-toastr";
 
 const initialState = {
     user: {},
@@ -49,6 +48,8 @@ const NEW_FIELD = "NEW_FIELD"
 const CLEAR_FIELD = "CLEAR_FIELD"
 
 const INPUT_ACTION = "INPUT_ACTION"
+const INPUT_HEALTH = "INPUT_HEALTH"
+const INPUT_FATIGUE = "INPUT_FATIGUE"
 
 const OPEN_MODAL = "OPEN_MODAL"
 const OPEN_MODAL2 = "OPEN_MODAL2"
@@ -249,6 +250,24 @@ export function SETTHEME(theme) {
     }
 }
 
+export function INPUTHEALTH(id, input, flipswitch) {
+    return {
+        type: INPUT_HEALTH,
+        payload: input,
+        id: id,
+        flipswitch: flipswitch
+    }
+}
+
+export function INPUTFATIGUE(id, input, flipswitch) {
+    return {
+        type: INPUT_FATIGUE,
+        payload: input,
+        id: id,
+        flipswitch: flipswitch
+    }
+}
+
 //REDUCER
 
 export default function reducer(state = initialState, action) {
@@ -362,6 +381,56 @@ export default function reducer(state = initialState, action) {
             }
 
             return Object.assign({}, state, { fighterList: updatedAction })
+
+        case INPUT_HEALTH:
+            let updatedHealth = []
+
+            if (action.flipswitch) {
+                updatedHealth = state.fighterList.map(val => {
+                    if (val.id === action.id) {
+                        val.health = +action.payload
+                        return val
+                    } else {
+                        return val
+                    }
+                })
+            } else {
+                updatedHealth = sort(state.fighterList.map(val => {
+                    if (val.id === action.id) {
+                        val.health = +action.payload
+                        return val
+                    } else {
+                        return val
+                    }
+                }), state.count)
+            }
+
+            return Object.assign({}, state, { fighterList: updatedHealth })
+
+        case INPUT_FATIGUE:
+            let updatedFatigue = []
+
+            if (action.flipswitch) {
+                updatedFatigue = state.fighterList.map(val => {
+                    if (val.id === action.id) {
+                        val.fatigue = +action.payload
+                        return val
+                    } else {
+                        return val
+                    }
+                })
+            } else {
+                updatedFatigue = sort(state.fighterList.map(val => {
+                    if (val.id === action.id) {
+                        val.fatigue = +action.payload
+                        return val
+                    } else {
+                        return val
+                    }
+                }), state.count)
+            }
+
+            return Object.assign({}, state, { fighterList: updatedFatigue })
 
         case OPEN_MODAL:
             if (state.editopen === false) {
@@ -560,6 +629,7 @@ export default function reducer(state = initialState, action) {
         case SET_THEME:
             return Object.assign({}, state, { theme: action.payload })
 
-        default: return state
+        default:
+            return state
     }
 }

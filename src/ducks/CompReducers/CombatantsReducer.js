@@ -70,7 +70,6 @@ export function INPUTACTION(id, input, flipswitch) {
     }
 }
 
-
 export function EDITFIGHTER(fighter) {
     return {
         type: EDIT_FIGHTER,

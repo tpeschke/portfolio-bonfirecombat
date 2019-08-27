@@ -32,7 +32,9 @@ class AddNewFighter extends Component {
     }
 
     onOpenModal = () => {
-        this.setState({ open: true });
+        if (this.props.fighterListLength <= this.props.user.data.patreon * 10) {
+            this.setState({ open: true });
+        }
     };
 
     onCloseModal = () => {

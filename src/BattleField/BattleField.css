@@ -107,6 +107,22 @@
   height: 30px;
   background: transparent;
   margin-left: -20px;
+  margin-right: -35px;
+}
+
+.fatigue {
+  display: flex;
+  min-width: 75px;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.fatigue .inputFinder {
+  max-width: 10px
+}
+
+.fatigue p {
+  color: rgb(151, 23, 21)
 }
 
 .top {
@@ -118,7 +134,7 @@
 }
 
 .ListItem {
-  min-width: 60px;
+  min-width: 75px;
   margin: 3px;
   text-align: center;
 }
@@ -331,7 +347,11 @@ input.ListItem:hover {
   display: flex;
   height: 18px;
   align-items: center;
-  width: 122px;
+  justify-content: space-evenly;
+}
+
+.weaponIcon {
+  min-width: 20px;
 }
 
 .actionDice {

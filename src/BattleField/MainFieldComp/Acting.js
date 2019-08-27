@@ -70,6 +70,25 @@ export default class Acting extends Component {
 
                     let speed = +d.weapons.filter(val => val.selected == 1)[0].speed
 
+                    let healthFatigueModifier = 0
+                    let healthPercent = d.health / d.max_health
+
+                    if (d.health <= 0) {
+                        healthFatigueModifier = 0
+                    } else if (d.health === 1) {
+                        healthFatigueModifier = -1
+                    } else if (healthPercent <= .25) {
+                        healthFatigueModifier = -2
+                    } else if (healthPercent <= .5) {
+                        healthFatigueModifier = -3
+                    } else if (healthPercent <= .75) {
+                        healthFatigueModifier = -4
+                    } else if (healthPercent <= 1) {
+                        healthFatigueModifier = -5
+                    } else {
+                        healthFatigueModifier = -8
+                    }
+
                     let action = (<div className="actionLocked">
                         <div className={`ListItem ${theme}-font`}>
                             {speed}
@@ -112,13 +131,18 @@ export default class Acting extends Component {
                             <div className="arrow right"></div>
                         </div>
 
-                        <button className={`ListItem ${theme}-font`}
-                            onClick={_ => this.handleDeath(d.id)}
-                        >()</button>
+                        <input className={`ListItem ${theme}-input inputFinder`}
+                            value={d.health}
+                            onChange={e => this.props.health(d.id, +e.target.value, true)}
+                            onBlur={e => this.props.health(d.id, +e.target.value, false)} />
 
-                        <button className={`ListItem ${theme}-font`}
-                            onClick={_ => this.handleDeath(d.id)}
-                        >()</button>
+                        <div className="fatigue">
+                            <input className={`${theme}-input inputFinder`}
+                                value={d.fatigue}
+                                onChange={e => this.props.fatigue(d.id, +e.target.value, true)}
+                                onBlur={e => this.props.fatigue(d.id, +e.target.value, false)} />
+                            <p>{healthFatigueModifier != 0 ? healthFatigueModifier : null}</p>
+                        </div>
 
                         {action}
 

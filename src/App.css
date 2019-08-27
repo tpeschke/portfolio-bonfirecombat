@@ -123,20 +123,20 @@ input {
 }
 
 .h-input {
-    font-family: 'MedievalSharp';
+    font-family: 'Spectral SC', serif;
     background: transparent;
 }
 
 .h-inputSpecial {
     background: rgba(255, 255, 255, 0.50);
     color: rgba(33, 53, 80, 1);
-    font-family: 'MedievalSharp';
+    font-family: 'Spectral SC', serif;
 }
 
 .h-inputSpecial::placeholder {
     color: black;
     font-weight: 800;
-    font-family: 'MedievalSharp';
+    font-family: 'Spectral SC', serif;
 }
 
 input:hover {
@@ -162,7 +162,7 @@ button {
 }
 
 .h-button {
-    font-family: 'MedievalSharp';
+    font-family: 'Spectral SC', serif;
 }
 
 button:hover {
@@ -365,7 +365,7 @@ h2 {
 
 h3 {
     font-weight: 800;
-    font-family: 'MedievalSharp';
+    font-family: 'Spectral SC', serif;
     color: rgb(151, 23, 21);
     font-size: 20px;
 }
@@ -392,7 +392,7 @@ h5 {
 
 h6 {
     font-size: 25px;
-    font-family: 'MedievalSharp';
+    font-family: 'Spectral SC', serif;
     margin-top: 5px;
 }
 
@@ -421,7 +421,7 @@ h6 {
 }
 
 .h-font {
-    font-family: 'MedievalSharp';
+    font-family: 'Spectral SC', serif;
 }
 
 .h-secFont {
@@ -455,7 +455,7 @@ h6 {
 
 .h-fontHeader {
     color: rgb(151, 23, 21);
-    font-family: 'MedievalSharp';
+    font-family: 'Spectral SC', serif;
 }
 /* 
 .listHeader {
@@ -467,7 +467,7 @@ h6 {
 }
 
 .h-listHeader {
-    font-family: 'MedievalSharp';
+    font-family: 'Spectral SC', serif;
     color: rgb(151, 23, 21);
 }
 

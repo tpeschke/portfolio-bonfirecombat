@@ -6,10 +6,12 @@
     - Before I put in the checkNum on Action, putting in a String changed it to look like "1d+", might be something there to work with
     - +0 initiative mod should be invisible
     - Ability to change initiative die before their rolled
-- Limit the number of combatants and fields a person can have (1 field, 10 fighters)
-- Tracking health/Fatigue - calculate fatigue penalties automatically into speed and such
-- ToP click off of clears - add submit button
-- Tooltips show up quicker
+- ToP click off off clears - add submit button
+- Remove Edit button - make edit name apart of the name space and edit color a click of the color
+- replace arrow icon on fighter with a sword to make what it does clearer
+- Add blood drop icon that gets more opaque the more wounded someone gets.
+- Add blood drop to player's view
+- Add increment/decrement buttons to Fatigue and Action
 - New fighter didn't get added to playerview if playerview is visible.
 - Make it so status bar doesn't exist if Statuses don't
 - Style Authy

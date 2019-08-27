@@ -68,6 +68,25 @@ export default class OnDeck extends Component {
 
                 if (d.acting === '0' && d.dead === '0') {
                     let color = { background: d.colorcode }
+                    let healthFatigueModifier = 0
+                    let healthPercent = d.health / d.max_health
+
+                    if (d.health <= 0) {
+                        healthFatigueModifier = 0
+                    } else if (d.health === 1) {
+                        healthFatigueModifier = -1
+                    } else if (healthPercent <= .25) {
+                        healthFatigueModifier = -2
+                    } else if (healthPercent <= .5) {
+                        healthFatigueModifier = -3
+                    } else if (healthPercent <= .75) {
+                        healthFatigueModifier = -4
+                    } else if (healthPercent <= 1) {
+                        healthFatigueModifier = -5
+                    } else {
+                        healthFatigueModifier = -8
+                    }
+
                     socketFun.playerUnTop({ id: d.id, hash: this.props.hash })
 
                     let speed = +d.weapons.filter(val => val.selected == 1)[0].speed
@@ -108,18 +127,23 @@ export default class OnDeck extends Component {
 
                         <p className={`ListItem ${theme}-font Name`}>{d.namefighter}</p>
 
-                        <div className={`ListItem ${theme}-font`}
+                        <div className={`ListItem ${theme}-font weaponIcon`}
                             onClick={_ => this.chooseWeapon(d.id, d.weapons)}>
                             <div className="arrow right"></div>
                         </div>
 
-                        <button className={`ListItem ${theme}-font`}
-                            onClick={_ => this.handleDeath(d.id)}
-                        >()</button>
+                        <input className={`ListItem ${theme}-input inputFinder`}
+                            value={d.health}
+                            onChange={e => this.props.health(d.id, +e.target.value, true)}
+                            onBlur={e => this.props.health(d.id, +e.target.value, false)} />
 
-                        <button className={`ListItem ${theme}-font`}
-                            onClick={_ => this.handleDeath(d.id)}
-                        >()</button>
+                        <div className="fatigue">
+                            <input className={`${theme}-input inputFinder`}
+                                value={d.fatigue}
+                                onChange={e => this.props.fatigue(d.id, +e.target.value, true)}
+                                onBlur={e => this.props.fatigue(d.id, +e.target.value, false)} />
+                            <p>{healthFatigueModifier != 0 ? healthFatigueModifier : null}</p>
+                        </div>
 
                         {action}
 
@@ -147,10 +171,10 @@ export default class OnDeck extends Component {
                 <div className={`${this.props.theme}-border sectionborder`}></div>
                 <div className={`Header ${this.props.theme}-Header`}>
                     <p className={`ListItem ${theme}-font Name NameHeader listHeader`}>Name</p>
-                    <p className={`ListItem ${theme}-font listHeader`}>Health</p>
+                    <p className={`ListItem ${theme}-font listHeader`}>Wounds</p>
                     <p className={`ListItem ${theme}-font listHeader`}>Fatigue</p>
                     <p className={`ListItem ${theme}-font listHeader`}>Speed</p>
-                    <p className={`ListItem ${theme}-font listHeader`}>Action</p>
+                    <p className={`ListItem ${theme}-font listHeader action`}>Action</p>
                     <p className={`ListItem ${theme}-font listHeader`}>ToP</p>
                     <p className={`ListItem ${theme}-font listHeader`}>Kill</p>
                     <p className={`ListItem ${theme}-font listHeader`}>Edit</p>
