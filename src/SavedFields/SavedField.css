@@ -41,7 +41,7 @@
 
 .savedItemName {
     min-width: 306px;
-    margin: 0 25px;
+    margin: 10px 25px;
     padding: 0;
     text-align: left;
     border: none;
@@ -50,6 +50,7 @@
 .savedCombat {
     display: flex;
     justify-content: space-around;
+    align-items: center;
 }
 
 .savedFieldDisplay {

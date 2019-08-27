@@ -4,6 +4,7 @@ import makeid from '../components/makeid'
 import socketFun from '../playerview/SocketApi'
 import _ from 'lodash'
 import rollDice from '../components/diceRoll'
+import { ToastContainer } from "react-toastr";
 
 const initialState = {
     user: {},
@@ -94,10 +95,18 @@ const SET_THEME = "SET_THEME"
 
 //ACTION BUILDERS
 
-export function NEWFIELD(id) {
+export function NEWFIELD(routing) {
     return {
         type: NEW_FIELD,
-        payload: axios.post(`/api/newfield/${id}`).then()
+        payload: axios.post(`/api/newfield`).then(result => {
+            if (result.status === 200) {
+                routing('/Battlefield')
+                return result
+            } else if (result.status === 403) {
+                console.log(result.data)
+                return {}
+            }
+        })
     }
 }
 
@@ -257,7 +266,7 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { statusList: action.payload.data })
 
         case GET_HASH + '_FULFILLED':
-        return Object.assign({}, state, { hash: action.payload.data[0].urlhash })
+            return Object.assign({}, state, { hash: action.payload.data[0].urlhash })
 
         case INCREASE_COUNT:
             var newCount = +state.count + 1
@@ -316,8 +325,11 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { fighterList: speedFighter })
 
         case NEW_FIELD + '_FULFILLED':
-            var { id, namecombat } = action.payload.data[0]
-            return Object.assign({}, state, { combatId: id, combatName: namecombat, fighterList: [], statusList: [], count: 1 })
+            var { id, namecombat, urlhash } = action.payload.data[0]
+            return Object.assign({}, state, { combatId: id, combatName: namecombat, fighterList: [], statusList: [], count: 1, urlhash })
+
+        case NEW_FIELD + '_REJECTED':
+            return Object.assign({}, state)
 
         case SAVE_FIELD + "_PENDING":
             return Object.assign({}, state, { pendingSaveOpen: !state.pendingSaveOpen })

@@ -100,12 +100,25 @@ module.exports = {
         var urlhash = makeid()
 
         const db = req.app.get('db')
-        var { id } = req.params
+        var { id, patreon } = req.user
 
-        db.get.field_Number(id)
-            .then(num => db.add.new_Field(num[0].count === '0' ? 'New Battlefield' : 'New Battlefield ' + num[0].count, id, urlhash)
-                .then(result => res.status(200).send(result)))
-
+        db.get.totalFieldNumber(id).then(totalCount => {
+            if (+totalCount[0].count >= 1 && !patreon) {
+                res.status(403).send('You need to link your Patreon to this account to add more fields. You can do so by logging on through the BonfireSRD')
+            } else if (totalCount[0].count === '0' || +totalCount[0].count <= patreon * 2) {
+                db.get.newFieldNumber(id)
+                    .then(num => {
+                        let newName = 'New Battlefield'
+                        if (num[0].count !== '0') {
+                            newName = 'New Battlefield ' + num[0].count
+                        }
+                        db.add.new_Field(newName, id, urlhash)
+                            .then(result => res.status(200).send(result))
+                    })
+            } else if (totalCount[0].count > patreon * 2) {
+                res.status(403).send('To add more fields, you need to increase your Patreon Tier')
+            }
+        })
     },
 
     deleteField: (req, res) => {
@@ -113,7 +126,7 @@ module.exports = {
         const db = req.app.get('db')
 
         let { id } = req.params
-        , {user} = req
+            , { user } = req
 
         db.delete.field(id, user.id).then(result => res.status(200).send(result))
     },

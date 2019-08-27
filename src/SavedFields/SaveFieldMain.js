@@ -27,16 +27,16 @@ class SaveFieldMain extends Component {
             this.setState({ combats: req.data })
         })
         this.props.PAGELOCATION('/SavedFields')
-        this.props.setHeight((72+document.getElementById('Saved').clientHeight) + 'px')
+        this.props.setHeight((72 + document.getElementById('Saved').clientHeight) + 'px')
     }
 
-    componentDidUpdate(){
-        this.props.setHeight((72+document.getElementById('Saved').clientHeight) + 'px');
+    componentDidUpdate() {
+        this.props.setHeight((72 + document.getElementById('Saved').clientHeight) + 'px');
     }
 
     deleteFieldCheck = (id) => {
-        this.setState({ holder: id})
-        this.setState({ open: true})
+        this.setState({ holder: id })
+        this.setState({ open: true })
     }
 
     deleteFieldTotal = (id) => {
@@ -48,14 +48,13 @@ class SaveFieldMain extends Component {
     }
 
     defDelete = () => {
-        this.setState({ open: false})
+        this.setState({ open: false })
     }
 
     render() {
-
         var { combats } = this.state
 
-        if (!combats){
+        if (!combats) {
             var combatList = <div className='savedFieldDisplay' id='loading'>Loading Combats</div>
         } else if (combats.length === 0) {
             combatList = <div className='savedFieldDisplay'>No Combats to Display</div>
@@ -88,11 +87,9 @@ class SaveFieldMain extends Component {
                 <h1 className={`fontHeader ${this.props.theme}-fontHeader`}>Saved Fields</h1>
 
                 <div className="savedMenu">
-                    <Link to='/BattleField'>
-                        <button 
-                            className={`${this.props.theme}-button`}
-                            onClick={_=>this.props.NEWFIELD(this.props.user.data.id)}>New Field</button>
-                    </Link>
+                    <button
+                        className={`${this.props.theme}-button`}
+                        onClick={_ => this.props.NEWFIELD(this.props.redirect)}>New Field</button>
                 </div>
 
                 <div className={`savedList ${this.props.theme}-savedList`}>
@@ -110,19 +107,19 @@ class SaveFieldMain extends Component {
                     <div className={`${this.props.theme}-border savedborder`}></div>
                 </div>
 
-                <DeleteDoubleCheck 
+                <DeleteDoubleCheck
                     id={this.state.holder}
                     open={this.state.open}
                     close={this.defDelete}
                     delete={this.deleteFieldTotal}
-                    theme={this.props.theme}/>
+                    theme={this.props.theme} />
             </div>
         )
     }
 }
 
 function mapStateToProps(state) {
-    var {combatId, user, theme} = state
+    var { combatId, user, theme } = state
     return {
         combatId,
         user,
@@ -136,4 +133,4 @@ let actionBuilders = {
     PAGELOCATION
 }
 
-export default connect(mapStateToProps, actionBuilders)( SaveFieldMain)
+export default connect(mapStateToProps, actionBuilders)(SaveFieldMain)

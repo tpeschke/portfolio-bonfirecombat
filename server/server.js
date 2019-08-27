@@ -99,7 +99,7 @@ app.get('/api/hash/:id', sqlCtrl.getHash);
 app.get('/api/player/battle/:hash', sqlCtrl.getBattleByHash);
 app.get('/api/player/fighter/:hash', sqlCtrl.getCombatantsbyHash)
 
-app.post('/api/newfield/:id', sqlCtrl.newField);
+app.post('/api/newfield', sqlCtrl.newField);
 app.post('/api/settings', sqlCtrl.setTooltip);
 
 app.delete('/api/battle/:id', sqlCtrl.deleteField);

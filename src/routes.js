@@ -16,7 +16,7 @@ export default class Routes extends Component {
                 <Switch>
                     <Route
                         exact path='/SavedFields'
-                        render={_ => <SavedField setHeight={this.props.setHeight} />} />
+                        render={_ => <SavedField setHeight={this.props.setHeight} redirect={this.props.redirect} />} />
                     <Route
                         path='/BattleField'
                         render={_ => <BattleField setHeight={this.props.setHeight} />} />

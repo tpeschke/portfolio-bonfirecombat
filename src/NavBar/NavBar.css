@@ -50,11 +50,14 @@
 }
 
 .Current {
-    color: rgb(214, 214, 214);
     overflow-y: hidden;
     max-height: 500px;
 	transition-property: all;
 	transition-duration: .8s;
+}
+
+.Current p {
+    color: rgb(214, 214, 214);
 }
 
 .h-navLock p {
