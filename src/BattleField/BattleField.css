@@ -118,11 +118,11 @@
 }
 
 .fatigue .inputFinder {
-  max-width: 10px
+  max-width: 10px;
 }
 
 .fatigue p {
-  color: rgb(151, 23, 21)
+  color: rgb(151, 23, 21);
 }
 
 .top {
@@ -377,6 +377,13 @@ input.ListItem:hover {
 
 .modalDiceInput {
   width: 50px;
+}
+
+.modalWarning {
+  background: rgb(151, 58, 21);
+  max-width: 300px;
+  padding: 15px;
+  color: whitesmoke;
 }
 
 /* ==================== */

@@ -26,7 +26,8 @@ class AddNewFighter extends Component {
             action: 0,
             dice: 1,
             hidden: '0',
-            weapon: false
+            weapon: false,
+            warningOpen: false
         }
 
     }
@@ -34,11 +35,17 @@ class AddNewFighter extends Component {
     onOpenModal = () => {
         if (this.props.fighterListLength <= this.props.user.data.patreon * 10) {
             this.setState({ open: true });
+        } else {
+            this.setState({warningOpen: true}, _ => setTimeout(_=>this.setState({warningOpen: false}), 5000))
         }
     };
 
     onCloseModal = () => {
         this.setState({ open: false, color: '#fff', name: '', weapons: [{ id: 1, weapon: 'Unarmed', speed: 10, selected: '1' }], action: null, weapon: false });
+    };
+
+    closeWarning = () => {
+        this.setState({ warningOpen: false });
     };
 
     //==========================================
@@ -208,6 +215,14 @@ class AddNewFighter extends Component {
 
                         {show()}
 
+                    </div>
+                </Modal>
+
+                <Modal open={this.state.warningOpen} onClose={this.closeWarning} little
+                    classNames={{ modal: 'modalWarning' }}
+                    showCloseIcon={true}>
+                    <div className={`modalWarning`}>
+                        You need to upgrade your Patreon Tier to add more fighters to this field.
                     </div>
                 </Modal>
             </div>

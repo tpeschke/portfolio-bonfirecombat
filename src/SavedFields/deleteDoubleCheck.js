@@ -27,7 +27,7 @@ export default class DeleteDoubleCheck extends Component {
                 <Modal open={open} onClose={close} little
                     showCloseIcon={false}
                     classNames={{ modal: 'modalDelete' }}>
-                    <div className={`modalDeleteOuter ${theme}-modalDeleteOuter`}>
+                    <div className="modalDeleteOuter">
                         <h2 className={`${theme}-font`} id="modalCheck">Are You Sure?</h2>
                         <div className={`${theme}-border modalBorder`} id="checkBorder"></div>
                         <p>Once you've deleted a field,</p>

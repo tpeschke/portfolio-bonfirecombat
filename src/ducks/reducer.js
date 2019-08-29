@@ -11,7 +11,7 @@ const initialState = {
     page: '/',
     count: 1,
     combatId: 0,
-    combatName: 'New Battle',
+    combatName: '',
     playerview: false,
     theme: 'h',
 
@@ -26,7 +26,9 @@ const initialState = {
     weaponModal2: false,
     pendingSaveOpen: false,
     finishedSaveOpen: false,
-    settings: false
+    settings: false,
+
+    warning: {}
 }
 
 //TYPES
