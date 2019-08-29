@@ -3,8 +3,9 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Modal from 'react-responsive-modal/lib/css';
 
-import { NEWFIELD, PAGELOCATION } from '../ducks/reducer'
+import { NEWFIELD, PAGELOCATION, CLOSESAVEDFIELDWARNING } from '../ducks/reducer'
 import { GETCOMBATFIGHTERS } from '../ducks/CompReducers/CombatantsReducer'
 
 import DeleteDoubleCheck from './deleteDoubleCheck'
@@ -51,6 +52,12 @@ class SaveFieldMain extends Component {
         this.setState({ open: false })
     }
 
+    closeWarning = () => {
+        if(this.props.savedFieldWarning) {
+            setTimeout(_=>this.props.CLOSESAVEDFIELDWARNING(), 5000)
+        }
+    }
+
     render() {
         var { combats } = this.state
 
@@ -89,7 +96,7 @@ class SaveFieldMain extends Component {
                 <div className="savedMenu">
                     <button
                         className={`${this.props.theme}-button`}
-                        onClick={_ => this.props.NEWFIELD(this.props.redirect)}>New Field</button>
+                        onClick={_ => this.props.NEWFIELD(this.props.redirect, this.openWarning)}>New Field</button>
                 </div>
 
                 <div className={`savedList ${this.props.theme}-savedList`}>
@@ -113,24 +120,36 @@ class SaveFieldMain extends Component {
                     close={this.defDelete}
                     delete={this.deleteFieldTotal}
                     theme={this.props.theme} />
+
+                <Modal open={this.props.savedFieldWarning} onClose={this.props.CLOSESAVEDFIELDWARNING} little
+                    showCloseIcon={true}
+                    classNames={{ modal: 'modalWarning' }}>
+                    <div className="modalDeleteOuter">
+                        {this.closeWarning()}
+                        {this.props.warning}
+                    </div>
+                </Modal>
             </div>
         )
     }
 }
 
 function mapStateToProps(state) {
-    var { combatId, user, theme } = state
+    var { combatId, user, theme, warning, savedFieldWarning } = state
     return {
         combatId,
         user,
-        theme
+        theme,
+        warning,
+        savedFieldWarning
     }
 }
 
 let actionBuilders = {
     GETCOMBATFIGHTERS,
     NEWFIELD,
-    PAGELOCATION
+    PAGELOCATION,
+    CLOSESAVEDFIELDWARNING
 }
 
 export default connect(mapStateToProps, actionBuilders)(SaveFieldMain)

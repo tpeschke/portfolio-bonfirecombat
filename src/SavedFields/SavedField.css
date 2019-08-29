@@ -1,4 +1,11 @@
 
+.modalWarning {
+    background: rgb(151, 58, 21);
+    padding: 35px;
+    color: whitesmoke;
+    text-align: center;
+}
+
 .SavedField {
     width: 100%;
     padding: 15px;

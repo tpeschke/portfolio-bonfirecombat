@@ -28,7 +28,8 @@ const initialState = {
     finishedSaveOpen: false,
     settings: false,
 
-    warning: {}
+    warning: '',
+    savedFieldWarning: false
 }
 
 //TYPES
@@ -57,6 +58,7 @@ const OPEN_MODAL = "OPEN_MODAL"
 const OPEN_MODAL2 = "OPEN_MODAL2"
 const OPEN_TOP = "OPEN_TOP"
 const OPEN_TOP2 = "OPEN_TOP2"
+const CLOSE_SAVED_FIELD_WARNING = "CLOSE_SAVED_FIELD_WARNING"
 
 const EDIT_FIGHTER = "EDIT_FIGHTER"
 const HANDLE_TOP = "HANDLE_TOP"
@@ -98,16 +100,17 @@ const SET_THEME = "SET_THEME"
 
 //ACTION BUILDERS
 
-export function NEWFIELD(routing) {
+export function NEWFIELD(routing, warning) {
     return {
         type: NEW_FIELD,
         payload: axios.post(`/api/newfield`).then(result => {
+            warning()
             if (result.status === 200) {
                 routing('/Battlefield')
                 return result
             } else if (result.status === 403) {
-                console.log(result.data)
-                return {}
+                warning()
+                return result
             }
         })
     }
@@ -270,6 +273,13 @@ export function INPUTFATIGUE(id, input, flipswitch) {
     }
 }
 
+export function CLOSESAVEDFIELDWARNING() {
+    return {
+        type: CLOSE_SAVED_FIELD_WARNING,
+        payload: false
+    }
+}
+
 //REDUCER
 
 export default function reducer(state = initialState, action) {
@@ -350,7 +360,10 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { combatId: id, combatName: namecombat, fighterList: [], statusList: [], count: 1, urlhash })
 
         case NEW_FIELD + '_REJECTED':
-            return Object.assign({}, state)
+            return Object.assign({}, state, {warning: action.payload.response.data, savedFieldWarning: true})
+
+        case CLOSE_SAVED_FIELD_WARNING:
+            return Object.assign({}, state, {warning: '', savedFieldWarning: false})
 
         case SAVE_FIELD + "_PENDING":
             return Object.assign({}, state, { pendingSaveOpen: !state.pendingSaveOpen })

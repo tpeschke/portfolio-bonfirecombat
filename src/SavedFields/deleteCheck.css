@@ -1,36 +1,37 @@
 .modalDelete {
-    background: rgb(151, 58, 21);
+  background: rgb(151, 58, 21);
   padding: 15px;
   color: whitesmoke;
 }
 
-.modalDeleteOuter p, h2 {
-    color: whitesmoke;
-    text-align: center;
+.modalDeleteOuter p,
+h2 {
+  color: whitesmoke;
+  text-align: center;
 }
 
 #modalDeleteButton {
-    color: whitesmoke;
-    font-weight: 800;
-    font-size: 20px;
-    margin: 25px auto;
-    width: 250px;
+  color: whitesmoke;
+  font-weight: 800;
+  font-size: 20px;
+  margin: 25px auto;
+  width: 250px;
 }
 
 #modalCheck {
-    color: whitesmoke;
-    font-weight: 800;
-    font-size: 20px;
-    margin: 25px 25px 15px 25px;
+  color: whitesmoke;
+  font-weight: 800;
+  font-size: 20px;
+  margin: 25px 25px 15px 25px;
 }
 
 #checkBorder {
-    margin-bottom: 15px;
-    border-color: whitesmoke;
+  margin-bottom: 15px;
+  border-color: whitesmoke;
 }
 
 .modalBorder {
-        min-width: 50%;
-        max-width: 50%;
-        margin: 0 0 15px 0;
+  min-width: 50%;
+  max-width: 50%;
+  margin: 0 0 15px 0;
 }
