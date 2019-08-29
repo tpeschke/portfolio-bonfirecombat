@@ -112,6 +112,10 @@ app.patch('/api/theme/:theme', sqlCtrl.setTheme);
 
 const path = require('path')
 
+app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../build/index.html'))
+})
+
 // ==========================================
 
 // const port = process.env.SERVER_PORT
@@ -193,8 +197,4 @@ io.on('connection', socket => {
     socket.on('playerHide', data => {
         io.emit(`${data.hash}-hide`, data)
     })
-})
-
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../build/index.html'))
 })
