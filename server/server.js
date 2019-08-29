@@ -110,14 +110,11 @@ app.delete('/api/weapon/:id', sqlCtrl.deleteWeapon);
 app.patch('/api/battle', sqlCtrl.saveField);
 app.patch('/api/theme/:theme', sqlCtrl.setTheme);
 
-app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname + '/../dist/bonfireSRD/index.html'))
-})
-
 const path = require('path')
 
 // ==========================================
 
+// const port = process.env.SERVER_PORT
 const port = process.env.PORT
 
 massive(process.env.CONNECTION_STRING).then(dbInstance => {
