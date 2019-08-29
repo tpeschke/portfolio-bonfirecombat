@@ -51,17 +51,17 @@ passport.use(new Auth0Strategy({
 ////TESTING TOPLEVEL MIDDLEWARE////
 ///COMMENET OUT WHEN AUTH0 READY///
 ///////////////////////////////////
-app.use((req, res, next) => {
-    if (!req.user) {
-        req.user = {
-            id: 1,
-            email: "mr.peschke@gmail.com",
-            patreon: 1,
-            theme: 'h'
-        }
-    }
-    next();
-})
+// app.use((req, res, next) => {
+//     if (!req.user) {
+//         req.user = {
+//             id: 1,
+//             email: "mr.peschke@gmail.com",
+//             patreon: 1,
+//             theme: 'h'
+//         }
+//     }
+//     next();
+// })
 
 app.get('/auth', passport.authenticate('auth0'));
 app.get('/auth/callback', passport.authenticate('auth0', {
@@ -110,11 +110,15 @@ app.delete('/api/weapon/:id', sqlCtrl.deleteWeapon);
 app.patch('/api/battle', sqlCtrl.saveField);
 app.patch('/api/theme/:theme', sqlCtrl.setTheme);
 
+app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/../dist/bonfireSRD/index.html'))
+})
+
 const path = require('path')
 
 // ==========================================
 
-const port = process.env.SERVER_PORT
+const port = process.env.PORT
 
 massive(process.env.CONNECTION_STRING).then(dbInstance => {
     app.set('db', dbInstance);

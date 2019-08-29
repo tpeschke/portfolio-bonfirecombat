@@ -14,7 +14,7 @@ export default class PlayerNoBattle extends Component {
 
                 <div className="hashUrl" id="playerViewInput">
                     <div className="innerHashUrl">
-                        <p className="hashUrlText" id="hashBaseUrl">combatcounter.highadventuregames.net/player/</p>
+                        <p className="hashUrlText" id="hashBaseUrl">combatcounter.dragon-slayer.net/player/</p>
                         <p className="hashUrlText" id="hashBattleUrl">HASH</p>
                     </div>
                 </div>
