@@ -170,7 +170,7 @@ export default class Acting extends Component {
                 <div className={`${this.props.theme}-border sectionborder`}></div>
                 <div className={`Header ${this.props.theme}-Header`}>
                     <p className={`ListItem ${theme}-font Name NameHeader listHeader`}>Name</p>
-                    <p className={`ListItem ${theme}-font listHeader`}>Health</p>
+                    <p className={`ListItem ${theme}-font listHeader`}>Wounds</p>
                     <p className={`ListItem ${theme}-font listHeader`}>Fatigue</p>
                     <p className={`ListItem ${theme}-font listHeader`}>Speed</p>
                     <p className={`ListItem ${theme}-font listHeader`}>Action</p>
