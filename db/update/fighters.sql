@@ -6,6 +6,9 @@ set
     topcheck = $4, 
     acting = $5, 
     dead = $6,
-    hidden = $7
+    hidden = $7,
+    max_health = $8,
+    health = $9,
+    fatigue = $10
 where 
-    id = $8
+    id = $11

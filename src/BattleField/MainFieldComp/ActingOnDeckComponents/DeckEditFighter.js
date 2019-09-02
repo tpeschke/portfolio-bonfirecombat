@@ -4,13 +4,13 @@ import { connect } from 'react-redux';
 
 import 'react-responsive-modal/lib/react-responsive-modal.css';
 import Modal from 'react-responsive-modal/lib/css';
-import {checkStr} from '../../../components/validation'
+import { checkStr, checkNum } from '../../../components/validation'
 
 import { SketchPicker } from 'react-color';
 
 import socketFun from '../../../playerview/SocketApi'
 import { OPENMODAL } from '../../../ducks/reducer'
-import {EDITFIGHTER} from '../../../ducks/CompReducers/CombatantsReducer'
+import { EDITFIGHTER } from '../../../ducks/CompReducers/CombatantsReducer'
 
 class DeckEditFighter extends Component {
     constructor() {
@@ -19,6 +19,8 @@ class DeckEditFighter extends Component {
         this.state = {
             color: '',
             name: '',
+            max_health: 0,
+            fatigue: 0,
             id: 0
         }
 
@@ -28,8 +30,9 @@ class DeckEditFighter extends Component {
         this.setState({
             color: next.color,
             name: next.name,
-            speed: next.speed,
-            id: next.id
+            id: next.id,
+            max_health: next.max_health ? next.max_health : 10,
+            fatigue: next.fatigue
         })
     }
 
@@ -41,11 +44,13 @@ class DeckEditFighter extends Component {
         var editedFighter = {
             id: this.state.id,
             namefighter: this.state.name,
-            colorcode: this.state.color
+            colorcode: this.state.color,
+            max_health: this.state.max_health,
+            fatigue: this.state.fatigue
         }
 
         this.props.EDITFIGHTER(editedFighter);
-        socketFun.playerEdit({fighter: editedFighter, hash: this.props.hash});
+        socketFun.playerEdit({ fighter: editedFighter, hash: this.props.hash });
         this.props.OPENMODAL();
 
         this.forceUpdate()
@@ -54,7 +59,7 @@ class DeckEditFighter extends Component {
 
     render() {
 
-        const { color, name } = this.state;
+        const { color, name, max_health, fatigue } = this.state;
         const { editopen, theme } = this.props
 
         return (
@@ -65,7 +70,7 @@ class DeckEditFighter extends Component {
                     showCloseIcon={false}>
                     <div className={`outModalNew ${theme}-outModalNew`}>
                         <div className={`${theme}-modalBannerEdit`}></div>
-                        
+
                         <div className="inModalNew">
 
                             <div className="modalLeft">
@@ -82,8 +87,18 @@ class DeckEditFighter extends Component {
                                 <div className="modalEditInputs">
                                     <p>Name</p>
                                     <input placeholder={name} className={`modalEditInput ${theme}-inputSpecial`} id="modalEditInput"
-                                        value={this.state.name}
+                                        value={name}
                                         onChange={e => checkStr(e.target.value) ? this.setState({ name: e.target.value }) : null} />
+
+                                    <p>Max Health</p>
+                                    <input placeholder={max_health} className={`modalEditInput ${theme}-inputSpecial`} id="modalEditInput"
+                                        value={max_health}
+                                        onChange={e => checkNum(+e.target.value) ? this.setState({ max_health: e.target.value }) : null} />
+
+                                    <p>Fatigue</p>
+                                    <input placeholder={fatigue} className={`modalEditInput ${theme}-inputSpecial`} id="modalEditInput"
+                                        value={fatigue}
+                                        onChange={e => checkNum(+e.target.value) ? this.setState({ fatigue: e.target.value }) : null} />
 
                                     <button className={`${theme}-secColor ${theme}-secFont`} id="modalAddButton"
                                         onClick={_ => this.handleSubmit()}

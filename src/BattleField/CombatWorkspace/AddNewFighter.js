@@ -26,6 +26,8 @@ class AddNewFighter extends Component {
             action: 0,
             dice: 1,
             hidden: '0',
+            max_health: 10,
+            fatigue: 0,
             weapon: false,
             warningOpen: false
         }
@@ -105,7 +107,7 @@ class AddNewFighter extends Component {
 
     // ============================ \\
 
-    handleSubmit = (c, n, w, a, d, id, h) => {
+    handleSubmit = (c, n, w, a, d, id, h, mh, f) => {
         if (n !== '') {
             var newId = makeid()
 
@@ -119,8 +121,13 @@ class AddNewFighter extends Component {
                 acting: '0',
                 dead: '0',
                 hidden: h,
+                health: 0,
+                max_health: mh,
+                fatigue: f,
                 idcombat: id
             }
+
+            console.log(newFighter)
 
             this.props.ADDNEWCOMBATANT(newFighter)
             socketFun.playerAdd({ hash: this.props.hash, fighter: { colorcode: c, dead: '0', hidden: '1', id: newId, namefighter: n, topcheck: '0', weapon: w.filter(v => v.selected == '1')[0].weapon } })
@@ -134,7 +141,7 @@ class AddNewFighter extends Component {
 
     render() {
 
-        const { open, color, name, weapons, action, dice, hidden } = this.state;
+        const { open, color, name, weapons, action, dice, hidden, max_health, fatigue } = this.state;
         const { combatId, theme } = this.props
 
         let show = () => {
@@ -166,19 +173,28 @@ class AddNewFighter extends Component {
                                 1d<input className={`modalEditInput ${theme}-inputSpecial modalDiceInput`}
                                     value={this.state.dice}
                                     onChange={e => checkNum(e.target.value) ? this.setState({ dice: +e.target.value }) : null} />
+                                    +
+                                    <input className={`modalEditInput ${theme}-inputSpecial modalDiceInput`}
+                                    value={this.state.action}
+                                    onChange={e => checkNum(e.target.value) ? this.setState({ action: +e.target.value }) : null} />
                             </div>
 
-                            <p>Initiative</p>
+                            <p>Max Health</p>
                             <input className={`modalEditInput ${theme}-inputSpecial`} id="modalEditInput"
-                                value={this.state.action}
-                                onChange={e => checkNum(e.target.value) ? this.setState({ action: +e.target.value }) : null} />
+                                value={this.state.max_health}
+                                onChange={e => checkNum(e.target.value) ? this.setState({ max_health: e.target.value }) : null} />
+
+                            <p>Fatigue</p>
+                            <input className={`modalEditInput ${theme}-inputSpecial`} id="modalEditInput"
+                                value={this.state.fatigue}
+                                onChange={e => checkNum(e.target.value) ? this.setState({ fatigue: e.target.value }) : null} />
 
                             <ToggleHidden
                                 on={hidden}
                                 hide={this.handleHide} />
 
                             <button className={`${theme}-secColor ${theme}-secFont`} id="modalAddButton"
-                                onClick={_ => this.handleSubmit(color, name, weapons, action, dice, combatId, hidden)}>SUBMIT</button>
+                                onClick={_ => this.handleSubmit(color, name, weapons, action, dice, combatId, hidden, max_health, fatigue)}>SUBMIT</button>
                         </div>
                     </div>
                 )

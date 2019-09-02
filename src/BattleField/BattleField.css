@@ -118,7 +118,7 @@
 }
 
 .fatigue .inputFinder {
-  max-width: 10px;
+  max-width: 20px;
 }
 
 .fatigue p {
@@ -229,6 +229,7 @@ input.ListItem:hover {
 
 #newCombat {
   margin-top: 15px;
+  margin-bottom: 0px;
   text-align: center;
   font-size: 25px;
 }
@@ -340,7 +341,7 @@ input.ListItem:hover {
 
 .newFighterButton {
   height: 19px;
-  margin: 5px 0px 15px 0px;
+  margin: 5px 0px 10px;
 }
 
 .actionLocked {
@@ -369,6 +370,7 @@ input.ListItem:hover {
   color: black;
   font-size: 17px;
   transform: rotate(-90deg);
+  padding-top: 5px;
 }
 
 .openEye:hover {
@@ -377,6 +379,7 @@ input.ListItem:hover {
 
 .modalDiceInput {
   width: 50px;
+  max-width: 50px;
 }
 
 .modalWarning {

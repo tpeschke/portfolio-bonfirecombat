@@ -34,7 +34,9 @@ export default class Acting extends Component {
             holdcolor: d.colorcode,
             holdname: d.namefighter,
             holdspeed: d.speed,
-            holdid: d.id
+            holdid: d.id,
+            holdmax_health: d.max_health,
+            holdfatigue: d.fatigue
         }, _ => this.props.modal2())
     }
 
@@ -190,7 +192,9 @@ export default class Acting extends Component {
                     color={this.state.holdcolor}
                     name={this.state.holdname}
                     speed={this.state.holdspeed}
-                    id={this.state.holdid} />
+                    id={this.state.holdid}
+                    max_health={this.state.holdmax_health}
+                    fatigue={this.state.holdfatigue} />
 
                 <ActWeapon
                     weapons={this.state.holdweapons}

@@ -481,6 +481,8 @@ export default function reducer(state = initialState, action) {
                     val.namefighter = action.payload.namefighter
                     val.colorcode = action.payload.colorcode
                     val.speed = action.payload.speed
+                    val.max_health = action.payload.max_health
+                    val.fatigue = action.payload.fatigue
                     return val
                 } else {
                     return val

@@ -7,10 +7,10 @@ module.exports = {
     },
     
     checkNum: (num) => {
-        if (isNaN(num)) {
-            return false
-        }
+        if (typeof(num) === 'number' || '-') {
             return true
+        }
+            return false
     }
 
 } 

@@ -56,7 +56,7 @@ passport.use(new Auth0Strategy({
 //         req.user = {
 //             id: 1,
 //             email: "mr.peschke@gmail.com",
-//             patreon: 1,
+//             patreon: 10,
 //             theme: 'h'
 //         }
 //     }
@@ -118,8 +118,8 @@ app.get('/*', (req, res) => {
 
 // ==========================================
 
-// const port = process.env.SERVER_PORT
-const port = process.env.PORT
+const port = process.env.SERVER_PORT
+// const port = process.env.PORT
 
 massive(process.env.CONNECTION_STRING).then(dbInstance => {
     app.set('db', dbInstance);
