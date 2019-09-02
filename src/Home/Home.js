@@ -2,6 +2,8 @@ import React from 'react'
 import './Home.css'
 import axios from 'axios'
 
+import {Link} from 'react-router-dom'
+
 export default function Home(props) {
     axios.get('/auth/me').then(v => {
         if (v.status === 200) {
@@ -21,6 +23,10 @@ export default function Home(props) {
                     Sign In Here
                     </a>
                 <p className='signInText'>with your Google, FaceBook, Twitter, or Yahoo account</p>
+            </div>
+
+            <div className="playerSquare">
+                <p>If you're here as a player, jump to <Link className="bonfireLink" to="/player">combatcounter.dragon-slayer.net/player</Link> for further instructions</p>
             </div>
         </div>
     )

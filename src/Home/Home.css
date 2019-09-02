@@ -65,13 +65,20 @@
   font-family: "Spectral SC", serif;
 }
 
+.playerSquare {
+  background: whitesmoke;
+  margin: 25px auto;
+  padding: 25px;
+  text-align: center;
+}
+
 @media (max-width: 475px) {
   .outHome {
     width: 100%;
     margin-top: 125px;
   }
 
-  .logoHome { 
+  .logoHome {
     z-index: -1;
     height: 375px;
     top: -125px;
@@ -79,11 +86,11 @@
   }
 
   .topBorder {
-      padding: 0;
+    padding: 0;
   }
 
   .foreground {
-      margin: 0;
-      width: 100%;
+    margin: 0;
+    width: 100%;
   }
 }
