@@ -118,8 +118,8 @@ app.get('/*', (req, res) => {
 
 // ==========================================
 
-const port = process.env.SERVER_PORT
-// const port = process.env.PORT
+// const port = process.env.SERVER_PORT
+const port = process.env.PORT
 
 massive(process.env.CONNECTION_STRING).then(dbInstance => {
     app.set('db', dbInstance);
