@@ -11,14 +11,6 @@ import { CLEARFIELD, TOGGLEPLAYERVIEW } from '../../ducks/reducer'
 
 class Workspace extends Component {
 
-    componentWillUnmount() {
-        let { playerview, hash, TOGGLEPLAYERVIEW } = this.props
-        if (playerview) {
-            socketFun.sendBattle({ hash, playerview: false })
-            TOGGLEPLAYERVIEW()
-        }
-    }
-
     handleClearField = () => {
         socketFun.playerClear({ hash: this.props.hash })
         this.props.CLEARFIELD()

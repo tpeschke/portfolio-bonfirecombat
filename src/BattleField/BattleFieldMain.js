@@ -24,11 +24,11 @@ class BattleFieldMain extends Component {
 
     constructor() {
         super()
-    
+
         this.state = {
-          modalOpen: false
+            modalOpen: false
         }
-      }
+    }
 
     componentDidMount() {
         this.props.LOADCOMBATANTS(this.props.combatId);
@@ -42,6 +42,11 @@ class BattleFieldMain extends Component {
 
     componentWillUnmount() {
         clearInterval(this.state.id)
+        let { playerview, hash, TOGGLEPLAYERVIEW } = this.props
+        if (playerview) {
+            socketFun.sendBattle({ hash, playerview: false })
+            TOGGLEPLAYERVIEW()
+        }
     }
 
     componentDidUpdate() {
@@ -55,7 +60,7 @@ class BattleFieldMain extends Component {
     }
 
     openWorkspace = () => {
-        this.setState({modalOpen: !this.state.modalOpen})
+        this.setState({ modalOpen: !this.state.modalOpen })
     }
 
     render() {
@@ -76,7 +81,7 @@ class BattleFieldMain extends Component {
                         <div className={`BattleField ${theme}-BattleField`}>
                             <div className="battlefieldShell">
                                 <h2 className={`${theme}-h2`}>the Quick</h2>
-                                <i onClick={_=>this.openWorkspace()} className="fas fa-edit editIconMain"></i>
+                                <i onClick={_ => this.openWorkspace()} className="fas fa-edit editIconMain"></i>
                             </div>
 
                             <OnDeck
@@ -125,7 +130,7 @@ class BattleFieldMain extends Component {
 
                 <Modal open={this.state.modalOpen} little
                     onClose={this.openWorkspace}
-                    classNames={{ modal : 'baseModalSave' }}
+                    classNames={{ modal: 'baseModalSave' }}
                     showCloseIcon={false}>
                     <div className="combatWorkspaceModal">
                         <CombatWorkspace />
