@@ -35,7 +35,7 @@ class AddNewFighter extends Component {
     }
 
     onOpenModal = () => {
-        if (this.props.fighterListLength <= this.props.user.data.patreon * 10) {
+        if (this.props.fighterListLength <= this.props.user.data.patreon * 10 || this.props.fighterListLength < 5) {
             this.setState({ open: true });
         } else {
             this.setState({warningOpen: true}, _ => setTimeout(_=>this.setState({warningOpen: false}), 5000))
@@ -126,8 +126,6 @@ class AddNewFighter extends Component {
                 fatigue: f,
                 idcombat: id
             }
-
-            console.log(newFighter)
 
             this.props.ADDNEWCOMBATANT(newFighter)
             socketFun.playerAdd({ hash: this.props.hash, fighter: { colorcode: c, dead: '0', hidden: '1', id: newId, namefighter: n, topcheck: '0', weapon: w.filter(v => v.selected == '1')[0].weapon } })
