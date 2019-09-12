@@ -35,7 +35,7 @@ class AddNewFighter extends Component {
     }
 
     onOpenModal = () => {
-        if (this.props.fighterListLength <= this.props.user.data.patreon * 10 || this.props.fighterListLength < 5) {
+        if (this.props.fighterListLength <= this.props.user.data.patreon * 5 || this.props.fighterListLength < 5) {
             this.setState({ open: true });
         } else {
             this.setState({warningOpen: true}, _ => setTimeout(_=>this.setState({warningOpen: false}), 5000))
