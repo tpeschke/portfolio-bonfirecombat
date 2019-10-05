@@ -105,7 +105,7 @@ module.exports = {
         db.get.totalFieldNumber(id).then(totalCount => {
             if (+totalCount[0].count >= 1 && !patreon) {
                 res.status(403).send('You need to link your Patreon to this account to add more fields. You can do so by logging on through the BonfireSRD')
-            } else if (totalCount[0].count === '0' || +totalCount[0].count <= patreon * 2) {
+            } else if (totalCount[0].count === '0' || +totalCount[0].count <= patreon ) {
                 db.get.newFieldNumber(id)
                     .then(num => {
                         let newName = 'New Battlefield'
@@ -115,7 +115,7 @@ module.exports = {
                         db.add.new_Field(newName, id, urlhash)
                             .then(result => res.status(200).send(result))
                     })
-            } else if (totalCount[0].count > patreon * 2) {
+            } else if (totalCount[0].count > patreon ) {
                 res.status(403).send('To add more fields, you need to increase your Patreon Tier')
             }
         })
