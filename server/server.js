@@ -29,14 +29,13 @@ passport.use(new Auth0Strategy({
     callbackURL: process.env.AUTH_CALLBACK,
     scope: 'openid profile'
 }, function (accessToken, refreshToken, extraParams, profile, done) {
-    let { displayName, user_id, picture } = profile;
+    let { displayName, user_id } = profile;
     const db = app.get('db');
 
     db.get.find_User([user_id]).then(function (users) {
         if (!users[0]) {
             db.add.create_User([
                 displayName,
-                picture,
                 user_id
             ]).then(users => {
                 return done(null, users[0].id)
