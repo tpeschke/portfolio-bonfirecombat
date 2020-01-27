@@ -204,7 +204,7 @@ export default class OnDeck extends Component {
                 <div className={`${this.props.theme}-border sectionborder`}></div>
                 <div className={`Header ${this.props.theme}-Header`}>
                     <div className="ListItem hiddenShell"></div>
-                    <div className="color"></div>
+                    <div className="color" id="no-border"></div>
                     <p className={`ListItem ${theme}-font Name listHeader`}>Name</p>
                     <div className="ListItem weaponIcon"></div>
                     <p className={`ListItem ${theme}-font listHeader`}>Damage</p>
