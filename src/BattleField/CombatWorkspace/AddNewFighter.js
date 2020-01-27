@@ -27,7 +27,8 @@ class AddNewFighter extends Component {
             dice: 1,
             hidden: '0',
             max_health: 10,
-            fatigue: 0,
+            stress: 0,
+            encumbrance: 10,
             weapon: false,
             warningOpen: false
         }
@@ -38,7 +39,7 @@ class AddNewFighter extends Component {
         if (this.props.fighterListLength <= this.props.user.data.patreon * 5 || this.props.fighterListLength < 5) {
             this.setState({ open: true });
         } else {
-            this.setState({warningOpen: true}, _ => setTimeout(_=>this.setState({warningOpen: false}), 5000))
+            this.setState({ warningOpen: true }, _ => setTimeout(_ => this.setState({ warningOpen: false }), 5000))
         }
     };
 
@@ -107,7 +108,7 @@ class AddNewFighter extends Component {
 
     // ============================ \\
 
-    handleSubmit = (c, n, w, a, d, id, h, mh, f) => {
+    handleSubmit = (c, n, w, a, d, id, h, mh, s, e) => {
         if (n !== '') {
             var newId = makeid()
 
@@ -123,7 +124,8 @@ class AddNewFighter extends Component {
                 hidden: h,
                 health: 0,
                 max_health: mh,
-                fatigue: f,
+                stress: s,
+                encumbrance: e,
                 idcombat: id
             }
 
@@ -139,60 +141,93 @@ class AddNewFighter extends Component {
 
     render() {
 
-        const { open, color, name, weapons, action, dice, hidden, max_health, fatigue } = this.state;
+        const { open, color, name, weapons, action, dice, hidden, max_health, stress, encumbrance } = this.state;
         const { combatId, theme } = this.props
 
         let show = () => {
             if (!this.state.weapon) {
                 return (
-                    <div className="inModalNew">
-                        <div className="modalLeft">
-                            <SketchPicker
-                                color={this.state.color}
-                                onChange={this.handleChange} />
-                        </div>
-                        <div className="modalRight">
+                    <div>
 
-                            <h1 className={`${theme}-secFont ${theme}-secColor`} id="newCombat">Add New Combatant</h1>
-
-                            <div className={`${theme}-border modalBorder`}></div>
-
-                            <p>Name</p>
-                            <input className={`modalEditInput ${theme}-inputSpecial`} id="modalEditInput"
-                                value={this.state.name}
-                                onChange={e => checkStr(e.target.value) ? this.setState({ name: e.target.value }) : null} />
-
-                            <button className={`newFighterButton ${theme}-font`}
-                                onClick={_ => this.setState({ weapon: true })}
-                            >Add Weapons</button>
-
-                            <p>Initiative Dice</p>
+                        <div className="hash-input-shell">
                             <div>
-                                1d<input className={`modalEditInput ${theme}-inputSpecial modalDiceInput`}
-                                    value={this.state.dice}
-                                    onChange={e => checkNum(e.target.value) ? this.setState({ dice: +e.target.value }) : null} />
-                                    +
-                                    <input className={`modalEditInput ${theme}-inputSpecial modalDiceInput`}
-                                    value={this.state.action}
-                                    onChange={e => checkNum(e.target.value) ? this.setState({ action: +e.target.value }) : null} />
+                                <input className={`modalEditInput ${theme}-inputSpecial`} id="hash-input" type="text" placeholder="import by bestiary hash" />
+                                <button className={`${theme}-secColor ${theme}-secFont`} id="modalAddButton"
+                                    onClick={_ => this.handleSubmit(color, name, weapons, action, dice, combatId, hidden, max_health, stress, encumbrance)}>ADD</button>
                             </div>
+                        </div>
 
-                            <p>Max Health</p>
-                            <input className={`modalEditInput ${theme}-inputSpecial`} id="modalEditInput"
-                                value={this.state.max_health}
-                                onChange={e => checkNum(e.target.value) ? this.setState({ max_health: e.target.value }) : null} />
+                        <div className="inModalNew">
+                            <div className="modalLeft">
+                                <SketchPicker
+                                    color={this.state.color}
+                                    onChange={this.handleChange} />
 
-                            <p>Fatigue</p>
-                            <input className={`modalEditInput ${theme}-inputSpecial`} id="modalEditInput"
-                                value={this.state.fatigue}
-                                onChange={e => checkNum(e.target.value) ? this.setState({ fatigue: e.target.value }) : null} />
+                                <button className={`${theme}-secColor ${theme}-secFont`} id="modalAddButton"
+                                    onClick={_ => this.handleSubmit(color, name, weapons, action, dice, combatId, hidden, max_health, stress, encumbrance)}>SUBMIT</button>
 
-                            <ToggleHidden
-                                on={hidden}
-                                hide={this.handleHide} />
+                                <button className={`${theme}-secColor ${theme}-secFont`} id="modalAddButton"
+                                    onClick={_ => this.handleSubmit(color, name, weapons, action, dice, combatId, hidden, max_health, stress, encumbrance)}>MULTI-SUBMIT</button>
+                            </div>
+                            <div className="modalRight">
 
-                            <button className={`${theme}-secColor ${theme}-secFont`} id="modalAddButton"
-                                onClick={_ => this.handleSubmit(color, name, weapons, action, dice, combatId, hidden, max_health, fatigue)}>SUBMIT</button>
+                                <h1 className={`${theme}-secFont ${theme}-secColor`} id="newCombat">Add New Combatant</h1>
+
+                                <div className={`${theme}-border modalBorder border-non-centered`}></div>
+
+                                <div className="fighter-name-hidden">
+
+                                    <ToggleHidden
+                                        on={hidden}
+                                        hide={this.handleHide} />
+
+                                    <div>
+                                        <p>Name</p>
+                                        <input className={`modalEditInput ${theme}-inputSpecial`} id="modalEditInput"
+                                            value={this.state.name}
+                                            onChange={e => checkStr(e.target.value) ? this.setState({ name: e.target.value }) : null} />
+                                    </div>
+                                </div>
+
+                                <button className={`newFighterButton ${theme}-font`}
+                                    onClick={_ => this.setState({ weapon: true })}
+                                >ADD WEAPONS</button>
+
+                                <div>
+                                    <p>Initiative Dice</p>
+                                    <div>
+                                        1d<input className={`modalEditInput ${theme}-inputSpecial modalDiceInput`}
+                                            value={this.state.dice}
+                                            onChange={e => checkNum(e.target.value) ? this.setState({ dice: +e.target.value }) : null} />
+                                        +
+                                    <input className={`modalEditInput ${theme}-inputSpecial modalDiceInput`}
+                                            value={this.state.action}
+                                            onChange={e => checkNum(e.target.value) ? this.setState({ action: +e.target.value }) : null} />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <p>Max Vitality</p>
+                                    <input className={`modalEditInput ${theme}-inputSpecial`} id="modalEditInput"
+                                        value={this.state.max_health}
+                                        onChange={e => checkNum(e.target.value) ? this.setState({ max_health: e.target.value }) : null} />
+                                </div>
+
+                                <div>
+                                    <p>Starting Stress</p>
+                                    <input className={`modalEditInput ${theme}-inputSpecial`} id="modalEditInput"
+                                        value={this.state.stress}
+                                        onChange={e => checkNum(e.target.value) ? this.setState({ stress: e.target.value }) : null} />
+                                </div>
+
+                                <div>
+                                    <p>Encumbrance</p>
+                                    <input className={`modalEditInput ${theme}-inputSpecial`} id="modalEditInput"
+                                        value={this.state.encumbrance}
+                                        onChange={e => checkNum(e.target.value) ? this.setState({ encumbrance: e.target.value }) : null} />
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 )

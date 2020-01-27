@@ -50,17 +50,17 @@ passport.use(new Auth0Strategy({
 ////TESTING TOPLEVEL MIDDLEWARE////
 ///COMMENET OUT WHEN AUTH0 READY///
 ///////////////////////////////////
-// app.use((req, res, next) => {
-//     if (!req.user) {
-//         req.user = {
-//             id: 1,
-//             email: "mr.peschke@gmail.com",
-//             patreon: 10,
-//             theme: 'h'
-//         }
-//     }
-//     next();
-// })
+app.use((req, res, next) => {
+    if (!req.user) {
+        req.user = {
+            id: 1,
+            email: "mr.peschke@gmail.com",
+            patreon: 10,
+            theme: 'h'
+        }
+    }
+    next();
+})
 
 app.get('/auth', passport.authenticate('auth0'));
 app.get('/auth/callback', passport.authenticate('auth0', {
@@ -91,7 +91,7 @@ app.get('/auth/me', (req, res) => {
     }
 })
 
-app.get('/api/combats/:id', sqlCtrl.getAllCombats);
+app.get('/api/combats', sqlCtrl.getAllCombats);
 app.get('/api/combat/:id', sqlCtrl.loadCombatants);
 app.get('/api/status/:id', sqlCtrl.getAllStatuses);
 app.get('/api/hash/:id', sqlCtrl.getHash);
@@ -117,8 +117,7 @@ app.get('/*', (req, res) => {
 
 // ==========================================
 
-// const port = process.env.SERVER_PORT
-const port = process.env.PORT
+const port = process.env.SERVER_PORT
 
 massive(process.env.CONNECTION_STRING).then(dbInstance => {
     app.set('db', dbInstance);

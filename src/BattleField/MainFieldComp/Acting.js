@@ -36,7 +36,7 @@ export default class Acting extends Component {
             holdspeed: d.speed,
             holdid: d.id,
             holdmax_health: d.max_health,
-            holdfatigue: d.fatigue
+            holdencumbrance: d.encumbrance
         }, _ => this.props.modal2())
     }
 
@@ -72,23 +72,59 @@ export default class Acting extends Component {
 
                     let speed = +d.weapons.filter(val => val.selected == 1)[0].speed
 
-                    let healthFatigueModifier = 0
+                    let healthFatigueModifier = (<div className="fatigue">
+                        <input className={`${theme}-input inputFinder`}
+                            value={d.stress}
+                            onChange={e => this.props.fatigue(d.id, +e.target.value, true)}
+                            onBlur={e => this.props.fatigue(d.id, +e.target.value, false)} />
+                    </div>)
                     let healthPercent = d.health / d.max_health
 
-                    if (d.health <= 0) {
-                        healthFatigueModifier = 0
-                    } else if (d.health === 1) {
-                        healthFatigueModifier = -1
-                    } else if (healthPercent <= .25) {
-                        healthFatigueModifier = -2
-                    } else if (healthPercent <= .5) {
-                        healthFatigueModifier = -3
-                    } else if (healthPercent <= .75) {
-                        healthFatigueModifier = -4
-                    } else if (healthPercent <= 1) {
-                        healthFatigueModifier = -5
-                    } else {
-                        healthFatigueModifier = -8
+                    //Tired
+                    if (healthPercent > .01 && healthPercent < .25) {
+                        healthFatigueModifier = (<div className="fatigue">
+                        <input className={`${theme}-input inputFinder`}
+                            value={d.stress}
+                            onChange={e => this.props.fatigue(d.id, +e.target.value, true)}
+                            onBlur={e => this.props.fatigue(d.id, +e.target.value, false)} />
+                        <p>+{d.encumbrance}</p>
+                    </div>)
+                        //Hurt
+                    } else if (healthPercent >= .25 && healthPercent < .5) {
+                        healthFatigueModifier = (<div className="fatigue">
+                        <input className={`${theme}-input inputFinder`}
+                            value={d.stress}
+                            onChange={e => this.props.fatigue(d.id, +e.target.value, true)}
+                            onBlur={e => this.props.fatigue(d.id, +e.target.value, false)} />
+                        <p>+{d.encumbrance * 2}</p>
+                    </div>)
+                        //Bloodied
+                    } else if (healthPercent >= .5 && healthPercent < .75) {
+                        healthFatigueModifier = (<div className="fatigue">
+                        <input className={`${theme}-input inputFinder`}
+                            value={d.stress}
+                            onChange={e => this.props.fatigue(d.id, +e.target.value, true)}
+                            onBlur={e => this.props.fatigue(d.id, +e.target.value, false)} />
+                        <p>+{d.encumbrance * 3}</p>
+                    </div>)
+                        //Wounded
+                    } else if (healthPercent >= .75 && healthPercent < 1) {
+                        healthFatigueModifier = (<div className="fatigue">
+                        <input className={`${theme}-input inputFinder`}
+                            value={d.stress}
+                            onChange={e => this.props.fatigue(d.id, +e.target.value, true)}
+                            onBlur={e => this.props.fatigue(d.id, +e.target.value, false)} />
+                        <p>+{d.encumbrance * 4}</p>
+                    </div>)
+                        //Bleeding Out
+                    } else if (healthPercent >= 1) {
+                        healthFatigueModifier = (<div className="fatigue">
+                        <input className={`${theme}-input inputFinder`}
+                            value={d.stress}
+                            onChange={e => this.props.fatigue(d.id, +e.target.value, true)}
+                            onBlur={e => this.props.fatigue(d.id, +e.target.value, false)} />
+                        <p>Dead</p>
+                    </div>)
                     }
 
                     let action = (<div className="actionLocked">
@@ -126,9 +162,11 @@ export default class Acting extends Component {
 
                         <div className="color" style={color}></div>
 
-                        <p className={`ListItem ${theme}-font Name`}>{d.namefighter}</p>
+                        <div className="ListItem Name">
+                            <p className={`${theme}-font`}>{d.namefighter}</p>
+                        </div>
 
-                        <div className={`ListItem ${theme}-font`}
+                        <div className={`ListItem ${theme}-font weaponIcon`}
                             onClick={_ => this.chooseWeapon(d.id, d.weapons)}>
                             <div className="arrow right"></div>
                         </div>
@@ -138,13 +176,7 @@ export default class Acting extends Component {
                             onChange={e => this.props.health(d.id, +e.target.value, true)}
                             onBlur={e => this.props.health(d.id, +e.target.value, false)} />
 
-                        <div className="fatigue">
-                            <input className={`${theme}-input inputFinder`}
-                                value={d.fatigue}
-                                onChange={e => this.props.fatigue(d.id, +e.target.value, true)}
-                                onBlur={e => this.props.fatigue(d.id, +e.target.value, false)} />
-                            <p>{healthFatigueModifier != 0 ? healthFatigueModifier : null}</p>
-                        </div>
+                        {healthFatigueModifier}
 
                         {action}
 
@@ -171,11 +203,14 @@ export default class Acting extends Component {
                 <p>Acting</p>
                 <div className={`${this.props.theme}-border sectionborder`}></div>
                 <div className={`Header ${this.props.theme}-Header`}>
-                    <p className={`ListItem ${theme}-font Name NameHeader listHeader`}>Name</p>
-                    <p className={`ListItem ${theme}-font listHeader`}>Wounds</p>
-                    <p className={`ListItem ${theme}-font listHeader`}>Fatigue</p>
+                    <div className="ListItem hiddenShell"></div>
+                    <div className="color"></div>
+                    <p className={`ListItem ${theme}-font Name listHeader`}>Name</p>
+                    <div className="ListItem weaponIcon"></div>
+                    <p className={`ListItem ${theme}-font listHeader`}>Damage</p>
+                    <p className={`ListItem ${theme}-font listHeader`}>Stress</p>
                     <p className={`ListItem ${theme}-font listHeader`}>Speed</p>
-                    <p className={`ListItem ${theme}-font listHeader`}>Action</p>
+                    <p className={`ListItem ${theme}-font listHeader action`}>Action</p>
                     <p className={`ListItem ${theme}-font listHeader`}>ToP</p>
                     <p className={`ListItem ${theme}-font listHeader`}>Kill</p>
                     <p className={`ListItem ${theme}-font listHeader`}>Edit</p>
@@ -194,7 +229,7 @@ export default class Acting extends Component {
                     speed={this.state.holdspeed}
                     id={this.state.holdid}
                     max_health={this.state.holdmax_health}
-                    fatigue={this.state.holdfatigue} />
+                    encumbrance={this.state.holdencumbrance} />
 
                 <ActWeapon
                     weapons={this.state.holdweapons}

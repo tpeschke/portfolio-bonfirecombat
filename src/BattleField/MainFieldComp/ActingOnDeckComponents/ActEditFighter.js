@@ -19,7 +19,7 @@ class ActEditFighter extends Component {
             color: '',
             name: '',
             max_health: 0,
-            fatigue: 0,
+            encumbrance: 0,
             id: 0
         }
 
@@ -31,7 +31,7 @@ class ActEditFighter extends Component {
             name: next.name,
             id: next.id,
             max_health: next.max_health ? next.max_health : 10,
-            fatigue: next.fatigue
+            encumbrance: next.encumbrance
         })
     }
 
@@ -45,7 +45,7 @@ class ActEditFighter extends Component {
             namefighter: this.state.name,
             colorcode: this.state.color,
             max_health: this.state.max_health,
-            fatigue: this.state.fatigue
+            encumbrance: this.state.encumbrance
         }
 
         this.props.EDITFIGHTER(editedFighter)
@@ -58,7 +58,7 @@ class ActEditFighter extends Component {
 
     render() {
 
-        const { color, name, max_health, fatigue } = this.state;
+        const { color, name, max_health, encumbrance } = this.state;
         const { editopen2, theme } = this.props
 
         return (
@@ -81,7 +81,7 @@ class ActEditFighter extends Component {
 
                                 <h1 className={`${theme}-secFont ${theme}-secColor`} id="newCombat">Edit Combatant</h1>
 
-                                <div className={`${theme}-border modalBorder`}></div>
+                                <div className={`${theme}-border modalBorder border-non-centered`}></div>
 
                                 <div className="modalEditInputs">
                                     <p>Name</p>
@@ -89,15 +89,15 @@ class ActEditFighter extends Component {
                                         value={this.state.name}
                                         onChange={e => checkStr(e.target.value) ? this.setState({ name: e.target.value }) : null} />
 
-                                    <p>Max Health</p>
+                                    <p>Max Vitality</p>
                                     <input placeholder={max_health} className={`modalEditInput ${theme}-inputSpecial`} id="modalEditInput"
                                         value={max_health}
                                         onChange={e => checkNum(+e.target.value) ? this.setState({ max_health: e.target.value }) : null} />
 
-                                    <p>Fatigue</p>
-                                    <input placeholder={fatigue} className={`modalEditInput ${theme}-inputSpecial`} id="modalEditInput"
-                                        value={fatigue}
-                                        onChange={e => checkNum(+e.target.value) ? this.setState({ fatigue: e.target.value }) : null} />
+                                    <p>Encumbrance</p>
+                                    <input placeholder={encumbrance} className={`modalEditInput ${theme}-inputSpecial`} id="modalEditInput"
+                                        value={encumbrance}
+                                        onChange={e => checkNum(+e.target.value) ? this.setState({ encumbrance: e.target.value }) : null} />
 
                                     <button className={`${theme}-secColor ${theme}-secFont`} id="modalAddButton"
                                         onClick={_ => this.handleSubmit()}

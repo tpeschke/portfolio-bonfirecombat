@@ -428,7 +428,7 @@ export default function reducer(state = initialState, action) {
             if (action.flipswitch) {
                 updatedFatigue = state.fighterList.map(val => {
                     if (val.id === action.id) {
-                        val.fatigue = +action.payload
+                        val.stress = +action.payload
                         return val
                     } else {
                         return val
@@ -437,7 +437,7 @@ export default function reducer(state = initialState, action) {
             } else {
                 updatedFatigue = sort(state.fighterList.map(val => {
                     if (val.id === action.id) {
-                        val.fatigue = +action.payload
+                        val.stress = +action.payload
                         return val
                     } else {
                         return val
@@ -482,7 +482,7 @@ export default function reducer(state = initialState, action) {
                     val.colorcode = action.payload.colorcode
                     val.speed = action.payload.speed
                     val.max_health = action.payload.max_health
-                    val.fatigue = action.payload.fatigue
+                    val.encumbrance = action.payload.encumbrance
                     return val
                 } else {
                     return val

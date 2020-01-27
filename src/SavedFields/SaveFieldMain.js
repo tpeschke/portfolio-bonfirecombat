@@ -24,7 +24,7 @@ class SaveFieldMain extends Component {
     }
 
     componentDidMount() {
-        axios.get(`/api/combats/${this.props.user.id}`).then(req => {
+        axios.get(`/api/combats`).then(req => {
             this.setState({ combats: req.data })
         })
         this.props.PAGELOCATION('/SavedFields')
