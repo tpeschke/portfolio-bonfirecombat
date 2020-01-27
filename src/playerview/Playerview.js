@@ -29,6 +29,7 @@ export default class PlayerView extends Component {
         }
 
         axios.get(`/api/player/fighter/${battle}`).then((req, res) => {
+            console.log(req.data[0])
             this.setState({ fighterList: req.data[0], statusList: req.data[1] })
         })
 
@@ -79,6 +80,19 @@ export default class PlayerView extends Component {
                     }
                 })
                 this.setState({ fighterList: topfighter })
+            }
+        })
+        this.socket.on(`${battle}-health`, data => {
+            if (data.id) {
+                var healthfighter = this.state.fighterList.map(val => {
+                    if (val.id === data.id) {
+                        val.health_percent = data.health_percent
+                        return val
+                    } else {
+                        return val
+                    }
+                })
+                this.setState({ fighterList: healthfighter })
             }
         })
         this.socket.on(`${battle}-resurrect`, data => {
@@ -164,6 +178,25 @@ export default class PlayerView extends Component {
             let color = { background: d.colorcode }
 
             if (d.dead === '0' && d.hidden === '0') {
+                let bloodDrop = <i class="fas fa-tint fresh"></i>
+
+                //Tired
+                if (d.health_percent > 1 && d.health_percent < 25) {
+                    bloodDrop = <i class="fas fa-tint tired"></i>
+                    //Hurt
+                } else if (d.health_percent >= 25 && d.health_percent < 5) {
+                    bloodDrop = <i class="fas fa-tint hurt"></i>
+                    //Bloodied
+                } else if (d.health_percent >= 5 && d.health_percent < 75) {
+                    bloodDrop = <i class="fas fa-tint bloodied"></i>
+                    //Wounded
+                } else if (d.health_percent >= 75 && d.health_percent < 100) {
+                    bloodDrop = <i class="fas fa-tint wounded"></i>
+                    //Bleeding Out
+                } else if (d.health_percent >= 100) {
+                    bloodDrop = <i class="fas fa-tint bleeding-out"></i>
+                }
+
                 return (<div
                     className={d.topcheck === '1' ? 'List playertop playerList' : 'List playerList'}
                     key={d.id}>
@@ -171,7 +204,10 @@ export default class PlayerView extends Component {
                         <div className="color" style={color}></div>
                         <p className="ListItem Name">{d.namefighter}</p>
                     </div>
-                    <p>{d.weapon}</p>
+                    <div className="playerItem">
+                        <p>{d.weapon}</p>
+                        {bloodDrop}
+                    </div>
                 </div>)
             }
         })

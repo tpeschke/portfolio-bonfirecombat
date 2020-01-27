@@ -1,3 +1,3 @@
-select combatants.id as id, namefighter, colorcode, topcheck, dead, hidden from combatants
+select combatants.id as id, namefighter, colorcode, topcheck, dead, hidden, (health * 100/max_health) as health_percent from combatants
 join combat on combatants.idcombat = combat.id
 where urlhash = $1;

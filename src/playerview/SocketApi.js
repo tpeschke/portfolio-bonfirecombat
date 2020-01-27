@@ -20,8 +20,8 @@ const socketFun = {
     playerResurrect(data){
         socket.emit('playerResurrect', data)
     },
-    playerUpdate(data) {
-        socket.emit('playerUpdate', data)
+    playerHealth(data) {
+        socket.emit('playerHealth', data)
     },
     playerAddStatus(data) {
         socket.emit('playerAddStatus', data)

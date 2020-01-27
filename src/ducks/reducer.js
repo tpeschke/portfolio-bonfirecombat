@@ -399,11 +399,11 @@ export default function reducer(state = initialState, action) {
 
         case INPUT_HEALTH:
             let updatedHealth = []
-
             if (action.flipswitch) {
                 updatedHealth = state.fighterList.map(val => {
                     if (val.id === action.id) {
                         val.health = +action.payload
+                        socketFun.playerHealth({id: action.id, hash: state.hash, health_percent: (+action.payload / val.max_health) * 100 })
                         return val
                     } else {
                         return val
@@ -413,6 +413,7 @@ export default function reducer(state = initialState, action) {
                 updatedHealth = sort(state.fighterList.map(val => {
                     if (val.id === action.id) {
                         val.health = +action.payload
+                        socketFun.playerHealth({id: action.id, hash: state.hash, health_percent: (+action.payload / val.max_health) * 100 })
                         return val
                     } else {
                         return val

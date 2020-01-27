@@ -160,8 +160,8 @@ io.on('connection', socket => {
         io.emit(`${data.hash}-resurrect`, data)
     })
 
-    socket.on('playerUpdate', data => {
-        io.emit(`${data}-update`, data)
+    socket.on('playerHealth', data => {
+        io.emit(`${data.hash}-health`, data)
     })
 
     socket.on('playerAddStatus', data => {

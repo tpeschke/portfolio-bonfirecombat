@@ -67,6 +67,35 @@ p {
     justify-content: space-between;
 }
 
+.fa-tint {
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+.fresh {
+    color: rgb(151, 23, 21, 0);
+}
+
+.tired {
+    color: rgb(151, 23, 21, .25);
+}
+
+.hurt {
+    color: rgb(151, 23, 21, .5);
+}
+
+.bloodied {
+    color: rgb(151, 23, 21, .75);
+}
+
+.wounded {
+    color: rgb(151, 23, 21);
+}
+
+.bleeding-out {
+    color: black;
+}
+
 /* =============================== */
 .playerStatus{
     width: 50%;
