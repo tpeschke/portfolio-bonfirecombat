@@ -105,11 +105,14 @@
   background: transparent;
 }
 
+.fatigue-shell {
+  width: 71px;
+}
+
 .fatigue {
   display: flex;
-  width: 71px;
   align-items: center;
-  justify-content: space-around;
+  margin: 0 25px;
 }
 
 .fatigue .inputFinder {

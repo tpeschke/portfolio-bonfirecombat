@@ -8,6 +8,9 @@ makeid = () => {
     return text;
 }
 
+const axios = require('axios')
+const config = require('./config.js')
+
 module.exports = {
     getAllCombats: (req, res) => {
         const db = req.app.get('db')
@@ -95,7 +98,9 @@ module.exports = {
         })
 
     },
-
+    getBeastbyHash: (req, res) => {
+        axios.get(config.beastiaryEndpoint + '/api/combat/' + req.params.hash).then(result => res.send(result.data))
+    },
     newField: (req, res) => {
         var urlhash = makeid()
 

@@ -69,59 +69,77 @@ export default class OnDeck extends Component {
 
                 if (d.acting === '0' && d.dead === '0') {
                     let color = { background: d.colorcode }
-                    let healthFatigueModifier = (<div className="fatigue">
-                        <input className={`${theme}-input inputFinder`}
-                            value={d.stress}
-                            onChange={e => this.props.fatigue(d.id, +e.target.value, true)}
-                            onBlur={e => this.props.fatigue(d.id, +e.target.value, false)} />
-                    </div>)
+                    let healthFatigueModifier = (
+                        <div className="fatigue-shell">
+                            <div className="fatigue">
+                                <input className={`${theme}-input inputFinder`}
+                                    value={d.stress}
+                                    onChange={e => this.props.fatigue(d.id, +e.target.value, true)}
+                                    onBlur={e => this.props.fatigue(d.id, +e.target.value, false)} />
+                            </div>
+                        </div>)
                     let healthPercent = d.health / d.max_health
 
                     //Tired
                     if (healthPercent > .01 && healthPercent < .25) {
-                        healthFatigueModifier = (<div className="fatigue">
-                        <input className={`${theme}-input inputFinder`}
-                            value={d.stress}
-                            onChange={e => this.props.fatigue(d.id, +e.target.value, true)}
-                            onBlur={e => this.props.fatigue(d.id, +e.target.value, false)} />
-                        <p>+{d.encumbrance}</p>
-                    </div>)
+                        healthFatigueModifier = (
+                            <div className="fatigue-shell">
+                                <div className="fatigue">
+                                    <input className={`${theme}-input inputFinder`}
+                                        value={d.stress}
+                                        onChange={e => this.props.fatigue(d.id, +e.target.value, true)}
+                                        onBlur={e => this.props.fatigue(d.id, +e.target.value, false)} />
+                                    <p>+{d.encumbrance}</p>
+                                </div>
+                            </div>)
                         //Hurt
                     } else if (healthPercent >= .25 && healthPercent < .5) {
-                        healthFatigueModifier = (<div className="fatigue">
-                        <input className={`${theme}-input inputFinder`}
-                            value={d.stress}
-                            onChange={e => this.props.fatigue(d.id, +e.target.value, true)}
-                            onBlur={e => this.props.fatigue(d.id, +e.target.value, false)} />
-                        <p>+{d.encumbrance * 2}</p>
-                    </div>)
+                        healthFatigueModifier = (
+                            <div className="fatigue-shell">
+                                <div className="fatigue">
+                                    <input className={`${theme}-input inputFinder`}
+                                        value={d.stress}
+                                        onChange={e => this.props.fatigue(d.id, +e.target.value, true)}
+                                        onBlur={e => this.props.fatigue(d.id, +e.target.value, false)} />
+                                    <p>+{d.encumbrance * 2}</p>
+                                </div>
+                            </div>)
                         //Bloodied
                     } else if (healthPercent >= .5 && healthPercent < .75) {
-                        healthFatigueModifier = (<div className="fatigue">
-                        <input className={`${theme}-input inputFinder`}
-                            value={d.stress}
-                            onChange={e => this.props.fatigue(d.id, +e.target.value, true)}
-                            onBlur={e => this.props.fatigue(d.id, +e.target.value, false)} />
-                        <p>+{d.encumbrance * 3}</p>
-                    </div>)
+                        healthFatigueModifier = (
+                            <div className="fatigue-shell">
+                                <div className="fatigue">
+                                    <input className={`${theme}-input inputFinder`}
+                                        value={d.stress}
+                                        onChange={e => this.props.fatigue(d.id, +e.target.value, true)}
+                                        onBlur={e => this.props.fatigue(d.id, +e.target.value, false)} />
+                                    <p>+{d.encumbrance * 3}</p>
+                                </div>
+                            </div>)
                         //Wounded
                     } else if (healthPercent >= .75 && healthPercent < 1) {
-                        healthFatigueModifier = (<div className="fatigue">
-                        <input className={`${theme}-input inputFinder`}
-                            value={d.stress}
-                            onChange={e => this.props.fatigue(d.id, +e.target.value, true)}
-                            onBlur={e => this.props.fatigue(d.id, +e.target.value, false)} />
-                        <p>+{d.encumbrance * 4}</p>
-                    </div>)
+                        healthFatigueModifier = (
+                            <div className="fatigue-shell">
+                                <div className="fatigue">
+                                    <input className={`${theme}-input inputFinder`}
+                                        value={d.stress}
+                                        onChange={e => this.props.fatigue(d.id, +e.target.value, true)}
+                                        onBlur={e => this.props.fatigue(d.id, +e.target.value, false)} />
+                                    <p>+{d.encumbrance * 4}</p>
+                                </div>
+                            </div>)
                         //Bleeding Out
                     } else if (healthPercent >= 1) {
-                        healthFatigueModifier = (<div className="fatigue">
-                        <input className={`${theme}-input inputFinder`}
-                            value={d.stress}
-                            onChange={e => this.props.fatigue(d.id, +e.target.value, true)}
-                            onBlur={e => this.props.fatigue(d.id, +e.target.value, false)} />
-                        <p>Dead</p>
-                    </div>)
+                        healthFatigueModifier = (
+                            <div className="fatigue-shell">
+                                <div className="fatigue">
+                                    <input className={`${theme}-input inputFinder`}
+                                        value={d.stress}
+                                        onChange={e => this.props.fatigue(d.id, +e.target.value, true)}
+                                        onBlur={e => this.props.fatigue(d.id, +e.target.value, false)} />
+                                    <i class="fas fa-tint wounded"></i>
+                                </div>
+                            </div>)
                     }
 
                     socketFun.playerUnTop({ id: d.id, hash: this.props.hash })

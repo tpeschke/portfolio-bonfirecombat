@@ -7,6 +7,7 @@ const express = require('express')
     , passport = require('passport')
     , Auth0Strategy = require('passport-auth0')
     , socket = require('socket.io')
+    , config = require('./config')
 
 const sqlCtrl = require('./sqlController')
 
@@ -50,17 +51,7 @@ passport.use(new Auth0Strategy({
 ////TESTING TOPLEVEL MIDDLEWARE////
 ///COMMENET OUT WHEN AUTH0 READY///
 ///////////////////////////////////
-app.use((req, res, next) => {
-    if (!req.user) {
-        req.user = {
-            id: 1,
-            email: "mr.peschke@gmail.com",
-            patreon: 10,
-            theme: 'h'
-        }
-    }
-    next();
-})
+app.use(config.fakeAuth)
 
 app.get('/auth', passport.authenticate('auth0'));
 app.get('/auth/callback', passport.authenticate('auth0', {
@@ -96,7 +87,8 @@ app.get('/api/combat/:id', sqlCtrl.loadCombatants);
 app.get('/api/status/:id', sqlCtrl.getAllStatuses);
 app.get('/api/hash/:id', sqlCtrl.getHash);
 app.get('/api/player/battle/:hash', sqlCtrl.getBattleByHash);
-app.get('/api/player/fighter/:hash', sqlCtrl.getCombatantsbyHash)
+app.get('/api/player/fighter/:hash', sqlCtrl.getCombatantsbyHash);
+app.get('/api/beast/:hash', sqlCtrl.getBeastbyHash);
 
 app.post('/api/newfield', sqlCtrl.newField);
 app.post('/api/settings', sqlCtrl.setTooltip);
