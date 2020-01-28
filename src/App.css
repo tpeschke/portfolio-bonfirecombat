@@ -308,6 +308,7 @@ button:hover {
     display: flex;
     flex-direction: column;
     align-items: baseline;
+    margin-bottom: 15px;
 }
 
 .modalEditInputs {

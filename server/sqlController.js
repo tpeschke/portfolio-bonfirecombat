@@ -24,7 +24,7 @@ module.exports = {
     loadCombatants: (req, res) => {
         const db = req.app.get('db')
         var { id } = req.params
-
+        
         db.get.combatants(id).then(result => {
             result.forEach(v => {
                 if (isNaN(+v.actioncount)) {

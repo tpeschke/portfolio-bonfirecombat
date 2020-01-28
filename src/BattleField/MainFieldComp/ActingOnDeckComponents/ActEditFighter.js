@@ -84,25 +84,31 @@ class ActEditFighter extends Component {
                                 <div className={`${theme}-border modalBorder border-non-centered`}></div>
 
                                 <div className="modalEditInputs">
-                                    <p>Name</p>
-                                    <input placeholder={name} className={`modalEditInput ${theme}-inputSpecial`} id="modalEditInput"
-                                        value={this.state.name}
-                                        onChange={e => checkStr(e.target.value) ? this.setState({ name: e.target.value }) : null} />
+                                    <div className="new-fighter-input-shell">
+                                        <p className="new-fighter-name">Name</p>
+                                        <input className={`modalEditInput ${theme}-inputSpecial`} id="modalEditInput"
+                                            value={this.state.name}
+                                            onChange={e => checkStr(e.target.value) ? this.setState({ name: e.target.value }) : null} />
+                                    </div>
 
-                                    <p>Max Vitality</p>
-                                    <input placeholder={max_health} className={`modalEditInput ${theme}-inputSpecial`} id="modalEditInput"
-                                        value={max_health}
-                                        onChange={e => checkNum(+e.target.value) ? this.setState({ max_health: e.target.value }) : null} />
+                                    <div className="new-fighter-input-shell">
+                                        <p>Max Vitality</p>
+                                        <input className={`modalEditInput ${theme}-inputSpecial`} id="modalEditInput"
+                                            value={this.state.max_health}
+                                            onChange={e => checkNum(e.target.value) ? this.setState({ max_health: e.target.value }) : null} />
+                                    </div>
 
-                                    <p>Encumbrance</p>
-                                    <input placeholder={encumbrance} className={`modalEditInput ${theme}-inputSpecial`} id="modalEditInput"
-                                        value={encumbrance}
-                                        onChange={e => checkNum(+e.target.value) ? this.setState({ encumbrance: e.target.value }) : null} />
-
-                                    <button className={`${theme}-secColor ${theme}-secFont`} id="modalAddButton"
-                                        onClick={_ => this.handleSubmit()}
-                                    >SUBMIT</button>
+                                    <div className="new-fighter-input-shell">
+                                        <p>Encumbrance</p>
+                                        <input className={`modalEditInput ${theme}-inputSpecial`} id="modalEditInput"
+                                            value={this.state.encumbrance}
+                                            onChange={e => checkNum(e.target.value) ? this.setState({ encumbrance: e.target.value }) : null} />
+                                    </div>
                                 </div>
+
+                                <button className={`${theme}-secColor ${theme}-secFont`} id="modalAddButton"
+                                    onClick={_ => this.handleSubmit()}
+                                >SUBMIT</button>
                             </div>
                         </div>
                     </div>

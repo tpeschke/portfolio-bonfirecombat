@@ -115,6 +115,17 @@
   margin: 0 25px;
 }
 
+.new-fighter-input-shell {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 95%;
+}
+
+.new-fighter-name {
+  margin-right: 10px;
+}
+
 .fatigue .inputFinder {
   max-width: 20px;
   text-align: center;
@@ -386,6 +397,11 @@ input.ListItem:hover {
 .modalDiceInput {
   width: 25px;
   max-width: 50px;
+}
+
+.submit-button {
+  width: 100%;
+  margin: 10px 0;
 }
 
 .fighter-name-hidden {
