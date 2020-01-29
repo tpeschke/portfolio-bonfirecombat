@@ -217,12 +217,13 @@ export function SELECTWEAPON(weapon, id) {
     }
 }
 
-export function ADDWEAPON(id, weapon, speed, wid) {
+export function ADDWEAPON(id, weapon, speed, wid, encumb) {
     return {
         type: ADD_WEAPON,
         payload: id,
         weapon,
         speed,
+        encumb,
         wid
     }
 }
@@ -590,11 +591,11 @@ export default function reducer(state = initialState, action) {
                         val.weapons.forEach((v, i) => {
                             if (v.id == action.wid) {
                                 let selected = v.selected
-                                val.weapons.splice(i, 1, { weapon: action.weapon, speed: action.speed, selected: selected, id: action.wid })
+                                val.weapons.splice(i, 1, { weapon: action.weapon, speed: action.speed, selected: selected, id: action.wid, encumb: action.encumb })
                             }
                         })
                     } else {
-                        val.weapons.push({ weapon: action.weapon, speed: action.speed, selected: '0', id: makeid() })
+                        val.weapons.push({ weapon: action.weapon, speed: action.speed, selected: '0', id: makeid(), encumb: action.encumb })
                     }
                 }
                 return val

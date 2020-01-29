@@ -13,6 +13,7 @@ class DeckWeapon extends Component {
         this.state = {
             holdWeapon: '',
             holdSpeed: 0,
+            holdEncumb: 10,
             holdId: null,
             edit: false,
         }
@@ -27,11 +28,14 @@ class DeckWeapon extends Component {
 
     submitWeapon = () => {
         let { id, ADDWEAPON } = this.props
-        let { holdWeapon, holdSpeed, holdId } = this.state
-        ADDWEAPON(id, holdWeapon, holdSpeed, holdId)
-        this.forceUpdate()
-        if (holdId) {
-            this.setState({ edit: false, holdId: null })
+        let { holdWeapon, holdSpeed, holdId, holdEncumb } = this.state
+
+        if (holdWeapon !== '' && holdSpeed !== 0) {
+            ADDWEAPON(id, holdWeapon, holdSpeed, holdId, holdEncumb)
+            this.forceUpdate()
+            if (holdId) {
+                this.setState({ edit: false, holdId: null, holdWeapon: '', holdSpeed: 0, holdEncumb: 10, })
+            }
         }
     }
 
@@ -42,12 +46,14 @@ class DeckWeapon extends Component {
             axios.delete(`/api/weapon/${holdId}`)
         }
         DELETEWEAPON(id, holdId)
-        this.setState({ edit: false, holdId: null })
+        this.setState({ edit: false, holdId: null, holdWeapon: '', holdSpeed: 0, holdEncumb: 10, })
     }
 
     editWeapon = (w) => {
-        let { id, weapon, speed } = w
-        this.setState({ edit: true, holdId: id, holdWeapon: weapon, holdSpeed: speed })
+        let { id, weapon, speed, encumb, selected } = w
+        if (selected !== '1') {
+            this.setState({ edit: !this.state.edit, holdId: id, holdWeapon: weapon, holdSpeed: speed, holdEncumb: encumb })
+        }
     }
 
     render() {
@@ -59,8 +65,9 @@ class DeckWeapon extends Component {
                     <p className="wpItemHeader"
                         onClick={_ => this.select(val.id, val.weapon)}>{val.weapon}</p>
                     <p className="wpSpeed">{val.speed}</p>
+                    <p className="wpSpeed">{val.encumb}</p>
                     <button className="wpSpeed"
-                        onClick={_ => this.editWeapon(val)}>---</button>
+                        onClick={_ => this.editWeapon(val)}><i class="fas fa-edit"></i></button>
                 </div>
             )
         })
@@ -77,12 +84,16 @@ class DeckWeapon extends Component {
                             className="wpSpeed" id="wpInputItem"
                             value={this.state.holdSpeed}
                             onChange={e => checkNum(e.target.value) ? this.setState({ holdSpeed: e.target.value }) : null} />
+                        <input type="text"
+                            className="wpSpeed" id="wpInputItem"
+                            value={this.state.holdEncumb}
+                            onChange={e => checkNum(e.target.value) ? this.setState({ holdEncumb: e.target.value }) : null} />
                         <button
                             className="wpSpeed"
-                            onClick={this.submitWeapon}>+</button>
+                            onClick={this.submitWeapon}><i className="fas fa-check"></i></button>
                         <button
                             className="wpSpeed"
-                            onClick={this.deleteWeapon}>-</button>
+                            onClick={this.deleteWeapon}><i className="fas fa-trash-alt"></i></button>
                     </div>
                 )
             } else {
@@ -91,7 +102,8 @@ class DeckWeapon extends Component {
                         <div className='wpTableHeader'>
                             <p className="wpItemHeader">Weapon</p>
                             <p className="wpSpeed">Speed</p>
-                            <p className="wpSpeed wpEdit">Edit</p>
+                            <p className="wpSpeed">Encumb</p>
+                            <p className="wpSpeed">Edit</p>
                         </div>
                         <div className="wpTableInner">
                             {display}
@@ -105,9 +117,13 @@ class DeckWeapon extends Component {
                                     className="wpSpeed" id="wpInputItem"
                                     value={this.state.holdSpeed}
                                     onChange={e => checkNum(e.target.value) ? this.setState({ holdSpeed: e.target.value }) : null} />
+                                <input type="text"
+                                    className="wpSpeed" id="wpInputItem"
+                                    value={this.state.holdEncumb}
+                                    onChange={e => checkNum(e.target.value) ? this.setState({ holdEncumb: e.target.value }) : null} />
                                 <button
                                     className="wpSpeed"
-                                    onClick={this.submitWeapon}>+</button>
+                                    onClick={this.submitWeapon}><i class="fas fa-plus-square"></i></button>
                             </div>
                         </div>
 

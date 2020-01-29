@@ -140,7 +140,7 @@ export default class Acting extends Component {
                                         value={d.stress}
                                         onChange={e => this.props.fatigue(d.id, +e.target.value, true)}
                                         onBlur={e => this.props.fatigue(d.id, +e.target.value, false)} />
-                                    <i class="fas fa-tint wounded"></i>
+                                    <i className="fas fa-tint wounded"></i>
                                 </div>
                             </div>)
                     }

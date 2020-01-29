@@ -111,6 +111,7 @@ class AddNewFighter extends Component {
         let encumbrance = this.state.encumbrance;
         let weaponsArray = this.state.weapons.map(val => {
             if (val.id == wid) {
+                console.log(val.encumb)
                 encumbrance = val.encumb
                 val.selected = '1'
             } else {

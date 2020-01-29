@@ -178,23 +178,23 @@ export default class PlayerView extends Component {
             let color = { background: d.colorcode }
 
             if (d.dead === '0' && d.hidden === '0') {
-                let bloodDrop = <i class="fas fa-tint fresh"></i>
+                let bloodDrop = <i className="fas fa-tint fresh"></i>
 
                 //Tired
                 if (d.health_percent > 1 && d.health_percent < 25) {
-                    bloodDrop = <i class="fas fa-tint tired"></i>
+                    bloodDrop = <i className="fas fa-tint tired"></i>
                     //Hurt
                 } else if (d.health_percent >= 25 && d.health_percent < 5) {
-                    bloodDrop = <i class="fas fa-tint hurt"></i>
+                    bloodDrop = <i className="fas fa-tint hurt"></i>
                     //Bloodied
                 } else if (d.health_percent >= 5 && d.health_percent < 75) {
-                    bloodDrop = <i class="fas fa-tint bloodied"></i>
+                    bloodDrop = <i className="fas fa-tint bloodied"></i>
                     //Wounded
                 } else if (d.health_percent >= 75 && d.health_percent < 100) {
-                    bloodDrop = <i class="fas fa-tint wounded"></i>
+                    bloodDrop = <i className="fas fa-tint wounded"></i>
                     //Bleeding Out
                 } else if (d.health_percent >= 100) {
-                    bloodDrop = <i class="fas fa-tint bleeding-out"></i>
+                    bloodDrop = <i className="fas fa-tint bleeding-out"></i>
                 }
 
                 return (<div
