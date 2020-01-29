@@ -46,7 +46,7 @@ export default class Graveyard extends Component {
 
                         <button className="ListItemGrave gravelist"
                             onClick={_ => this.handleRemove(d.id)}
-                        >X</button>
+                        ><i className="fas fa-trash-alt"></i></button>
 
                     </div>
                 }

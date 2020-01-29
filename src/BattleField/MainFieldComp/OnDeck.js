@@ -204,7 +204,7 @@ export default class OnDeck extends Component {
 
                         <button className={`ListItem ${theme}-font`}
                             onClick={_ => this.handleDeath(d.id)}
-                        >X</button>
+                        ><i class="fas fa-skull-crossbones"></i></button>
 
                         <button className={`ListItem ${theme}-font`}
                             onClick={_ => this.modifyFighter(d)}>
