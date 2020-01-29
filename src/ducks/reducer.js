@@ -591,7 +591,7 @@ export default function reducer(state = initialState, action) {
                         val.weapons.forEach((v, i) => {
                             if (v.id == action.wid) {
                                 let selected = v.selected
-                                val.weapons.splice(i, 1, { weapon: action.weapon, speed: action.speed, selected: selected, id: action.wid, encumb: action.encumb })
+                                val.weapons.splice(i, 1, { ...v, weapon: action.weapon, speed: action.speed, selected: selected, id: action.wid, encumb: action.encumb })
                             }
                         })
                     } else {

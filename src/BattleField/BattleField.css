@@ -103,6 +103,7 @@
   justify-content: space-evenly;
   height: 30px;
   background: transparent;
+  position: relative;
 }
 
 .fatigue-shell {
@@ -443,4 +444,105 @@ input.ListItem:hover {
   border-radius: 15px;
   padding: 10px;
   margin: -25px;
+}
+
+.combat-square-shell {
+  position: absolute;
+  height: 143px;
+  width: 150px;
+  background: whitesmoke;
+  top: 25px;
+  left: 70px;
+  z-index: 1;
+  display: none;
+}
+
+.List:hover .combat-square-shell {
+  display: inherit;
+}
+
+.spd {
+  position: absolute;
+  z-index: 1;
+  top: 20px;
+  left: 13px;
+  font-size: 17px;
+}
+
+.atk {
+  position: absolute;
+  z-index: 1;
+  top: 20px;
+  left: 70px;
+  font-size: 17px;
+}
+
+.init {
+  position: absolute;
+  z-index: 1;
+  top: 20px;
+  right: 13px;
+  font-size: 17px;
+}
+
+.def {
+  position: absolute;
+  z-index: 1;
+  left: 30px;
+  top: 65px;
+  font-size: 17px;
+}
+
+.encumb {
+  position: absolute;
+  z-index: 1;    
+  left: 63px;
+  top: 65px;
+  font-size: 15px;
+  width: 30px;
+  text-align: center;
+}
+
+.dr {
+  position: absolute;
+  z-index: 1;
+  right: 13px;
+  top: 48px;
+  width: 44px;
+  height: 45px;
+  text-align: center;
+  margin: 0 !important;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-evenly;
+}
+
+.shield_dr {
+  border-top: 2px solid grey;
+}
+
+.measure {
+  position: absolute;
+  z-index: 1;
+  font-size: 17px;
+  bottom: 18px;
+  left: 13px;
+}
+
+.damage {
+  position: absolute;
+  z-index: 1;font-size: 12px;
+  text-align: center;
+  width: 60px;
+  left: 45px;
+  top: 97px;
+}
+
+.parry {
+  position: absolute;
+  z-index: 1;
+  font-size: 17px;
+  bottom: 18px;
+  right: 13px;
 }

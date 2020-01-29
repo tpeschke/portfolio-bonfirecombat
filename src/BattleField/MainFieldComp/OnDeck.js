@@ -6,6 +6,7 @@ import DeckEditFighter from './ActingOnDeckComponents/DeckEditFighter'
 import DeckToP from './ActingOnDeckComponents/DeckThresholdOfPain'
 import DeckWeapon from './ActingOnDeckComponents/DeckWeapon'
 import HiddenEye from './ActingOnDeckComponents/HiddenEye'
+import WeaponSquare from './ActingOnDeckComponents/weaponSquare'
 import { checkNum } from '../../components/validation'
 
 export default class OnDeck extends Component {
@@ -66,7 +67,6 @@ export default class OnDeck extends Component {
         if (this.state.list) {
 
             var deckList = this.state.list.map((d, i) => {
-
                 if (d.acting === '0' && d.dead === '0') {
                     let color = { background: d.colorcode }
                     let healthFatigueModifier = (
@@ -144,11 +144,11 @@ export default class OnDeck extends Component {
 
                     socketFun.playerUnTop({ id: d.id, hash: this.props.hash })
 
-                    let speed = +d.weapons.filter(val => val.selected == 1)[0].speed
+                    let selected = d.weapons.filter(val => val.selected === '1')[0]
 
                     let action = (<div className="actionLocked">
                         <div className={`ListItem ${theme}-font`}>
-                            {speed}
+                            {selected.speed}
                         </div>
 
                         <button className={`ListItem ${theme}-font actionDice`}
@@ -159,8 +159,8 @@ export default class OnDeck extends Component {
                     if (!isNaN(d.actioncount)) {
                         action = (<div className="actionLocked">
                             <button className={`ListItem ${theme}-font`}
-                                onClick={_ => this.props.advance(d.id, speed)}
-                            >{speed}</button>
+                                onClick={_ => this.props.advance(d.id, selected.speed)}
+                            >{selected.speed}</button>
 
                             <input className={`ListItem ${theme}-input inputFinder`}
                                 value={d.actioncount}
@@ -183,6 +183,19 @@ export default class OnDeck extends Component {
                         <div className="ListItem Name">
                             <p className={`${theme}-font`}>{d.namefighter}</p>
                         </div>
+
+                        <WeaponSquare
+                            atk={selected.atk}
+                            def={selected.def}
+                            encumb={selected.encumb}
+                            damage={selected.damage}
+                            parry={selected.parry}
+                            measure={selected.measure}
+                            shield_dr={selected.shield_dr}
+                            dr={selected.dr}
+                            init={selected.init}
+                            spd={selected.speed}
+                        ></WeaponSquare>
 
                         <div className={`ListItem ${theme}-font weaponIcon`}
                             onClick={_ => this.chooseWeapon(d.id, d.weapons)}>

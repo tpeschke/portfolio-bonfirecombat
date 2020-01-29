@@ -77,10 +77,10 @@ class AddNewFighter extends Component {
                 let encumbrance = 10;
                 let weapons = data.combat.map(val => {
                     if (val.weapon !== 'Base') {
-                        return { id: makeid(), weapon: val.weapon, speed: val.spd, selected: '0', encumb: val.encumb }
+                        return { id: makeid(), weapon: val.weapon, speed: val.spd, selected: '0', encumb: val.encumb, ...val }
                     } else {
                         encumbrance = val.encumb;
-                        return { id: 1, weapon: val.weapon, speed: val.spd, selected: '1', encumb: +encumbrance }
+                        return { id: makeid(), weapon: val.weapon, speed: val.spd, selected: '1', encumb: +encumbrance, ...val }
                     }
                 })
                 this.setState({ name: data.name, max_health, weapons, encumbrance })
@@ -111,7 +111,6 @@ class AddNewFighter extends Component {
         let encumbrance = this.state.encumbrance;
         let weaponsArray = this.state.weapons.map(val => {
             if (val.id == wid) {
-                console.log(val.encumb)
                 encumbrance = val.encumb
                 val.selected = '1'
             } else {

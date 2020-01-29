@@ -6,6 +6,7 @@ import ActEditFighter from './ActingOnDeckComponents/ActEditFighter'
 import ActToP from './ActingOnDeckComponents/ActThresholdOfPain'
 import ActWeapon from './ActingOnDeckComponents/ActWeapon'
 import HiddenEye from './ActingOnDeckComponents/HiddenEye'
+import WeaponSquare from './ActingOnDeckComponents/weaponSquare'
 import { checkNum } from '../../components/validation'
 
 export default class Acting extends Component {
@@ -70,7 +71,7 @@ export default class Acting extends Component {
 
                     let color = { background: d.colorcode }
 
-                    let speed = +d.weapons.filter(val => val.selected == 1)[0].speed
+                    let selected = d.weapons.filter(val => val.selected === '1')[0]
 
                     let healthFatigueModifier = (
                         <div className="fatigue-shell">
@@ -147,7 +148,7 @@ export default class Acting extends Component {
 
                     let action = (<div className="actionLocked">
                         <div className={`ListItem ${theme}-font`}>
-                            {speed}
+                            {selected.speed}
                         </div>
 
                         <button className={`ListItem ${theme}-font actionDice`}
@@ -158,8 +159,8 @@ export default class Acting extends Component {
                     if (!isNaN(d.actioncount)) {
                         action = (<div className="actionLocked">
                             <button className={`ListItem ${theme}-font`}
-                                onClick={_ => this.props.advance(d.id, speed)}
-                            >{speed}</button>
+                                onClick={_ => this.props.advance(d.id, selected.speed)}
+                            >{selected.speed}</button>
 
                             <input className={`ListItem ${theme}-input inputFinder`}
                                 value={d.actioncount}
@@ -183,6 +184,19 @@ export default class Acting extends Component {
                         <div className="ListItem Name">
                             <p className={`${theme}-font`}>{d.namefighter}</p>
                         </div>
+
+                        <WeaponSquare
+                            atk={selected.atk}
+                            def={selected.def}
+                            encumb={selected.encumb}
+                            damage={selected.damage}
+                            parry={selected.parry}
+                            measure={selected.measure}
+                            shield_dr={selected.shield_dr}
+                            dr={selected.dr}
+                            init={selected.init}
+                            spd={selected.speed}
+                        ></WeaponSquare>
 
                         <div className={`ListItem ${theme}-font weaponIcon`}
                             onClick={_ => this.chooseWeapon(d.id, d.weapons)}>

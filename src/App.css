@@ -27,6 +27,20 @@ body {
     background-size: contain;
 }
 
+
+.combat-image {
+    background-image: url('./img/square.png');
+    width: 150px;
+    background-size: contain;
+    z-index: 2;
+    position: absolute;
+    height: 143px;
+    border-radius: 0px; 
+    margin-left: 0px;
+    margin-top: 0px;
+  }
+  
+
 .headpic {
     height: 145px;
     width: 443px;
