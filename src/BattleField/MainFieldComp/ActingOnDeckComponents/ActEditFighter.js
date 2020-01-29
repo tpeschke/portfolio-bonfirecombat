@@ -97,13 +97,6 @@ class ActEditFighter extends Component {
                                             value={this.state.max_health}
                                             onChange={e => checkNum(e.target.value) ? this.setState({ max_health: e.target.value }) : null} />
                                     </div>
-
-                                    <div className="new-fighter-input-shell">
-                                        <p>Encumbrance</p>
-                                        <input className={`modalEditInput ${theme}-inputSpecial`} id="modalEditInput"
-                                            value={this.state.encumbrance}
-                                            onChange={e => checkNum(e.target.value) ? this.setState({ encumbrance: e.target.value }) : null} />
-                                    </div>
                                 </div>
 
                                 <button className={`${theme}-secColor ${theme}-secFont`} id="modalAddButton"

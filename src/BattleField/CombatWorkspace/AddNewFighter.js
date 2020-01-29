@@ -30,7 +30,6 @@ class AddNewFighter extends Component {
             hidden: '0',
             max_health: 10,
             stress: 0,
-            encumbrance: 10,
             times: 1,
             weapon: false,
             warningOpen: false,
@@ -73,7 +72,7 @@ class AddNewFighter extends Component {
 
     addByHash = () => {
         if (this.state.hash) {
-            axios.get('/api/beast/' + this.state.hash).then(({ data }) => {
+            axios.get('/api/beast/' + this.state.hash.trim()).then(({ data }) => {
                 let max_health = rollDice(data.vitality);
                 let encumbrance = 10;
                 let weapons = data.combat.map(val => {
@@ -81,8 +80,7 @@ class AddNewFighter extends Component {
                         return { id: makeid(), weapon: val.weapon, speed: val.spd, selected: '0', encumb: val.encumb }
                     } else {
                         encumbrance = val.encumb;
-                        console.log(val.spd)
-                        return { id: 1, weapon: 'Unarmed', speed: val.spd, selected: '1', encumb: val.encumb }
+                        return { id: 1, weapon: val.weapon, speed: val.spd, selected: '1', encumb: +encumbrance }
                     }
                 })
                 this.setState({ name: data.name, max_health, weapons, encumbrance })
@@ -135,30 +133,31 @@ class AddNewFighter extends Component {
 
     // ============================ \\
 
-    handleSubmit = (c, n, w, a, d, id, h, mh, s, e) => {
-        if (n !== '') {
+    handleSubmit = (combatid) => {
+        const { color, name, weapons, action, dice, hidden, max_health, stress, encumbrance } = this.state;
+        if (name !== '') {
             var newId = makeid()
 
             var newFighter = {
                 id: newId,
-                colorcode: c,
-                weapons: _.cloneDeep(w),
-                actioncount: d ? [d, a] : a,
+                colorcode: color,
+                weapons: _.cloneDeep(weapons),
+                actioncount: dice ? [dice, action] : action,
                 topcheck: '0',
                 acting: '0',
                 dead: '0',
-                hidden: h,
+                hidden,
                 health: 0,
-                max_health: mh,
-                stress: s,
-                encumbrance: e,
-                idcombat: id
+                max_health,
+                stress,
+                encumbrance,
+                idcombat: combatid
             }
 
             for (let i = 0; i < this.state.times; i++) {
-                let namefighter = this.state.times !== 1 ? `${i+1} ${n}` : n;
+                let namefighter = this.state.times !== 1 ? `${i+1} ${name}` : name;
                 this.props.ADDNEWCOMBATANT({ namefighter, ...newFighter })
-                socketFun.playerAdd({ hash: this.props.hash, fighter: { colorcode: c, dead: '0', hidden: '1', id: newId, namefighter: namefighter, topcheck: '0', weapon: w.filter(v => v.selected == '1')[0].weapon } })
+                socketFun.playerAdd({ hash: this.props.hash, fighter: { colorcode: color, dead: '0', hidden: '1', id: newId, namefighter: namefighter, topcheck: '0', weapon: weapons.filter(v => v.selected == '1')[0].weapon } })
             }
             this.onCloseModal()
 
@@ -259,13 +258,6 @@ class AddNewFighter extends Component {
                                 </div>
 
                                 <div className="new-fighter-input-shell">
-                                    <p>Encumbrance</p>
-                                    <input className={`modalEditInput ${theme}-inputSpecial`} id="modalEditInput"
-                                        value={this.state.encumbrance}
-                                        onChange={e => checkNum(e.target.value) ? this.setState({ encumbrance: e.target.value }) : null} />
-                                </div>
-
-                                <div className="new-fighter-input-shell">
                                     <p>Number to Add</p>
                                     <input className={`modalEditInput ${theme}-inputSpecial`} id="modalEditInput"
                                         placeholder="Number" value={this.state.times}
@@ -273,7 +265,7 @@ class AddNewFighter extends Component {
                                 </div>
 
                                 <button className={`${theme}-secColor ${theme}-secFont submit-button`} id="modalAddButton"
-                                    onClick={_ => this.handleSubmit(color, name, weapons, action, dice, combatId, hidden, max_health, stress, encumbrance)}>SUBMIT</button>
+                                    onClick={_ => this.handleSubmit(combatId)}>SUBMIT</button>
                             </div>
                         </div>
                     </div>

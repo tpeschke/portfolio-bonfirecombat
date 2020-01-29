@@ -35,12 +35,14 @@ module.exports = {
             })
             let tempArr = []
             result.forEach(val => tempArr.push(db.get.weapon(val.id).then(weapons => {
-                if (weapons.length === 0) {
-                    return { ...val, weapons: [{ id: 1, weapon: "unarmed", selected: '1', speed: 10 }] }
-                } else if (weapons.filter(w => w.selected == 1).length === 0) {
-                    return { ...val, weapons: [...weapons, { id: 1, weapon: "unarmed", selected: '1', speed: 10 }] }
+                selected = weapons.filter(v => v.selected === '1')
+                if (selected.length === 0) {
+                    weapons.push({weapon: 'Unarmed', speed: 10, encumb: 10, selected: '1'})
+                    val.encumbrance = 10;
+                } else {
+                    val.encumbrance = selected[0].encumb
                 }
-                return { ...val, weapons: [...weapons, { id: 1, weapon: "unarmed", selected: '0', speed: 10 }] }
+                return { ...val, weapons }
             })))
 
             Promise.all(tempArr).then(final => {
@@ -147,9 +149,9 @@ module.exports = {
 
         fighterList.forEach(val => {
             if (!isNaN(val.id)) {
-                db.update.fighters(val.namefighter, val.colorcode, !isNaN(val.actioncount) ? `${val.actioncount}` : `${val.actioncount[0]},${val.actioncount[1]}`, val.topcheck, val.acting, val.dead, val.hidden, val.max_health, val.health, val.stress, val.encumbrance, val.id).then(r => {
+                db.update.fighters(val.namefighter, val.colorcode, !isNaN(val.actioncount) ? `${val.actioncount}` : `${val.actioncount[0]},${val.actioncount[1]}`, val.topcheck, val.acting, val.dead, val.hidden, val.max_health, val.health, val.stress, val.id).then(r => {
                     val.weapons.forEach(w => {
-                        if (w.id !== 1 && !isNaN(w.id)) {
+                        if (!isNaN(w.id)) {
                             tempArr.push(db.update.weapons(val.id, w.weapon, w.selected, w.speed, w.id, w.encumb).then().catch(e => console.log("----------113")))
                         } else if (isNaN(w.id)) {
                             tempArr.push(db.add.weapons(val.id, w.weapon, w.selected, +w.speed, +w.encumb).then().catch(e => console.log("----------115")))
@@ -157,11 +159,9 @@ module.exports = {
                     })
                 }).catch(e => console.log(e))
             } else {
-                db.add.fighter(val.namefighter, val.colorcode, !isNaN(val.actioncount) ? `${val.actioncount}` : `${val.actioncount[0]},${val.actioncount[1]}`, val.topcheck, val.acting, val.dead, combatId, val.hidden, val.max_health, val.health, val.stress, val.encumbrance).then(v => {
+                db.add.fighter(val.namefighter, val.colorcode, !isNaN(val.actioncount) ? `${val.actioncount}` : `${val.actioncount[0]},${val.actioncount[1]}`, val.topcheck, val.acting, val.dead, combatId, val.hidden, val.max_health, val.health, val.stress).then(v => {
                     val.weapons.forEach(w => {
-                        if (w.id !== 1) {
-                            tempArr.push(db.add.weapons(v[0].id, w.weapon, w.selected, +w.speed, w.encumb).then())
-                        }
+                        tempArr.push(db.add.weapons(v[0].id, w.weapon, w.selected, +w.speed, w.encumb).then())
                     })
                 }).catch(_ => console.log('140------------------------------------------'))
             }
@@ -190,12 +190,7 @@ module.exports = {
                 })
                 let loadArr = []
                 result.forEach(val => loadArr.push(db.get.weapon(val.id).then(weapons => {
-                    if (weapons.length === 0) {
-                        return { ...val, weapons: [{ id: 1, weapon: "unarmed", selected: '1', speed: 10 }] }
-                    } else if (weapons.filter(w => w.selected == 1).length === 0) {
-                        return { ...val, weapons: [...weapons, { id: 1, weapon: "unarmed", selected: '1', speed: 10 }] }
-                    }
-                    return { ...val, weapons: [...weapons, { id: 1, weapon: "unarmed", selected: '0', speed: 10 }] }
+                    return { ...val, weapons }
                 })))
 
                 Promise.all(loadArr).then(fighters => {

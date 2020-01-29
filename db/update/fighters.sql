@@ -9,7 +9,6 @@ set
     hidden = $7,
     max_health = $8,
     health = $9,
-    stress = $10,
-    encumbrance = $11
+    stress = $10
 where 
-    id = $12
+    id = $11
