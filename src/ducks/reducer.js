@@ -297,7 +297,11 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { statusList: action.payload.data })
 
         case GET_HASH + '_FULFILLED':
-            return Object.assign({}, state, { hash: action.payload.data[0].urlhash })
+            if (action.payload.data[0]) {
+                return Object.assign({}, state, { hash: action.payload.data[0].urlhash })
+            } else {
+                return Object.assign({}, state)
+            }
 
         case INCREASE_COUNT:
             var newCount = +state.count + 1
@@ -571,6 +575,7 @@ export default function reducer(state = initialState, action) {
                     val.weapons.forEach(w => {
                         if (w.id == weapon) {
                             w.selected = '1'
+                            val.encumbrance = w.encumb
                         } else { w.selected = '0' }
                     })
                 }

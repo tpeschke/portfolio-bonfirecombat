@@ -150,9 +150,9 @@ module.exports = {
                 db.update.fighters(val.namefighter, val.colorcode, !isNaN(val.actioncount) ? `${val.actioncount}` : `${val.actioncount[0]},${val.actioncount[1]}`, val.topcheck, val.acting, val.dead, val.hidden, val.max_health, val.health, val.stress, val.encumbrance, val.id).then(r => {
                     val.weapons.forEach(w => {
                         if (w.id !== 1 && !isNaN(w.id)) {
-                            tempArr.push(db.update.weapons(val.id, w.weapon, w.selected, w.speed, w.id).then().catch(e => console.log("----------113")))
+                            tempArr.push(db.update.weapons(val.id, w.weapon, w.selected, w.speed, w.id, w.encumb).then().catch(e => console.log("----------113")))
                         } else if (isNaN(w.id)) {
-                            tempArr.push(db.add.weapons(val.id, w.weapon, w.selected, +w.speed).then().catch(e => console.log("----------115")))
+                            tempArr.push(db.add.weapons(val.id, w.weapon, w.selected, +w.speed, +w.encumb).then().catch(e => console.log("----------115")))
                         }
                     })
                 }).catch(e => console.log(e))
@@ -160,7 +160,7 @@ module.exports = {
                 db.add.fighter(val.namefighter, val.colorcode, !isNaN(val.actioncount) ? `${val.actioncount}` : `${val.actioncount[0]},${val.actioncount[1]}`, val.topcheck, val.acting, val.dead, combatId, val.hidden, val.max_health, val.health, val.stress, val.encumbrance).then(v => {
                     val.weapons.forEach(w => {
                         if (w.id !== 1) {
-                            tempArr.push(db.add.weapons(v[0].id, w.weapon, w.selected, +w.speed).then())
+                            tempArr.push(db.add.weapons(v[0].id, w.weapon, w.selected, +w.speed, w.encumb).then())
                         }
                     })
                 }).catch(_ => console.log('140------------------------------------------'))

@@ -78,10 +78,11 @@ class AddNewFighter extends Component {
                 let encumbrance = 10;
                 let weapons = data.combat.map(val => {
                     if (val.weapon !== 'Base') {
-                        return { id: makeid(), weapon: val.weapon, speed: val.spd, selected: '0' }
+                        return { id: makeid(), weapon: val.weapon, speed: val.spd, selected: '0', encumb: val.encumb }
                     } else {
                         encumbrance = val.encumb;
-                        return { id: 1, weapon: 'Unarmed', speed: val.spd, selected: '1' }
+                        console.log(val.spd)
+                        return { id: 1, weapon: 'Unarmed', speed: val.spd, selected: '1', encumb: val.encumb }
                     }
                 })
                 this.setState({ name: data.name, max_health, weapons, encumbrance })
@@ -109,15 +110,17 @@ class AddNewFighter extends Component {
     }
 
     selectWeapon = (wid) => {
+        let encumbrance = this.state.encumbrance;
         let weaponsArray = this.state.weapons.map(val => {
             if (val.id == wid) {
+                encumbrance = val.encumb
                 val.selected = '1'
             } else {
                 val.selected = '0'
             }
             return val
         })
-        this.setState({ weapons: weaponsArray })
+        this.setState({ weapons: weaponsArray, encumbrance })
     }
 
     deleteWeapon = (wid) => {
@@ -153,7 +156,7 @@ class AddNewFighter extends Component {
             }
 
             for (let i = 0; i < this.state.times; i++) {
-                let namefighter = this.state.times !== 1 ? `${i} ${n}` : n;
+                let namefighter = this.state.times !== 1 ? `${i+1} ${n}` : n;
                 this.props.ADDNEWCOMBATANT({ namefighter, ...newFighter })
                 socketFun.playerAdd({ hash: this.props.hash, fighter: { colorcode: c, dead: '0', hidden: '1', id: newId, namefighter: namefighter, topcheck: '0', weapon: w.filter(v => v.selected == '1')[0].weapon } })
             }
