@@ -184,22 +184,22 @@ export default class OnDeck extends Component {
                             <p className={`${theme}-font`}>{d.namefighter}</p>
                         </div>
 
-                        <WeaponSquare
-                            atk={selected.atk}
-                            def={selected.def}
-                            encumb={selected.encumb}
-                            damage={selected.damage}
-                            parry={selected.parry}
-                            measure={selected.measure}
-                            shield_dr={selected.shield_dr}
-                            dr={selected.dr}
-                            init={selected.init}
-                            spd={selected.speed}
-                        ></WeaponSquare>
-
                         <div className={`ListItem ${theme}-font weaponIcon`}
                             onClick={_ => this.chooseWeapon(d.id, d.weapons)}>
                             <div className="arrow right"></div>
+
+                            <WeaponSquare
+                                atk={selected.atk}
+                                def={selected.def}
+                                encumb={selected.encumb}
+                                damage={selected.damage}
+                                parry={selected.parry}
+                                measure={selected.measure}
+                                shield_dr={selected.shield_dr}
+                                dr={selected.dr}
+                                init={selected.init}
+                                spd={selected.speed}
+                            ></WeaponSquare>
                         </div>
 
                         <input className={`ListItem ${theme}-input inputFinder`}

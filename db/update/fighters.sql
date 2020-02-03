@@ -9,6 +9,8 @@ set
     hidden = $7,
     max_health = $8,
     health = $9,
-    stress = $10
+    stress = $10,
+    panic = $11,
+    broken = $12
 where 
-    id = $11
+    id = $13

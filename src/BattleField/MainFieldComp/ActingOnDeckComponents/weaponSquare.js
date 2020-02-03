@@ -5,10 +5,10 @@ export default function weaponSquare({atk, spd, init, def, encumb, shield_dr, dr
     if (shield_dr) {
         shieldDr = <p class="shield_dr">{shield_dr}</p>
     }
-
+    
     if (atk || atk === 0) {
     return (
-        <div className="combat-square-shell">
+        <div className="combat-square-shell combat-shell-display">
             <div class="combat-image" />
               <p class="spd">{spd}</p>
               <p class="atk">{atk}</p>
@@ -25,5 +25,5 @@ export default function weaponSquare({atk, spd, init, def, encumb, shield_dr, dr
         </div>
     )} 
 
-    return <div></div>
+    return <div className="combat-shell-display"></div>
 }

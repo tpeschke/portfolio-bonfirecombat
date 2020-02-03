@@ -447,17 +447,20 @@ input.ListItem:hover {
 }
 
 .combat-square-shell {
+  background: whitesmoke;
+  top: 25px;
+  left: 220px;
+  z-index: 1;
+}
+
+.combat-shell-display {
+  display: none;
   position: absolute;
   height: 143px;
   width: 150px;
-  background: whitesmoke;
-  top: 25px;
-  left: 70px;
-  z-index: 1;
-  display: none;
 }
 
-.List:hover .combat-square-shell {
+.ListItem:hover .combat-shell-display {
   display: inherit;
 }
 

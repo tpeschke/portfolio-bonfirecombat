@@ -149,8 +149,9 @@ module.exports = {
 
         fighterList.forEach(val => {
             if (!isNaN(val.id)) {
-                db.update.fighters(val.namefighter, val.colorcode, !isNaN(val.actioncount) ? `${val.actioncount}` : `${val.actioncount[0]},${val.actioncount[1]}`, val.topcheck, val.acting, val.dead, val.hidden, val.max_health, val.health, val.stress, val.id).then(r => {
+                db.update.fighters(val.namefighter, val.colorcode, !isNaN(val.actioncount) ? `${val.actioncount}` : `${val.actioncount[0]},${val.actioncount[1]}`, val.topcheck, val.acting, val.dead, val.hidden, val.max_health, val.health, val.stress, val.panic, val.broken, val.id).then(r => {
                     val.weapons.forEach(w => {
+                        console.log(val.namefighter, w)
                         if (!isNaN(w.id)) {
                             tempArr.push(db.update.weapons(val.id, w.weapon, w.selected, w.speed, w.id, w.encumb, w.atk, w.init, w.def, w.dr, w.shield_dr, w.measure, w.damage, w.parry, w.weapontype).then().catch(e => console.log("----------113")))
                         } else if (isNaN(w.id)) {
@@ -159,7 +160,7 @@ module.exports = {
                     })
                 }).catch(e => console.log(e))
             } else {
-                db.add.fighter(val.namefighter, val.colorcode, !isNaN(val.actioncount) ? `${val.actioncount}` : `${val.actioncount[0]},${val.actioncount[1]}`, val.topcheck, val.acting, val.dead, combatId, val.hidden, val.max_health, val.health, val.stress).then(v => {
+                db.add.fighter(val.namefighter, val.colorcode, !isNaN(val.actioncount) ? `${val.actioncount}` : `${val.actioncount[0]},${val.actioncount[1]}`, val.topcheck, val.acting, val.dead, combatId, val.hidden, val.max_health, val.health, val.stress, val.panic, val.broken).then(v => {
                     val.weapons.forEach(w => {
                         tempArr.push(db.add.weapons(v[0].id, w.weapon, w.selected, +w.speed, w.encumb, w.atk, w.init, w.def, w.dr, w.shield_dr, w.measure, w.damage, w.parry, w.weapontype).then())
                     })

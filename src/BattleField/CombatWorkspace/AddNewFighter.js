@@ -31,6 +31,8 @@ class AddNewFighter extends Component {
             max_health: 10,
             stress: 0,
             times: 1,
+            panic: null,
+            broken: null,
             weapon: false,
             warningOpen: false,
             hash: false
@@ -83,7 +85,10 @@ class AddNewFighter extends Component {
                         return { id: makeid(), weapon: val.weapon, speed: val.spd, selected: '1', encumb: +encumbrance, ...val }
                     }
                 })
-                this.setState({ name: data.name, max_health, weapons, encumbrance })
+                if (weapons.length === 1) {
+                    weapons[0].selected = '1'
+                }
+                this.setState({ name: data.name, max_health, weapons, encumbrance, panic: data.panic === 7 ? null : data.panic, broken: data.broken === 7 ? null : data.broken })
             })
         }
     }
@@ -134,7 +139,7 @@ class AddNewFighter extends Component {
     // ============================ \\
 
     handleSubmit = (combatid) => {
-        const { color, name, weapons, action, dice, hidden, max_health, stress, encumbrance } = this.state;
+        const { color, name, weapons, action, dice, hidden, max_health, stress, encumbrance, panic, broken } = this.state;
         if (name !== '') {
             var newId = makeid()
 
@@ -151,6 +156,8 @@ class AddNewFighter extends Component {
                 max_health,
                 stress,
                 encumbrance,
+                panic,
+                broken,
                 idcombat: combatid
             }
 
@@ -172,6 +179,8 @@ class AddNewFighter extends Component {
                 max_health: 10,
                 stress: 0,
                 encumbrance: 10,
+                panic: null,
+                broken: null,
                 weapon: false,
                 warningOpen: false,
                 hash: false
