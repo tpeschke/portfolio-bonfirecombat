@@ -83,9 +83,11 @@ export default class Acting extends Component {
                             </div>
                         </div>)
                     let healthPercent = d.health / d.max_health
+                    ,   woundCategory = 1;
 
                     //Tired
                     if (healthPercent > .01 && healthPercent < .25) {
+                        woundCategory = 2;
                         healthFatigueModifier = (
                             <div className="fatigue-shell">
                                 <div className="fatigue">
@@ -98,6 +100,7 @@ export default class Acting extends Component {
                             </div>)
                         //Hurt
                     } else if (healthPercent >= .25 && healthPercent < .5) {
+                        woundCategory = 3;
                         healthFatigueModifier = (
                             <div className="fatigue-shell">
                                 <div className="fatigue">
@@ -110,6 +113,7 @@ export default class Acting extends Component {
                             </div>)
                         //Bloodied
                     } else if (healthPercent >= .5 && healthPercent < .75) {
+                        woundCategory = 4;
                         healthFatigueModifier = (
                             <div className="fatigue-shell">
                                 <div className="fatigue">
@@ -122,6 +126,7 @@ export default class Acting extends Component {
                             </div>)
                         //Wounded
                     } else if (healthPercent >= .75 && healthPercent < 1) {
+                        woundCategory = 5;
                         healthFatigueModifier = (
                             <div className="fatigue-shell">
                                 <div className="fatigue">
@@ -134,6 +139,7 @@ export default class Acting extends Component {
                             </div>)
                         //Bleeding Out
                     } else if (healthPercent >= 1) {
+                        woundCategory = 6;
                         healthFatigueModifier = (
                             <div className="fatigue-shell">
                                 <div className="fatigue">
@@ -169,6 +175,14 @@ export default class Acting extends Component {
                         </div>)
                     }
 
+                    let nameStyle = `${theme}-font`
+
+                    if (woundCategory + Math.floor(d.stress / 10) >= d.broken && d.broken) {
+                        nameStyle += " broken";
+                    } else if (woundCategory + Math.floor(d.stress / 10) >= d.panic && d.panic) {
+                        nameStyle += " panic";
+                    }
+
                     return <div
                         className={d.hidden === '1' ? 'List hidden' : d.topcheck === '1' ? 'List top' : 'List'}
                         key={d.id}>
@@ -182,7 +196,7 @@ export default class Acting extends Component {
                         <div className="color" style={color}></div>
 
                         <div className="ListItem Name">
-                            <p className={`${theme}-font`}>{d.namefighter}</p>
+                            <p className={nameStyle}>{d.namefighter}</p>
                         </div>
 
                         <div className={`ListItem ${theme}-font weaponIcon`}
@@ -218,7 +232,7 @@ export default class Acting extends Component {
 
                         <button className={`ListItem ${theme}-font`}
                             onClick={_ => this.handleDeath(d.id)}
-                        ><i class="fas fa-skull-crossbones"></i></button>
+                        ><i className="fas fa-skull-crossbones"></i></button>
 
                         <button className={`ListItem ${theme}-font`}
                             onClick={_ => this.modifyFighter(d)}>

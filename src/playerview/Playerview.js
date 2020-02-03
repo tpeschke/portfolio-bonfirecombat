@@ -29,7 +29,6 @@ export default class PlayerView extends Component {
         }
 
         axios.get(`/api/player/fighter/${battle}`).then((req, res) => {
-            console.log(req.data[0])
             this.setState({ fighterList: req.data[0], statusList: req.data[1] })
         })
 
@@ -179,22 +178,36 @@ export default class PlayerView extends Component {
 
             if (d.dead === '0' && d.hidden === '0') {
                 let bloodDrop = <i className="fas fa-tint fresh"></i>
+                    , woundCategory = 1;
 
                 //Tired
                 if (d.health_percent > 1 && d.health_percent < 25) {
+                    woundCategory = 2
                     bloodDrop = <i className="fas fa-tint tired"></i>
                     //Hurt
                 } else if (d.health_percent >= 25 && d.health_percent < 5) {
+                    woundCategory = 3
                     bloodDrop = <i className="fas fa-tint hurt"></i>
                     //Bloodied
                 } else if (d.health_percent >= 5 && d.health_percent < 75) {
+                    woundCategory = 4
                     bloodDrop = <i className="fas fa-tint bloodied"></i>
                     //Wounded
                 } else if (d.health_percent >= 75 && d.health_percent < 100) {
+                    woundCategory = 5
                     bloodDrop = <i className="fas fa-tint wounded"></i>
                     //Bleeding Out
                 } else if (d.health_percent >= 100) {
+                    woundCategory = 6
                     bloodDrop = <i className="fas fa-tint bleeding-out"></i>
+                }
+
+                let nameStyle = `ListItem Name`
+
+                if (woundCategory + Math.floor(d.stress / 10) >= d.broken && d.broken) {
+                    nameStyle += " broken";
+                } else if (woundCategory + Math.floor(d.stress / 10) >= d.panic && d.panic) {
+                    nameStyle += " panic";
                 }
 
                 return (<div
@@ -202,7 +215,7 @@ export default class PlayerView extends Component {
                     key={d.id}>
                     <div className="playerItem">
                         <div className="color" style={color}></div>
-                        <p className="ListItem Name">{d.namefighter}</p>
+                        <p className={nameStyle}>{d.namefighter}</p>
                     </div>
                     <div className="playerItem">
                         <p>{d.weapon}</p>

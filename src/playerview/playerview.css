@@ -96,6 +96,16 @@ p {
     color: black;
 }
 
+
+.panic {
+    color: yellow
+  }
+  
+  .broken {
+    color: red;
+  }
+  
+
 /* =============================== */
 .playerStatus{
     width: 50%;

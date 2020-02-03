@@ -167,6 +167,14 @@ input.ListItem:hover {
   white-space: nowrap;
 }
 
+.panic {
+  color: yellow
+}
+
+.broken {
+  color: red;
+}
+
 .NameHeader {
   margin-left: 25px;
   min-width: 238px;
