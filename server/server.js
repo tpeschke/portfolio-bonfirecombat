@@ -16,7 +16,7 @@ app.use(bodyParser.json())
 app.use(cors())
 app.use(express.static(__dirname + `/../build`));
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    secret: config.SESSION_SECRET,
     resave: false,
     saveUninitialized: true
 }))
@@ -24,10 +24,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.use(new Auth0Strategy({
-    domain: process.env.AUTH_DOMAIN,
-    clientID: process.env.AUTH_CLIENT_ID,
-    clientSecret: process.env.AUTH_CLIENT_SECRET,
-    callbackURL: process.env.AUTH_CALLBACK,
+    domain: config.AUTH_DOMAIN,
+    clientID: config.AUTH_CLIENT_ID,
+    clientSecret: config.AUTH_CLIENT_SECRET,
+    callbackURL: config.AUTH_CALLBACK,
     scope: 'openid profile'
 }, function (accessToken, refreshToken, extraParams, profile, done) {
     let { displayName, user_id } = profile;
@@ -109,9 +109,9 @@ app.get('/*', (req, res) => {
 
 // ==========================================
 
-const port = process.env.SERVER_PORT
+const port = config.SERVER_PORT
 
-massive(process.env.CONNECTION_STRING).then(dbInstance => {
+massive(config.CONNECTION_STRING).then(dbInstance => {
     app.set('db', dbInstance);
 });
 
