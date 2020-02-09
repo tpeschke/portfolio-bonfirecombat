@@ -19,6 +19,18 @@ class DeckWeapon extends Component {
         }
     }
 
+    closeModal = () => {
+        let { WEAPONMODAL } = this.props
+        this.setState({
+            holdWeapon: '',
+            holdSpeed: 0,
+            holdEncumb: 10,
+            holdId: null,
+            edit: false,
+        })
+        WEAPONMODAL()
+    }
+
     select = (wid, weapon) => {
         let { id, SELECTWEAPON, WEAPONMODAL, hash } = this.props
         socketFun.playerWeapon({ hash, weapon, id })
@@ -134,7 +146,7 @@ class DeckWeapon extends Component {
 
         return (
             <div>
-                <Modal open={open} onClose={WEAPONMODAL} little
+                <Modal open={open} onClose={this.closeModal} little
                     classNames={{ modal: 'modalBaseToP' }}>
                     <div className="modalWeaponOuter">
                         <div className="modalWeaponInner">

@@ -394,7 +394,6 @@ input.ListItem:hover {
   color: black;
   font-size: 17px;
   transform: rotate(-90deg);
-  padding-top: 5px;
 }
 
 .openEye:hover {

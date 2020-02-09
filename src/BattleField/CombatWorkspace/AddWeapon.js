@@ -14,7 +14,7 @@ class DeckWeapon extends Component {
             edit: false,
         }
     }
-
+    
     select = (weapon) => {
         let { selectWeapon } = this.props
         selectWeapon(weapon)
@@ -50,16 +50,18 @@ class DeckWeapon extends Component {
         let { weapons, id, theme, checkStr, checkNum } = this.props
 
         let display = weapons.map((val, i) => {
-            return (
-                <div key={`${val.id}${i}${id}`} className={val.selected == 1 ? 'wpItem wpSelected' : 'wpItem'}>
-                    <p className="wpItemHeader"
-                        onClick={_ => this.select(val.id)}>{val.weapon}</p>
-                    <p className="wpSpeed">{val.speed}</p>
-                    <p className="wpSpeed">{val.encumb}</p>
-                    <button className="wpSpeed"
-                        onClick={_ => this.editWeapon(val)}><i class="fas fa-edit"></i></button>
-                </div>
-            )
+            if (val.name !== "Unarmed") {
+                return (
+                    <div key={`${val.id}${i}${id}`} className={val.selected == 1 ? 'wpItem wpSelected' : 'wpItem'}>
+                        <p className="wpItemHeader"
+                            onClick={_ => this.select(val.id)}>{val.weapon}</p>
+                        <p className="wpSpeed">{val.speed}</p>
+                        <p className="wpSpeed">{val.encumb}</p>
+                        <button className="wpSpeed"
+                            onClick={_ => this.editWeapon(val)}><i class="fas fa-edit"></i></button>
+                    </div>
+                )
+            }
         })
 
         let edit = () => {

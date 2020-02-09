@@ -77,12 +77,15 @@ class AddNewFighter extends Component {
             axios.get('/api/beast/' + this.state.hash.trim()).then(({ data }) => {
                 let max_health = rollDice(data.vitality);
                 let encumbrance = 10;
-                let weapons = data.combat.map(val => {
+                let weapons = []
+                data.combat.forEach(val => {
                     if (val.weapon !== 'Base') {
-                        return { id: makeid(), weapon: val.weapon, speed: val.spd, selected: '0', encumb: val.encumb, ...val }
+                        weapons.push({ ...val, id: makeid(), weapon: val.weapon, speed: val.spd, selected: '0', encumb: val.encumb }) 
+                        weapons.push({ ...val, id: makeid(), weapon: `${val.weapon} (IG)`, speed: val.spd + Math.ceil(val.measure / 2), selected: '0', encumb: val.encumb }) 
                     } else {
                         encumbrance = val.encumb;
-                        return { id: makeid(), weapon: val.weapon, speed: val.spd, selected: '1', encumb: +encumbrance, ...val }
+                        weapons.push({ ...val, id: makeid(), weapon: "Unarmed", speed: 9 + +val.spd, selected: '1', encumb: +encumbrance, damage: `d6+${+val.damage + 1}` })
+                        weapons.push({ ...val, id: makeid(), weapon: val.weapon, speed: val.spd, selected: '0', encumb: +encumbrance })
                     }
                 })
                 if (weapons.length === 1) {

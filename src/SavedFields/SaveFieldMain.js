@@ -53,8 +53,8 @@ class SaveFieldMain extends Component {
     }
 
     closeWarning = () => {
-        if(this.props.savedFieldWarning) {
-            setTimeout(_=>this.props.CLOSESAVEDFIELDWARNING(), 5000)
+        if (this.props.savedFieldWarning) {
+            setTimeout(_ => this.props.CLOSESAVEDFIELDWARNING(), 5000)
         }
     }
 
@@ -72,19 +72,20 @@ class SaveFieldMain extends Component {
                     className="savedCombat"
                     key={d.namecombat + i}>
 
-                    <Link to='/BattleField'>
-                        <button className={`savedItemName ${this.props.theme}-font`}
-                            onClick={_ => this.props.GETCOMBATFIGHTERS(d.id, d.namecombat, d.countnum)}>
-                            {d.namecombat}
-                        </button>
-                    </Link>
+                    <div className={`savedItemName ${this.props.theme}-font`}  onClick={_ => this.props.GETCOMBATFIGHTERS(d.id, d.namecombat, d.countnum)}>
+                        <Link to='/BattleField'>
+                            <button>
+                                {d.namecombat}
+                            </button>
+                        </Link>
+                    </div>
 
                     <p className={`savedItem ${this.props.theme}-font`}>{d.countnum}</p>
                     <p className={`savedItem ${this.props.theme}-font`}>{d.fighternum}</p>
                     <p className={`savedItem ${this.props.theme}-font`}>{d.deadnum ? d.deadnum : 0}</p>
                     <button className={`savedItem ${this.props.theme}-font`}
                         onClick={_ => this.deleteFieldCheck(d.id)}
-                    >X</button>
+                    ><i className="fas fa-trash-alt"></i></button>
                 </div>
             })
         }
