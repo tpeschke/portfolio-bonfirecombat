@@ -75,20 +75,22 @@ class AddNewFighter extends Component {
     addByHash = () => {
         if (this.state.hash) {
             axios.get('/api/beast/' + this.state.hash.trim()).then(({ data }) => {
-                let max_health = rollDice(data.vitality);
-                let encumbrance = 10;
-                let weapons = []
+                let max_health = rollDice(data.vitality)
+                    , encumbrance = 10
+                    , weapons = []
+                    , noBase = true
                 data.combat.forEach(val => {
                     if (val.weapon !== 'Base') {
                         weapons.push({ ...val, id: makeid(), weapon: val.weapon, speed: val.spd, selected: '0', encumb: val.encumb }) 
                         weapons.push({ ...val, id: makeid(), weapon: `${val.weapon} (IG)`, speed: val.spd + Math.ceil(val.measure / 2), selected: '0', encumb: val.encumb }) 
                     } else {
+                        noBase = false;
                         encumbrance = val.encumb;
                         weapons.push({ ...val, id: makeid(), weapon: "Unarmed", speed: 9 + +val.spd, selected: '1', encumb: +encumbrance, damage: `d6+${+val.damage + 1}` })
                         weapons.push({ ...val, id: makeid(), weapon: val.weapon, speed: val.spd, selected: '0', encumb: +encumbrance })
                     }
                 })
-                if (weapons.length === 1) {
+                if (weapons.length === 1 || noBase) {
                     weapons[0].selected = '1'
                 }
                 this.setState({ name: data.name, max_health, weapons, encumbrance, panic: data.panic === 7 ? null : data.panic, broken: data.broken === 7 ? null : data.broken })
