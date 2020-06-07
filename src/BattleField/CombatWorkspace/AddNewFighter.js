@@ -75,14 +75,14 @@ class AddNewFighter extends Component {
     addByHash = () => {
         if (this.state.hash) {
             axios.get('/api/beast/' + this.state.hash.trim()).then(({ data }) => {
-                let max_health = rollDice(data.vitality)
+                let max_health = data.vitality.toUpperCase() !== "N/A" ? rollDice(data.vitality) : 10000
                     , encumbrance = 10
                     , weapons = []
                     , noBase = true
                 data.combat.forEach(val => {
                     if (val.weapon !== 'Base') {
-                        weapons.push({ ...val, id: makeid(), weapon: val.weapon, speed: val.spd, selected: '0', encumb: val.encumb }) 
-                        weapons.push({ ...val, id: makeid(), weapon: `${val.weapon} (IG)`, speed: val.spd + Math.ceil(val.measure / 2), selected: '0', encumb: val.encumb }) 
+                        weapons.push({ ...val, id: makeid(), weapon: val.weapon, speed: val.spd, selected: '0', encumb: val.encumb })
+                        weapons.push({ ...val, id: makeid(), weapon: `${val.weapon} (IG)`, speed: val.spd + Math.ceil(val.measure / 2), selected: '0', encumb: val.encumb })
                     } else {
                         noBase = false;
                         encumbrance = val.encumb;
@@ -146,10 +146,8 @@ class AddNewFighter extends Component {
     handleSubmit = (combatid) => {
         const { color, name, weapons, action, dice, hidden, max_health, stress, encumbrance, panic, broken } = this.state;
         if (name !== '') {
-            var newId = makeid()
 
             var newFighter = {
-                id: newId,
                 colorcode: color,
                 weapons: _.cloneDeep(weapons),
                 actioncount: dice ? [dice, action] : action,
@@ -167,9 +165,10 @@ class AddNewFighter extends Component {
             }
 
             for (let i = 0; i < this.state.times; i++) {
-                let namefighter = this.state.times !== 1 ? `${i+1} ${name}` : name;
-                this.props.ADDNEWCOMBATANT({ namefighter, ...newFighter })
-                socketFun.playerAdd({ hash: this.props.hash, fighter: { colorcode: color, dead: '0', hidden: '1', id: newId, namefighter: namefighter, topcheck: '0', weapon: weapons.filter(v => v.selected == '1')[0].weapon } })
+                let namefighter = this.state.times !== 1 ? `${i + 1} ${name}` : name;
+                let fighterId = makeid()
+                this.props.ADDNEWCOMBATANT({ namefighter, ...newFighter, id: fighterId })
+                socketFun.playerAdd({ hash: this.props.hash, fighter: { colorcode: color, dead: '0', hidden: '1', id: fighterId, namefighter: namefighter, topcheck: '0', weapon: weapons.filter(v => v.selected == '1')[0].weapon } })
             }
             this.onCloseModal()
 
