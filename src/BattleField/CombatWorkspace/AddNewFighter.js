@@ -30,6 +30,7 @@ class AddNewFighter extends Component {
             hidden: '0',
             max_health: 10,
             stress: 0,
+            stressthreshold: 0,
             times: 1,
             panic: null,
             broken: null,
@@ -144,7 +145,7 @@ class AddNewFighter extends Component {
     // ============================ \\
 
     handleSubmit = (combatid) => {
-        const { color, name, weapons, action, dice, hidden, max_health, stress, encumbrance, panic, broken } = this.state;
+        const { color, name, weapons, action, dice, hidden, max_health, stress, encumbrance, panic, broken, stressthreshold } = this.state;
         if (name !== '') {
 
             var newFighter = {
@@ -158,6 +159,7 @@ class AddNewFighter extends Component {
                 health: 0,
                 max_health,
                 stress,
+                stressthreshold,
                 encumbrance,
                 panic,
                 broken,

@@ -32,7 +32,7 @@ export default function rollDice(diceString) {
                 let subtotal = 0
                 for (let i = 0; i <= val[0]; i++) {
                     if (exploding) {
-                        val[1] = val[1].substring(0, val[1].length-1)
+                        val[1] = val[1].substring(0, val[1].length - 1)
                         subtotal += rollDice(+val[1])
                     } else {
                         subtotal += rollDice(+val[1])

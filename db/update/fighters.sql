@@ -11,6 +11,7 @@ set
     health = $9,
     stress = $10,
     panic = $11,
-    broken = $12
+    broken = $12,
+    stressthreshold = $13
 where 
-    id = $13
+    id = $14

@@ -31,7 +31,6 @@ class BattleFieldMain extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.combatId)
         this.props.LOADCOMBATANTS(this.props.combatId);
         this.props.GETALLSTATUSES(this.props.combatId);
         this.props.PAGELOCATION('/BattleField');
